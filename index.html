@@ -223,7 +223,8 @@
                         </div>
                         
                         <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-8">
-                            <div class="col-span-3 bg-white/80 p-8 rounded-3xl border border-white shadow-lg backdrop-blur-sm transition-all hover:shadow-xl hover:-translate-y-1 duration-300">
+                            <!-- 添加了 id="review-logic" 以及初始隐藏的 class: transform opacity-0 translate-y-8 scale-95 pointer-events-none -->
+                            <div id="review-logic" class="col-span-3 bg-white/80 p-8 rounded-3xl border border-white shadow-lg backdrop-blur-sm transition-all duration-500 transform opacity-0 translate-y-8 scale-95 pointer-events-none hover:shadow-xl hover:-translate-y-1">
                                 <h3 class="text-2xl font-bold mb-4 flex items-center gap-2 text-slate-800">
                                     <i data-lucide="settings-2" class="text-blue-500 w-7 h-7"></i> 核心逻辑
                                 </h3>
@@ -231,7 +232,8 @@
                                     排队点名。从排头开始，一个接一个地询问：“是你吗？”。每次查找后<span class="text-blue-600 font-bold bg-blue-50 px-2 py-0.5 rounded">步进为 1</span>。
                                 </p>
                             </div>
-                            <div class="col-span-2 bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-3xl border border-blue-100 shadow-lg transition-all hover:shadow-xl hover:-translate-y-1 duration-300">
+                            <!-- 添加了 id="review-efficiency" 以及初始隐藏的 class -->
+                            <div id="review-efficiency" class="col-span-2 bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-3xl border border-blue-100 shadow-lg transition-all duration-500 transform opacity-0 translate-y-8 scale-95 pointer-events-none hover:shadow-xl hover:-translate-y-1">
                                 <h3 class="text-2xl font-bold mb-4 flex items-center gap-2 text-blue-900">
                                     <i data-lucide="zap" class="text-amber-500 w-7 h-7"></i> 效率分析
                                 </h3>
@@ -295,8 +297,8 @@
                         </div>
 
                         <div class="flex flex-col gap-6">
-                            <!-- 顺序查找动画 -->
-                            <div class="bg-white/90 p-6 lg:p-8 rounded-3xl border border-slate-100 shadow-lg relative overflow-visible">
+                            <!-- 顺序查找动画 (添加了 id 和初始隐藏的渐隐动画类) -->
+                            <div id="scenario-seq" class="bg-white/90 p-6 lg:p-8 rounded-3xl border border-slate-100 shadow-lg relative overflow-visible transition-all duration-500 transform opacity-0 translate-y-8 scale-95 pointer-events-none">
                                 <h3 class="text-xl font-bold mb-10 flex justify-between items-center relative z-10">
                                     <span class="bg-slate-100 text-slate-700 px-4 py-2 rounded-xl flex items-center gap-2 border border-slate-200"><i data-lucide="footprints" class="w-5 h-5"></i> 笨办法：顺序查找</span>
                                     <div class="flex items-center gap-3">
@@ -317,8 +319,8 @@
                                 </div>
                             </div>
             
-                            <!-- 二分查找动画 -->
-                            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 lg:p-8 rounded-3xl border border-blue-200 shadow-lg relative overflow-visible">
+                            <!-- 二分查找动画 (添加了 id 和初始隐藏的渐隐动画类) -->
+                            <div id="scenario-bin" class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 lg:p-8 rounded-3xl border border-blue-200 shadow-lg relative overflow-visible transition-all duration-500 transform opacity-0 translate-y-8 scale-95 pointer-events-none">
                                 <h3 class="text-xl font-bold mb-10 flex justify-between items-center text-blue-900 relative z-10">
                                     <span class="bg-blue-600 text-white px-4 py-2 rounded-xl flex items-center gap-2 shadow-md"><i data-lucide="scissors" class="w-5 h-5"></i> 二分法：折半寻找</span>
                                     <div class="flex items-center gap-3">
@@ -347,53 +349,8 @@
                 </div>
             </div>
 
-            <!-- 幻灯片 4：数学原理 1 (结果) -->
+            <!-- 幻灯片 4：数学推演 (互动推导过程 - 原先在后) -->
             <div id="slide-3" class="slide inactive-right absolute inset-0">
-                <div class="h-full w-full p-8 flex flex-col items-center justify-center pt-10">
-                    <div class="w-full max-w-4xl">
-                        <div class="flex items-center justify-center gap-4 mb-8">
-                            <div class="p-3 bg-indigo-100 rounded-2xl text-indigo-600 shadow-sm">
-                                <i data-lucide="function-square" class="w-8 h-8"></i>
-                            </div>
-                            <h2 class="text-4xl lg:text-5xl font-black text-slate-800">3. 数学原理：对数级的飞跃</h2>
-                        </div>
-                        
-                        <div class="bg-slate-900 text-white p-10 rounded-[2.5rem] mb-8 font-mono relative overflow-hidden shadow-2xl border border-slate-700 hover:border-indigo-500/50 transition-colors duration-500">
-                            <div class="absolute -right-20 -top-20 w-64 h-64 bg-indigo-600/30 rounded-full blur-[60px] pointer-events-none"></div>
-                            <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-blue-600/20 rounded-full blur-[60px] pointer-events-none"></div>
-                            <div class="relative z-10 text-center">
-                                <div class="text-xl lg:text-2xl mb-4 text-indigo-300 font-bold tracking-widest uppercase">时间复杂度</div>
-                                <div class="text-7xl lg:text-8xl leading-none font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 drop-shadow-lg filter drop-shadow-[0_0_10px_rgba(99,102,241,0.3)]">
-                                    O(log₂ n)
-                                </div>
-                                <div class="mt-8 text-slate-300 text-lg lg:text-xl italic tracking-wide font-sans font-medium bg-white/5 inline-block px-6 py-3 rounded-full border border-white/10 backdrop-blur-sm">
-                                    "每一次比较，都让未知的世界缩小一半。"
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="grid grid-cols-2 gap-6">
-                            <div class="bg-white/80 border border-slate-200 p-6 rounded-3xl shadow-sm backdrop-blur-sm flex items-center justify-between">
-                                <div>
-                                    <div class="text-slate-500 text-xs font-black mb-1 uppercase tracking-widest flex items-center gap-1"><i data-lucide="database" class="w-4 h-4"></i> 数据规模：100万</div>
-                                    <div class="text-2xl font-bold text-slate-800">顺序查找：</div>
-                                </div>
-                                <div class="text-4xl font-black text-slate-400">100万<span class="text-xl font-bold ml-1">次</span></div>
-                            </div>
-                            <div class="bg-gradient-to-r from-indigo-50 to-blue-50 border border-indigo-100 p-6 rounded-3xl shadow-md backdrop-blur-sm flex items-center justify-between transform transition hover:scale-[1.02] duration-300">
-                                <div>
-                                    <div class="text-indigo-500 text-xs font-black mb-1 uppercase tracking-widest flex items-center gap-1"><i data-lucide="database" class="w-4 h-4"></i> 数据规模：100万</div>
-                                    <div class="text-2xl font-bold text-indigo-900">二分查找：</div>
-                                </div>
-                                <div class="text-4xl font-black text-indigo-600">≈ 20<span class="text-xl font-bold ml-1">次</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 幻灯片 5：数学原理 2 (互动推导过程 - 已修复挡住问题) -->
-            <div id="slide-4" class="slide inactive-right absolute inset-0">
                 <div class="h-full w-full p-8 flex flex-col items-center justify-center pt-10">
                     <div class="w-full max-w-5xl h-full flex flex-col">
                         <!-- Header -->
@@ -481,6 +438,51 @@
                                         <span class="text-amber-400 drop-shadow-[0_0_10px_rgba(251,191,36,0.3)] bg-amber-900/30 px-3 py-1 rounded-xl whitespace-nowrap">k = log₂ n</span>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 幻灯片 5：数学原理 (结果 - 原先在前) -->
+            <div id="slide-4" class="slide inactive-right absolute inset-0">
+                <div class="h-full w-full p-8 flex flex-col items-center justify-center pt-10">
+                    <div class="w-full max-w-4xl">
+                        <div class="flex items-center justify-center gap-4 mb-8">
+                            <div class="p-3 bg-indigo-100 rounded-2xl text-indigo-600 shadow-sm">
+                                <i data-lucide="function-square" class="w-8 h-8"></i>
+                            </div>
+                            <h2 class="text-4xl lg:text-5xl font-black text-slate-800">4. 数学原理：对数级的飞跃</h2>
+                        </div>
+                        
+                        <div class="bg-slate-900 text-white p-10 rounded-[2.5rem] mb-8 font-mono relative overflow-hidden shadow-2xl border border-slate-700 hover:border-indigo-500/50 transition-colors duration-500">
+                            <div class="absolute -right-20 -top-20 w-64 h-64 bg-indigo-600/30 rounded-full blur-[60px] pointer-events-none"></div>
+                            <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-blue-600/20 rounded-full blur-[60px] pointer-events-none"></div>
+                            <div class="relative z-10 text-center">
+                                <div class="text-xl lg:text-2xl mb-4 text-indigo-300 font-bold tracking-widest uppercase">时间复杂度</div>
+                                <div class="text-7xl lg:text-8xl leading-none font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 drop-shadow-lg filter drop-shadow-[0_0_10px_rgba(99,102,241,0.3)]">
+                                    O(log₂ n)
+                                </div>
+                                <div class="mt-8 text-slate-300 text-lg lg:text-xl italic tracking-wide font-sans font-medium bg-white/5 inline-block px-6 py-3 rounded-full border border-white/10 backdrop-blur-sm">
+                                    "每一次比较，都让未知的世界缩小一半。"
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="bg-white/80 border border-slate-200 p-6 rounded-3xl shadow-sm backdrop-blur-sm flex items-center justify-between">
+                                <div>
+                                    <div class="text-slate-500 text-xs font-black mb-1 uppercase tracking-widest flex items-center gap-1"><i data-lucide="database" class="w-4 h-4"></i> 数据规模：100万</div>
+                                    <div class="text-2xl font-bold text-slate-800">顺序查找：</div>
+                                </div>
+                                <div class="text-4xl font-black text-slate-400">100万<span class="text-xl font-bold ml-1">次</span></div>
+                            </div>
+                            <div class="bg-gradient-to-r from-indigo-50 to-blue-50 border border-indigo-100 p-6 rounded-3xl shadow-md backdrop-blur-sm flex items-center justify-between transform transition hover:scale-[1.02] duration-300">
+                                <div>
+                                    <div class="text-indigo-500 text-xs font-black mb-1 uppercase tracking-widest flex items-center gap-1"><i data-lucide="database" class="w-4 h-4"></i> 数据规模：100万</div>
+                                    <div class="text-2xl font-bold text-indigo-900">二分查找：</div>
+                                </div>
+                                <div class="text-4xl font-black text-indigo-600">≈ 20<span class="text-xl font-bold ml-1">次</span></div>
                             </div>
                         </div>
                     </div>
@@ -1015,6 +1017,58 @@
             }
         }
 
+        // --- 新增：课程回顾页面的分布展示逻辑 ---
+        let reviewStep = 0;
+        function updateReviewSteps() {
+            const logicEl = document.getElementById('review-logic');
+            const effEl = document.getElementById('review-efficiency');
+            if (!logicEl || !effEl) return;
+
+            // 控制核心逻辑的展示
+            if (reviewStep >= 1) {
+                logicEl.classList.remove('opacity-0', 'translate-y-8', 'scale-95', 'pointer-events-none');
+                logicEl.classList.add('opacity-100', 'translate-y-0', 'scale-100');
+            } else {
+                logicEl.classList.add('opacity-0', 'translate-y-8', 'scale-95', 'pointer-events-none');
+                logicEl.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
+            }
+
+            // 控制效率分析的展示
+            if (reviewStep >= 2) {
+                effEl.classList.remove('opacity-0', 'translate-y-8', 'scale-95', 'pointer-events-none');
+                effEl.classList.add('opacity-100', 'translate-y-0', 'scale-100');
+            } else {
+                effEl.classList.add('opacity-0', 'translate-y-8', 'scale-95', 'pointer-events-none');
+                effEl.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
+            }
+        }
+
+        // --- 新增：情境导入页面的分布展示逻辑 ---
+        let scenarioStep = 0;
+        function updateScenarioSteps() {
+            const seqEl = document.getElementById('scenario-seq');
+            const binEl = document.getElementById('scenario-bin');
+            if (!seqEl || !binEl) return;
+
+            // 控制顺序查找动画展示
+            if (scenarioStep >= 1) {
+                seqEl.classList.remove('opacity-0', 'translate-y-8', 'scale-95', 'pointer-events-none');
+                seqEl.classList.add('opacity-100', 'translate-y-0', 'scale-100');
+            } else {
+                seqEl.classList.add('opacity-0', 'translate-y-8', 'scale-95', 'pointer-events-none');
+                seqEl.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
+            }
+
+            // 控制二分查找动画展示
+            if (scenarioStep >= 2) {
+                binEl.classList.remove('opacity-0', 'translate-y-8', 'scale-95', 'pointer-events-none');
+                binEl.classList.add('opacity-100', 'translate-y-0', 'scale-100');
+            } else {
+                binEl.classList.add('opacity-0', 'translate-y-8', 'scale-95', 'pointer-events-none');
+                binEl.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
+            }
+        }
+
         function updateSlides(direction = 'next') {
             for(let i=0; i<totalSlides; i++) {
                 const slide = document.getElementById(`slide-${i}`);
@@ -1027,16 +1081,83 @@
                     slide.className = "slide inactive-right absolute inset-0";
                 }
             }
-            if (currentSlide === 4) { mathStep = 0; renderMathSim(); } 
-            if (currentSlide === 6) resetCodeStep(); 
+            
+            // 针对课程回顾页面(slide 1)的初始化逻辑
+            if (currentSlide === 1) { 
+                if (direction === 'next') reviewStep = 0;
+                else if (direction === 'prev') reviewStep = 2;
+                else reviewStep = 0;
+                updateReviewSteps(); 
+            }
+
+            // 针对情境导入页面(slide 2)的初始化逻辑
+            if (currentSlide === 2) {
+                if (direction === 'next') scenarioStep = 0;
+                else if (direction === 'prev') scenarioStep = 2;
+                else scenarioStep = 0;
+                updateScenarioSteps();
+            }
+
+            // 数学推演页面：退回时直接显示最后一步
+            if (currentSlide === 3) { 
+                mathStep = (direction === 'prev') ? maxMathStep : 0; 
+                renderMathSim(); 
+            } 
+            
+            // 算法模拟页面：退回时直接显示最后一步
+            if (currentSlide === 5) { 
+                simStep = (direction === 'prev') ? (simSteps.length - 1) : 0; 
+                renderSim(); 
+            }
+
+            // 代码实现页面：退回时直接显示最后一行
+            if (currentSlide === 6) { 
+                codeStep = (direction === 'prev') ? maxCodeStep : 0; 
+                renderCodeLines(); 
+            } 
             
             renderProgressBar();
             highlightActiveTask();
         }
 
-        function nextSlide() { if (currentSlide < totalSlides - 1) { currentSlide++; updateSlides('next'); } }
-        function prevSlide() { if (currentSlide > 0) { currentSlide--; updateSlides('prev'); } }
-        function goToSlide(index) { currentSlide = index; updateSlides(); }
+        function nextSlide() { 
+            // 拦截：处于课程回顾且还没点满 2 步
+            if (currentSlide === 1 && reviewStep < 2) { reviewStep++; updateReviewSteps(); return; }
+            // 拦截：处于情境导入且还没点满 2 步
+            if (currentSlide === 2 && scenarioStep < 2) { scenarioStep++; updateScenarioSteps(); return; }
+            // 拦截：数学推演步进
+            if (currentSlide === 3 && mathStep < maxMathStep) { mathStep++; renderMathSim(); return; }
+            // 拦截：算法模拟步进
+            if (currentSlide === 5 && simStep < simSteps.length - 1) { simStep++; renderSim(); return; }
+            // 拦截：代码实现步进
+            if (currentSlide === 6 && codeStep < maxCodeStep) { codeStep++; renderCodeLines(); return; }
+            
+            if (currentSlide < totalSlides - 1) { currentSlide++; updateSlides('next'); } 
+        }
+
+        function prevSlide() { 
+            // 拦截：处于课程回顾且可回退
+            if (currentSlide === 1 && reviewStep > 0) { reviewStep--; updateReviewSteps(); return; }
+            // 拦截：处于情境导入且可回退
+            if (currentSlide === 2 && scenarioStep > 0) { scenarioStep--; updateScenarioSteps(); return; }
+            // 拦截：数学推演回退
+            if (currentSlide === 3 && mathStep > 0) { mathStep--; renderMathSim(); return; }
+            // 拦截：算法模拟回退
+            if (currentSlide === 5 && simStep > 0) { simStep--; renderSim(); return; }
+            // 拦截：代码实现回退
+            if (currentSlide === 6 && codeStep > 0) { codeStep--; renderCodeLines(); return; }
+            
+            if (currentSlide > 0) { currentSlide--; updateSlides('prev'); } 
+        }
+
+        // --- 新增：进度条直接跳转指定幻灯片功能 ---
+        function goToSlide(index) {
+            if (index === currentSlide) return;
+            // 判断是从左往右翻还是从右往左退，以便决定内部动画如何初始化展示状态
+            const direction = index > currentSlide ? 'next' : 'prev';
+            currentSlide = index;
+            updateSlides(direction);
+        }
 
         window.addEventListener('keydown', (e) => {
             if(e.target.tagName === 'INPUT') return;
