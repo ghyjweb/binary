@@ -228,7 +228,7 @@
                                     <i data-lucide="settings-2" class="text-blue-500 w-7 h-7"></i> 核心逻辑
                                 </h3>
                                 <p class="text-lg lg:text-xl leading-relaxed text-slate-600 font-medium">
-                                    按顺序逐个检查。就像在乱序的金蛋中寻找大奖，如果运气不佳，目标在最后一个位置，我们就需要<span class="text-blue-600 font-bold bg-blue-50 px-2 py-0.5 rounded">查遍所有元素</span>。
+                                    排队点名。从排头开始，一个接一个地询问：“是你吗？”。每次查找后<span class="text-blue-600 font-bold bg-blue-50 px-2 py-0.5 rounded">步进为 1</span>。
                                 </p>
                             </div>
                             <div class="col-span-2 bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-3xl border border-blue-100 shadow-lg transition-all hover:shadow-xl hover:-translate-y-1 duration-300">
@@ -247,8 +247,23 @@
                             <h3 class="text-xl font-bold mb-6 text-slate-700 flex items-center gap-2">
                                 <i data-lucide="play-circle" class="w-6 h-6 text-indigo-500"></i> 演示：顺序查找过程
                             </h3>
-                            <div class="relative h-12 bg-slate-100 rounded-full mx-4 shadow-inner border border-slate-200 overflow-hidden">
-                                <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9IiNjYmQ1ZTEiLz48L3N2Zz4=')] opacity-50"></div>
+                            <!-- 将 overflow-hidden 改为 overflow-visible 并增加 mb-6 给下标留出空间 -->
+                            <div class="relative h-12 bg-slate-100 rounded-full mx-4 shadow-inner border border-slate-200 overflow-visible mb-6">
+                                <!-- 背景层增加 overflow-hidden 保持圆角 -->
+                                <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9IiNjYmQ1ZTEiLz48L3N2Zz4=')] opacity-50 rounded-full overflow-hidden"></div>
+                                
+                                <!-- 增加下标指示 -->
+                                <div class="absolute top-full left-[5%] -translate-x-1/2 mt-2 text-sm font-mono font-bold text-slate-400 transition-colors">0</div>
+                                <div class="absolute top-full left-[15%] -translate-x-1/2 mt-2 text-sm font-mono font-bold text-slate-400 transition-colors">1</div>
+                                <div class="absolute top-full left-[25%] -translate-x-1/2 mt-2 text-sm font-mono font-bold text-slate-400 transition-colors">2</div>
+                                <div class="absolute top-full left-[35%] -translate-x-1/2 mt-2 text-sm font-mono font-bold text-slate-400 transition-colors">3</div>
+                                <div class="absolute top-full left-[45%] -translate-x-1/2 mt-2 text-sm font-mono font-bold text-slate-400 transition-colors">4</div>
+                                <div class="absolute top-full left-[55%] -translate-x-1/2 mt-2 text-sm font-mono font-bold text-slate-400 transition-colors">5</div>
+                                <div class="absolute top-full left-[65%] -translate-x-1/2 mt-2 text-sm font-mono font-bold text-slate-400 transition-colors">6</div>
+                                <div class="absolute top-full left-[75%] -translate-x-1/2 mt-2 text-sm font-mono font-black text-red-500 transition-colors">7</div>
+                                <div class="absolute top-full left-[85%] -translate-x-1/2 mt-2 text-sm font-mono font-bold text-slate-400 transition-colors">8</div>
+                                <div class="absolute top-full left-[95%] -translate-x-1/2 mt-2 text-sm font-mono font-bold text-slate-400 transition-colors">9</div>
+
                                 <div class="absolute top-1/2 left-[75%] -translate-y-1/2 -translate-x-1/2 w-10 h-10 bg-red-50 rounded-full border-4 border-red-500 flex items-center justify-center shadow-lg z-10">
                                     <span class="text-red-600 text-[10px] font-black">目标</span>
                                 </div>
