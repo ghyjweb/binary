@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>5.2.2 二分查找 教学课件</title>
     
-    <!-- 优先尝试网络CDN（保证右侧 Preview 在线预览正常），若网络加载失败则自动回退加载本地文件（支持教室断网离线运行） -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>window.tailwind || document.write('<script src="./tailwindcss.js"><\\/script>')</script>
 
-    <!-- 引入 Lucide 图标库 -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>window.lucide || document.write('<script src="./lucide.js"><\\/script>')</script>
     
@@ -122,7 +120,7 @@
         
         .slide > div {
             border-radius: 2rem !important;
-            padding-bottom: 5rem !important; 
+            /* 删除了 padding-bottom: 5rem 避免内容被整体强制上推超出边界 */
         }
 
         .code-line {
@@ -182,12 +180,10 @@
     <div class="relative w-full h-full max-w-7xl mx-auto rounded-[2.5rem] overflow-hidden glass-card flex flex-col shadow-2xl z-10">
         
         <div id="progress-bar" class="w-full h-10 bg-white/40 flex z-50 border-b border-white/50 backdrop-blur-md pointer-events-auto">
-            <!-- JS 注入 -->
-        </div>
+            </div>
 
         <div id="slides-wrapper" class="relative w-full flex-1 overflow-hidden">
 
-            <!-- 幻灯片 1：封面 -->
             <div id="slide-0" class="slide active absolute inset-0">
                 <div class="h-full w-full p-8 flex flex-col items-center justify-center">
                     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
@@ -211,20 +207,18 @@
                 </div>
             </div>
 
-            <!-- 幻灯片 2：课程回顾 -->
             <div id="slide-1" class="slide inactive-right absolute inset-0">
-                <div class="h-full w-full p-8 flex flex-col items-center justify-center pt-10">
+                <div class="h-full w-full p-6 lg:p-8 flex flex-col items-center justify-center">
                     <div class="w-full max-w-5xl flex flex-col h-full justify-center">
-                        <div class="flex items-center gap-4 mb-8">
+                        <div class="flex items-center gap-4 mb-6">
                             <div class="p-3 bg-blue-100 rounded-2xl text-blue-600 shadow-sm">
                                 <i data-lucide="history" class="w-8 h-8"></i>
                             </div>
                             <h2 class="text-4xl lg:text-5xl font-black text-slate-800">1. 课程回顾：顺序查找</h2>
                         </div>
                         
-                        <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-8">
-                            <!-- 添加了 id="review-logic" 以及初始隐藏的 class: transform opacity-0 translate-y-8 scale-95 pointer-events-none -->
-                            <div id="review-logic" class="col-span-3 bg-white/80 p-8 rounded-3xl border border-white shadow-lg backdrop-blur-sm transition-all duration-500 transform opacity-0 translate-y-8 scale-95 pointer-events-none hover:shadow-xl hover:-translate-y-1">
+                        <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:gap-6 mb-6">
+                            <div id="review-logic" class="col-span-3 bg-white/80 p-6 lg:p-8 rounded-3xl border border-white shadow-lg backdrop-blur-sm transition-all duration-500 transform opacity-0 translate-y-8 scale-95 pointer-events-none hover:shadow-xl hover:-translate-y-1">
                                 <h3 class="text-2xl font-bold mb-4 flex items-center gap-2 text-slate-800">
                                     <i data-lucide="settings-2" class="text-blue-500 w-7 h-7"></i> 核心逻辑
                                 </h3>
@@ -232,8 +226,7 @@
                                     排队点名。从排头开始，一个接一个地询问：“是你吗？”。每次查找后<span class="text-blue-600 font-bold bg-blue-50 px-2 py-0.5 rounded">步进为 1</span>。
                                 </p>
                             </div>
-                            <!-- 添加了 id="review-efficiency" 以及初始隐藏的 class -->
-                            <div id="review-efficiency" class="col-span-2 bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-3xl border border-blue-100 shadow-lg transition-all duration-500 transform opacity-0 translate-y-8 scale-95 pointer-events-none hover:shadow-xl hover:-translate-y-1">
+                            <div id="review-efficiency" class="col-span-2 bg-gradient-to-br from-blue-50 to-indigo-50 p-6 lg:p-8 rounded-3xl border border-blue-100 shadow-lg transition-all duration-500 transform opacity-0 translate-y-8 scale-95 pointer-events-none hover:shadow-xl hover:-translate-y-1">
                                 <h3 class="text-2xl font-bold mb-4 flex items-center gap-2 text-blue-900">
                                     <i data-lucide="zap" class="text-amber-500 w-7 h-7"></i> 效率分析
                                 </h3>
@@ -245,16 +238,13 @@
                             </div>
                         </div>
                         
-                        <div class="bg-white/90 p-8 rounded-3xl border border-slate-100 shadow-lg">
+                        <div class="bg-white/90 p-6 lg:p-8 rounded-3xl border border-slate-100 shadow-lg">
                             <h3 class="text-xl font-bold mb-6 text-slate-700 flex items-center gap-2">
                                 <i data-lucide="play-circle" class="w-6 h-6 text-indigo-500"></i> 演示：顺序查找过程
                             </h3>
-                            <!-- 将 overflow-hidden 改为 overflow-visible 并增加 mb-6 给下标留出空间 -->
                             <div class="relative h-12 bg-slate-100 rounded-full mx-4 shadow-inner border border-slate-200 overflow-visible mb-6">
-                                <!-- 背景层增加 overflow-hidden 保持圆角 -->
                                 <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9IiNjYmQ1ZTEiLz48L3N2Zz4=')] opacity-50 rounded-full overflow-hidden"></div>
                                 
-                                <!-- 增加下标指示 -->
                                 <div class="absolute top-full left-[5%] -translate-x-1/2 mt-2 text-sm font-mono font-bold text-slate-400 transition-colors">0</div>
                                 <div class="absolute top-full left-[15%] -translate-x-1/2 mt-2 text-sm font-mono font-bold text-slate-400 transition-colors">1</div>
                                 <div class="absolute top-full left-[25%] -translate-x-1/2 mt-2 text-sm font-mono font-bold text-slate-400 transition-colors">2</div>
@@ -276,18 +266,17 @@
                 </div>
             </div>
 
-            <!-- 幻灯片 3：情境导入 -->
             <div id="slide-2" class="slide inactive-right absolute inset-0">
-                <div class="h-full w-full p-8 flex flex-col items-center justify-center pt-10">
+                <div class="h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center">
                     <div class="w-full max-w-5xl">
-                        <div class="flex items-center justify-center gap-4 mb-8">
+                        <div class="flex items-center justify-center gap-4 mb-6">
                             <div class="p-3 bg-red-100 rounded-2xl text-red-600 shadow-sm">
                                 <i data-lucide="map-pin" class="w-8 h-8"></i>
                             </div>
                             <h2 class="text-4xl lg:text-5xl font-black text-slate-800">2. 情境导入：光缆维修挑战</h2>
                         </div>
                         
-                        <div class="mb-8 p-5 bg-white/80 border border-slate-200 rounded-2xl text-base text-slate-600 font-medium flex items-start gap-4 shadow-md backdrop-blur-sm">
+                        <div class="mb-6 p-4 lg:p-5 bg-white/80 border border-slate-200 rounded-2xl text-base text-slate-600 font-medium flex items-start gap-4 shadow-md backdrop-blur-sm">
                             <div class="p-2 bg-blue-50 rounded-full shrink-0">
                                 <i data-lucide="info" class="w-6 h-6 text-blue-500"></i>
                             </div>
@@ -296,10 +285,9 @@
                             </p>
                         </div>
 
-                        <div class="flex flex-col gap-6">
-                            <!-- 顺序查找动画 (添加了 id 和初始隐藏的渐隐动画类) -->
-                            <div id="scenario-seq" class="bg-white/90 p-6 lg:p-8 rounded-3xl border border-slate-100 shadow-lg relative overflow-visible transition-all duration-500 transform opacity-0 translate-y-8 scale-95 pointer-events-none">
-                                <h3 class="text-xl font-bold mb-10 flex justify-between items-center relative z-10">
+                        <div class="flex flex-col gap-4">
+                            <div id="scenario-seq" class="bg-white/90 p-5 lg:p-6 rounded-3xl border border-slate-100 shadow-lg relative overflow-visible transition-all duration-500 transform opacity-0 translate-y-8 scale-95 pointer-events-none">
+                                <h3 class="text-xl font-bold mb-6 flex justify-between items-center relative z-10">
                                     <span class="bg-slate-100 text-slate-700 px-4 py-2 rounded-xl flex items-center gap-2 border border-slate-200"><i data-lucide="footprints" class="w-5 h-5"></i> 笨办法：顺序查找</span>
                                     <div class="flex items-center gap-3">
                                         <span class="text-slate-500 font-bold text-lg bg-white px-3 py-1 rounded-lg shadow-sm hidden md:inline-block">每隔 1 公里挖开一次</span>
@@ -319,9 +307,8 @@
                                 </div>
                             </div>
             
-                            <!-- 二分查找动画 (添加了 id 和初始隐藏的渐隐动画类) -->
-                            <div id="scenario-bin" class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 lg:p-8 rounded-3xl border border-blue-200 shadow-lg relative overflow-visible transition-all duration-500 transform opacity-0 translate-y-8 scale-95 pointer-events-none">
-                                <h3 class="text-xl font-bold mb-10 flex justify-between items-center text-blue-900 relative z-10">
+                            <div id="scenario-bin" class="bg-gradient-to-r from-blue-50 to-indigo-50 p-5 lg:p-6 rounded-3xl border border-blue-200 shadow-lg relative overflow-visible transition-all duration-500 transform opacity-0 translate-y-8 scale-95 pointer-events-none">
+                                <h3 class="text-xl font-bold mb-6 flex justify-between items-center text-blue-900 relative z-10">
                                     <span class="bg-blue-600 text-white px-4 py-2 rounded-xl flex items-center gap-2 shadow-md"><i data-lucide="scissors" class="w-5 h-5"></i> 二分法：折半寻找</span>
                                     <div class="flex items-center gap-3">
                                         <span class="text-blue-700 font-bold text-lg bg-white/60 px-3 py-1 rounded-lg backdrop-blur-sm shadow-sm border border-blue-100 hidden md:inline-block">每次直接去中点处测试</span>
@@ -349,11 +336,9 @@
                 </div>
             </div>
 
-            <!-- 幻灯片 4：数学推演 (互动推导过程 - 原先在后) -->
             <div id="slide-3" class="slide inactive-right absolute inset-0">
-                <div class="h-full w-full p-8 flex flex-col items-center justify-center pt-10">
+                <div class="h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center">
                     <div class="w-full max-w-5xl h-full flex flex-col">
-                        <!-- Header -->
                         <div class="flex justify-between items-center mb-6 shrink-0">
                             <div class="flex items-center gap-4">
                                 <div class="p-3 bg-indigo-100 rounded-2xl text-indigo-600 shadow-sm">
@@ -361,7 +346,6 @@
                                 </div>
                                 <h2 class="text-3xl lg:text-5xl font-black text-slate-800">3. 数学推演：寻找折半的尽头</h2>
                             </div>
-                            <!-- Buttons -->
                             <div class="flex gap-3 pointer-events-auto">
                                 <button id="btn-math-prev" onclick="prevMathStep()" class="px-5 py-2.5 bg-white border border-slate-200 rounded-xl text-slate-600 font-bold hover:bg-slate-50 transition-all active:scale-95 shadow-sm flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100">
                                     <i data-lucide="arrow-left" class="w-4 h-4"></i> 上一步
@@ -372,9 +356,7 @@
                             </div>
                         </div>
 
-                        <!-- 左右分栏布局 -->
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 flex-1 min-h-0">
-                            <!-- 左侧：视觉演示折半 -->
                             <div class="bg-white/80 p-4 lg:p-5 rounded-3xl border border-slate-200 shadow-lg flex flex-col items-center justify-start relative overflow-y-auto overflow-x-hidden h-full task-scrollbar">
                                 <div class="absolute top-12 bottom-12 w-1 bg-blue-100 z-0"></div>
                                 
@@ -404,7 +386,6 @@
                                 </div>
                             </div>
 
-                            <!-- 右侧：数学公式推导 -->
                             <div class="bg-slate-900 p-5 lg:p-6 rounded-3xl border border-slate-700 shadow-2xl text-slate-300 font-mono flex flex-col justify-start relative overflow-y-auto overflow-x-hidden h-full task-scrollbar">
                                 <div class="absolute -right-20 -top-20 w-64 h-64 bg-indigo-600/20 rounded-full blur-[60px] pointer-events-none"></div>
 
@@ -444,18 +425,17 @@
                 </div>
             </div>
 
-            <!-- 幻灯片 5：数学原理 (结果 - 原先在前) -->
             <div id="slide-4" class="slide inactive-right absolute inset-0">
-                <div class="h-full w-full p-8 flex flex-col items-center justify-center pt-10">
+                <div class="h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center">
                     <div class="w-full max-w-4xl">
-                        <div class="flex items-center justify-center gap-4 mb-8">
+                        <div class="flex items-center justify-center gap-4 mb-6">
                             <div class="p-3 bg-indigo-100 rounded-2xl text-indigo-600 shadow-sm">
                                 <i data-lucide="function-square" class="w-8 h-8"></i>
                             </div>
                             <h2 class="text-4xl lg:text-5xl font-black text-slate-800">4. 数学原理：对数级的飞跃</h2>
                         </div>
                         
-                        <div class="bg-slate-900 text-white p-10 rounded-[2.5rem] mb-8 font-mono relative overflow-hidden shadow-2xl border border-slate-700 hover:border-indigo-500/50 transition-colors duration-500">
+                        <div class="bg-slate-900 text-white p-8 lg:p-10 rounded-[2.5rem] mb-8 font-mono relative overflow-hidden shadow-2xl border border-slate-700 hover:border-indigo-500/50 transition-colors duration-500">
                             <div class="absolute -right-20 -top-20 w-64 h-64 bg-indigo-600/30 rounded-full blur-[60px] pointer-events-none"></div>
                             <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-blue-600/20 rounded-full blur-[60px] pointer-events-none"></div>
                             <div class="relative z-10 text-center">
@@ -489,11 +469,10 @@
                 </div>
             </div>
 
-            <!-- 幻灯片 6：算法模拟 -->
             <div id="slide-5" class="slide inactive-right absolute inset-0">
-                <div class="h-full w-full p-8 flex flex-col items-center justify-center pt-10">
+                <div class="h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center">
                     <div class="w-full max-w-5xl">
-                        <div class="flex justify-between items-center mb-8">
+                        <div class="flex justify-between items-center mb-6">
                             <div class="flex items-center gap-4">
                                 <div class="p-3 bg-emerald-100 rounded-2xl text-emerald-600 shadow-sm">
                                     <i data-lucide="cpu" class="w-8 h-8"></i>
@@ -510,9 +489,8 @@
                             </div>
                         </div>
             
-                        <div id="sim-array-container" class="flex flex-wrap gap-3 justify-center mb-8 bg-white/60 p-8 rounded-3xl border border-white shadow-lg backdrop-blur-md min-h-[160px] items-center">
-                            <!-- 由 JS 渲染注入 -->
-                        </div>
+                        <div id="sim-array-container" class="flex flex-wrap gap-3 justify-center mb-6 bg-white/60 p-6 lg:p-8 rounded-3xl border border-white shadow-lg backdrop-blur-md min-h-[160px] items-center">
+                            </div>
             
                         <div class="bg-gradient-to-r from-emerald-50 to-teal-50 p-6 rounded-3xl border border-emerald-100 shadow-md flex justify-between items-center">
                             <div class="flex-1">
@@ -537,9 +515,8 @@
                 </div>
             </div>
 
-            <!-- 幻灯片 7：C++ 代码 -->
             <div id="slide-6" class="slide inactive-right absolute inset-0">
-                <div class="h-full w-full p-8 flex flex-col items-center justify-center pt-8">
+                <div class="h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center">
                     <div class="w-full max-w-5xl flex flex-col h-full justify-center">
                         <div class="flex justify-between items-center mb-4">
                             <div class="flex items-center gap-4">
@@ -574,25 +551,24 @@
                 </div>
             </div>
 
-            <!-- 幻灯片 8：数学拓展 -->
             <div id="slide-7" class="slide inactive-right absolute inset-0 bg-violet-50/30">
-                <div class="h-full w-full p-8 flex flex-col items-center justify-center pt-16 lg:pt-20">
+                <div class="h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center">
                     <div class="text-center w-full max-w-5xl flex flex-col h-full justify-center items-center">
-                        <div class="p-4 bg-violet-100 rounded-full text-violet-600 shadow-sm mb-4">
-                            <i data-lucide="infinity" class="w-10 h-10"></i>
+                        <div class="p-3 bg-violet-100 rounded-full text-violet-600 shadow-sm mb-3">
+                            <i data-lucide="infinity" class="w-8 h-8 lg:w-10 lg:h-10"></i>
                         </div>
-                        <h2 class="text-3xl lg:text-4xl font-black mb-6 tracking-widest text-violet-950 uppercase">跨学科拓展：数学之桥</h2>
+                        <h2 class="text-3xl lg:text-4xl font-black mb-4 tracking-widest text-violet-950 uppercase">跨学科拓展：数学之桥</h2>
                         
-                        <div class="bg-white/80 p-6 lg:p-8 rounded-[2.5rem] border border-violet-100 shadow-xl backdrop-blur-md w-full max-w-4xl hover:shadow-2xl transition-shadow duration-500">
-                            <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-white/80 p-5 lg:p-8 rounded-[2.5rem] border border-violet-100 shadow-xl backdrop-blur-md w-full max-w-4xl hover:shadow-2xl transition-shadow duration-500">
+                            <div class="flex items-center gap-3 mb-4">
                                 <div class="w-2 h-8 bg-violet-500 rounded-full"></div>
                                 <h3 class="text-2xl lg:text-3xl font-black text-violet-900">求方程近似解（零点）</h3>
                             </div>
-                            <p class="text-lg lg:text-xl text-violet-800/80 leading-relaxed text-left font-medium mb-8 pl-5">
+                            <p class="text-lg lg:text-xl text-violet-800/80 leading-relaxed text-left font-medium mb-4 lg:mb-6 pl-5">
                                 在数学分析中，求连续函数 <span class="font-mono bg-violet-100 text-violet-900 px-2 py-0.5 rounded font-bold">f(x)=0</span> 的根时，数学家利用二分法在有解区间内不断逼近。这种“夹逼准则”正是微积分思想的启蒙。
                             </p>
                             
-                            <div class="relative w-full h-40 bg-slate-50 rounded-2xl border border-violet-200 overflow-hidden shadow-inner flex items-center">
+                            <div class="relative w-full h-32 lg:h-40 bg-slate-50 rounded-2xl border border-violet-200 overflow-hidden shadow-inner flex items-center">
                                 <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9IiNjYmQ1ZTEiLz48L3N2Zz4=')] opacity-60"></div>
                                 <div class="absolute w-full h-0.5 bg-slate-400 top-1/2 -translate-y-1/2 z-0"></div>
                                 <svg class="absolute w-full h-full z-10" preserveAspectRatio="none" viewBox="0 0 100 100">
@@ -605,7 +581,7 @@
                                 <div class="absolute right-6 bottom-4 text-sm font-black text-violet-600 bg-white/80 px-2 py-1 rounded shadow-sm z-40">f(b) > 0</div>
                             </div>
 
-                            <div class="mt-8 inline-flex items-center gap-4 px-8 py-3 bg-gradient-to-r from-violet-600 to-purple-600 rounded-2xl text-white font-mono text-xl font-bold shadow-[0_0_20px_rgba(139,92,246,0.3)]">
+                            <div class="mt-6 lg:mt-8 inline-flex items-center gap-4 px-8 py-3 bg-gradient-to-r from-violet-600 to-purple-600 rounded-2xl text-white font-mono text-xl font-bold shadow-[0_0_20px_rgba(139,92,246,0.3)]">
                                 <span>计算机逻辑</span> <i data-lucide="arrow-right-left" class="w-5 h-5 opacity-70"></i> <span>数学逼近思想</span>
                             </div>
                         </div>
@@ -613,21 +589,20 @@
                 </div>
             </div>
 
-            <!-- 幻灯片 9：文学拓展 -->
             <div id="slide-8" class="slide inactive-right absolute inset-0 bg-orange-50/30">
-                <div class="h-full w-full p-8 flex flex-col items-center justify-center pt-16 lg:pt-20">
+                <div class="h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center">
                     <div class="text-center w-full max-w-5xl flex flex-col h-full justify-center items-center">
-                        <div class="p-4 bg-orange-100 rounded-full text-orange-600 shadow-sm mb-4">
-                            <i data-lucide="book-open" class="w-10 h-10"></i>
+                        <div class="p-3 bg-orange-100 rounded-full text-orange-600 shadow-sm mb-3">
+                            <i data-lucide="book-open" class="w-8 h-8 lg:w-10 lg:h-10"></i>
                         </div>
-                        <h2 class="text-3xl lg:text-4xl font-black mb-6 tracking-widest text-orange-950 uppercase">跨学科拓展：文学应用</h2>
+                        <h2 class="text-3xl lg:text-4xl font-black mb-4 tracking-widest text-orange-950 uppercase">跨学科拓展：文学应用</h2>
                         
-                        <div class="bg-white/80 p-6 lg:p-8 rounded-[2.5rem] border border-orange-100 shadow-xl backdrop-blur-md w-full max-w-4xl hover:shadow-2xl transition-shadow duration-500">
-                            <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-white/80 p-5 lg:p-8 rounded-[2.5rem] border border-orange-100 shadow-xl backdrop-blur-md w-full max-w-4xl hover:shadow-2xl transition-shadow duration-500">
+                            <div class="flex items-center gap-3 mb-4">
                                 <div class="w-2 h-8 bg-orange-500 rounded-full"></div>
                                 <h3 class="text-2xl lg:text-3xl font-black text-orange-900">查字典的智慧</h3>
                             </div>
-                            <p class="text-lg lg:text-xl text-orange-800/80 leading-relaxed text-left font-medium mb-8 pl-5">
+                            <p class="text-lg lg:text-xl text-orange-800/80 leading-relaxed text-left font-medium mb-4 lg:mb-6 pl-5">
                                 当我们翻开字典查找目标“Q”时，通过判断中间字母的前后，来决定往左翻还是往右翻。这种生活经验的本质，就是在<span class="text-orange-600 font-bold">“有序”</span>的结构中进行二分查找。
                             </p>
                             
@@ -640,7 +615,7 @@
                                 <div class="absolute right-0 top-0 h-full bg-white/95 z-20 origin-right border-l-[3px] border-dashed border-orange-400 anim-lit-mask-2 backdrop-blur-sm flex items-center pl-4"><span class="text-sm text-orange-400 opacity-50 font-sans">排除后半部分</span></div>
                             </div>
 
-                            <div class="flex justify-center gap-6 mt-8">
+                            <div class="flex justify-center gap-6 mt-6 lg:mt-8">
                                 <span class="px-6 py-2 bg-white rounded-xl text-lg font-bold text-slate-600 border border-slate-200 shadow-sm flex items-center gap-2"><i data-lucide="search" class="w-5 h-5 text-orange-400"></i> 音序索引</span>
                                 <span class="px-6 py-2 bg-orange-100 rounded-xl text-lg font-black text-orange-700 border border-orange-200 shadow-sm flex items-center gap-2"><i data-lucide="sort-asc" class="w-5 h-5"></i> 有序前提</span>
                             </div>
@@ -649,21 +624,20 @@
                 </div>
             </div>
 
-            <!-- 幻灯片 10：物理拓展 -->
             <div id="slide-9" class="slide inactive-right absolute inset-0 bg-teal-50/30">
-                <div class="h-full w-full p-8 flex flex-col items-center justify-center pt-16 lg:pt-20">
+                <div class="h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center">
                     <div class="text-center w-full max-w-5xl flex flex-col h-full justify-center items-center">
-                        <div class="p-4 bg-teal-100 rounded-full text-teal-600 shadow-sm mb-4">
-                            <i data-lucide="plug-zap" class="w-10 h-10"></i>
+                        <div class="p-3 bg-teal-100 rounded-full text-teal-600 shadow-sm mb-3">
+                            <i data-lucide="plug-zap" class="w-8 h-8 lg:w-10 lg:h-10"></i>
                         </div>
-                        <h2 class="text-3xl lg:text-4xl font-black mb-6 tracking-widest text-teal-950 uppercase">跨学科拓展：工程排障</h2>
+                        <h2 class="text-3xl lg:text-4xl font-black mb-4 tracking-widest text-teal-950 uppercase">跨学科拓展：工程排障</h2>
                         
-                        <div class="bg-white/80 p-6 lg:p-8 rounded-[2.5rem] border border-teal-100 shadow-xl backdrop-blur-md w-full max-w-4xl hover:shadow-2xl transition-shadow duration-500">
-                            <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-white/80 p-5 lg:p-8 rounded-[2.5rem] border border-teal-100 shadow-xl backdrop-blur-md w-full max-w-4xl hover:shadow-2xl transition-shadow duration-500">
+                            <div class="flex items-center gap-3 mb-4">
                                 <div class="w-2 h-8 bg-teal-500 rounded-full"></div>
                                 <h3 class="text-2xl lg:text-3xl font-black text-teal-900">分段检测法</h3>
                             </div>
-                            <p class="text-lg lg:text-xl text-teal-800/80 leading-relaxed text-left font-medium mb-8 pl-5">
+                            <p class="text-lg lg:text-xl text-teal-800/80 leading-relaxed text-left font-medium mb-4 lg:mb-6 pl-5">
                                 电工在测量长链路不通时，万用表探头通过测量中间节点的电压，能迅速排除正常的一半区间。这是物理实验与真实工程排障的黄金法则。
                             </p>
                             
@@ -686,7 +660,7 @@
                                 </div>
                             </div>
 
-                            <div class="mt-8 flex items-center justify-center gap-4 text-slate-600 font-bold text-xl bg-slate-50 py-4 rounded-xl border border-slate-100">
+                            <div class="mt-6 lg:mt-8 flex items-center justify-center gap-4 text-slate-600 font-bold text-xl bg-slate-50 py-4 rounded-xl border border-slate-100">
                                 <span>整体链路</span> <i data-lucide="chevron-right" class="w-5 h-5 text-teal-500"></i> 
                                 <span>折半检测</span> <i data-lucide="chevron-right" class="w-5 h-5 text-teal-500"></i> 
                                 <span class="text-red-600 flex items-center gap-2"><i data-lucide="target" class="w-6 h-6"></i> 故障锁定</span>
@@ -696,35 +670,34 @@
                 </div>
             </div>
 
-            <!-- 幻灯片 11：总结升华 -->
             <div id="slide-10" class="slide inactive-right absolute inset-0">
-                <div class="h-full w-full p-8 flex flex-col items-center justify-center pt-16 lg:pt-20">
+                <div class="h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center">
                     <div class="text-center w-full max-w-5xl">
                         <div class="relative inline-block mb-4">
                             <div class="absolute inset-0 bg-yellow-400 blur-xl opacity-30 rounded-full animate-pulse"></div>
-                            <i data-lucide="lightbulb" class="text-yellow-500 w-20 h-20 relative z-10 drop-shadow-md"></i>
+                            <i data-lucide="lightbulb" class="text-yellow-500 w-16 h-16 lg:w-20 lg:h-20 relative z-10 drop-shadow-md"></i>
                         </div>
-                        <h2 class="text-4xl lg:text-6xl font-black mb-8 tracking-tight text-slate-800">总结与升华：分而治之</h2>
+                        <h2 class="text-4xl lg:text-6xl font-black mb-6 tracking-tight text-slate-800">总结与升华：分而治之</h2>
                         
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                            <div class="p-8 bg-white/80 backdrop-blur-sm rounded-[2rem] border border-white shadow-lg flex flex-col items-center hover:-translate-y-2 transition-transform duration-300">
+                            <div class="p-6 lg:p-8 bg-white/80 backdrop-blur-sm rounded-[2rem] border border-white shadow-lg flex flex-col items-center hover:-translate-y-2 transition-transform duration-300">
                                 <div class="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 text-blue-700 rounded-2xl flex items-center justify-center font-black text-2xl mb-6 shadow-inner">1</div>
                                 <p class="font-black text-2xl text-slate-700">确定边界</p>
                                 <p class="text-slate-500 mt-2 font-medium">Left 与 Right</p>
                             </div>
-                            <div class="p-8 bg-white/80 backdrop-blur-sm rounded-[2rem] border border-white shadow-lg flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 delay-100">
+                            <div class="p-6 lg:p-8 bg-white/80 backdrop-blur-sm rounded-[2rem] border border-white shadow-lg flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 delay-100">
                                 <div class="w-16 h-16 bg-gradient-to-br from-indigo-100 to-indigo-200 text-indigo-700 rounded-2xl flex items-center justify-center font-black text-2xl mb-6 shadow-inner">2</div>
                                 <p class="font-black text-2xl text-slate-700">计算中点</p>
                                 <p class="text-slate-500 mt-2 font-medium">Mid = (L+R)/2</p>
                             </div>
-                            <div class="p-8 bg-white/80 backdrop-blur-sm rounded-[2rem] border border-white shadow-lg flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 delay-200">
+                            <div class="p-6 lg:p-8 bg-white/80 backdrop-blur-sm rounded-[2rem] border border-white shadow-lg flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 delay-200">
                                 <div class="w-16 h-16 bg-gradient-to-br from-purple-100 to-purple-200 text-purple-700 rounded-2xl flex items-center justify-center font-black text-2xl mb-6 shadow-inner">3</div>
                                 <p class="font-black text-2xl text-slate-700">判断缩减</p>
                                 <p class="text-slate-500 mt-2 font-medium">缩小一半范围</p>
                             </div>
                         </div>
             
-                        <blockquote class="text-xl lg:text-3xl leading-relaxed font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-indigo-800 italic relative inline-block py-6 px-10">
+                        <blockquote class="text-lg lg:text-3xl leading-relaxed font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-indigo-800 italic relative inline-block py-4 px-10">
                             <i data-lucide="quote" class="absolute top-0 left-0 w-8 h-8 text-blue-300 opacity-50 rotate-180"></i>
                             “面对复杂的难题，学会寻找规律并不断拆解，<br>你就能以最优雅的方式锁定答案。”
                             <i data-lucide="quote" class="absolute bottom-0 right-0 w-8 h-8 text-blue-300 opacity-50"></i>
@@ -733,55 +706,51 @@
                 </div>
             </div>
 
-            <!-- 幻灯片 12：自我检测 -->
             <div id="slide-11" class="slide inactive-right absolute inset-0">
-                <div class="h-full w-full p-8 flex flex-col items-center justify-center pt-16 lg:pt-20">
+                <div class="h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center">
                     <div class="text-center w-full max-w-4xl flex flex-col h-full justify-center items-center pointer-events-auto">
-                        <div class="p-4 bg-rose-100 rounded-full text-rose-500 shadow-sm mb-4">
-                            <i data-lucide="clipboard-check" class="w-10 h-10"></i>
+                        <div class="p-3 bg-rose-100 rounded-full text-rose-500 shadow-sm mb-3">
+                            <i data-lucide="clipboard-check" class="w-8 h-8 lg:w-10 lg:h-10"></i>
                         </div>
-                        <h2 class="text-4xl lg:text-5xl font-black mb-8 tracking-tight text-slate-800">自我检测</h2>
+                        <h2 class="text-4xl lg:text-5xl font-black mb-6 tracking-tight text-slate-800">自我检测</h2>
                         
-                        <div class="bg-white/80 p-8 lg:p-10 rounded-[2.5rem] border border-rose-100 shadow-xl backdrop-blur-md w-full text-left">
-                            <h3 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+                        <div class="bg-white/80 p-6 lg:p-10 rounded-[2.5rem] border border-rose-100 shadow-xl backdrop-blur-md w-full text-left">
+                            <h3 class="text-xl lg:text-2xl font-bold text-slate-800 mb-4 lg:mb-6 flex items-center gap-3">
                                 <span class="bg-rose-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-lg shadow-sm">?</span>
                                 知识点：二分查找的效率评估
                             </h3>
-                            <p class="text-xl text-slate-600 font-medium mb-8 leading-relaxed">
+                            <p class="text-lg lg:text-xl text-slate-600 font-medium mb-6 lg:mb-8 leading-relaxed">
                                 在一个包含 <span class="font-black text-rose-600 bg-rose-50 border border-rose-200 px-2 py-0.5 rounded shadow-sm mx-1">15</span> 个元素的有序数组中，使用二分查找法寻找一个不存在的元素，<strong>最坏情况下</strong>需要进行几次比较？
                             </p>
                             
                             <div class="grid grid-cols-2 gap-4">
-                                <button onclick="checkAnswer(this, false)" class="quiz-btn p-5 rounded-2xl border-2 border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 font-bold text-xl text-slate-700 transition-all active:scale-95 shadow-sm">A. 3 次</button>
-                                <button onclick="checkAnswer(this, true)" class="quiz-btn p-5 rounded-2xl border-2 border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 font-bold text-xl text-slate-700 transition-all active:scale-95 shadow-sm">B. 4 次</button>
-                                <button onclick="checkAnswer(this, false)" class="quiz-btn p-5 rounded-2xl border-2 border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 font-bold text-xl text-slate-700 transition-all active:scale-95 shadow-sm">C. 7 次</button>
-                                <button onclick="checkAnswer(this, false)" class="quiz-btn p-5 rounded-2xl border-2 border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 font-bold text-xl text-slate-700 transition-all active:scale-95 shadow-sm">D. 15 次</button>
+                                <button onclick="checkAnswer(this, false)" class="quiz-btn p-4 lg:p-5 rounded-2xl border-2 border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 font-bold text-lg lg:text-xl text-slate-700 transition-all active:scale-95 shadow-sm">A. 3 次</button>
+                                <button onclick="checkAnswer(this, true)" class="quiz-btn p-4 lg:p-5 rounded-2xl border-2 border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 font-bold text-lg lg:text-xl text-slate-700 transition-all active:scale-95 shadow-sm">B. 4 次</button>
+                                <button onclick="checkAnswer(this, false)" class="quiz-btn p-4 lg:p-5 rounded-2xl border-2 border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 font-bold text-lg lg:text-xl text-slate-700 transition-all active:scale-95 shadow-sm">C. 7 次</button>
+                                <button onclick="checkAnswer(this, false)" class="quiz-btn p-4 lg:p-5 rounded-2xl border-2 border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 font-bold text-lg lg:text-xl text-slate-700 transition-all active:scale-95 shadow-sm">D. 15 次</button>
                             </div>
 
-                            <div id="quiz-feedback" class="mt-8 hidden p-5 rounded-xl font-bold text-lg flex items-center gap-3 transition-all">
-                                <!-- JS注入反馈 -->
-                            </div>
+                            <div id="quiz-feedback" class="mt-6 lg:mt-8 hidden p-4 lg:p-5 rounded-xl font-bold text-base lg:text-lg flex items-center gap-3 transition-all">
+                                </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 幻灯片 13：评价量表 -->
             <div id="slide-12" class="slide inactive-right absolute inset-0">
-                <div class="h-full w-full p-8 flex flex-col items-center justify-center pt-16 lg:pt-20">
+                <div class="h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center">
                     <div class="text-center w-full max-w-5xl flex flex-col h-full justify-center items-center pointer-events-auto">
-                        <div class="p-4 bg-cyan-100 rounded-full text-cyan-600 shadow-sm mb-4">
-                            <i data-lucide="bar-chart-2" class="w-10 h-10"></i>
+                        <div class="p-3 bg-cyan-100 rounded-full text-cyan-600 shadow-sm mb-3">
+                            <i data-lucide="bar-chart-2" class="w-8 h-8 lg:w-10 lg:h-10"></i>
                         </div>
-                        <h2 class="text-4xl lg:text-5xl font-black mb-8 tracking-tight text-slate-800">课堂评价量表</h2>
+                        <h2 class="text-3xl lg:text-5xl font-black mb-4 lg:mb-6 tracking-tight text-slate-800">课堂评价量表</h2>
                         
-                        <div class="bg-white/80 p-8 lg:p-10 rounded-[2.5rem] border border-cyan-100 shadow-xl backdrop-blur-md w-full text-left">
-                            <p class="text-xl text-cyan-700 font-bold mb-6 text-center tracking-wide">请根据本节课的学习情况，进行客观的自我评价</p>
+                        <div class="bg-white/80 p-5 lg:p-8 rounded-[2.5rem] border border-cyan-100 shadow-xl backdrop-blur-md w-full text-left">
+                            <p class="text-lg lg:text-xl text-cyan-700 font-bold mb-4 lg:mb-6 text-center tracking-wide">请根据本节课的学习情况，进行客观的自我评价</p>
                             
-                            <div class="flex flex-col gap-4">
-                                <!-- 评价项 1 -->
-                                <div class="flex flex-col xl:flex-row xl:items-center justify-between p-4 lg:p-5 bg-slate-50/80 rounded-2xl border border-slate-200 hover:border-cyan-200 hover:bg-cyan-50/30 transition-colors">
-                                    <span class="font-bold text-slate-700 text-lg mb-3 xl:mb-0"><span class="text-cyan-500 mr-2">1.</span>掌握二分查找的核心原理（折半思想）</span>
+                            <div class="flex flex-col gap-2 lg:gap-4">
+                                <div class="flex flex-col xl:flex-row xl:items-center justify-between p-3 lg:p-4 bg-slate-50/80 rounded-2xl border border-slate-200 hover:border-cyan-200 hover:bg-cyan-50/30 transition-colors">
+                                    <span class="font-bold text-slate-700 text-base lg:text-lg mb-2 xl:mb-0"><span class="text-cyan-500 mr-2">1.</span>掌握二分查找的核心原理（折半思想）</span>
                                     <div class="flex justify-start xl:justify-end gap-1 md:gap-2 eval-group">
                                         <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😭 听不明白</button>
                                         <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">🤔 一知半解</button>
@@ -791,9 +760,8 @@
                                     </div>
                                 </div>
                                 
-                                <!-- 评价项 2 -->
-                                <div class="flex flex-col xl:flex-row xl:items-center justify-between p-4 lg:p-5 bg-slate-50/80 rounded-2xl border border-slate-200 hover:border-cyan-200 hover:bg-cyan-50/30 transition-colors">
-                                    <span class="font-bold text-slate-700 text-lg mb-3 xl:mb-0"><span class="text-cyan-500 mr-2">2.</span>能够手动推演出 L、R、Mid 指针的移动</span>
+                                <div class="flex flex-col xl:flex-row xl:items-center justify-between p-3 lg:p-4 bg-slate-50/80 rounded-2xl border border-slate-200 hover:border-cyan-200 hover:bg-cyan-50/30 transition-colors">
+                                    <span class="font-bold text-slate-700 text-base lg:text-lg mb-2 xl:mb-0"><span class="text-cyan-500 mr-2">2.</span>能够手动推演出 L、R、Mid 指针的移动</span>
                                     <div class="flex justify-start xl:justify-end gap-1 md:gap-2 eval-group">
                                         <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😭 听不明白</button>
                                         <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">🤔 一知半解</button>
@@ -803,9 +771,8 @@
                                     </div>
                                 </div>
 
-                                <!-- 评价项 3 -->
-                                <div class="flex flex-col xl:flex-row xl:items-center justify-between p-4 lg:p-5 bg-slate-50/80 rounded-2xl border border-slate-200 hover:border-cyan-200 hover:bg-cyan-50/30 transition-colors">
-                                    <span class="font-bold text-slate-700 text-lg mb-3 xl:mb-0"><span class="text-cyan-500 mr-2">3.</span>理解代码中 while 循环与边界更新的逻辑</span>
+                                <div class="flex flex-col xl:flex-row xl:items-center justify-between p-3 lg:p-4 bg-slate-50/80 rounded-2xl border border-slate-200 hover:border-cyan-200 hover:bg-cyan-50/30 transition-colors">
+                                    <span class="font-bold text-slate-700 text-base lg:text-lg mb-2 xl:mb-0"><span class="text-cyan-500 mr-2">3.</span>理解代码中 while 循环与边界更新的逻辑</span>
                                     <div class="flex justify-start xl:justify-end gap-1 md:gap-2 eval-group">
                                         <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😭 听不明白</button>
                                         <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">🤔 一知半解</button>
@@ -815,9 +782,8 @@
                                     </div>
                                 </div>
 
-                                <!-- 评价项 4 -->
-                                <div class="flex flex-col xl:flex-row xl:items-center justify-between p-4 lg:p-5 bg-slate-50/80 rounded-2xl border border-slate-200 hover:border-cyan-200 hover:bg-cyan-50/30 transition-colors">
-                                    <span class="font-bold text-slate-700 text-lg mb-3 xl:mb-0"><span class="text-cyan-500 mr-2">4.</span>能够体会二分法在跨学科场景中的应用价值</span>
+                                <div class="flex flex-col xl:flex-row xl:items-center justify-between p-3 lg:p-4 bg-slate-50/80 rounded-2xl border border-slate-200 hover:border-cyan-200 hover:bg-cyan-50/30 transition-colors">
+                                    <span class="font-bold text-slate-700 text-base lg:text-lg mb-2 xl:mb-0"><span class="text-cyan-500 mr-2">4.</span>能够体会二分法在跨学科场景中的应用价值</span>
                                     <div class="flex justify-start xl:justify-end gap-1 md:gap-2 eval-group">
                                         <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😭 听不明白</button>
                                         <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">🤔 一知半解</button>
@@ -832,7 +798,6 @@
                 </div>
             </div>
 
-            <!-- 幻灯片 14：致谢 -->
             <div id="slide-13" class="slide inactive-right absolute inset-0">
                 <div class="h-full w-full p-8 flex flex-col items-center justify-center">
                     <div class="text-center w-full flex flex-col items-center justify-center h-full space-y-12">
@@ -851,13 +816,11 @@
         </div>
     </div>
 
-    <!-- 侧边任务单唤醒按钮 -->
     <div onclick="toggleTaskDrawer()" class="fixed right-0 top-[60%] -translate-y-1/2 bg-indigo-600 text-white py-4 px-3 rounded-l-2xl shadow-[-5px_0_20px_rgba(79,70,229,0.4)] cursor-pointer hover:bg-indigo-700 transition-all hover:pr-4 flex flex-col items-center gap-2 z-[60] group border border-indigo-400 border-r-0 pointer-events-auto">
         <i data-lucide="clipboard-list" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
         <span class="writing-vertical font-bold tracking-widest text-sm" style="writing-mode: vertical-rl;">任务单</span>
     </div>
 
-    <!-- 互动任务单抽屉 -->
     <div id="task-drawer" class="fixed top-0 right-0 w-full sm:w-[26rem] h-full bg-slate-50/90 backdrop-blur-2xl shadow-2xl border-l border-white/60 z-[70] transform translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] flex flex-col pointer-events-auto">
         <div class="flex items-center justify-between p-6 border-b border-slate-200/50 bg-white/40">
             <div class="flex items-center gap-3 text-indigo-800">
@@ -875,7 +838,6 @@
                 <span>提示：点击下划线可直接输入思考结果。</span>
             </div>
 
-            <!-- 任务一 -->
             <div id="task-card-1" class="task-card bg-white/70 p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
                 <h3 class="font-bold text-lg text-slate-800 mb-3 flex items-center gap-2"><span class="bg-blue-100 text-blue-700 px-2 rounded">任务一</span> 情境观察与假设</h3>
@@ -892,7 +854,6 @@
                 </div>
             </div>
 
-            <!-- 任务二 -->
             <div id="task-card-2" class="task-card bg-white/70 p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-1 h-full bg-emerald-500"></div>
                 <h3 class="font-bold text-lg text-slate-800 mb-3 flex items-center gap-2"><span class="bg-emerald-100 text-emerald-700 px-2 rounded">任务二</span> 算法模拟实战</h3>
@@ -914,7 +875,6 @@
                 </div>
             </div>
 
-            <!-- 任务三 -->
             <div id="task-card-3" class="task-card bg-white/70 p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-1 h-full bg-sky-500"></div>
                 <h3 class="font-bold text-lg text-slate-800 mb-3 flex items-center gap-2"><span class="bg-sky-100 text-sky-700 px-2 rounded">任务三</span> 代码构建与纠错</h3>
@@ -935,7 +895,6 @@
                 </div>
             </div>
 
-            <!-- 任务四 -->
             <div id="task-card-4" class="task-card bg-white/70 p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden mb-8">
                 <div class="absolute top-0 left-0 w-1 h-full bg-violet-500"></div>
                 <h3 class="font-bold text-lg text-slate-800 mb-3 flex items-center gap-2"><span class="bg-violet-100 text-violet-700 px-2 rounded">任务四</span> 跨学科模型构建</h3>
@@ -954,7 +913,6 @@
     </div>
     <div id="drawer-overlay" onclick="toggleTaskDrawer()" class="fixed inset-0 bg-slate-900/20 backdrop-blur-sm z-[65] opacity-0 pointer-events-none transition-opacity duration-500"></div>
 
-    <!-- 逻辑脚本 -->
     <script>
         // 等待外部脚本(Lucide)加载后再初始化图标
         document.addEventListener("DOMContentLoaded", function() {
@@ -968,8 +926,15 @@
             const progressBar = document.getElementById('progress-bar');
             if(!progressBar) return;
             
+            // 如果是封面（幻灯片 0），则隐藏整个进度条，否则显示
+            if (currentSlide === 0) {
+                progressBar.style.display = 'none';
+            } else {
+                progressBar.style.display = 'flex';
+            }
+            
+            // 移除了 { title: "封面", slides: [0] }，使进度条内容从“课程回顾”开始计算
             const progressSegments = [
-                { title: "封面", slides: [0] },
                 { title: "课程回顾", slides: [1] },
                 { title: "情境导入", slides: [2] },
                 { title: "数学原理", slides: [3, 4] },
@@ -1017,14 +982,12 @@
             }
         }
 
-        // --- 新增：课程回顾页面的分布展示逻辑 ---
         let reviewStep = 0;
         function updateReviewSteps() {
             const logicEl = document.getElementById('review-logic');
             const effEl = document.getElementById('review-efficiency');
             if (!logicEl || !effEl) return;
 
-            // 控制核心逻辑的展示
             if (reviewStep >= 1) {
                 logicEl.classList.remove('opacity-0', 'translate-y-8', 'scale-95', 'pointer-events-none');
                 logicEl.classList.add('opacity-100', 'translate-y-0', 'scale-100');
@@ -1033,7 +996,6 @@
                 logicEl.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
             }
 
-            // 控制效率分析的展示
             if (reviewStep >= 2) {
                 effEl.classList.remove('opacity-0', 'translate-y-8', 'scale-95', 'pointer-events-none');
                 effEl.classList.add('opacity-100', 'translate-y-0', 'scale-100');
@@ -1043,14 +1005,12 @@
             }
         }
 
-        // --- 新增：情境导入页面的分布展示逻辑 ---
         let scenarioStep = 0;
         function updateScenarioSteps() {
             const seqEl = document.getElementById('scenario-seq');
             const binEl = document.getElementById('scenario-bin');
             if (!seqEl || !binEl) return;
 
-            // 控制顺序查找动画展示
             if (scenarioStep >= 1) {
                 seqEl.classList.remove('opacity-0', 'translate-y-8', 'scale-95', 'pointer-events-none');
                 seqEl.classList.add('opacity-100', 'translate-y-0', 'scale-100');
@@ -1059,7 +1019,6 @@
                 seqEl.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
             }
 
-            // 控制二分查找动画展示
             if (scenarioStep >= 2) {
                 binEl.classList.remove('opacity-0', 'translate-y-8', 'scale-95', 'pointer-events-none');
                 binEl.classList.add('opacity-100', 'translate-y-0', 'scale-100');
@@ -1082,7 +1041,6 @@
                 }
             }
             
-            // 针对课程回顾页面(slide 1)的初始化逻辑
             if (currentSlide === 1) { 
                 if (direction === 'next') reviewStep = 0;
                 else if (direction === 'prev') reviewStep = 2;
@@ -1090,7 +1048,6 @@
                 updateReviewSteps(); 
             }
 
-            // 针对情境导入页面(slide 2)的初始化逻辑
             if (currentSlide === 2) {
                 if (direction === 'next') scenarioStep = 0;
                 else if (direction === 'prev') scenarioStep = 2;
@@ -1098,19 +1055,16 @@
                 updateScenarioSteps();
             }
 
-            // 数学推演页面：退回时直接显示最后一步
             if (currentSlide === 3) { 
                 mathStep = (direction === 'prev') ? maxMathStep : 0; 
                 renderMathSim(); 
             } 
             
-            // 算法模拟页面：退回时直接显示最后一步
             if (currentSlide === 5) { 
                 simStep = (direction === 'prev') ? (simSteps.length - 1) : 0; 
                 renderSim(); 
             }
 
-            // 代码实现页面：退回时直接显示最后一行
             if (currentSlide === 6) { 
                 codeStep = (direction === 'prev') ? maxCodeStep : 0; 
                 renderCodeLines(); 
@@ -1121,39 +1075,27 @@
         }
 
         function nextSlide() { 
-            // 拦截：处于课程回顾且还没点满 2 步
             if (currentSlide === 1 && reviewStep < 2) { reviewStep++; updateReviewSteps(); return; }
-            // 拦截：处于情境导入且还没点满 2 步
             if (currentSlide === 2 && scenarioStep < 2) { scenarioStep++; updateScenarioSteps(); return; }
-            // 拦截：数学推演步进
             if (currentSlide === 3 && mathStep < maxMathStep) { mathStep++; renderMathSim(); return; }
-            // 拦截：算法模拟步进
             if (currentSlide === 5 && simStep < simSteps.length - 1) { simStep++; renderSim(); return; }
-            // 拦截：代码实现步进
             if (currentSlide === 6 && codeStep < maxCodeStep) { codeStep++; renderCodeLines(); return; }
             
             if (currentSlide < totalSlides - 1) { currentSlide++; updateSlides('next'); } 
         }
 
         function prevSlide() { 
-            // 拦截：处于课程回顾且可回退
             if (currentSlide === 1 && reviewStep > 0) { reviewStep--; updateReviewSteps(); return; }
-            // 拦截：处于情境导入且可回退
             if (currentSlide === 2 && scenarioStep > 0) { scenarioStep--; updateScenarioSteps(); return; }
-            // 拦截：数学推演回退
             if (currentSlide === 3 && mathStep > 0) { mathStep--; renderMathSim(); return; }
-            // 拦截：算法模拟回退
             if (currentSlide === 5 && simStep > 0) { simStep--; renderSim(); return; }
-            // 拦截：代码实现回退
             if (currentSlide === 6 && codeStep > 0) { codeStep--; renderCodeLines(); return; }
             
             if (currentSlide > 0) { currentSlide--; updateSlides('prev'); } 
         }
 
-        // --- 新增：进度条直接跳转指定幻灯片功能 ---
         function goToSlide(index) {
             if (index === currentSlide) return;
-            // 判断是从左往右翻还是从右往左退，以便决定内部动画如何初始化展示状态
             const direction = index > currentSlide ? 'next' : 'prev';
             currentSlide = index;
             updateSlides(direction);
@@ -1330,18 +1272,18 @@
 
         function checkAnswer(btn, isCorrect) {
             document.querySelectorAll('.quiz-btn').forEach(b => {
-                b.className = "quiz-btn p-5 rounded-2xl border-2 border-slate-200 bg-slate-50 text-slate-400 transition-all font-bold text-xl pointer-events-none";
+                b.className = "quiz-btn p-4 lg:p-5 rounded-2xl border-2 border-slate-200 bg-slate-50 text-slate-400 transition-all font-bold text-lg lg:text-xl pointer-events-none";
             });
             const feedback = document.getElementById('quiz-feedback');
             feedback.classList.remove('hidden');
             
             if (isCorrect) {
-                btn.className = "quiz-btn p-5 rounded-2xl border-2 border-emerald-500 bg-emerald-50 text-emerald-700 transition-all font-bold text-xl scale-105 shadow-[0_0_20px_rgba(16,185,129,0.3)] z-10 relative pointer-events-none";
-                feedback.className = "mt-8 p-5 rounded-xl font-bold text-lg flex items-center gap-3 transition-all bg-emerald-100 text-emerald-700 border border-emerald-200 shadow-inner";
+                btn.className = "quiz-btn p-4 lg:p-5 rounded-2xl border-2 border-emerald-500 bg-emerald-50 text-emerald-700 transition-all font-bold text-lg lg:text-xl scale-105 shadow-[0_0_20px_rgba(16,185,129,0.3)] z-10 relative pointer-events-none";
+                feedback.className = "mt-6 lg:mt-8 p-4 lg:p-5 rounded-xl font-bold text-base lg:text-lg flex items-center gap-3 transition-all bg-emerald-100 text-emerald-700 border border-emerald-200 shadow-inner";
                 feedback.innerHTML = `<i data-lucide="check-circle" class="w-6 h-6"></i> 回答正确！15个元素的折半过程为：15 → 7 → 3 → 1 → 0，最多只需 4 次比较。`;
             } else {
-                btn.className = "quiz-btn p-5 rounded-2xl border-2 border-rose-500 bg-rose-50 text-rose-700 transition-all font-bold text-xl shadow-sm z-10 relative pointer-events-none";
-                feedback.className = "mt-8 p-5 rounded-xl font-bold text-lg flex items-center gap-3 transition-all bg-rose-100 text-rose-700 border border-rose-200 shadow-inner";
+                btn.className = "quiz-btn p-4 lg:p-5 rounded-2xl border-2 border-rose-500 bg-rose-50 text-rose-700 transition-all font-bold text-lg lg:text-xl shadow-sm z-10 relative pointer-events-none";
+                feedback.className = "mt-6 lg:mt-8 p-4 lg:p-5 rounded-xl font-bold text-base lg:text-lg flex items-center gap-3 transition-all bg-rose-100 text-rose-700 border border-rose-200 shadow-inner";
                 feedback.innerHTML = `<i data-lucide="x-circle" class="w-6 h-6"></i> 回答错误。提示：请尝试计算 log₂(15) 并向上取整，或手动推演每次折半剩余的元素个数。`;
             }
             if(typeof lucide !== 'undefined') lucide.createIcons();
@@ -1355,7 +1297,6 @@
             btn.className = "px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-cyan-500 border border-cyan-500 text-white shadow-lg transition-all scale-105 z-10 whitespace-nowrap";
         }
 
-        // --- 动画播放控制逻辑 ---
         function toggleAnim(type) {
             const dot = document.getElementById(`dot-${type}`);
             const btn = document.getElementById(`btn-anim-${type}`);
@@ -1371,7 +1312,7 @@
                 }
             } else {
                 dot.classList.remove(`anim-${type}`);
-                void dot.offsetWidth; // 触发浏览器重排，使得动画重新从头开始
+                void dot.offsetWidth; 
                 dot.classList.add(`anim-${type}`);
                 
                 btn.innerHTML = `<i data-lucide="square" class="w-4 h-4"></i> 停止`;
@@ -1380,7 +1321,6 @@
             if(typeof lucide !== 'undefined') lucide.createIcons();
         }
 
-        // 初始化
         document.addEventListener("DOMContentLoaded", function() {
             renderProgressBar();
             renderSim();
