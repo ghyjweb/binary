@@ -35,19 +35,10 @@
 
     <style>
         body { 
-            background-color: #f8fafc;
-            background-image: radial-gradient(circle at top right, #e0e7ff 0%, #f8fafc 40%, #f1f5f9 100%);
+            background-color: #f8f9fa; /* 匹配全屏背景的底色 */
             overflow: hidden;
             margin: 0;
             padding: 0;
-        }
-        
-        .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
         }
 
         @keyframes reviewSeq {
@@ -56,20 +47,63 @@
             70% { left: 75%; background-color: #3b82f6; transform: translate(-50%, -50%) scale(1); box-shadow: 0 4px 6px -1px rgba(59,130,246,0.3); }
             75%, 100% { left: 75%; background-color: #ef4444; transform: translate(-50%, -50%) scale(1.4); box-shadow: 0 0 15px rgba(239,68,68,0.5), 0 0 0 6px rgba(239,68,68,0.2); }
         }
+        
         @keyframes seqSearch {
-          0%   { left: 0%; box-shadow: none; background-color: #3b82f6; transform: translate(-50%, -50%) scale(1); }
-          90%  { left: 62.5%; background-color: #3b82f6; transform: translate(-50%, -50%) scale(1); box-shadow: none; }
-          92%, 100% { left: 62.5%; background-color: #ef4444; transform: translate(-50%, -50%) scale(1.4); box-shadow: 0 0 15px rgba(239,68,68,0.5), 0 0 0 6px rgba(239,68,68,0.2); }
+          0%   { left: 0%; background-color: #3b82f6; transform: translate(-50%, -50%) scale(1); box-shadow: none; }
+          
+          /* 第1次移动与检测 */
+          4%   { left: 10%; background-color: #3b82f6; transform: translate(-50%, -50%) scale(1); box-shadow: none; }
+          6%   { left: 10%; background-color: #eab308; transform: translate(-50%, -50%) scale(1.4); box-shadow: 0 0 15px rgba(234,179,8,0.5), 0 0 0 6px rgba(234,179,8,0.2); }
+          12%  { left: 10%; background-color: #3b82f6; transform: translate(-50%, -50%) scale(1); box-shadow: none; }
+
+          /* 第2次移动与检测 */
+          16%  { left: 20%; background-color: #3b82f6; transform: translate(-50%, -50%) scale(1); box-shadow: none; }
+          18%  { left: 20%; background-color: #eab308; transform: translate(-50%, -50%) scale(1.4); box-shadow: 0 0 15px rgba(234,179,8,0.5), 0 0 0 6px rgba(234,179,8,0.2); }
+          24%  { left: 20%; background-color: #3b82f6; transform: translate(-50%, -50%) scale(1); box-shadow: none; }
+
+          /* 第3次移动与检测 */
+          28%  { left: 30%; background-color: #3b82f6; transform: translate(-50%, -50%) scale(1); box-shadow: none; }
+          30%  { left: 30%; background-color: #eab308; transform: translate(-50%, -50%) scale(1.4); box-shadow: 0 0 15px rgba(234,179,8,0.5), 0 0 0 6px rgba(234,179,8,0.2); }
+          36%  { left: 30%; background-color: #3b82f6; transform: translate(-50%, -50%) scale(1); box-shadow: none; }
+
+          /* 第4次移动与检测 */
+          40%  { left: 40%; background-color: #3b82f6; transform: translate(-50%, -50%) scale(1); box-shadow: none; }
+          42%  { left: 40%; background-color: #eab308; transform: translate(-50%, -50%) scale(1.4); box-shadow: 0 0 15px rgba(234,179,8,0.5), 0 0 0 6px rgba(234,179,8,0.2); }
+          48%  { left: 40%; background-color: #3b82f6; transform: translate(-50%, -50%) scale(1); box-shadow: none; }
+
+          /* 第5次移动与检测 */
+          52%  { left: 50%; background-color: #3b82f6; transform: translate(-50%, -50%) scale(1); box-shadow: none; }
+          54%  { left: 50%; background-color: #eab308; transform: translate(-50%, -50%) scale(1.4); box-shadow: 0 0 15px rgba(234,179,8,0.5), 0 0 0 6px rgba(234,179,8,0.2); }
+          60%  { left: 50%; background-color: #3b82f6; transform: translate(-50%, -50%) scale(1); box-shadow: none; }
+
+          /* 第6次移动与检测 */
+          64%  { left: 60%; background-color: #3b82f6; transform: translate(-50%, -50%) scale(1); box-shadow: none; }
+          66%  { left: 60%; background-color: #eab308; transform: translate(-50%, -50%) scale(1.4); box-shadow: 0 0 15px rgba(234,179,8,0.5), 0 0 0 6px rgba(234,179,8,0.2); }
+          72%  { left: 60%; background-color: #3b82f6; transform: translate(-50%, -50%) scale(1); box-shadow: none; }
+
+          /* 第7次移动与检测（找到目标） */
+          76%  { left: 62.5%; background-color: #3b82f6; transform: translate(-50%, -50%) scale(1); box-shadow: none; }
+          78%, 100% { left: 62.5%; background-color: #ef4444; transform: translate(-50%, -50%) scale(1.4); box-shadow: 0 0 15px rgba(239,68,68,0.5), 0 0 0 6px rgba(239,68,68,0.2); }
         }
+
         @keyframes binSearch {
           0%   { left: 0%; background-color: #3b82f6; transform: translate(-50%, -50%) scale(1); box-shadow: none; }
-          15%  { left: 50%; background-color: #3b82f6; transform: translate(-50%, -50%) scale(1); box-shadow: none; }
-          20%  { left: 50%; background-color: #eab308; transform: translate(-50%, -50%) scale(1.4); box-shadow: 0 0 15px rgba(234,179,8,0.5), 0 0 0 6px rgba(234,179,8,0.2); }
-          35%  { left: 75%; background-color: #3b82f6; transform: translate(-50%, -50%) scale(1); box-shadow: none; }
-          40%  { left: 75%; background-color: #eab308; transform: translate(-50%, -50%) scale(1.4); box-shadow: 0 0 15px rgba(234,179,8,0.5), 0 0 0 6px rgba(234,179,8,0.2); }
-          55%  { left: 62.5%; background-color: #3b82f6; transform: translate(-50%, -50%) scale(1); box-shadow: none; }
-          60%, 100% { left: 62.5%; background-color: #ef4444; transform: translate(-50%, -50%) scale(1.4); box-shadow: 0 0 15px rgba(239,68,68,0.5), 0 0 0 6px rgba(239,68,68,0.2); }
+          
+          /* 第1次移动与检测 (与顺序查找的第1次动作完全同步发车) */
+          4%   { left: 50%; background-color: #3b82f6; transform: translate(-50%, -50%) scale(1); box-shadow: none; }
+          6%   { left: 50%; background-color: #eab308; transform: translate(-50%, -50%) scale(1.4); box-shadow: 0 0 15px rgba(234,179,8,0.5), 0 0 0 6px rgba(234,179,8,0.2); }
+          12%  { left: 50%; background-color: #3b82f6; transform: translate(-50%, -50%) scale(1); box-shadow: none; }
+          
+          /* 第2次移动与检测 (与顺序查找的第2次动作完全同步) */
+          16%  { left: 75%; background-color: #3b82f6; transform: translate(-50%, -50%) scale(1); box-shadow: none; }
+          18%  { left: 75%; background-color: #eab308; transform: translate(-50%, -50%) scale(1.4); box-shadow: 0 0 15px rgba(234,179,8,0.5), 0 0 0 6px rgba(234,179,8,0.2); }
+          24%  { left: 75%; background-color: #3b82f6; transform: translate(-50%, -50%) scale(1); box-shadow: none; }
+          
+          /* 第3次移动与检测（找到目标） (与顺序查找的第3次动作完全同步) */
+          28%  { left: 62.5%; background-color: #3b82f6; transform: translate(-50%, -50%) scale(1); box-shadow: none; }
+          30%, 100% { left: 62.5%; background-color: #ef4444; transform: translate(-50%, -50%) scale(1.4); box-shadow: 0 0 15px rgba(239,68,68,0.5), 0 0 0 6px rgba(239,68,68,0.2); }
         }
+      
         @keyframes mathL { 0%, 15% { width: 0%; } 25%, 100% { width: 50%; } }
         @keyframes mathR { 0%, 45% { width: 0%; } 55%, 100% { width: 25%; } }
         @keyframes mathRoot {
@@ -101,8 +135,8 @@
             100% { box-shadow: 0 0 0 20px rgba(34, 197, 94, 0); }
         }
         
-        .anim-seq { animation: seqSearch 10s infinite ease-in-out; }
-        .anim-bin { animation: binSearch 10s infinite ease-in-out; }
+        .anim-seq { animation: seqSearch 10s infinite linear; }
+        .anim-bin { animation: binSearch 10s infinite linear; }
         .anim-math-l { animation: mathL 8s infinite ease-in-out; }
         .anim-math-r { animation: mathR 8s infinite ease-in-out; }
         .anim-math-root { animation: mathRoot 8s infinite ease-in-out; }
@@ -119,8 +153,7 @@
         .slide.inactive-left { opacity: 0; transform: translateX(-50px) scale(0.98); z-index: 0; pointer-events: none; }
         
         .slide > div {
-            border-radius: 2rem !important;
-            /* 删除了 padding-bottom: 5rem 避免内容被整体强制上推超出边界 */
+            border-radius: 0 !important; 
         }
 
         .code-line {
@@ -146,7 +179,7 @@
         }
 
         .progress-segment { transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); }
-        .progress-segment.active { box-shadow: inset 0 -3px 0 #2563eb; }
+        .progress-segment.active { box-shadow: inset 0 -3px 0 #78716c; } 
 
         .task-scrollbar::-webkit-scrollbar { width: 6px; }
         .task-scrollbar::-webkit-scrollbar-track { background: transparent; }
@@ -175,33 +208,98 @@
         .task-input.wide:focus { width: 6.5rem; }
     </style>
 </head>
-<body class="w-screen h-screen text-slate-800 flex flex-col items-center justify-center p-4 lg:p-8 relative">
+<body class="w-screen h-screen text-slate-800 m-0 p-0 relative overflow-hidden">
 
-    <div class="relative w-full h-full max-w-7xl mx-auto rounded-[2.5rem] overflow-hidden glass-card flex flex-col shadow-2xl z-10">
+    <div class="relative w-full h-full overflow-hidden flex flex-col z-10">
         
-        <div id="progress-bar" class="w-full h-10 bg-white/40 flex z-50 border-b border-white/50 backdrop-blur-md pointer-events-auto">
+        <div class="absolute inset-0 z-0 pointer-events-none flex w-full h-full bg-[#f8f9fa] overflow-hidden">
+            <svg class="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="gradWarmBeige" x1="0%" y1="100%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#d8cfbe"/>
+                        <stop offset="100%" stop-color="#f2efe9"/>
+                    </linearGradient>
+                    <linearGradient id="gradPaleGreyBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#e2e8ec"/>
+                        <stop offset="100%" stop-color="#f4f7f8" stop-opacity="0.5"/>
+                    </linearGradient>
+                    <linearGradient id="gradSilverLight" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#ffffff"/>
+                        <stop offset="50%" stop-color="#e2e5e8"/>
+                        <stop offset="100%" stop-color="#b6c2cc"/>
+                    </linearGradient>
+                    <linearGradient id="gradRibbon" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#e8ebea"/>
+                        <stop offset="100%" stop-color="#cad2d4"/>
+                    </linearGradient>
+                    <linearGradient id="gradHighlight" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+                        <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+                    </linearGradient>
+                </defs>
+
+                <path d="M0,1080 L0,400 C200,450 350,600 600,1080 Z" fill="url(#gradWarmBeige)" opacity="0.7"/>
+                <path d="M0,1080 L0,650 C250,700 450,850 850,1080 Z" fill="#e8e2d5" opacity="0.6"/>
+                <path d="M0,1080 L0,200 C300,350 450,500 1100,1080 Z" fill="url(#gradPaleGreyBlue)" opacity="0.8" />
+                
+                <path d="M0,0 L700,0 C450,150 250,300 0,650 Z" fill="#f4f1e8" opacity="0.9" />
+                <path d="M0,0 L1000,0 C650,200 400,400 0,1000 Z" fill="url(#gradPaleGreyBlue)" opacity="0.6" />
+                
+                <path d="M0,250 C300,300 500,550 700,1080" stroke="url(#gradHighlight)" stroke-width="30" fill="none" opacity="0.6" filter="blur(2px)"/>
+                <path d="M100,-50 C350,250 200,600 100,1080" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.8"/>
+
+                <path d="M1000,0 C1250,150 1550,300 1920,150 L1920,0 Z" fill="url(#gradRibbon)" opacity="0.8" />
+                <path d="M1050,0 C1300,180 1600,350 1920,200 L1920,130 C1550,250 1350,100 1200,0 Z" fill="url(#gradSilverLight)" opacity="0.95" />
+                <path d="M1150,0 C1400,220 1650,400 1920,250" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.9"/>
+
+                <path d="M1250,1080 C1500,950 1750,850 1920,700 L1920,1080 Z" fill="url(#gradRibbon)" opacity="0.85" />
+                <path d="M1350,1080 C1600,1000 1800,900 1920,780 L1920,860 C1800,960 1600,1060 1450,1080 Z" fill="url(#gradSilverLight)" opacity="0.95" />
+
+                <path d="M-100,750 C400,900 1100,500 1920,150" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.8" />
+                <path d="M-100,350 C300,100 1200,300 1920,850" stroke="#cbd5e1" stroke-width="1" fill="none" opacity="0.6" />
+                <path d="M350,-100 C750,450 1300,800 1700,1180" stroke="#ffffff" stroke-width="3" fill="none" opacity="0.7" />
+                
+                <path d="M200,1080 C500,750 850,550 1600,1080 Z" fill="#ffffff" opacity="0.4" />
+                <path d="M450,0 C850,300 1300,450 1920,50 L1920,0 Z" fill="#ffffff" opacity="0.5" />
+                <path d="M900,0 C1200,400 1600,600 1920,600 L1920,0 Z" fill="#ffffff" opacity="0.3" />
+            </svg>
+
+            <div class="absolute inset-0 opacity-[0.03] mix-blend-multiply pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
+
+            <div class="absolute bottom-[8%] left-[25%] w-72 h-72 bg-white rounded-full mix-blend-overlay filter blur-[90px] opacity-70"></div>
+            <div class="absolute top-[15%] right-[15%] w-80 h-80 bg-white rounded-full mix-blend-overlay filter blur-[110px] opacity-80"></div>
+            <div class="absolute bottom-[20%] right-[30%] w-60 h-60 bg-white rounded-full mix-blend-overlay filter blur-[80px] opacity-50"></div>
+
+            <div class="absolute bottom-8 right-8 opacity-40">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="#cbd5e1">
+                    <path d="M12 0 C12 10 14 12 24 12 C14 12 12 14 12 24 C12 14 10 12 0 12 C10 12 12 10 12 0 Z" />
+                </svg>
+            </div>
+        </div>
+
+        <div id="progress-bar" class="w-full h-10 bg-white/40 flex z-50 border-b border-white/50 backdrop-blur-md pointer-events-auto relative">
             </div>
 
-        <div id="slides-wrapper" class="relative w-full flex-1 overflow-hidden">
+        <div id="slides-wrapper" class="relative w-full flex-1 overflow-hidden z-10">
 
             <div id="slide-0" class="slide active absolute inset-0">
                 <div class="h-full w-full p-8 flex flex-col items-center justify-center">
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-100/30 rounded-full blur-3xl -z-10 pointer-events-none"></div>
                     <div class="text-center space-y-8 w-full z-10">
-                        <div class="inline-block px-6 py-2.5 bg-white/80 backdrop-blur-md text-blue-800 rounded-full text-lg lg:text-xl font-bold mb-2 shadow-sm border border-blue-100/50 hover:scale-105 transition-transform duration-300">
+                        <div class="inline-block px-6 py-2.5 bg-white/90 backdrop-blur-md text-stone-700 rounded-full text-lg lg:text-xl font-bold mb-2 shadow-sm border border-stone-200/50 hover:scale-105 transition-transform duration-300">
                             粤教版 - 信息技术选择性必修1 - 数据与数据结构
                         </div>
-                        <h1 class="text-7xl lg:text-9xl leading-none font-black text-transparent bg-clip-text bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 tracking-tight drop-shadow-sm pb-2">
+                        <h1 class="text-7xl lg:text-9xl leading-none font-black text-transparent bg-clip-text bg-gradient-to-br from-stone-800 via-stone-600 to-slate-700 tracking-tight drop-shadow-sm pb-2">
                             5.2.2 二分查找
                         </h1>
-                        <div class="h-2 w-24 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto rounded-full my-6 opacity-80"></div>
-                        <p class="text-2xl lg:text-4xl text-slate-600 font-bold mb-10 tracking-wide">
+                        <div class="h-2 w-24 bg-gradient-to-r from-stone-400 to-slate-400 mx-auto rounded-full my-6 opacity-80"></div>
+                        <p class="text-2xl lg:text-4xl text-stone-600 font-bold mb-10 tracking-wide drop-shadow-sm">
                             高效数据检索的逻辑与实现
                         </p>
-                        <div class="pt-8 flex flex-col items-center justify-center gap-3 text-slate-600">
-                            <span class="text-2xl font-black text-slate-800">主讲人：袁健皓</span>
-                            <span class="text-lg opacity-80 font-mono font-bold bg-slate-100/80 px-4 py-1 rounded-lg">20232821043 教技师1班</span>
-                            <span class="text-base opacity-70 font-bold mt-2 tracking-widest uppercase">教学对象：高二学生</span>
+                        <div class="pt-8 flex flex-col items-center justify-center gap-3 text-stone-600">
+                            <span class="text-2xl font-black text-stone-800">袁健皓</span>
+                            <span class="text-lg opacity-90 font-mono font-bold bg-white/70 px-4 py-1 rounded-lg backdrop-blur-sm border border-white">20232821043 教技师1班</span>
+                            <span class="text-base opacity-80 font-bold mt-2 tracking-widest uppercase bg-white/50 px-3 py-0.5 rounded-full">教学对象：高二学生</span>
                         </div>
                     </div>
                 </div>
@@ -211,35 +309,35 @@
                 <div class="h-full w-full p-6 lg:p-8 flex flex-col items-center justify-center">
                     <div class="w-full max-w-5xl flex flex-col h-full justify-center">
                         <div class="flex items-center gap-4 mb-6">
-                            <div class="p-3 bg-blue-100 rounded-2xl text-blue-600 shadow-sm">
+                            <div class="p-3 bg-blue-50 rounded-2xl text-blue-600 border border-blue-100 shadow-sm">
                                 <i data-lucide="history" class="w-8 h-8"></i>
                             </div>
-                            <h2 class="text-4xl lg:text-5xl font-black text-slate-800">1. 课程回顾：顺序查找</h2>
+                            <h2 class="text-4xl lg:text-5xl font-black text-stone-800">1. 课程回顾：顺序查找</h2>
                         </div>
                         
                         <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:gap-6 mb-6">
-                            <div id="review-logic" class="col-span-3 bg-white/80 p-6 lg:p-8 rounded-3xl border border-white shadow-lg backdrop-blur-sm transition-all duration-500 transform opacity-0 translate-y-8 scale-95 pointer-events-none hover:shadow-xl hover:-translate-y-1">
-                                <h3 class="text-2xl font-bold mb-4 flex items-center gap-2 text-slate-800">
+                            <div id="review-logic" class="col-span-3 bg-white/90 p-6 lg:p-8 rounded-3xl border border-white shadow-lg backdrop-blur-sm transition-all duration-500 transform opacity-0 translate-y-8 scale-95 pointer-events-none hover:shadow-xl hover:-translate-y-1">
+                                <h3 class="text-2xl font-bold mb-4 flex items-center gap-2 text-stone-800">
                                     <i data-lucide="settings-2" class="text-blue-500 w-7 h-7"></i> 核心逻辑
                                 </h3>
-                                <p class="text-lg lg:text-xl leading-relaxed text-slate-600 font-medium">
-                                    排队点名。从排头开始，一个接一个地询问：“是你吗？”。每次查找后<span class="text-blue-600 font-bold bg-blue-50 px-2 py-0.5 rounded">步进为 1</span>。
+                                <p class="text-lg lg:text-xl leading-relaxed text-stone-600 font-medium">
+                                    排队点名。从排头开始，一个接一个地询问：“是你吗？”。每次查找后<span class="text-blue-600 font-bold bg-blue-50 border border-blue-100 px-2 py-0.5 rounded shadow-sm">步进为 1</span>。
                                 </p>
                             </div>
-                            <div id="review-efficiency" class="col-span-2 bg-gradient-to-br from-blue-50 to-indigo-50 p-6 lg:p-8 rounded-3xl border border-blue-100 shadow-lg transition-all duration-500 transform opacity-0 translate-y-8 scale-95 pointer-events-none hover:shadow-xl hover:-translate-y-1">
-                                <h3 class="text-2xl font-bold mb-4 flex items-center gap-2 text-blue-900">
+                            <div id="review-efficiency" class="col-span-2 bg-gradient-to-br from-slate-50 to-stone-50 p-6 lg:p-8 rounded-3xl border border-stone-200 shadow-lg transition-all duration-500 transform opacity-0 translate-y-8 scale-95 pointer-events-none hover:shadow-xl hover:-translate-y-1">
+                                <h3 class="text-2xl font-bold mb-4 flex items-center gap-2 text-stone-800">
                                     <i data-lucide="zap" class="text-amber-500 w-7 h-7"></i> 效率分析
                                 </h3>
-                                <ul class="space-y-4 text-blue-900/80 font-bold text-lg">
+                                <ul class="space-y-4 text-stone-600 font-bold text-lg">
                                     <li class="flex items-center gap-2"><i data-lucide="trending-down" class="w-5 h-5 opacity-70"></i> 最差情况：检查 n 次</li>
-                                    <li class="flex items-center gap-2"><i data-lucide="clock" class="w-5 h-5 opacity-70"></i> 时间复杂度：<span class="text-blue-700 bg-blue-200/50 px-2 rounded">O(n)</span></li>
-                                    <li class="text-blue-600 pt-2 border-t border-blue-200/50">特点：无需排序，但效率较低</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="clock" class="w-5 h-5 opacity-70"></i> 时间复杂度：<span class="text-blue-700 bg-blue-100 px-2 rounded shadow-sm">O(n)</span></li>
+                                    <li class="text-blue-600 pt-2 border-t border-stone-200">特点：无需排序，但效率较低</li>
                                 </ul>
                             </div>
                         </div>
                         
-                        <div class="bg-white/90 p-6 lg:p-8 rounded-3xl border border-slate-100 shadow-lg">
-                            <h3 class="text-xl font-bold mb-6 text-slate-700 flex items-center gap-2">
+                        <div class="bg-white/90 p-6 lg:p-8 rounded-3xl border border-stone-100 shadow-lg">
+                            <h3 class="text-xl font-bold mb-6 text-stone-700 flex items-center gap-2">
                                 <i data-lucide="play-circle" class="w-6 h-6 text-indigo-500"></i> 演示：顺序查找过程
                             </h3>
                             <div class="relative h-12 bg-slate-100 rounded-full mx-4 shadow-inner border border-slate-200 overflow-visible mb-6">
@@ -270,27 +368,27 @@
                 <div class="h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center">
                     <div class="w-full max-w-5xl">
                         <div class="flex items-center justify-center gap-4 mb-6">
-                            <div class="p-3 bg-red-100 rounded-2xl text-red-600 shadow-sm">
+                            <div class="p-3 bg-red-50 border border-red-100 rounded-2xl text-red-500 shadow-sm">
                                 <i data-lucide="map-pin" class="w-8 h-8"></i>
                             </div>
-                            <h2 class="text-4xl lg:text-5xl font-black text-slate-800">2. 情境导入：光缆维修挑战</h2>
+                            <h2 class="text-4xl lg:text-5xl font-black text-stone-800">2. 情境导入：光缆维修挑战</h2>
                         </div>
                         
-                        <div class="mb-6 p-4 lg:p-5 bg-white/80 border border-slate-200 rounded-2xl text-base text-slate-600 font-medium flex items-start gap-4 shadow-md backdrop-blur-sm">
-                            <div class="p-2 bg-blue-50 rounded-full shrink-0">
+                        <div class="mb-6 p-4 lg:p-5 bg-white/90 border border-stone-200 rounded-2xl text-base text-stone-600 font-medium flex items-start gap-4 shadow-md backdrop-blur-sm">
+                            <div class="p-2 bg-blue-50 rounded-full shrink-0 border border-blue-100">
                                 <i data-lucide="info" class="w-6 h-6 text-blue-500"></i>
                             </div>
                             <p class="leading-relaxed pt-1">
-                                <b class="text-slate-800">故障背景：</b>东莞至广州全长 100 公里的地下主干线光缆突发断连导致信号中断。排查人员需尽快锁定具体断点位置。请对比以下两种排查方案的效率：
+                                <b class="text-stone-800">故障背景：</b>东莞至广州全长 100 公里的地下主干线光缆突发断连导致信号中断。排查人员需尽快锁定具体断点位置。请对比以下两种排查方案的效率：
                             </p>
                         </div>
 
                         <div class="flex flex-col gap-4">
-                            <div id="scenario-seq" class="bg-white/90 p-5 lg:p-6 rounded-3xl border border-slate-100 shadow-lg relative overflow-visible transition-all duration-500 transform opacity-0 translate-y-8 scale-95 pointer-events-none">
+                            <div id="scenario-seq" class="bg-white/95 p-5 lg:p-6 rounded-3xl border border-stone-100 shadow-lg relative overflow-visible transition-all duration-500 transform opacity-0 translate-y-8 scale-95 pointer-events-none">
                                 <h3 class="text-xl font-bold mb-6 flex justify-between items-center relative z-10">
-                                    <span class="bg-slate-100 text-slate-700 px-4 py-2 rounded-xl flex items-center gap-2 border border-slate-200"><i data-lucide="footprints" class="w-5 h-5"></i> 笨办法：顺序查找</span>
+                                    <span class="bg-slate-100 text-slate-700 px-4 py-2 rounded-xl flex items-center gap-2 border border-slate-200 shadow-sm"><i data-lucide="footprints" class="w-5 h-5"></i> 笨办法：顺序查找</span>
                                     <div class="flex items-center gap-3">
-                                        <span class="text-slate-500 font-bold text-lg bg-white px-3 py-1 rounded-lg shadow-sm hidden md:inline-block">每隔 1 公里挖开一次</span>
+                                        <span class="text-slate-500 font-bold text-lg bg-white px-3 py-1 rounded-lg shadow-sm border border-slate-100 hidden md:inline-block">每隔 1 公里挖开一次</span>
                                         <button id="btn-anim-seq" onclick="toggleAnim('seq')" class="px-4 py-1.5 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition-all flex items-center gap-2 font-bold active:scale-95 z-50 pointer-events-auto">
                                             <i data-lucide="play" class="w-4 h-4"></i> 播放
                                         </button>
@@ -300,7 +398,7 @@
                                     <div class="absolute -left-16 top-1/2 -translate-y-1/2 text-sm font-black text-slate-700 text-right leading-tight">东莞<br><span class="text-xs text-slate-400 font-mono">0km</span></div>
                                     <div class="absolute -right-16 top-1/2 -translate-y-1/2 text-sm font-black text-slate-700 text-left leading-tight">广州<br><span class="text-xs text-slate-400 font-mono">100km</span></div>
                                     
-                                    <div class="absolute left-[62.5%] -top-7 -translate-x-1/2 text-xs font-black text-red-500 bg-red-50 px-2 py-0.5 rounded shadow-sm">62.5km</div>
+                                    <div class="absolute left-[62.5%] -top-7 -translate-x-1/2 text-xs font-black text-red-500 bg-red-50 px-2 py-0.5 rounded shadow-sm border border-red-100">62.5km</div>
                                     <div class="absolute top-1/2 left-[62.5%] -translate-y-1/2 -translate-x-1/2 w-7 h-7 bg-red-50 rounded-full border-[4px] border-red-500 shadow-lg z-10"></div>
                                     
                                     <div id="dot-seq" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-6 h-6 bg-slate-600 rounded-full shadow-xl z-20 flex items-center justify-center transition-colors"><div class="w-2 h-2 bg-white rounded-full"></div></div>
@@ -326,7 +424,7 @@
                                     <div class="absolute left-[75%] -top-7 -translate-x-1/2 text-[10px] font-bold text-blue-600">75km</div>
                                     <div class="absolute top-1/2 left-[75%] -translate-y-1/2 w-1 h-8 bg-blue-400 z-0 opacity-40 rounded-full"></div>
                                     
-                                    <div class="absolute left-[62.5%] -top-7 -translate-x-1/2 text-xs font-black text-red-500 z-30 bg-red-50 px-2 py-0.5 rounded shadow-sm">62.5km</div>
+                                    <div class="absolute left-[62.5%] -top-7 -translate-x-1/2 text-xs font-black text-red-500 z-30 bg-red-50 px-2 py-0.5 rounded shadow-sm border border-red-100">62.5km</div>
                                     <div class="absolute top-1/2 left-[62.5%] -translate-y-1/2 -translate-x-1/2 w-7 h-7 bg-red-50 rounded-full border-[4px] border-red-500 shadow-lg z-10"></div>
                                     <div id="dot-bin" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-6 h-6 bg-blue-600 rounded-full shadow-xl z-20 flex items-center justify-center transition-colors"><div class="w-2 h-2 bg-white rounded-full"></div></div>
                                 </div>
@@ -341,82 +439,82 @@
                     <div class="w-full max-w-5xl h-full flex flex-col">
                         <div class="flex justify-between items-center mb-6 shrink-0">
                             <div class="flex items-center gap-4">
-                                <div class="p-3 bg-indigo-100 rounded-2xl text-indigo-600 shadow-sm">
+                                <div class="p-3 bg-indigo-50 border border-indigo-100 rounded-2xl text-indigo-500 shadow-sm">
                                     <i data-lucide="calculator" class="w-8 h-8"></i>
                                 </div>
-                                <h2 class="text-3xl lg:text-5xl font-black text-slate-800">3. 数学推演：寻找折半的尽头</h2>
+                                <h2 class="text-3xl lg:text-5xl font-black text-stone-800">3. 算法推演：寻找折半的尽头</h2>
                             </div>
                             <div class="flex gap-3 pointer-events-auto">
-                                <button id="btn-math-prev" onclick="prevMathStep()" class="px-5 py-2.5 bg-white border border-slate-200 rounded-xl text-slate-600 font-bold hover:bg-slate-50 transition-all active:scale-95 shadow-sm flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100">
+                                <button id="btn-math-prev" onclick="prevMathStep()" class="px-5 py-2.5 bg-white border border-stone-200 rounded-xl text-stone-600 font-bold hover:bg-stone-50 transition-all active:scale-95 shadow-sm flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100">
                                     <i data-lucide="arrow-left" class="w-4 h-4"></i> 上一步
                                 </button>
-                                <button id="btn-math-next" onclick="nextMathStep()" class="px-5 py-2.5 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 shadow-md transition-all active:scale-95 flex items-center gap-2 hover:shadow-indigo-500/30 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100">
+                                <button id="btn-math-next" onclick="nextMathStep()" class="px-5 py-2.5 bg-indigo-500 text-white rounded-xl font-bold hover:bg-indigo-600 shadow-md transition-all active:scale-95 flex items-center gap-2 hover:shadow-indigo-500/30 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100">
                                     下一步 <i data-lucide="arrow-right" class="w-4 h-4"></i>
                                 </button>
                             </div>
                         </div>
 
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 flex-1 min-h-0">
-                            <div class="bg-white/80 p-4 lg:p-5 rounded-3xl border border-slate-200 shadow-lg flex flex-col items-center justify-start relative overflow-y-auto overflow-x-hidden h-full task-scrollbar">
+                            <div class="bg-white/90 p-4 lg:p-5 rounded-3xl border border-stone-200 shadow-lg flex flex-col items-center justify-start relative overflow-y-auto overflow-x-hidden h-full task-scrollbar">
                                 <div class="absolute top-12 bottom-12 w-1 bg-blue-100 z-0"></div>
                                 
-                                <div id="math-block-0" class="transition-all duration-500 transform w-full max-w-[280px] bg-blue-50 border-2 border-blue-200 text-blue-800 font-bold p-2 lg:p-3 rounded-2xl text-center shadow-sm z-10 relative mb-2 lg:mb-3">
+                                <div id="math-block-0" class="transition-all duration-500 transform w-full max-w-[280px] bg-blue-50 border border-blue-200 text-blue-800 font-bold p-2 lg:p-3 rounded-2xl text-center shadow-sm z-10 relative mb-2 lg:mb-3">
                                     <div class="text-[10px] lg:text-xs text-blue-500 mb-1 tracking-widest uppercase">初始规模 n</div>
                                     <div class="text-lg lg:text-xl font-black">1,000,000</div>
                                 </div>
                                 
-                                <div id="math-block-1" class="transition-all duration-500 transform opacity-0 translate-y-4 scale-95 w-3/4 max-w-[280px] bg-indigo-50 border-2 border-indigo-200 text-indigo-800 font-bold p-2 lg:p-3 rounded-2xl text-center shadow-sm z-10 relative mb-2 lg:mb-3">
+                                <div id="math-block-1" class="transition-all duration-500 transform opacity-0 translate-y-4 scale-95 w-3/4 max-w-[280px] bg-indigo-50 border border-indigo-200 text-indigo-800 font-bold p-2 lg:p-3 rounded-2xl text-center shadow-sm z-10 relative mb-2 lg:mb-3">
                                     <div class="text-[10px] lg:text-xs text-indigo-500 mb-1 tracking-widest uppercase">第 1 次折半</div>
                                     <div class="text-base lg:text-lg font-black">500,000</div>
                                 </div>
 
-                                <div id="math-block-2" class="transition-all duration-500 transform opacity-0 translate-y-4 scale-95 w-[60%] max-w-[280px] bg-violet-50 border-2 border-violet-200 text-violet-800 font-bold p-2 lg:p-3 rounded-2xl text-center shadow-sm z-10 relative mb-2 lg:mb-3">
+                                <div id="math-block-2" class="transition-all duration-500 transform opacity-0 translate-y-4 scale-95 w-[60%] max-w-[280px] bg-violet-50 border border-violet-200 text-violet-800 font-bold p-2 lg:p-3 rounded-2xl text-center shadow-sm z-10 relative mb-2 lg:mb-3">
                                     <div class="text-[10px] lg:text-xs text-violet-500 mb-1 tracking-widest uppercase">第 2 次折半</div>
                                     <div class="text-sm lg:text-base font-black">250,000</div>
                                 </div>
 
                                 <div id="math-block-3" class="transition-all duration-500 transform opacity-0 translate-y-4 scale-95 flex flex-col items-center w-full z-10 mb-2">
-                                    <div class="mb-2 p-1 lg:p-1.5 rounded-full shadow-sm text-slate-300 bg-white">
+                                    <div class="mb-2 p-1 lg:p-1.5 rounded-full shadow-sm text-stone-300 bg-white border border-stone-200">
                                         <i data-lucide="more-vertical" class="w-4 h-4 lg:w-5 lg:h-5"></i>
                                     </div>
                                     <div class="w-12 h-12 lg:w-14 lg:h-14 bg-rose-500 text-white font-black p-2 rounded-2xl flex flex-col items-center justify-center shadow-[0_0_20px_rgba(244,63,94,0.4)]">
-                                        <span class="text-[9px] opacity-80 leading-none mb-0.5">最后</span>
+                                        <span class="text-[9px] opacity-90 leading-none mb-0.5">最后</span>
                                         <span class="text-lg lg:text-xl leading-none">1</span>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="bg-slate-900 p-5 lg:p-6 rounded-3xl border border-slate-700 shadow-2xl text-slate-300 font-mono flex flex-col justify-start relative overflow-y-auto overflow-x-hidden h-full task-scrollbar">
-                                <div class="absolute -right-20 -top-20 w-64 h-64 bg-indigo-600/20 rounded-full blur-[60px] pointer-events-none"></div>
+                            <div class="bg-white/90 p-5 lg:p-6 rounded-3xl border border-stone-200 shadow-xl text-stone-700 font-mono flex flex-col justify-start relative overflow-y-auto overflow-x-hidden h-full task-scrollbar">
+                                <div class="absolute -right-20 -top-20 w-64 h-64 bg-indigo-100/50 rounded-full blur-[60px] pointer-events-none"></div>
 
-                                <h3 class="text-base lg:text-lg text-slate-400 mb-3 lg:mb-4 font-sans font-bold border-b border-slate-700 pb-2 shrink-0">寻找最坏情况下的比较次数 <span class="text-indigo-400 font-mono">k</span></h3>
+                                <h3 class="text-base lg:text-lg text-stone-500 mb-3 lg:mb-4 font-sans font-bold border-b border-stone-200 pb-2 shrink-0">寻找最坏情况下的比较次数 <span class="text-indigo-500 font-mono">k</span></h3>
                                 
                                 <div class="space-y-3 lg:space-y-4 text-sm lg:text-base z-10 flex-1">
                                     <div id="math-formula-1" class="transition-all duration-500 transform opacity-0 -translate-x-4 flex items-center gap-2 lg:gap-4">
-                                        <span class="w-14 lg:w-16 text-right text-slate-500 text-xs whitespace-nowrap">第 1 次：</span>
-                                        <span class="bg-slate-800/50 px-3 py-1.5 lg:px-4 lg:py-2 rounded-xl whitespace-nowrap">剩余 <span class="text-sky-400 font-bold ml-2 text-base lg:text-lg">n / 2¹</span></span>
+                                        <span class="w-14 lg:w-16 text-right text-stone-400 text-xs whitespace-nowrap">第 1 次：</span>
+                                        <span class="bg-stone-100 border border-stone-200 px-3 py-1.5 lg:px-4 lg:py-2 rounded-xl whitespace-nowrap">剩余 <span class="text-sky-600 font-bold ml-2 text-base lg:text-lg">n / 2¹</span></span>
                                     </div>
                                     
                                     <div id="math-formula-2" class="transition-all duration-500 transform opacity-0 -translate-x-4 flex items-center gap-2 lg:gap-4">
-                                        <span class="w-14 lg:w-16 text-right text-slate-500 text-xs whitespace-nowrap">第 2 次：</span>
-                                        <span class="bg-slate-800/50 px-3 py-1.5 lg:px-4 lg:py-2 rounded-xl whitespace-nowrap">剩余 <span class="text-sky-400 font-bold ml-2 text-base lg:text-lg">n / 2²</span></span>
+                                        <span class="w-14 lg:w-16 text-right text-stone-400 text-xs whitespace-nowrap">第 2 次：</span>
+                                        <span class="bg-stone-100 border border-stone-200 px-3 py-1.5 lg:px-4 lg:py-2 rounded-xl whitespace-nowrap">剩余 <span class="text-sky-600 font-bold ml-2 text-base lg:text-lg">n / 2²</span></span>
                                     </div>
                                     
                                     <div id="math-formula-3" class="transition-all duration-500 transform opacity-0 -translate-x-4">
-                                        <div class="pl-16 lg:pl-20 text-slate-600 py-0 mb-2 lg:mb-3"><i data-lucide="more-vertical" class="w-4 h-4"></i></div>
+                                        <div class="pl-16 lg:pl-20 text-stone-400 py-0 mb-2 lg:mb-3"><i data-lucide="more-vertical" class="w-4 h-4"></i></div>
                                         <div class="flex items-center gap-2 lg:gap-4 text-base lg:text-lg">
-                                            <span class="w-14 lg:w-16 text-right text-indigo-400 font-bold text-xs whitespace-nowrap">第 k 次：</span>
-                                            <span class="bg-indigo-900/30 border border-indigo-500/30 px-3 py-1.5 lg:px-4 lg:py-2 rounded-xl text-white whitespace-nowrap">剩余 <span class="text-emerald-400 font-black ml-1 lg:ml-2 text-lg lg:text-xl">n / 2ᵏ = 1</span></span>
+                                            <span class="w-14 lg:w-16 text-right text-indigo-500 font-bold text-xs whitespace-nowrap">第 k 次：</span>
+                                            <span class="bg-indigo-50 border border-indigo-200 px-3 py-1.5 lg:px-4 lg:py-2 rounded-xl text-indigo-900 whitespace-nowrap shadow-sm">剩余 <span class="text-emerald-600 font-black ml-1 lg:ml-2 text-lg lg:text-xl">n / 2ᵏ = 1</span></span>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div id="math-formula-4" class="transition-all duration-500 transform opacity-0 translate-y-8 mt-4 bg-gradient-to-r from-slate-800 to-slate-800/50 p-3 lg:p-4 rounded-2xl border border-slate-600 z-10 shadow-inner">
-                                    <p class="text-[11px] lg:text-xs text-slate-400 mb-2 lg:mb-3 font-sans flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4 text-amber-400"></i> 解方程得出最终复杂度：</p>
-                                    <div class="flex items-center justify-center gap-3 lg:gap-6 text-lg lg:text-2xl text-white font-black">
+                                <div id="math-formula-4" class="transition-all duration-500 transform opacity-0 translate-y-8 mt-4 bg-gradient-to-r from-stone-50 to-white p-3 lg:p-4 rounded-2xl border border-stone-200 z-10 shadow-sm">
+                                    <p class="text-[11px] lg:text-xs text-stone-500 mb-2 lg:mb-3 font-sans flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4 text-amber-500"></i> 解方程得出最终复杂度：</p>
+                                    <div class="flex items-center justify-center gap-3 lg:gap-6 text-lg lg:text-2xl text-stone-800 font-black">
                                         <span>n = 2ᵏ</span>
-                                        <i data-lucide="arrow-right" class="text-slate-500 w-4 h-4 lg:w-5 lg:h-5 shrink-0"></i>
-                                        <span class="text-amber-400 drop-shadow-[0_0_10px_rgba(251,191,36,0.3)] bg-amber-900/30 px-3 py-1 rounded-xl whitespace-nowrap">k = log₂ n</span>
+                                        <i data-lucide="arrow-right" class="text-stone-400 w-4 h-4 lg:w-5 lg:h-5 shrink-0"></i>
+                                        <span class="text-amber-600 bg-amber-50 border border-amber-100 px-3 py-1 rounded-xl whitespace-nowrap shadow-sm">k = log₂ n</span>
                                     </div>
                                 </div>
                             </div>
@@ -429,40 +527,40 @@
                 <div class="h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center">
                     <div class="w-full max-w-4xl">
                         <div class="flex items-center justify-center gap-4 mb-6">
-                            <div class="p-3 bg-indigo-100 rounded-2xl text-indigo-600 shadow-sm">
+                            <div class="p-3 bg-indigo-50 border border-indigo-100 rounded-2xl text-indigo-500 shadow-sm">
                                 <i data-lucide="function-square" class="w-8 h-8"></i>
                             </div>
-                            <h2 class="text-4xl lg:text-5xl font-black text-slate-800">4. 数学原理：对数级的飞跃</h2>
+                            <h2 class="text-4xl lg:text-5xl font-black text-stone-800">4. 算法原理：对数级的飞跃</h2>
                         </div>
                         
-                        <div class="bg-slate-900 text-white p-8 lg:p-10 rounded-[2.5rem] mb-8 font-mono relative overflow-hidden shadow-2xl border border-slate-700 hover:border-indigo-500/50 transition-colors duration-500">
-                            <div class="absolute -right-20 -top-20 w-64 h-64 bg-indigo-600/30 rounded-full blur-[60px] pointer-events-none"></div>
-                            <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-blue-600/20 rounded-full blur-[60px] pointer-events-none"></div>
+                        <div class="bg-white/95 text-stone-800 p-8 lg:p-10 rounded-[2.5rem] mb-8 font-mono relative overflow-hidden shadow-xl border border-stone-200 hover:border-stone-300 transition-colors duration-500">
+                            <div class="absolute -right-20 -top-20 w-64 h-64 bg-indigo-100/50 rounded-full blur-[60px] pointer-events-none"></div>
+                            <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-blue-100/40 rounded-full blur-[60px] pointer-events-none"></div>
                             <div class="relative z-10 text-center">
-                                <div class="text-xl lg:text-2xl mb-4 text-indigo-300 font-bold tracking-widest uppercase">时间复杂度</div>
-                                <div class="text-7xl lg:text-8xl leading-none font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 drop-shadow-lg filter drop-shadow-[0_0_10px_rgba(99,102,241,0.3)]">
+                                <div class="text-xl lg:text-2xl mb-4 text-stone-500 font-bold tracking-widest uppercase">时间复杂度</div>
+                                <div class="text-7xl lg:text-8xl leading-none font-black text-transparent bg-clip-text bg-gradient-to-r from-stone-600 via-slate-500 to-stone-400 drop-shadow-sm">
                                     O(log₂ n)
                                 </div>
-                                <div class="mt-8 text-slate-300 text-lg lg:text-xl italic tracking-wide font-sans font-medium bg-white/5 inline-block px-6 py-3 rounded-full border border-white/10 backdrop-blur-sm">
+                                <div class="mt-8 text-stone-600 text-lg lg:text-xl italic tracking-wide font-sans font-medium bg-stone-50 inline-block px-6 py-3 rounded-full border border-stone-200 shadow-sm">
                                     "每一次比较，都让未知的世界缩小一半。"
                                 </div>
                             </div>
                         </div>
                         
                         <div class="grid grid-cols-2 gap-6">
-                            <div class="bg-white/80 border border-slate-200 p-6 rounded-3xl shadow-sm backdrop-blur-sm flex items-center justify-between">
+                            <div class="bg-white/90 border border-stone-200 p-6 rounded-3xl shadow-sm backdrop-blur-sm flex items-center justify-between">
                                 <div>
-                                    <div class="text-slate-500 text-xs font-black mb-1 uppercase tracking-widest flex items-center gap-1"><i data-lucide="database" class="w-4 h-4"></i> 数据规模：100万</div>
-                                    <div class="text-2xl font-bold text-slate-800">顺序查找：</div>
+                                    <div class="text-stone-500 text-xs font-black mb-1 uppercase tracking-widest flex items-center gap-1"><i data-lucide="database" class="w-4 h-4"></i> 数据规模：100万</div>
+                                    <div class="text-2xl font-bold text-stone-800">顺序查找：</div>
                                 </div>
-                                <div class="text-4xl font-black text-slate-400">100万<span class="text-xl font-bold ml-1">次</span></div>
+                                <div class="text-4xl font-black text-stone-400">100万<span class="text-xl font-bold ml-1">次</span></div>
                             </div>
-                            <div class="bg-gradient-to-r from-indigo-50 to-blue-50 border border-indigo-100 p-6 rounded-3xl shadow-md backdrop-blur-sm flex items-center justify-between transform transition hover:scale-[1.02] duration-300">
+                            <div class="bg-gradient-to-r from-slate-50 to-stone-50 border border-stone-200 p-6 rounded-3xl shadow-md backdrop-blur-sm flex items-center justify-between transform transition hover:scale-[1.02] duration-300">
                                 <div>
                                     <div class="text-indigo-500 text-xs font-black mb-1 uppercase tracking-widest flex items-center gap-1"><i data-lucide="database" class="w-4 h-4"></i> 数据规模：100万</div>
                                     <div class="text-2xl font-bold text-indigo-900">二分查找：</div>
                                 </div>
-                                <div class="text-4xl font-black text-indigo-600">≈ 20<span class="text-xl font-bold ml-1">次</span></div>
+                                <div class="text-4xl font-black text-indigo-500">≈ 20<span class="text-xl font-bold ml-1">次</span></div>
                             </div>
                         </div>
                     </div>
@@ -474,38 +572,38 @@
                     <div class="w-full max-w-5xl">
                         <div class="flex justify-between items-center mb-6">
                             <div class="flex items-center gap-4">
-                                <div class="p-3 bg-emerald-100 rounded-2xl text-emerald-600 shadow-sm">
+                                <div class="p-3 bg-emerald-50 border border-emerald-100 rounded-2xl text-emerald-600 shadow-sm">
                                     <i data-lucide="cpu" class="w-8 h-8"></i>
                                 </div>
-                                <h2 class="text-4xl font-black text-slate-800">4. 算法模拟：寻值 <span class="text-emerald-600 bg-emerald-100 px-3 py-1 rounded-xl">45</span></h2>
+                                <h2 class="text-4xl font-black text-stone-800">4. 算法模拟：寻值 <span class="text-emerald-600 bg-emerald-50 border border-emerald-100 px-3 py-1 rounded-xl shadow-sm">45</span></h2>
                             </div>
                             <div class="flex gap-3 pointer-events-auto">
-                                <button id="btn-sim-prev" onclick="prevSimStep()" class="px-5 py-2.5 bg-white border border-slate-200 rounded-xl text-slate-600 font-bold hover:bg-slate-50 transition-all active:scale-95 shadow-sm flex items-center gap-2">
+                                <button id="btn-sim-prev" onclick="prevSimStep()" class="px-5 py-2.5 bg-white border border-stone-200 rounded-xl text-stone-600 font-bold hover:bg-stone-50 transition-all active:scale-95 shadow-sm flex items-center gap-2">
                                     <i data-lucide="arrow-left" class="w-4 h-4"></i> 上一步
                                 </button>
-                                <button id="btn-sim-next" onclick="nextSimStep()" class="px-5 py-2.5 bg-emerald-600 text-white rounded-xl font-bold hover:bg-emerald-700 shadow-md transition-all active:scale-95 flex items-center gap-2 hover:shadow-emerald-500/30">
+                                <button id="btn-sim-next" onclick="nextSimStep()" class="px-5 py-2.5 bg-emerald-500 text-white rounded-xl font-bold hover:bg-emerald-600 shadow-md transition-all active:scale-95 flex items-center gap-2 hover:shadow-emerald-500/30">
                                     下一步 <i data-lucide="arrow-right" class="w-4 h-4"></i>
                                 </button>
                             </div>
                         </div>
             
-                        <div id="sim-array-container" class="flex flex-wrap gap-3 justify-center mb-6 bg-white/60 p-6 lg:p-8 rounded-3xl border border-white shadow-lg backdrop-blur-md min-h-[160px] items-center">
+                        <div id="sim-array-container" class="flex flex-wrap gap-3 justify-center mb-6 bg-white/80 p-6 lg:p-8 rounded-3xl border border-white shadow-lg backdrop-blur-md min-h-[160px] items-center">
                             </div>
             
                         <div class="bg-gradient-to-r from-emerald-50 to-teal-50 p-6 rounded-3xl border border-emerald-100 shadow-md flex justify-between items-center">
                             <div class="flex-1">
                                 <p id="sim-action" class="text-emerald-900 font-black text-2xl tracking-wide">动作解析：...</p>
                             </div>
-                            <div class="flex gap-4 text-emerald-800 font-mono text-lg font-bold bg-white/60 p-3 rounded-2xl backdrop-blur-sm border border-emerald-100/50">
-                                <div class="flex flex-col items-center px-4 border-r border-emerald-200">
+                            <div class="flex gap-4 text-emerald-800 font-mono text-lg font-bold bg-white/90 p-3 rounded-2xl backdrop-blur-sm border border-emerald-100 shadow-sm">
+                                <div class="flex flex-col items-center px-4 border-r border-emerald-100">
                                     <span class="text-xs text-emerald-600/70 uppercase">Left</span>
                                     <span id="sim-l" class="text-2xl">0</span>
                                 </div>
-                                <div class="flex flex-col items-center px-4 border-r border-emerald-200">
+                                <div class="flex flex-col items-center px-4 border-r border-emerald-100">
                                     <span class="text-xs text-emerald-600/70 uppercase">Right</span>
                                     <span id="sim-r" class="text-2xl">11</span>
                                 </div>
-                                <div class="flex flex-col items-center px-4 bg-emerald-200/50 rounded-xl">
+                                <div class="flex flex-col items-center px-4 bg-emerald-100/50 rounded-xl">
                                     <span class="text-xs text-emerald-700 uppercase">Mid</span>
                                     <span id="sim-m" class="text-2xl text-emerald-900">5</span>
                                 </div>
@@ -520,16 +618,16 @@
                     <div class="w-full max-w-5xl flex flex-col h-full justify-center">
                         <div class="flex justify-between items-center mb-4">
                             <div class="flex items-center gap-4">
-                                <div class="p-3 bg-sky-100 rounded-2xl text-sky-600 shadow-sm">
+                                <div class="p-3 bg-sky-50 border border-sky-100 rounded-2xl text-sky-600 shadow-sm">
                                     <i data-lucide="code-2" class="w-8 h-8"></i>
                                 </div>
-                                <h2 class="text-4xl font-black text-slate-800">5. 代码实现 (C++)</h2>
+                                <h2 class="text-4xl font-black text-stone-800">5. 代码实现 (C++)</h2>
                             </div>
                             <div class="flex gap-3 pointer-events-auto">
-                                <button id="btn-code-prev" onclick="prevCodeStep()" class="px-5 py-2.5 bg-slate-800 border border-slate-700 text-slate-300 rounded-xl font-bold hover:bg-slate-700 transition-all active:scale-95 flex items-center gap-2">
+                                <button id="btn-code-prev" onclick="prevCodeStep()" class="px-5 py-2.5 bg-stone-800 border border-stone-700 text-stone-300 rounded-xl font-bold hover:bg-stone-700 transition-all active:scale-95 flex items-center gap-2 shadow-sm">
                                     <i data-lucide="chevron-up" class="w-5 h-5"></i> 上一行
                                 </button>
-                                <button id="btn-code-next" onclick="nextCodeStep()" class="px-5 py-2.5 bg-sky-500 text-white rounded-xl font-bold hover:bg-sky-400 shadow-[0_0_15px_rgba(14,165,233,0.4)] transition-all active:scale-95 flex items-center gap-2">
+                                <button id="btn-code-next" onclick="nextCodeStep()" class="px-5 py-2.5 bg-sky-500 text-white rounded-xl font-bold hover:bg-sky-600 shadow-[0_0_15px_rgba(14,165,233,0.3)] transition-all active:scale-95 flex items-center gap-2">
                                     下一行 <i data-lucide="chevron-down" class="w-5 h-5"></i>
                                 </button>
                             </div>
@@ -539,7 +637,7 @@
                             <div class="absolute top-3 left-5 flex gap-2">
                                 <div class="w-3 h-3 rounded-full bg-red-500"></div>
                                 <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
                             </div>
                             <div class="absolute top-2 right-5 text-slate-500 text-xs font-bold opacity-50">binarySearch.cpp</div>
                             
@@ -551,93 +649,20 @@
                 </div>
             </div>
 
-            <div id="slide-7" class="slide inactive-right absolute inset-0 bg-violet-50/30">
-                <div class="h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center">
+            <div id="slide-7" class="slide inactive-right absolute inset-0">
+                <div class="h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center bg-teal-50/40">
                     <div class="text-center w-full max-w-5xl flex flex-col h-full justify-center items-center">
-                        <div class="p-3 bg-violet-100 rounded-full text-violet-600 shadow-sm mb-3">
-                            <i data-lucide="infinity" class="w-8 h-8 lg:w-10 lg:h-10"></i>
-                        </div>
-                        <h2 class="text-3xl lg:text-4xl font-black mb-4 tracking-widest text-violet-950 uppercase">跨学科拓展：数学之桥</h2>
-                        
-                        <div class="bg-white/80 p-5 lg:p-8 rounded-[2.5rem] border border-violet-100 shadow-xl backdrop-blur-md w-full max-w-4xl hover:shadow-2xl transition-shadow duration-500">
-                            <div class="flex items-center gap-3 mb-4">
-                                <div class="w-2 h-8 bg-violet-500 rounded-full"></div>
-                                <h3 class="text-2xl lg:text-3xl font-black text-violet-900">求方程近似解（零点）</h3>
-                            </div>
-                            <p class="text-lg lg:text-xl text-violet-800/80 leading-relaxed text-left font-medium mb-4 lg:mb-6 pl-5">
-                                在数学分析中，求连续函数 <span class="font-mono bg-violet-100 text-violet-900 px-2 py-0.5 rounded font-bold">f(x)=0</span> 的根时，数学家利用二分法在有解区间内不断逼近。这种“夹逼准则”正是微积分思想的启蒙。
-                            </p>
-                            
-                            <div class="relative w-full h-32 lg:h-40 bg-slate-50 rounded-2xl border border-violet-200 overflow-hidden shadow-inner flex items-center">
-                                <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9IiNjYmQ1ZTEiLz48L3N2Zz4=')] opacity-60"></div>
-                                <div class="absolute w-full h-0.5 bg-slate-400 top-1/2 -translate-y-1/2 z-0"></div>
-                                <svg class="absolute w-full h-full z-10" preserveAspectRatio="none" viewBox="0 0 100 100">
-                                    <path d="M 0 100 C 30 100, 40 50, 62.5 50 C 80 50, 90 0, 100 0" stroke="#8b5cf6" stroke-width="4" fill="none" stroke-linecap="round"/>
-                                </svg>
-                                <div class="absolute w-6 h-6 bg-red-500 rounded-full left-[62.5%] top-1/2 -translate-y-1/2 -translate-x-1/2 z-20 border-[3px] border-white anim-math-root shadow-lg"></div>
-                                <div class="absolute h-full bg-violet-900/10 border-r border-violet-900/30 left-0 top-0 anim-math-l z-30 backdrop-blur-[1px]"></div>
-                                <div class="absolute h-full bg-violet-900/10 border-l border-violet-900/30 right-0 top-0 anim-math-r z-30 backdrop-blur-[1px]"></div>
-                                <div class="absolute left-6 top-4 text-sm font-black text-violet-600 bg-white/80 px-2 py-1 rounded shadow-sm z-40">f(a) < 0</div>
-                                <div class="absolute right-6 bottom-4 text-sm font-black text-violet-600 bg-white/80 px-2 py-1 rounded shadow-sm z-40">f(b) > 0</div>
-                            </div>
-
-                            <div class="mt-6 lg:mt-8 inline-flex items-center gap-4 px-8 py-3 bg-gradient-to-r from-violet-600 to-purple-600 rounded-2xl text-white font-mono text-xl font-bold shadow-[0_0_20px_rgba(139,92,246,0.3)]">
-                                <span>计算机逻辑</span> <i data-lucide="arrow-right-left" class="w-5 h-5 opacity-70"></i> <span>数学逼近思想</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="slide-8" class="slide inactive-right absolute inset-0 bg-orange-50/30">
-                <div class="h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center">
-                    <div class="text-center w-full max-w-5xl flex flex-col h-full justify-center items-center">
-                        <div class="p-3 bg-orange-100 rounded-full text-orange-600 shadow-sm mb-3">
-                            <i data-lucide="book-open" class="w-8 h-8 lg:w-10 lg:h-10"></i>
-                        </div>
-                        <h2 class="text-3xl lg:text-4xl font-black mb-4 tracking-widest text-orange-950 uppercase">跨学科拓展：文学应用</h2>
-                        
-                        <div class="bg-white/80 p-5 lg:p-8 rounded-[2.5rem] border border-orange-100 shadow-xl backdrop-blur-md w-full max-w-4xl hover:shadow-2xl transition-shadow duration-500">
-                            <div class="flex items-center gap-3 mb-4">
-                                <div class="w-2 h-8 bg-orange-500 rounded-full"></div>
-                                <h3 class="text-2xl lg:text-3xl font-black text-orange-900">查字典的智慧</h3>
-                            </div>
-                            <p class="text-lg lg:text-xl text-orange-800/80 leading-relaxed text-left font-medium mb-4 lg:mb-6 pl-5">
-                                当我们翻开字典查找目标“Q”时，通过判断中间字母的前后，来决定往左翻还是往右翻。这种生活经验的本质，就是在<span class="text-orange-600 font-bold">“有序”</span>的结构中进行二分查找。
-                            </p>
-                            
-                            <div class="flex items-center justify-between bg-slate-50 p-6 lg:p-8 rounded-2xl border border-slate-200 text-xl lg:text-2xl font-mono font-black text-slate-300 relative overflow-hidden shadow-inner">
-                                <span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span>G</span><span>H</span><span>I</span><span>J</span><span>K</span><span>L</span><span>M</span><span>N</span><span>O</span><span>P</span>
-                                <span class="relative z-30 anim-lit-target transition-colors duration-300">Q</span>
-                                <span>R</span><span>S</span><span>T</span><span>U</span><span>V</span><span>W</span><span>X</span><span>Y</span><span>Z</span>
-                                
-                                <div class="absolute left-0 top-0 h-full bg-white/95 z-20 origin-left border-r-[3px] border-dashed border-orange-400 anim-lit-mask-1 backdrop-blur-sm flex items-center justify-end pr-4"><span class="text-sm text-orange-400 opacity-50 font-sans">排除前半部分</span></div>
-                                <div class="absolute right-0 top-0 h-full bg-white/95 z-20 origin-right border-l-[3px] border-dashed border-orange-400 anim-lit-mask-2 backdrop-blur-sm flex items-center pl-4"><span class="text-sm text-orange-400 opacity-50 font-sans">排除后半部分</span></div>
-                            </div>
-
-                            <div class="flex justify-center gap-6 mt-6 lg:mt-8">
-                                <span class="px-6 py-2 bg-white rounded-xl text-lg font-bold text-slate-600 border border-slate-200 shadow-sm flex items-center gap-2"><i data-lucide="search" class="w-5 h-5 text-orange-400"></i> 音序索引</span>
-                                <span class="px-6 py-2 bg-orange-100 rounded-xl text-lg font-black text-orange-700 border border-orange-200 shadow-sm flex items-center gap-2"><i data-lucide="sort-asc" class="w-5 h-5"></i> 有序前提</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="slide-9" class="slide inactive-right absolute inset-0 bg-teal-50/30">
-                <div class="h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center">
-                    <div class="text-center w-full max-w-5xl flex flex-col h-full justify-center items-center">
-                        <div class="p-3 bg-teal-100 rounded-full text-teal-600 shadow-sm mb-3">
+                        <div class="p-3 bg-white border border-teal-100 rounded-full text-teal-500 shadow-sm mb-3">
                             <i data-lucide="plug-zap" class="w-8 h-8 lg:w-10 lg:h-10"></i>
                         </div>
-                        <h2 class="text-3xl lg:text-4xl font-black mb-4 tracking-widest text-teal-950 uppercase">跨学科拓展：工程排障</h2>
+                        <h2 class="text-3xl lg:text-4xl font-black mb-4 tracking-widest text-stone-800 uppercase">拓展：工程排障</h2>
                         
-                        <div class="bg-white/80 p-5 lg:p-8 rounded-[2.5rem] border border-teal-100 shadow-xl backdrop-blur-md w-full max-w-4xl hover:shadow-2xl transition-shadow duration-500">
+                        <div class="bg-white/90 p-5 lg:p-8 rounded-[2.5rem] border border-stone-200 shadow-xl backdrop-blur-md w-full max-w-4xl hover:shadow-2xl transition-shadow duration-500">
                             <div class="flex items-center gap-3 mb-4">
-                                <div class="w-2 h-8 bg-teal-500 rounded-full"></div>
-                                <h3 class="text-2xl lg:text-3xl font-black text-teal-900">分段检测法</h3>
+                                <div class="w-2 h-8 bg-teal-400 rounded-full"></div>
+                                <h3 class="text-2xl lg:text-3xl font-black text-stone-800">分段检测法</h3>
                             </div>
-                            <p class="text-lg lg:text-xl text-teal-800/80 leading-relaxed text-left font-medium mb-4 lg:mb-6 pl-5">
+                            <p class="text-lg lg:text-xl text-stone-600 leading-relaxed text-left font-medium mb-4 lg:mb-6 pl-5">
                                 电工在测量长链路不通时，万用表探头通过测量中间节点的电压，能迅速排除正常的一半区间。这是物理实验与真实工程排障的黄金法则。
                             </p>
                             
@@ -660,10 +685,87 @@
                                 </div>
                             </div>
 
-                            <div class="mt-6 lg:mt-8 flex items-center justify-center gap-4 text-slate-600 font-bold text-xl bg-slate-50 py-4 rounded-xl border border-slate-100">
+                            <div class="mt-6 lg:mt-8 flex items-center justify-center gap-4 text-stone-700 font-bold text-xl bg-stone-50 py-4 rounded-xl border border-stone-200">
                                 <span>整体链路</span> <i data-lucide="chevron-right" class="w-5 h-5 text-teal-500"></i> 
                                 <span>折半检测</span> <i data-lucide="chevron-right" class="w-5 h-5 text-teal-500"></i> 
-                                <span class="text-red-600 flex items-center gap-2"><i data-lucide="target" class="w-6 h-6"></i> 故障锁定</span>
+                                <span class="text-red-500 flex items-center gap-2"><i data-lucide="target" class="w-6 h-6"></i> 故障锁定</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="slide-8" class="slide inactive-right absolute inset-0">
+                <div class="h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center bg-fuchsia-50/40">
+                    <div class="text-center w-full max-w-5xl flex flex-col h-full justify-center items-center">
+                        <div class="p-3 bg-white border border-fuchsia-100 rounded-full text-fuchsia-500 shadow-sm mb-3">
+                            <i data-lucide="brain" class="w-8 h-8 lg:w-10 lg:h-10"></i>
+                        </div>
+                        <h2 class="text-3xl lg:text-4xl font-black mb-4 tracking-widest text-stone-800 uppercase">拓展：人工智能的“调参师”</h2>
+                        
+                        <div class="bg-white/90 p-5 lg:p-8 rounded-[2.5rem] border border-stone-200 shadow-xl backdrop-blur-md w-full max-w-4xl hover:shadow-2xl transition-shadow duration-500">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-2 h-8 bg-fuchsia-400 rounded-full"></div>
+                                <h3 class="text-2xl lg:text-3xl font-black text-stone-800">寻找模型的最优解</h3>
+                            </div>
+                            <p class="text-lg lg:text-xl text-stone-600 leading-relaxed text-left font-medium mb-4 lg:mb-6 pl-5">
+                                训练 AI 就像给收音机调频：<span class="font-bold text-fuchsia-600">学习率</span>太大，AI 会“学得太猛”导致崩溃；太小则“学得太慢”。工程师需要在庞大的参数空间中，利用二分法思想快速锁定让误差最小的“甜点位”。
+                            </p>
+                            
+                            <div class="relative w-full h-36 lg:h-44 bg-slate-900 rounded-2xl border-4 border-slate-800 flex flex-col items-center justify-center overflow-hidden shadow-[inset_0_10px_30px_rgba(0,0,0,0.5)]">
+                                <svg class="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+                                    <path d="M 10 20 Q 50 140 90 20" stroke="rgba(217, 70, 239, 0.4)" stroke-width="3" fill="none" stroke-dasharray="4 4" />
+                                </svg>
+                                <div class="w-10/12 h-1.5 bg-slate-700 rounded-full relative z-10 mt-16">
+                                    <div class="absolute h-full bg-fuchsia-500/40 left-[20%] right-[20%] rounded-full shadow-[0_0_15px_rgba(217,70,239,0.5)] animate-pulse"></div>
+                                    <div class="absolute h-full bg-fuchsia-400 left-[35%] right-[35%] rounded-full z-10"></div>
+                                    <div class="absolute w-4 h-4 bg-white rounded-full left-[50%] top-1/2 -translate-y-1/2 -translate-x-1/2 shadow-[0_0_15px_#fff] z-20"></div>
+                                    <span class="absolute -left-8 -top-3 text-xs text-slate-400 font-mono">0.001</span>
+                                    <span class="absolute -right-6 -top-3 text-xs text-slate-400 font-mono">0.1</span>
+                                    <span class="absolute left-[50%] -translate-x-1/2 top-4 text-xs lg:text-sm text-fuchsia-300 font-black tracking-widest mt-1">最佳学习率</span>
+                                </div>
+                            </div>
+
+                            <blockquote class="mt-6 lg:mt-8 text-lg lg:text-xl text-stone-500 italic font-medium bg-stone-50 px-6 py-4 rounded-xl border border-stone-200">
+                                “在 AI 时代，二分法不再只是寻找一个数字，而是在无限的可能空间里，以最快的速度逼近智慧的边界。”
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="slide-9" class="slide inactive-right absolute inset-0"> 
+                <div class="h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center bg-violet-50/40">
+                    <div class="text-center w-full max-w-5xl flex flex-col h-full justify-center items-center">
+                        <div class="p-3 bg-white border border-violet-100 rounded-full text-violet-500 shadow-sm mb-3">
+                            <i data-lucide="infinity" class="w-8 h-8 lg:w-10 lg:h-10"></i>
+                        </div>
+                        <h2 class="text-3xl lg:text-4xl font-black mb-4 tracking-widest text-stone-800 uppercase">拓展：数学之桥</h2>
+                        
+                        <div class="bg-white/90 p-5 lg:p-8 rounded-[2.5rem] border border-stone-200 shadow-xl backdrop-blur-md w-full max-w-4xl hover:shadow-2xl transition-shadow duration-500">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-2 h-8 bg-violet-400 rounded-full"></div>
+                                <h3 class="text-2xl lg:text-3xl font-black text-stone-800">求方程近似解（零点）</h3>
+                            </div>
+                            <p class="text-lg lg:text-xl text-stone-600 leading-relaxed text-left font-medium mb-4 lg:mb-6 pl-5">
+                                在数学分析中，求连续函数 <span class="font-mono bg-stone-100 text-stone-800 px-2 py-0.5 rounded font-bold border border-stone-200">f(x)=0</span> 的根时，数学家利用二分法在有解区间内不断逼近。这种“夹逼准则”正是微积分思想的启蒙。
+                            </p>
+                            
+                            <div class="relative w-full h-32 lg:h-40 bg-stone-50 rounded-2xl border border-stone-200 overflow-hidden shadow-inner flex items-center">
+                                <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9IiNjYmQ1ZTEiLz48L3N2Zz4=')] opacity-50"></div>
+                                <div class="absolute w-full h-0.5 bg-stone-300 top-1/2 -translate-y-1/2 z-0"></div>
+                                <svg class="absolute w-full h-full z-10" preserveAspectRatio="none" viewBox="0 0 100 100">
+                                    <path d="M 0 100 C 30 100, 40 50, 62.5 50 C 80 50, 90 0, 100 0" stroke="#8b5cf6" stroke-width="4" fill="none" stroke-linecap="round"/>
+                                </svg>
+                                <div class="absolute w-6 h-6 bg-red-500 rounded-full left-[62.5%] top-1/2 -translate-y-1/2 -translate-x-1/2 z-20 border-[3px] border-white anim-math-root shadow-lg"></div>
+                                <div class="absolute h-full bg-violet-200/20 border-r border-violet-300/50 left-0 top-0 anim-math-l z-30 backdrop-blur-[1px]"></div>
+                                <div class="absolute h-full bg-violet-200/20 border-l border-violet-300/50 right-0 top-0 anim-math-r z-30 backdrop-blur-[1px]"></div>
+                                <div class="absolute left-6 top-4 text-sm font-black text-violet-600 bg-white/90 px-2 py-1 rounded shadow-sm border border-violet-100 z-40">f(a) < 0</div>
+                                <div class="absolute right-6 bottom-4 text-sm font-black text-violet-600 bg-white/90 px-2 py-1 rounded shadow-sm border border-violet-100 z-40">f(b) > 0</div>
+                            </div>
+
+                            <div class="mt-6 lg:mt-8 inline-flex items-center gap-4 px-8 py-3 bg-gradient-to-r from-violet-500 to-purple-500 rounded-2xl text-white font-mono text-xl font-bold shadow-[0_0_20px_rgba(139,92,246,0.3)]">
+                                <span>计算机逻辑</span> <i data-lucide="arrow-right-left" class="w-5 h-5 opacity-70"></i> <span>数学逼近思想</span>
                             </div>
                         </div>
                     </div>
@@ -671,63 +773,98 @@
             </div>
 
             <div id="slide-10" class="slide inactive-right absolute inset-0">
-                <div class="h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center">
-                    <div class="text-center w-full max-w-5xl">
-                        <div class="relative inline-block mb-4">
-                            <div class="absolute inset-0 bg-yellow-400 blur-xl opacity-30 rounded-full animate-pulse"></div>
-                            <i data-lucide="lightbulb" class="text-yellow-500 w-16 h-16 lg:w-20 lg:h-20 relative z-10 drop-shadow-md"></i>
+                <div class="h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center bg-orange-50/40">
+                    <div class="text-center w-full max-w-5xl flex flex-col h-full justify-center items-center">
+                        <div class="p-3 bg-white border border-orange-100 rounded-full text-orange-500 shadow-sm mb-3">
+                            <i data-lucide="book-open" class="w-8 h-8 lg:w-10 lg:h-10"></i>
                         </div>
-                        <h2 class="text-4xl lg:text-6xl font-black mb-6 tracking-tight text-slate-800">总结与升华：分而治之</h2>
+                        <h2 class="text-3xl lg:text-4xl font-black mb-4 tracking-widest text-stone-800 uppercase">拓展：文学应用</h2>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                            <div class="p-6 lg:p-8 bg-white/80 backdrop-blur-sm rounded-[2rem] border border-white shadow-lg flex flex-col items-center hover:-translate-y-2 transition-transform duration-300">
-                                <div class="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 text-blue-700 rounded-2xl flex items-center justify-center font-black text-2xl mb-6 shadow-inner">1</div>
-                                <p class="font-black text-2xl text-slate-700">确定边界</p>
-                                <p class="text-slate-500 mt-2 font-medium">Left 与 Right</p>
+                        <div class="bg-white/90 p-5 lg:p-8 rounded-[2.5rem] border border-stone-200 shadow-xl backdrop-blur-md w-full max-w-4xl hover:shadow-2xl transition-shadow duration-500">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-2 h-8 bg-orange-400 rounded-full"></div>
+                                <h3 class="text-2xl lg:text-3xl font-black text-stone-800">查字典的智慧</h3>
                             </div>
-                            <div class="p-6 lg:p-8 bg-white/80 backdrop-blur-sm rounded-[2rem] border border-white shadow-lg flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 delay-100">
-                                <div class="w-16 h-16 bg-gradient-to-br from-indigo-100 to-indigo-200 text-indigo-700 rounded-2xl flex items-center justify-center font-black text-2xl mb-6 shadow-inner">2</div>
-                                <p class="font-black text-2xl text-slate-700">计算中点</p>
-                                <p class="text-slate-500 mt-2 font-medium">Mid = (L+R)/2</p>
+                            <p class="text-lg lg:text-xl text-stone-600 leading-relaxed text-left font-medium mb-4 lg:mb-6 pl-5">
+                                当我们翻开字典查找目标“Q”时，通过判断中间字母的前后，来决定往左翻还是往右翻。这种生活经验的本质，就是在<span class="text-orange-500 font-bold">“有序”</span>的结构中进行二分查找。
+                            </p>
+                            
+                            <div class="flex items-center justify-between bg-stone-50 p-6 lg:p-8 rounded-2xl border border-stone-200 text-xl lg:text-2xl font-mono font-black text-stone-400 relative overflow-hidden shadow-inner">
+                                <span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span>G</span><span>H</span><span>I</span><span>J</span><span>K</span><span>L</span><span>M</span><span>N</span><span>O</span><span>P</span>
+                                <span class="relative z-30 anim-lit-target transition-colors duration-300">Q</span>
+                                <span>R</span><span>S</span><span>T</span><span>U</span><span>V</span><span>W</span><span>X</span><span>Y</span><span>Z</span>
+                                
+                                <div class="absolute left-0 top-0 h-full bg-white/95 z-20 origin-left border-r-[3px] border-dashed border-orange-300 anim-lit-mask-1 backdrop-blur-sm flex items-center justify-end pr-4"><span class="text-sm text-orange-500 opacity-80 font-sans font-bold">排除前半部分</span></div>
+                                <div class="absolute right-0 top-0 h-full bg-white/95 z-20 origin-right border-l-[3px] border-dashed border-orange-300 anim-lit-mask-2 backdrop-blur-sm flex items-center pl-4"><span class="text-sm text-orange-500 opacity-80 font-sans font-bold">排除后半部分</span></div>
                             </div>
-                            <div class="p-6 lg:p-8 bg-white/80 backdrop-blur-sm rounded-[2rem] border border-white shadow-lg flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 delay-200">
-                                <div class="w-16 h-16 bg-gradient-to-br from-purple-100 to-purple-200 text-purple-700 rounded-2xl flex items-center justify-center font-black text-2xl mb-6 shadow-inner">3</div>
-                                <p class="font-black text-2xl text-slate-700">判断缩减</p>
-                                <p class="text-slate-500 mt-2 font-medium">缩小一半范围</p>
+
+                            <div class="flex justify-center gap-6 mt-6 lg:mt-8">
+                                <span class="px-6 py-2 bg-white rounded-xl text-lg font-bold text-stone-600 border border-stone-200 shadow-sm flex items-center gap-2"><i data-lucide="search" class="w-5 h-5 text-orange-400"></i> 音序索引</span>
+                                <span class="px-6 py-2 bg-orange-50 rounded-xl text-lg font-black text-orange-600 border border-orange-100 shadow-sm flex items-center gap-2"><i data-lucide="sort-asc" class="w-5 h-5"></i> 有序前提</span>
                             </div>
                         </div>
-            
-                        <blockquote class="text-lg lg:text-3xl leading-relaxed font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-indigo-800 italic relative inline-block py-4 px-10">
-                            <i data-lucide="quote" class="absolute top-0 left-0 w-8 h-8 text-blue-300 opacity-50 rotate-180"></i>
-                            “面对复杂的难题，学会寻找规律并不断拆解，<br>你就能以最优雅的方式锁定答案。”
-                            <i data-lucide="quote" class="absolute bottom-0 right-0 w-8 h-8 text-blue-300 opacity-50"></i>
-                        </blockquote>
                     </div>
                 </div>
             </div>
 
             <div id="slide-11" class="slide inactive-right absolute inset-0">
                 <div class="h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center">
+                    <div class="text-center w-full max-w-5xl">
+                        <div class="relative inline-block mb-4">
+                            <div class="absolute inset-0 bg-yellow-400 blur-xl opacity-40 rounded-full animate-pulse"></div>
+                            <i data-lucide="lightbulb" class="text-yellow-500 w-16 h-16 lg:w-20 lg:h-20 relative z-10 drop-shadow-md"></i>
+                        </div>
+                        <h2 class="text-4xl lg:text-6xl font-black mb-6 tracking-tight text-stone-800">总结与升华：分而治之</h2>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                            <div class="p-6 lg:p-8 bg-white/90 backdrop-blur-sm rounded-[2rem] border border-stone-200 shadow-lg flex flex-col items-center hover:-translate-y-2 transition-transform duration-300">
+                                <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center font-black text-2xl mb-6 shadow-sm border border-blue-100">1</div>
+                                <p class="font-black text-2xl text-stone-800">确定边界</p>
+                                <p class="text-stone-500 mt-2 font-medium">Left 与 Right</p>
+                            </div>
+                            <div class="p-6 lg:p-8 bg-white/90 backdrop-blur-sm rounded-[2rem] border border-stone-200 shadow-lg flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 delay-100">
+                                <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center font-black text-2xl mb-6 shadow-sm border border-indigo-100">2</div>
+                                <p class="font-black text-2xl text-stone-800">计算中点</p>
+                                <p class="text-stone-500 mt-2 font-medium">Mid = (L+R)/2</p>
+                            </div>
+                            <div class="p-6 lg:p-8 bg-white/90 backdrop-blur-sm rounded-[2rem] border border-stone-200 shadow-lg flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 delay-200">
+                                <div class="w-16 h-16 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center font-black text-2xl mb-6 shadow-sm border border-purple-100">3</div>
+                                <p class="font-black text-2xl text-stone-800">判断缩减</p>
+                                <p class="text-stone-500 mt-2 font-medium">缩小一半范围</p>
+                            </div>
+                        </div>
+            
+                        <blockquote class="text-lg lg:text-3xl leading-relaxed font-black text-transparent bg-clip-text bg-gradient-to-r from-stone-600 to-stone-500 italic relative inline-block py-4 px-10">
+                            <i data-lucide="quote" class="absolute top-0 left-0 w-8 h-8 text-stone-300 opacity-80 rotate-180"></i>
+                            “面对复杂的难题，学会寻找规律并不断拆解，<br>你就能以最优雅的方式锁定答案。”
+                            <i data-lucide="quote" class="absolute bottom-0 right-0 w-8 h-8 text-stone-300 opacity-80"></i>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+
+            <div id="slide-12" class="slide inactive-right absolute inset-0">
+                <div class="h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center">
                     <div class="text-center w-full max-w-4xl flex flex-col h-full justify-center items-center pointer-events-auto">
-                        <div class="p-3 bg-rose-100 rounded-full text-rose-500 shadow-sm mb-3">
+                        <div class="p-3 bg-rose-50 border border-rose-100 rounded-full text-rose-500 shadow-sm mb-3">
                             <i data-lucide="clipboard-check" class="w-8 h-8 lg:w-10 lg:h-10"></i>
                         </div>
-                        <h2 class="text-4xl lg:text-5xl font-black mb-6 tracking-tight text-slate-800">自我检测</h2>
+                        <h2 class="text-4xl lg:text-5xl font-black mb-6 tracking-tight text-stone-800">自我检测</h2>
                         
-                        <div class="bg-white/80 p-6 lg:p-10 rounded-[2.5rem] border border-rose-100 shadow-xl backdrop-blur-md w-full text-left">
-                            <h3 class="text-xl lg:text-2xl font-bold text-slate-800 mb-4 lg:mb-6 flex items-center gap-3">
+                        <div class="bg-white/90 p-6 lg:p-10 rounded-[2.5rem] border border-stone-200 shadow-xl backdrop-blur-md w-full text-left">
+                            <h3 class="text-xl lg:text-2xl font-bold text-stone-800 mb-4 lg:mb-6 flex items-center gap-3">
                                 <span class="bg-rose-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-lg shadow-sm">?</span>
                                 知识点：二分查找的效率评估
                             </h3>
-                            <p class="text-lg lg:text-xl text-slate-600 font-medium mb-6 lg:mb-8 leading-relaxed">
+                            <p class="text-lg lg:text-xl text-stone-600 font-medium mb-6 lg:mb-8 leading-relaxed">
                                 在一个包含 <span class="font-black text-rose-600 bg-rose-50 border border-rose-200 px-2 py-0.5 rounded shadow-sm mx-1">15</span> 个元素的有序数组中，使用二分查找法寻找一个不存在的元素，<strong>最坏情况下</strong>需要进行几次比较？
                             </p>
                             
                             <div class="grid grid-cols-2 gap-4">
-                                <button onclick="checkAnswer(this, false)" class="quiz-btn p-4 lg:p-5 rounded-2xl border-2 border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 font-bold text-lg lg:text-xl text-slate-700 transition-all active:scale-95 shadow-sm">A. 3 次</button>
-                                <button onclick="checkAnswer(this, true)" class="quiz-btn p-4 lg:p-5 rounded-2xl border-2 border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 font-bold text-lg lg:text-xl text-slate-700 transition-all active:scale-95 shadow-sm">B. 4 次</button>
-                                <button onclick="checkAnswer(this, false)" class="quiz-btn p-4 lg:p-5 rounded-2xl border-2 border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 font-bold text-lg lg:text-xl text-slate-700 transition-all active:scale-95 shadow-sm">C. 7 次</button>
-                                <button onclick="checkAnswer(this, false)" class="quiz-btn p-4 lg:p-5 rounded-2xl border-2 border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 font-bold text-lg lg:text-xl text-slate-700 transition-all active:scale-95 shadow-sm">D. 15 次</button>
+                                <button onclick="checkAnswer(this, false)" class="quiz-btn p-4 lg:p-5 rounded-2xl border-2 border-stone-200 bg-stone-50 hover:bg-white hover:border-stone-300 font-bold text-lg lg:text-xl text-stone-700 transition-all active:scale-95 shadow-sm">A. 3 次</button>
+                                <button onclick="checkAnswer(this, true)" class="quiz-btn p-4 lg:p-5 rounded-2xl border-2 border-stone-200 bg-stone-50 hover:bg-white hover:border-stone-300 font-bold text-lg lg:text-xl text-stone-700 transition-all active:scale-95 shadow-sm">B. 4 次</button>
+                                <button onclick="checkAnswer(this, false)" class="quiz-btn p-4 lg:p-5 rounded-2xl border-2 border-stone-200 bg-stone-50 hover:bg-white hover:border-stone-300 font-bold text-lg lg:text-xl text-stone-700 transition-all active:scale-95 shadow-sm">C. 7 次</button>
+                                <button onclick="checkAnswer(this, false)" class="quiz-btn p-4 lg:p-5 rounded-2xl border-2 border-stone-200 bg-stone-50 hover:bg-white hover:border-stone-300 font-bold text-lg lg:text-xl text-stone-700 transition-all active:scale-95 shadow-sm">D. 15 次</button>
                             </div>
 
                             <div id="quiz-feedback" class="mt-6 lg:mt-8 hidden p-4 lg:p-5 rounded-xl font-bold text-base lg:text-lg flex items-center gap-3 transition-all">
@@ -737,59 +874,59 @@
                 </div>
             </div>
 
-            <div id="slide-12" class="slide inactive-right absolute inset-0">
+            <div id="slide-13" class="slide inactive-right absolute inset-0">
                 <div class="h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center">
                     <div class="text-center w-full max-w-5xl flex flex-col h-full justify-center items-center pointer-events-auto">
-                        <div class="p-3 bg-cyan-100 rounded-full text-cyan-600 shadow-sm mb-3">
+                        <div class="p-3 bg-cyan-50 border border-cyan-100 rounded-full text-cyan-600 shadow-sm mb-3">
                             <i data-lucide="bar-chart-2" class="w-8 h-8 lg:w-10 lg:h-10"></i>
                         </div>
-                        <h2 class="text-3xl lg:text-5xl font-black mb-4 lg:mb-6 tracking-tight text-slate-800">课堂评价量表</h2>
+                        <h2 class="text-3xl lg:text-5xl font-black mb-4 lg:mb-6 tracking-tight text-stone-800">课堂评价量表</h2>
                         
-                        <div class="bg-white/80 p-5 lg:p-8 rounded-[2.5rem] border border-cyan-100 shadow-xl backdrop-blur-md w-full text-left">
+                        <div class="bg-white/90 p-5 lg:p-8 rounded-[2.5rem] border border-stone-200 shadow-xl backdrop-blur-md w-full text-left">
                             <p class="text-lg lg:text-xl text-cyan-700 font-bold mb-4 lg:mb-6 text-center tracking-wide">请根据本节课的学习情况，进行客观的自我评价</p>
                             
                             <div class="flex flex-col gap-2 lg:gap-4">
-                                <div class="flex flex-col xl:flex-row xl:items-center justify-between p-3 lg:p-4 bg-slate-50/80 rounded-2xl border border-slate-200 hover:border-cyan-200 hover:bg-cyan-50/30 transition-colors">
-                                    <span class="font-bold text-slate-700 text-base lg:text-lg mb-2 xl:mb-0"><span class="text-cyan-500 mr-2">1.</span>掌握二分查找的核心原理（折半思想）</span>
+                                <div class="flex flex-col xl:flex-row xl:items-center justify-between p-3 lg:p-4 bg-stone-50/80 rounded-2xl border border-stone-200 hover:border-cyan-200 hover:bg-cyan-50/30 transition-colors">
+                                    <span class="font-bold text-stone-700 text-base lg:text-lg mb-2 xl:mb-0"><span class="text-cyan-500 mr-2">1.</span>掌握二分查找的核心原理（折半思想）</span>
                                     <div class="flex justify-start xl:justify-end gap-1 md:gap-2 eval-group">
-                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😭 听不明白</button>
-                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">🤔 一知半解</button>
-                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😐 基本理解</button>
-                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😃 比较清晰</button>
-                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">🤩 完全掌握</button>
+                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-stone-200 text-stone-400 hover:bg-cyan-50 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😭 听不明白</button>
+                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-stone-200 text-stone-400 hover:bg-cyan-50 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">🤔 一知半解</button>
+                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-stone-200 text-stone-400 hover:bg-cyan-50 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😐 基本理解</button>
+                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-stone-200 text-stone-400 hover:bg-cyan-50 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😃 比较清晰</button>
+                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-stone-200 text-stone-400 hover:bg-cyan-50 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">🤩 完全掌握</button>
                                     </div>
                                 </div>
                                 
-                                <div class="flex flex-col xl:flex-row xl:items-center justify-between p-3 lg:p-4 bg-slate-50/80 rounded-2xl border border-slate-200 hover:border-cyan-200 hover:bg-cyan-50/30 transition-colors">
-                                    <span class="font-bold text-slate-700 text-base lg:text-lg mb-2 xl:mb-0"><span class="text-cyan-500 mr-2">2.</span>能够手动推演出 L、R、Mid 指针的移动</span>
+                                <div class="flex flex-col xl:flex-row xl:items-center justify-between p-3 lg:p-4 bg-stone-50/80 rounded-2xl border border-stone-200 hover:border-cyan-200 hover:bg-cyan-50/30 transition-colors">
+                                    <span class="font-bold text-stone-700 text-base lg:text-lg mb-2 xl:mb-0"><span class="text-cyan-500 mr-2">2.</span>能够手动推演出 L、R、Mid 指针的移动</span>
                                     <div class="flex justify-start xl:justify-end gap-1 md:gap-2 eval-group">
-                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😭 听不明白</button>
-                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">🤔 一知半解</button>
-                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😐 基本理解</button>
-                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😃 比较清晰</button>
-                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">🤩 完全掌握</button>
+                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-stone-200 text-stone-400 hover:bg-cyan-50 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😭 听不明白</button>
+                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-stone-200 text-stone-400 hover:bg-cyan-50 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">🤔 一知半解</button>
+                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-stone-200 text-stone-400 hover:bg-cyan-50 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😐 基本理解</button>
+                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-stone-200 text-stone-400 hover:bg-cyan-50 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😃 比较清晰</button>
+                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-stone-200 text-stone-400 hover:bg-cyan-50 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">🤩 完全掌握</button>
                                     </div>
                                 </div>
 
-                                <div class="flex flex-col xl:flex-row xl:items-center justify-between p-3 lg:p-4 bg-slate-50/80 rounded-2xl border border-slate-200 hover:border-cyan-200 hover:bg-cyan-50/30 transition-colors">
-                                    <span class="font-bold text-slate-700 text-base lg:text-lg mb-2 xl:mb-0"><span class="text-cyan-500 mr-2">3.</span>理解代码中 while 循环与边界更新的逻辑</span>
+                                <div class="flex flex-col xl:flex-row xl:items-center justify-between p-3 lg:p-4 bg-stone-50/80 rounded-2xl border border-stone-200 hover:border-cyan-200 hover:bg-cyan-50/30 transition-colors">
+                                    <span class="font-bold text-stone-700 text-base lg:text-lg mb-2 xl:mb-0"><span class="text-cyan-500 mr-2">3.</span>理解代码中 while 循环与边界更新的逻辑</span>
                                     <div class="flex justify-start xl:justify-end gap-1 md:gap-2 eval-group">
-                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😭 听不明白</button>
-                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">🤔 一知半解</button>
-                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😐 基本理解</button>
-                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😃 比较清晰</button>
-                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">🤩 完全掌握</button>
+                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-stone-200 text-stone-400 hover:bg-cyan-50 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😭 听不明白</button>
+                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-stone-200 text-stone-400 hover:bg-cyan-50 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">🤔 一知半解</button>
+                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-stone-200 text-stone-400 hover:bg-cyan-50 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😐 基本理解</button>
+                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-stone-200 text-stone-400 hover:bg-cyan-50 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😃 比较清晰</button>
+                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-stone-200 text-stone-400 hover:bg-cyan-50 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">🤩 完全掌握</button>
                                     </div>
                                 </div>
 
-                                <div class="flex flex-col xl:flex-row xl:items-center justify-between p-3 lg:p-4 bg-slate-50/80 rounded-2xl border border-slate-200 hover:border-cyan-200 hover:bg-cyan-50/30 transition-colors">
-                                    <span class="font-bold text-slate-700 text-base lg:text-lg mb-2 xl:mb-0"><span class="text-cyan-500 mr-2">4.</span>能够体会二分法在跨学科场景中的应用价值</span>
+                                <div class="flex flex-col xl:flex-row xl:items-center justify-between p-3 lg:p-4 bg-stone-50/80 rounded-2xl border border-stone-200 hover:border-cyan-200 hover:bg-cyan-50/30 transition-colors">
+                                    <span class="font-bold text-stone-700 text-base lg:text-lg mb-2 xl:mb-0"><span class="text-cyan-500 mr-2">4.</span>能够体会二分法在拓展场景中的应用价值</span>
                                     <div class="flex justify-start xl:justify-end gap-1 md:gap-2 eval-group">
-                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😭 听不明白</button>
-                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">🤔 一知半解</button>
-                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😐 基本理解</button>
-                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😃 比较清晰</button>
-                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">🤩 完全掌握</button>
+                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-stone-200 text-stone-400 hover:bg-cyan-50 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😭 听不明白</button>
+                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-stone-200 text-stone-400 hover:bg-cyan-50 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">🤔 一知半解</button>
+                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-stone-200 text-stone-400 hover:bg-cyan-50 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😐 基本理解</button>
+                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-stone-200 text-stone-400 hover:bg-cyan-50 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">😃 比较清晰</button>
+                                        <button class="px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-stone-200 text-stone-400 hover:bg-cyan-50 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap" onclick="selectEval(this)">🤩 完全掌握</button>
                                     </div>
                                 </div>
                             </div>
@@ -798,17 +935,17 @@
                 </div>
             </div>
 
-            <div id="slide-13" class="slide inactive-right absolute inset-0">
+            <div id="slide-14" class="slide inactive-right absolute inset-0">
                 <div class="h-full w-full p-8 flex flex-col items-center justify-center">
                     <div class="text-center w-full flex flex-col items-center justify-center h-full space-y-12">
                         <div class="relative">
-                            <div class="absolute inset-0 bg-red-500 blur-3xl opacity-20 rounded-full animate-pulse"></div>
-                            <i data-lucide="heart" class="text-red-500 w-28 h-28 fill-current relative z-10 hover:scale-125 transition-transform duration-500 cursor-pointer drop-shadow-2xl"></i>
+                            <div class="absolute inset-0 bg-stone-300 blur-3xl opacity-40 rounded-full animate-pulse"></div>
+                            <i data-lucide="heart" class="text-rose-400 w-28 h-28 fill-current relative z-10 hover:scale-125 transition-transform duration-500 cursor-pointer drop-shadow-xl"></i>
                         </div>
-                        <h1 class="text-[6rem] lg:text-[9rem] font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 tracking-widest drop-shadow-sm pb-4">
+                        <h1 class="text-[6rem] lg:text-[9rem] font-black text-transparent bg-clip-text bg-gradient-to-r from-stone-700 via-stone-500 to-slate-500 tracking-widest drop-shadow-sm pb-4">
                             谢谢大家
                         </h1>
-                        <p class="text-slate-400 font-mono font-bold tracking-widest mt-4">END OF PRESENTATION</p>
+                        <p class="text-stone-400 font-mono font-bold tracking-widest mt-4">END OF PRESENTATION</p>
                     </div>
                 </div>
             </div>
@@ -816,55 +953,55 @@
         </div>
     </div>
 
-    <div onclick="toggleTaskDrawer()" class="fixed right-0 top-[60%] -translate-y-1/2 bg-indigo-600 text-white py-4 px-3 rounded-l-2xl shadow-[-5px_0_20px_rgba(79,70,229,0.4)] cursor-pointer hover:bg-indigo-700 transition-all hover:pr-4 flex flex-col items-center gap-2 z-[60] group border border-indigo-400 border-r-0 pointer-events-auto">
+    <div onclick="toggleTaskDrawer()" class="fixed right-0 top-[60%] -translate-y-1/2 bg-stone-600 text-white py-4 px-3 rounded-l-2xl shadow-[-5px_0_20px_rgba(120,113,108,0.3)] cursor-pointer hover:bg-stone-700 transition-all hover:pr-4 flex flex-col items-center gap-2 z-[60] group border border-stone-500 border-r-0 pointer-events-auto">
         <i data-lucide="clipboard-list" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
         <span class="writing-vertical font-bold tracking-widest text-sm" style="writing-mode: vertical-rl;">任务单</span>
     </div>
 
-    <div id="task-drawer" class="fixed top-0 right-0 w-full sm:w-[26rem] h-full bg-slate-50/90 backdrop-blur-2xl shadow-2xl border-l border-white/60 z-[70] transform translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] flex flex-col pointer-events-auto">
-        <div class="flex items-center justify-between p-6 border-b border-slate-200/50 bg-white/40">
-            <div class="flex items-center gap-3 text-indigo-800">
+    <div id="task-drawer" class="fixed top-0 right-0 w-full sm:w-[26rem] h-full bg-white/95 backdrop-blur-2xl shadow-2xl border-l border-stone-200 z-[70] transform translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] flex flex-col pointer-events-auto">
+        <div class="flex items-center justify-between p-6 border-b border-stone-200 bg-stone-50/80">
+            <div class="flex items-center gap-3 text-stone-800">
                 <i data-lucide="pencil-ruler" class="w-6 h-6"></i>
                 <h2 class="text-xl font-black">互动任务单</h2>
             </div>
-            <button onclick="toggleTaskDrawer()" class="p-2 bg-slate-200/50 hover:bg-slate-300/50 text-slate-600 rounded-full transition-colors">
+            <button onclick="toggleTaskDrawer()" class="p-2 bg-stone-200 hover:bg-stone-300 text-stone-600 rounded-full transition-colors">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
         </div>
         
         <div class="flex-1 overflow-y-auto p-6 task-scrollbar space-y-6">
-            <div class="text-sm text-slate-500 mb-2 flex items-center gap-2 bg-indigo-50 p-3 rounded-lg border border-indigo-100">
-                <i data-lucide="info" class="w-4 h-4 text-indigo-500"></i>
+            <div class="text-sm text-stone-500 mb-2 flex items-center gap-2 bg-blue-50/50 p-3 rounded-lg border border-blue-100">
+                <i data-lucide="info" class="w-4 h-4 text-blue-500"></i>
                 <span>提示：点击下划线可直接输入思考结果。</span>
             </div>
 
-            <div id="task-card-1" class="task-card bg-white/70 p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
+            <div id="task-card-1" class="task-card bg-white p-5 rounded-2xl border border-stone-200 shadow-sm relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
-                <h3 class="font-bold text-lg text-slate-800 mb-3 flex items-center gap-2"><span class="bg-blue-100 text-blue-700 px-2 rounded">任务一</span> 情境观察与假设</h3>
-                <div class="text-sm text-slate-600 space-y-3 leading-relaxed">
+                <h3 class="font-bold text-lg text-stone-800 mb-3 flex items-center gap-2"><span class="bg-blue-50 text-blue-700 px-2 rounded border border-blue-100">任务一</span> 情境观察与假设</h3>
+                <div class="text-sm text-stone-600 space-y-3 leading-relaxed">
                     <p>假设光缆全长 100km，断点恰好在 62.5km处。</p>
                     <ul class="list-disc pl-5 space-y-2">
                         <li>顺序查找：若每 1km 挖一次，最差需挖 <input type="text" class="task-input"> 次。</li>
                         <li>二分查找：第一次测 50km，断点在 50~100 之间；第二次测 <input type="text" class="task-input"> km。</li>
                     </ul>
-                    <div class="bg-slate-100 p-3 rounded-lg mt-2 font-medium">
+                    <div class="bg-stone-50 p-3 rounded-lg mt-2 font-medium border border-stone-100">
                         <i data-lucide="lightbulb" class="w-4 h-4 inline-block text-amber-500 mr-1 -mt-1"></i>
                         结论思考：使用二分查找的前提，是数据必须呈现 <input type="text" class="task-input wide" placeholder="有序/乱序"> 状态。
                     </div>
                 </div>
             </div>
 
-            <div id="task-card-2" class="task-card bg-white/70 p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
+            <div id="task-card-2" class="task-card bg-white p-5 rounded-2xl border border-stone-200 shadow-sm relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-1 h-full bg-emerald-500"></div>
-                <h3 class="font-bold text-lg text-slate-800 mb-3 flex items-center gap-2"><span class="bg-emerald-100 text-emerald-700 px-2 rounded">任务二</span> 算法模拟实战</h3>
-                <div class="text-sm text-slate-600 space-y-3 leading-relaxed">
+                <h3 class="font-bold text-lg text-stone-800 mb-3 flex items-center gap-2"><span class="bg-emerald-50 text-emerald-700 px-2 rounded border border-emerald-100">任务二</span> 算法模拟实战</h3>
+                <div class="text-sm text-stone-600 space-y-3 leading-relaxed">
                     <p>请跟随课件模拟在数组中寻找 <strong>45</strong> 的过程，并记录指针：</p>
-                    <div class="space-y-2 font-mono bg-slate-50 p-3 rounded-lg border border-slate-100">
-                        <div class="pb-2 border-b border-slate-200">
+                    <div class="space-y-2 font-mono bg-stone-50 p-3 rounded-lg border border-stone-200">
+                        <div class="pb-2 border-b border-stone-200">
                             <span class="text-emerald-600 font-bold">第1次：</span> L=0, R=11, Mid=5<br>
                             arr[5]=23 < 45，新左界 L = <input type="text" class="task-input">
                         </div>
-                        <div class="py-2 border-b border-slate-200">
+                        <div class="py-2 border-b border-stone-200">
                             <span class="text-emerald-600 font-bold">第2次：</span> L=6, R=11, Mid= <input type="text" class="task-input"><br>
                             arr[8]=56 > 45，新右界 R = <input type="text" class="task-input">
                         </div>
@@ -875,10 +1012,10 @@
                 </div>
             </div>
 
-            <div id="task-card-3" class="task-card bg-white/70 p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
+            <div id="task-card-3" class="task-card bg-white p-5 rounded-2xl border border-stone-200 shadow-sm relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-1 h-full bg-sky-500"></div>
-                <h3 class="font-bold text-lg text-slate-800 mb-3 flex items-center gap-2"><span class="bg-sky-100 text-sky-700 px-2 rounded">任务三</span> 代码构建与纠错</h3>
-                <div class="text-sm text-slate-600 space-y-4 leading-relaxed">
+                <h3 class="font-bold text-lg text-stone-800 mb-3 flex items-center gap-2"><span class="bg-sky-50 text-sky-700 px-2 rounded border border-sky-100">任务三</span> 代码构建与纠错</h3>
+                <div class="text-sm text-stone-600 space-y-4 leading-relaxed">
                     <div>
                         1. 循环能够继续进行的边界条件是：
                         <div class="font-mono bg-slate-800 text-sky-300 p-2 rounded mt-1">
@@ -890,20 +1027,21 @@
                         <div class="font-mono bg-slate-800 text-sky-300 p-2 rounded mt-1 mb-2">
                             mid = left + (<input type="text" class="task-input wide border-sky-400 text-white focus:border-sky-300" placeholder="公式">) / 2
                         </div>
-                        <p class="text-xs text-slate-500"><i class="font-bold">思考：</i> 如果直接用 (L+R)/2，当 L 和 R 都非常大时，会发生什么？</p>
+                        <p class="text-xs text-stone-500"><i class="font-bold">思考：</i> 如果直接用 (L+R)/2，当 L 和 R 都非常大时，会发生什么？</p>
                     </div>
                 </div>
             </div>
 
-            <div id="task-card-4" class="task-card bg-white/70 p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden mb-8">
+            <div id="task-card-4" class="task-card bg-white p-5 rounded-2xl border border-stone-200 shadow-sm relative overflow-hidden mb-8">
                 <div class="absolute top-0 left-0 w-1 h-full bg-violet-500"></div>
-                <h3 class="font-bold text-lg text-slate-800 mb-3 flex items-center gap-2"><span class="bg-violet-100 text-violet-700 px-2 rounded">任务四</span> 跨学科模型构建</h3>
-                <div class="text-sm text-slate-600 space-y-3 leading-relaxed">
+                <h3 class="font-bold text-lg text-stone-800 mb-3 flex items-center gap-2"><span class="bg-violet-50 text-violet-700 px-2 rounded border border-violet-100">任务四</span> 知识拓展</h3>
+                <div class="text-sm text-stone-600 space-y-3 leading-relaxed">
                     <p>将二分法思想迁移至其他领域（填入关键词：<span class="font-bold text-violet-600">中值判断 / 缩小区间 / 有序前提</span>）：</p>
                     <ul class="space-y-3">
-                        <li class="flex flex-col gap-1"><span class="font-bold text-slate-700">📌 数学求零点：</span> 利用 <input type="text" class="task-input wide"> 的方式逼近答案。</li>
-                        <li class="flex flex-col gap-1"><span class="font-bold text-slate-700">🔌 电路排障：</span> 利用 <input type="text" class="task-input wide"> 法快速排查断点。</li>
-                        <li class="flex flex-col gap-1"><span class="font-bold text-slate-700">📖 字典查字：</span> 建立在字母排序是 <input type="text" class="task-input wide"> 的基础之上。</li>
+                        <li class="flex flex-col gap-1"><span class="font-bold text-stone-800">🤖 AI 模型调参：</span> 在连续的参数空间中，利用二分思想寻找最佳的 <input type="text" class="task-input wide" placeholder="学习率/参数">。</li>
+                        <li class="flex flex-col gap-1"><span class="font-bold text-stone-800">📌 数学求零点：</span> 利用 <input type="text" class="task-input wide"> 的方式逼近答案。</li>
+                        <li class="flex flex-col gap-1"><span class="font-bold text-stone-800">🔌 电路排障：</span> 利用 <input type="text" class="task-input wide"> 法快速排查断点。</li>
+                        <li class="flex flex-col gap-1"><span class="font-bold text-stone-800">📖 字典查字：</span> 建立在字母排序是 <input type="text" class="task-input wide"> 的基础之上。</li>
                     </ul>
                 </div>
             </div>
@@ -919,7 +1057,7 @@
             if(typeof lucide !== 'undefined') lucide.createIcons();
         });
 
-        const totalSlides = 14; 
+        const totalSlides = 15; 
         let currentSlide = 0;
 
         function renderProgressBar() {
@@ -933,28 +1071,27 @@
                 progressBar.style.display = 'flex';
             }
             
-            // 移除了 { title: "封面", slides: [0] }，使进度条内容从“课程回顾”开始计算
             const progressSegments = [
                 { title: "课程回顾", slides: [1] },
                 { title: "情境导入", slides: [2] },
-                { title: "数学原理", slides: [3, 4] },
+                { title: "算法原理", slides: [3, 4] },
                 { title: "算法模拟", slides: [5] },
                 { title: "代码实现", slides: [6] },
-                { title: "跨学科拓展", slides: [7, 8, 9] }, 
-                { title: "总结", slides: [10, 11, 12] }
+                { title: "拓展", slides: [7, 8, 9, 10] }, // 把新加的第 10 页放进“拓展”模块
+                { title: "总结", slides: [11, 12, 13] }   // 后续页码顺延
             ];
 
             progressBar.innerHTML = progressSegments.map((segment, i) => {
                 let isActive = segment.slides.includes(currentSlide);
                 let isPast = Math.max(...segment.slides) < currentSlide;
                 
-                let textClass = isActive ? 'text-blue-700 font-black' : (isPast ? 'text-blue-500 font-bold' : 'text-slate-400 font-medium');
-                let bgClass = isActive ? 'bg-white/60 active' : (isPast ? 'bg-blue-50/30' : 'bg-transparent');
+                let textClass = isActive ? 'text-stone-800 font-black' : (isPast ? 'text-stone-600 font-bold' : 'text-stone-400 font-medium');
+                let bgClass = isActive ? 'bg-white/80 active border-b-[3px] border-stone-500' : (isPast ? 'bg-stone-100/50 border-b-[3px] border-transparent' : 'bg-transparent border-b-[3px] border-transparent');
                 
                 const seq = String(i + 1).padStart(2, '0');
                 
                 return `
-                    <div class="progress-segment h-full flex-1 flex items-center justify-center text-[10px] lg:text-xs cursor-pointer hover:bg-white/40 transition-colors border-r border-slate-200/50 last:border-r-0 ${bgClass} ${textClass}" onclick="goToSlide(${segment.slides[0]})">
+                    <div class="progress-segment h-full flex-1 flex items-center justify-center text-[10px] lg:text-xs cursor-pointer hover:bg-white/40 transition-colors border-r border-white/40 last:border-r-0 ${bgClass} ${textClass}" onclick="goToSlide(${segment.slides[0]})">
                         <span class="truncate px-1"><span class="opacity-50 font-mono mr-1">${seq}.</span>${segment.title}</span>
                     </div>
                 `;
@@ -971,7 +1108,7 @@
             if (currentSlide === 2) activeTaskId = 1;
             if (currentSlide === 5) activeTaskId = 2; 
             if (currentSlide === 6) activeTaskId = 3; 
-            if (currentSlide >= 7 && currentSlide <= 9) activeTaskId = 4; 
+            if (currentSlide >= 7 && currentSlide <= 10) activeTaskId = 4;
 
             if (activeTaskId) {
                 const card = document.getElementById(`task-card-${activeTaskId}`);
@@ -1011,6 +1148,7 @@
             const binEl = document.getElementById('scenario-bin');
             if (!seqEl || !binEl) return;
 
+            // Step 1: 出现顺序查找
             if (scenarioStep >= 1) {
                 seqEl.classList.remove('opacity-0', 'translate-y-8', 'scale-95', 'pointer-events-none');
                 seqEl.classList.add('opacity-100', 'translate-y-0', 'scale-100');
@@ -1019,12 +1157,106 @@
                 seqEl.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
             }
 
-            if (scenarioStep >= 2) {
+            // Step 2: 播放顺序查找动画 (注意这里：只有在步骤2和3时单独播放，到了步骤4交给下方统一下发指令)
+            if (scenarioStep >= 2 && scenarioStep < 4) {
+                setAnimState('seq', true);
+            } else if (scenarioStep < 2) {
+                setAnimState('seq', false);
+            }
+
+            // Step 3: 出现二分查找
+            if (scenarioStep >= 3) {
                 binEl.classList.remove('opacity-0', 'translate-y-8', 'scale-95', 'pointer-events-none');
                 binEl.classList.add('opacity-100', 'translate-y-0', 'scale-100');
             } else {
                 binEl.classList.add('opacity-0', 'translate-y-8', 'scale-95', 'pointer-events-none');
                 binEl.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
+            }
+
+            // Step 4: 播放二分查找动画，并强制顺序查找重置，实现同步起跑
+            if (scenarioStep >= 4) {
+                const dotBin = document.getElementById('dot-bin');
+                // 确保只有在未播放的状态下进入步骤4时，才触发“瞬间重置并同步起跑”
+                if (!dotBin.classList.contains('anim-bin')) {
+                    const dotSeq = document.getElementById('dot-seq');
+                    
+                    // 拔掉重来
+                    dotSeq.classList.remove('anim-seq');
+                    dotBin.classList.remove('anim-bin');
+                    
+                    // 触发浏览器重绘，让它们乖乖回到起点
+                    void dotSeq.offsetWidth;
+                    void dotBin.offsetWidth;
+                    
+                    // 同时开跑
+                    setAnimState('seq', true);
+                    setAnimState('bin', true);
+                }
+            } else {
+                setAnimState('bin', false);
+            }
+        }
+
+        // 新增：安全地强制设置动画状态
+        function setAnimState(type, forcePlay) {
+            const dot = document.getElementById(`dot-${type}`);
+            if (!dot) return;
+            const btn = document.getElementById(`btn-anim-${type}`);
+            const isPlaying = dot.classList.contains(`anim-${type}`);
+            
+            if (forcePlay && !isPlaying) {
+                dot.classList.remove(`anim-${type}`);
+                void dot.offsetWidth; 
+                dot.classList.add(`anim-${type}`);
+                
+                if (btn) {
+                    btn.innerHTML = `<i data-lucide="square" class="w-4 h-4"></i> 停止`;
+                    btn.className = "px-4 py-1.5 bg-rose-500 text-white rounded-lg shadow-md hover:bg-rose-600 transition-all flex items-center gap-2 font-bold active:scale-95 z-50 pointer-events-auto";
+                }
+            } else if (!forcePlay && isPlaying) {
+                dot.classList.remove(`anim-${type}`);
+                
+                if (btn) {
+                    btn.innerHTML = `<i data-lucide="play" class="w-4 h-4"></i> 播放`;
+                    if (type === 'seq') {
+                        btn.className = "px-4 py-1.5 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition-all flex items-center gap-2 font-bold active:scale-95 z-50 pointer-events-auto";
+                    } else {
+                        btn.className = "px-4 py-1.5 bg-indigo-500 text-white rounded-lg shadow-md hover:bg-indigo-600 transition-all flex items-center gap-2 font-bold active:scale-95 z-50 pointer-events-auto";
+                    }
+                }
+            }
+            if(typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        // 重构：按钮手动点击时，实现动画同步对比
+        function toggleAnim(type) {
+            const dot = document.getElementById(`dot-${type}`);
+            const isPlaying = dot.classList.contains(`anim-${type}`);
+            
+            // 如果点击的是“二分法”按钮
+            if (type === 'bin') {
+                if (!isPlaying) {
+                    // 1. 准备播放：先强制移除两个动画的类名（让它们瞬间回到起点）
+                    const dotSeq = document.getElementById('dot-seq');
+                    const dotBin = document.getElementById('dot-bin');
+                    dotSeq.classList.remove('anim-seq');
+                    dotBin.classList.remove('anim-bin');
+                    
+                    // 2. 触发浏览器重绘 (Reflow)，确保回到起点生效
+                    void dotSeq.offsetWidth;
+                    void dotBin.offsetWidth;
+                    
+                    // 3. 同时启动两个动画和按钮状态
+                    setAnimState('seq', true);
+                    setAnimState('bin', true);
+                } else {
+                    // 点击停止时：让两个动画同时停止，保持整洁
+                    setAnimState('seq', false);
+                    setAnimState('bin', false);
+                }
+            } else {
+                // 如果点击的是“顺序查找”按钮，则保持它自己独立的播放/停止逻辑
+                setAnimState(type, !isPlaying);
             }
         }
 
@@ -1050,7 +1282,8 @@
 
             if (currentSlide === 2) {
                 if (direction === 'next') scenarioStep = 0;
-                else if (direction === 'prev') scenarioStep = 2;
+                // 改为 4 以匹配最新的步进上限
+                else if (direction === 'prev') scenarioStep = 4;
                 else scenarioStep = 0;
                 updateScenarioSteps();
             }
@@ -1076,7 +1309,8 @@
 
         function nextSlide() { 
             if (currentSlide === 1 && reviewStep < 2) { reviewStep++; updateReviewSteps(); return; }
-            if (currentSlide === 2 && scenarioStep < 2) { scenarioStep++; updateScenarioSteps(); return; }
+            // 修改了上限条件
+            if (currentSlide === 2 && scenarioStep < 4) { scenarioStep++; updateScenarioSteps(); return; }
             if (currentSlide === 3 && mathStep < maxMathStep) { mathStep++; renderMathSim(); return; }
             if (currentSlide === 5 && simStep < simSteps.length - 1) { simStep++; renderSim(); return; }
             if (currentSlide === 6 && codeStep < maxCodeStep) { codeStep++; renderCodeLines(); return; }
@@ -1086,6 +1320,7 @@
 
         function prevSlide() { 
             if (currentSlide === 1 && reviewStep > 0) { reviewStep--; updateReviewSteps(); return; }
+            // 如果仍处于情景导入的演示内，允许回退动画与卡片
             if (currentSlide === 2 && scenarioStep > 0) { scenarioStep--; updateScenarioSteps(); return; }
             if (currentSlide === 3 && mathStep > 0) { mathStep--; renderMathSim(); return; }
             if (currentSlide === 5 && simStep > 0) { simStep--; renderSim(); return; }
@@ -1223,26 +1458,26 @@
                 const isActive = idx >= step.l && idx <= step.r;
                 const isMid = idx === step.m;
                 
-                let boxClasses = "bg-slate-100/50 border-transparent text-slate-300 scale-95";
+                let boxClasses = "bg-slate-100 border-transparent text-slate-400 scale-95";
                 let pingDiv = "";
 
                 if (isMid) {
                     if (step.success) {
-                        boxClasses = "bg-emerald-500 text-white border-emerald-400 scale-110 shadow-[0_0_20px_rgba(16,185,129,0.5)] z-20";
+                        boxClasses = "bg-emerald-500 text-white border-emerald-400 scale-110 shadow-[0_0_20px_rgba(16,185,129,0.4)] z-20";
                         pingDiv = `<div class="absolute inset-0 rounded-2xl anim-success-ping"></div>`;
                     } else {
-                        boxClasses = "bg-blue-600 text-white border-blue-400 scale-110 shadow-lg z-20";
+                        boxClasses = "bg-blue-500 text-white border-blue-400 scale-110 shadow-lg z-20";
                     }
-                } else if (isActive) boxClasses = "bg-white border-blue-200 text-slate-800 shadow-sm z-10";
+                } else if (isActive) boxClasses = "bg-white border-blue-200 text-stone-800 shadow-sm z-10";
 
                 let labels = '';
-                if (idx === step.l) labels += `<span class="text-sm font-black text-blue-600 bg-blue-100 px-1 rounded">L</span>`;
-                if (idx === step.r && idx !== step.l) labels += `<span class="text-sm font-black text-blue-600 bg-blue-100 px-1 rounded ml-1">R</span>`;
+                if (idx === step.l) labels += `<span class="text-sm font-black text-blue-600 bg-blue-50 px-1 rounded border border-blue-100">L</span>`;
+                if (idx === step.r && idx !== step.l) labels += `<span class="text-sm font-black text-blue-600 bg-blue-50 px-1 rounded ml-1 border border-blue-100">R</span>`;
                 if (isMid) labels += `<span class="text-sm font-black text-white bg-amber-500 px-1 rounded absolute -top-3 shadow-sm animate-bounce">M</span>`;
 
                 return `
                     <div class="flex flex-col items-center relative">
-                        <span class="text-[10px] text-slate-400 mb-2 font-mono font-bold">${idx}</span>
+                        <span class="text-[10px] text-stone-400 mb-2 font-mono font-bold">${idx}</span>
                         <div class="relative">
                             ${pingDiv}
                             <div class="w-14 h-14 lg:w-16 lg:h-16 flex items-center justify-center rounded-2xl border-2 font-black transition-all duration-500 text-xl lg:text-2xl ${boxClasses} relative z-10">${num}</div>
@@ -1255,7 +1490,7 @@
             const actionEl = document.getElementById('sim-action');
             if(actionEl) {
                 actionEl.innerText = step.action;
-                actionEl.className = step.success ? 'text-emerald-600 font-black text-2xl tracking-wide' : 'text-emerald-900 font-black text-2xl tracking-wide';
+                actionEl.className = step.success ? 'text-emerald-700 font-black text-2xl tracking-wide' : 'text-emerald-900 font-black text-2xl tracking-wide';
             }
 
             if(document.getElementById('sim-l')) document.getElementById('sim-l').innerText = step.l;
@@ -1272,18 +1507,18 @@
 
         function checkAnswer(btn, isCorrect) {
             document.querySelectorAll('.quiz-btn').forEach(b => {
-                b.className = "quiz-btn p-4 lg:p-5 rounded-2xl border-2 border-slate-200 bg-slate-50 text-slate-400 transition-all font-bold text-lg lg:text-xl pointer-events-none";
+                b.className = "quiz-btn p-4 lg:p-5 rounded-2xl border-2 border-stone-200 bg-stone-50 text-stone-400 transition-all font-bold text-lg lg:text-xl pointer-events-none";
             });
             const feedback = document.getElementById('quiz-feedback');
             feedback.classList.remove('hidden');
             
             if (isCorrect) {
-                btn.className = "quiz-btn p-4 lg:p-5 rounded-2xl border-2 border-emerald-500 bg-emerald-50 text-emerald-700 transition-all font-bold text-lg lg:text-xl scale-105 shadow-[0_0_20px_rgba(16,185,129,0.3)] z-10 relative pointer-events-none";
-                feedback.className = "mt-6 lg:mt-8 p-4 lg:p-5 rounded-xl font-bold text-base lg:text-lg flex items-center gap-3 transition-all bg-emerald-100 text-emerald-700 border border-emerald-200 shadow-inner";
+                btn.className = "quiz-btn p-4 lg:p-5 rounded-2xl border-2 border-emerald-500 bg-emerald-50 text-emerald-700 transition-all font-bold text-lg lg:text-xl scale-105 shadow-[0_0_20px_rgba(16,185,129,0.2)] z-10 relative pointer-events-none";
+                feedback.className = "mt-6 lg:mt-8 p-4 lg:p-5 rounded-xl font-bold text-base lg:text-lg flex items-center gap-3 transition-all bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-sm";
                 feedback.innerHTML = `<i data-lucide="check-circle" class="w-6 h-6"></i> 回答正确！15个元素的折半过程为：15 → 7 → 3 → 1 → 0，最多只需 4 次比较。`;
             } else {
-                btn.className = "quiz-btn p-4 lg:p-5 rounded-2xl border-2 border-rose-500 bg-rose-50 text-rose-700 transition-all font-bold text-lg lg:text-xl shadow-sm z-10 relative pointer-events-none";
-                feedback.className = "mt-6 lg:mt-8 p-4 lg:p-5 rounded-xl font-bold text-base lg:text-lg flex items-center gap-3 transition-all bg-rose-100 text-rose-700 border border-rose-200 shadow-inner";
+                btn.className = "quiz-btn p-4 lg:p-5 rounded-2xl border-2 border-rose-400 bg-rose-50 text-rose-600 transition-all font-bold text-lg lg:text-xl shadow-sm z-10 relative pointer-events-none";
+                feedback.className = "mt-6 lg:mt-8 p-4 lg:p-5 rounded-xl font-bold text-base lg:text-lg flex items-center gap-3 transition-all bg-rose-50 text-rose-600 border border-rose-200 shadow-sm";
                 feedback.innerHTML = `<i data-lucide="x-circle" class="w-6 h-6"></i> 回答错误。提示：请尝试计算 log₂(15) 并向上取整，或手动推演每次折半剩余的元素个数。`;
             }
             if(typeof lucide !== 'undefined') lucide.createIcons();
@@ -1292,33 +1527,9 @@
         function selectEval(btn) {
             const group = btn.closest('.eval-group');
             group.querySelectorAll('button').forEach(b => {
-                b.className = "px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-slate-200 text-slate-400 hover:bg-cyan-100 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap";
+                b.className = "px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-white border border-stone-200 text-stone-400 hover:bg-cyan-50 hover:text-cyan-700 transition-all active:scale-95 whitespace-nowrap";
             });
-            btn.className = "px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-cyan-500 border border-cyan-500 text-white shadow-lg transition-all scale-105 z-10 whitespace-nowrap";
-        }
-
-        function toggleAnim(type) {
-            const dot = document.getElementById(`dot-${type}`);
-            const btn = document.getElementById(`btn-anim-${type}`);
-            const isPlaying = dot.classList.contains(`anim-${type}`);
-            
-            if (isPlaying) {
-                dot.classList.remove(`anim-${type}`);
-                btn.innerHTML = `<i data-lucide="play" class="w-4 h-4"></i> 播放`;
-                if (type === 'seq') {
-                    btn.className = "px-4 py-1.5 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition-all flex items-center gap-2 font-bold active:scale-95 z-50 pointer-events-auto";
-                } else {
-                    btn.className = "px-4 py-1.5 bg-indigo-500 text-white rounded-lg shadow-md hover:bg-indigo-600 transition-all flex items-center gap-2 font-bold active:scale-95 z-50 pointer-events-auto";
-                }
-            } else {
-                dot.classList.remove(`anim-${type}`);
-                void dot.offsetWidth; 
-                dot.classList.add(`anim-${type}`);
-                
-                btn.innerHTML = `<i data-lucide="square" class="w-4 h-4"></i> 停止`;
-                btn.className = "px-4 py-1.5 bg-rose-500 text-white rounded-lg shadow-md hover:bg-rose-600 transition-all flex items-center gap-2 font-bold active:scale-95 z-50 pointer-events-auto";
-            }
-            if(typeof lucide !== 'undefined') lucide.createIcons();
+            btn.className = "px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-cyan-500 border border-cyan-500 text-white shadow-md transition-all scale-105 z-10 whitespace-nowrap";
         }
 
         document.addEventListener("DOMContentLoaded", function() {
