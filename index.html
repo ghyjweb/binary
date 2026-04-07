@@ -1976,6 +1976,9 @@
             
             const userPromptText = fakeInput.innerText;
 
+            // 如果输入框已经是默认占位符，则不执行操作（防止一直点空消息）
+            if (userPromptText === "给豆包发送消息..." || userPromptText === "发消息给 豆包...") return;
+
             btn.disabled = true;
             btn.classList.add('opacity-50', 'cursor-not-allowed');
             btn.innerHTML = `<i data-lucide="loader" class="w-4 h-4 animate-spin"></i>`;
@@ -2055,7 +2058,6 @@
                         initSheepCanvas();
 
                         aiChatStep = 2;
-                        // 这里修改了下一步预设的用户提问内容
                         fakeInput.innerText = "请利用二分法帮我分析这道题的解题思路！";
                         fakeInput.classList.remove('text-slate-400');
                         fakeInput.classList.add('text-slate-700');
@@ -2069,7 +2071,6 @@
                 } else if (aiChatStep === 2) {
                     setTimeout(() => {
                         const typingEl = document.getElementById(aiTypingId);
-                        // 这里修改了 AI 生成的分析文案，更贴合二分查找的 Left/Right/Mid 逻辑
                         typingEl.innerHTML = `
                             <div class="w-7 h-7 rounded-full overflow-hidden border border-slate-200 shadow-sm shrink-0 mt-0.5 bg-white">
                                 <img src="./doubao-avatar.png" alt="豆包" class="w-full h-full object-cover">
@@ -2097,15 +2098,23 @@
                             </div>
                         `;
                         chatHistory.scrollTop = chatHistory.scrollHeight;
-                        if(typeof lucide !== 'undefined') lucide.createIcons();
                         
-                        btn.innerHTML = `<i data-lucide="check" class="w-4 h-4"></i>`;
-                        fakeInput.innerText = "对话已结束";
+                        // ===== 修改点：恢复输入框和按钮的自然状态 =====
+                        btn.innerHTML = `<i data-lucide="arrow-up" class="w-4 h-4 group-hover:-translate-y-0.5 transition-transform"></i>`;
+                        btn.disabled = false;
+                        btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                        
+                        fakeInput.innerText = "给豆包发送消息...";
+                        fakeInput.classList.remove('text-slate-700');
+                        fakeInput.classList.add('text-slate-400');
+                        // ===========================================
+                        
+                        if(typeof lucide !== 'undefined') lucide.createIcons();
                     }, 1500);
                 }
             }, 500);
-        }
-        
+        }        
+
         function initSheepCanvas() {
             const canvas = document.getElementById('sheepDemoCanvas');
             const wrapper = document.getElementById('sheep-canvas-wrapper');
