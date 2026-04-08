@@ -1118,7 +1118,9 @@
                 e.target.closest('select') || 
                 e.target.tagName === 'OPTION' ||
                 e.target.tagName === 'INPUT' ||
-                e.target.closest('#ide-window')) return; 
+                e.target.closest('#ide-window') ||
+                e.target.closest('.cursor-crosshair') // <--- 新增：拦截情境探究和 AI 调参师条的点击，防止误触翻页
+            ) return; 
 
             const clickX = e.clientX;
             const screenWidth = window.innerWidth;
@@ -1131,7 +1133,6 @@
             }
         }, true); // <--- 注意看这里，加上 true 即可完美解决
 
-        /* [等待任务四注入：按教学环节拆分的所有 JS 逻辑] */
         // 交互逻辑与教学模块 (JavaScript Scripts)
         // 按教学环节解耦，统一状态机管理
 
