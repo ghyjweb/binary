@@ -1561,49 +1561,58 @@
         }
 
         function executeHalve() {
-            if (mathGameWon) return;
+    if (mathGameWon) return;
 
-            mathCutsK++;
-            document.getElementById('math-k-count').innerText = mathCutsK;
-            mathCurrentN = Math.max(1, Math.floor(mathCurrentN / 2));
-            document.getElementById('math-current-n').innerText = mathCurrentN.toLocaleString();
-            
-            const dataBlock = document.getElementById('math-data-block');
-            const flash = document.getElementById('slash-effect');
-            dataBlock.classList.remove('shake-animation');
-            void dataBlock.offsetWidth; 
-            dataBlock.classList.add('shake-animation');
-            flash.style.opacity = '0.5';
-            setTimeout(() => { flash.style.opacity = '0'; }, 150);
+    mathCutsK++;
+    document.getElementById('math-k-count').innerText = mathCutsK;
+    mathCurrentN = Math.max(1, Math.floor(mathCurrentN / 2));
+    document.getElementById('math-current-n').innerText = mathCurrentN.toLocaleString();
+    
+    const dataBlock = document.getElementById('math-data-block');
+    const flash = document.getElementById('slash-effect');
+    dataBlock.classList.remove('shake-animation');
+    void dataBlock.offsetWidth; 
+    dataBlock.classList.add('shake-animation');
+    flash.style.opacity = '0.5';
+    setTimeout(() => { flash.style.opacity = '0'; }, 150);
 
-            const emptyState = document.getElementById('math-empty-state');
-            if(emptyState) emptyState.remove();
+    const emptyState = document.getElementById('math-empty-state');
+    if(emptyState) emptyState.remove();
 
-            const logsContainer = document.getElementById('math-logs');
-            const newLog = document.createElement('div');
-            newLog.className = "flex items-center gap-3 p-2 lg:p-3 bg-stone-50 rounded-xl border border-stone-200 animate-[slideInRight_0.3s_ease-out]";
-            newLog.innerHTML = `<span class="bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded text-xs font-bold shrink-0">第 ${mathCutsK} 次</span><span class="text-stone-600 flex-1 whitespace-nowrap">n / 2<sup>${mathCutsK}</sup></span><span class="text-stone-400"><i data-lucide="arrow-right" class="w-4 h-4 inline"></i></span><span class="text-emerald-600 font-bold shrink-0 text-right w-20">${mathCurrentN.toLocaleString()}</span>`;
-            logsContainer.appendChild(newLog);
-            logsContainer.scrollTop = logsContainer.scrollHeight; 
-            if(typeof lucide !== 'undefined') lucide.createIcons();
+    const logsContainer = document.getElementById('math-logs');
+    const newLog = document.createElement('div');
+    newLog.className = "flex items-center gap-3 p-2 lg:p-3 bg-stone-50 rounded-xl border border-stone-200 animate-[slideInRight_0.3s_ease-out]";
+    newLog.innerHTML = `<span class="bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded text-xs font-bold shrink-0">第 ${mathCutsK} 次</span><span class="text-stone-600 flex-1 whitespace-nowrap">n / 2<sup>${mathCutsK}</sup></span><span class="text-stone-400"><i data-lucide="arrow-right" class="w-4 h-4 inline"></i></span><span class="text-emerald-600 font-bold shrink-0 text-right w-20">${mathCurrentN.toLocaleString()}</span>`;
+    logsContainer.appendChild(newLog);
+    logsContainer.scrollTop = logsContainer.scrollHeight; 
+    if(typeof lucide !== 'undefined') lucide.createIcons();
 
-            if (mathCurrentN <= 1) {
-                mathGameWon = true;
-                const btn = document.getElementById('btn-halve-strike');
-                btn.disabled = true;
-                btn.className = "group relative px-8 py-4 bg-stone-500 text-white rounded-2xl font-black text-2xl shadow-inner transition-all flex items-center gap-3 overflow-hidden opacity-80 cursor-not-allowed mt-10";
-                btn.innerHTML = `<i data-lucide="check-circle" class="w-7 h-7"></i> 数据已粉碎`;
+    // 当数据缩减到 1 时触发
+    if (mathCurrentN <= 1) {
+        mathGameWon = true;
+        const btn = document.getElementById('btn-halve-strike');
+        btn.disabled = true;
+        
+        // 核心修复：确保 flex 和 居中属性
+        btn.className = "mx-auto w-fit px-8 py-3 bg-stone-100 border-2 border-dashed border-stone-300 text-stone-400 rounded-2xl font-black text-xl flex items-center justify-center gap-2 mt-4 cursor-default transition-all duration-700 opacity-100 shadow-inner relative z-10";
+        btn.innerHTML = `<i data-lucide="check-circle" class="w-6 h-6"></i> <span>数据已粉碎</span>`;
 
-                dataBlock.className = "w-full max-w-xs aspect-square bg-gradient-to-br from-emerald-400 to-teal-500 rounded-[2.5rem] shadow-[0_10px_40px_rgba(16,185,129,0.4)] flex flex-col items-center justify-center text-white relative transition-all duration-700 transform scale-105";
+        // 改变上方数据块颜色为绿色
+        dataBlock.className = "w-full max-w-[14rem] lg:max-w-[16rem] aspect-square bg-gradient-to-br from-emerald-400 to-teal-500 rounded-[2.5rem] shadow-[0_10px_40px_rgba(16,185,129,0.4)] flex flex-col items-center justify-center text-white relative transition-all duration-700 transform scale-105";
 
-                document.getElementById('final-k').innerText = mathCutsK;
-                const conclusion = document.getElementById('math-conclusion');
-                setTimeout(() => {
-                    conclusion.classList.remove('translate-y-full', 'opacity-0');
-                    conclusion.classList.add('translate-y-0', 'opacity-100');
-                }, 500);
-            }
-        }
+        // 更新结论面板
+        document.getElementById('final-k').innerText = mathCutsK;
+        const conclusion = document.getElementById('math-conclusion');
+        setTimeout(() => {
+            conclusion.classList.remove('translate-y-full', 'opacity-0');
+            conclusion.classList.add('translate-y-0', 'opacity-100');
+        }, 500);
+
+        // 【关键修复点】：重新触发图标渲染！
+        // 这样左侧的打勾图标就会显示出来，与右侧的文字形成平衡，在整个按钮内部实现绝对居中。
+        if(typeof lucide !== 'undefined') lucide.createIcons();
+    }
+}
 
         const scaleDataMap = {
             1: { n: 50, label: "50" },
