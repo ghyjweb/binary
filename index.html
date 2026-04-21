@@ -506,74 +506,78 @@
             </div>
 
             <div id="slide-4" class="slide inactive-right absolute inset-0">
-                <div class="absolute inset-0 z-0 opacity-30 bg-cover bg-center bg-no-repeat" style="background-image: url('./bg-log.jpg');"></div>
-                
-                <div class="relative z-10 h-full w-full p-4 lg:p-8 flex flex-col items-center pointer-events-auto">
-                    <div class="w-full max-w-5xl flex flex-col max-h-full overflow-y-auto task-scrollbar pt-4 pb-12 lg:py-8 lg:justify-center">
+                <div class="absolute inset-0 z-0 opacity-30 bg-cover bg-center bg-no-repeat" style="background-image: url('./bg-log.jpg'); background-color: #f8fafc;"></div>
+                <div class="relative z-10 w-full flex flex-col items-center pointer-events-auto" style="justify-content: flex-start !important; padding-top: 2.5% !important; padding-bottom: 2.5% !important; height: 100% !important;">
+                    <div class="w-full max-w-6xl flex flex-col h-full flex-1 gap-3 lg:gap-4 relative z-20">
                         
-                        <div class="shrink-0 flex items-center justify-center gap-3 lg:gap-4 mb-4 bg-white/80 backdrop-blur-md px-5 py-2.5 rounded-2xl border border-white/50 shadow-sm mx-auto w-fit">
-                            <div class="p-2 bg-indigo-50 border border-indigo-100 rounded-2xl text-indigo-500 shadow-sm"><i data-lucide="trending-up" class="w-6 h-6 lg:w-7 lg:h-7"></i></div>
-                            <h2 class="text-xl lg:text-3xl font-black text-stone-800 m-0">3. 算法原理</h2>
+                        <div class="flex items-center justify-center gap-3 bg-white/80 backdrop-blur-md px-5 py-2.5 lg:px-6 lg:py-3 rounded-2xl border border-white/50 shadow-sm mx-auto w-fit shrink-0">
+                            <div class="w-8 h-8 lg:w-10 lg:h-10 rounded-xl overflow-hidden border border-indigo-100 shadow-sm shrink-0 bg-white">
+                                <img src="./doubao-avatar.png" alt="豆包" class="w-full h-full object-cover">
+                            </div>
+                            <h2 class="text-xl lg:text-3xl font-black text-stone-800 tracking-widest uppercase m-0">3. 算法原理：借助 AI 感受降维打击</h2>
                         </div>
 
-                        <div class="shrink-0 bg-white/95 p-5 lg:p-6 rounded-[2rem] lg:rounded-[2.5rem] border border-stone-200 shadow-xl mb-5 relative z-20 transition-all duration-300 hover:shadow-2xl">
-                            <div class="flex justify-between items-center mb-4 lg:mb-5">
-                                <h3 class="text-lg lg:text-xl font-black text-stone-700 flex items-center gap-2">
-                                    <i data-lucide="sliders-horizontal" class="text-indigo-500 w-5 h-5"></i> 拖动滑块，感受数据爆炸
-                                </h3>
-                                <div class="px-3 py-1.5 bg-indigo-50 text-indigo-700 rounded-xl border border-indigo-100 font-bold text-xs lg:text-sm shadow-sm">
-                                    当前数据量(n)：<span id="slider-n-display" class="text-indigo-600 font-black text-base lg:text-lg ml-1">1,000,000</span>
-                                </div>
-                            </div>
-                            <input type="range" id="data-scale-slider" min="1" max="5" step="1" value="3" class="w-full h-3 lg:h-4 bg-slate-200 rounded-full appearance-none cursor-pointer mb-3 shadow-inner" oninput="updateLogScale()">
-                            <div class="flex justify-between text-[10px] lg:text-xs font-bold text-slate-400 px-2 mt-2">
-                                <span class="cursor-pointer hover:text-indigo-500 transition-colors" onclick="setSliderValue(1)">全班(50)</span>
-                                <span class="cursor-pointer hover:text-indigo-500 transition-colors" onclick="setSliderValue(2)">全校(3千)</span>
-                                <span class="cursor-pointer hover:text-indigo-500 transition-colors text-center" onclick="setSliderValue(3)">东莞人口<br>(1千万)</span>
-                                <span class="cursor-pointer hover:text-indigo-500 transition-colors text-center" onclick="setSliderValue(4)">全国人口<br>(14亿)</span>
-                                <span class="cursor-pointer hover:text-indigo-500 transition-colors text-right" onclick="setSliderValue(5)">全球IP数<br>(42亿)</span>
-                            </div>
-                        </div>
-
-                        <div class="shrink-0 grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5 relative">
-                            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 bg-stone-800 text-white rounded-full flex items-center justify-center font-black text-sm lg:text-base italic z-30 shadow-xl border-4 border-white/50">VS</div>
+                        <div class="flex flex-col lg:flex-row flex-1 min-h-0 w-full bg-white/95 rounded-[2rem] border border-stone-200 shadow-xl overflow-hidden backdrop-blur-md">
                             
-                            <div class="bg-white/90 border border-stone-200 p-5 lg:p-6 rounded-[1.5rem] lg:rounded-[2rem] shadow-sm backdrop-blur-sm relative overflow-hidden flex flex-col justify-center transition-all duration-300">
-                                <div class="absolute top-0 left-0 w-full h-1.5 bg-rose-400"></div>
-                                <div class="text-stone-500 text-xs lg:text-sm font-black mb-2 uppercase tracking-widest flex items-center gap-1.5">
-                                    <i data-lucide="footprints" class="w-4 h-4 lg:w-5 lg:h-5 text-rose-400"></i> 笨办法：顺序查找 O(n)
+                            <div class="w-full lg:w-[32%] p-4 lg:p-6 border-b lg:border-b-0 lg:border-r border-stone-200 bg-stone-50/50 shrink-0 flex flex-col overflow-y-auto task-scrollbar">
+                                <div class="flex items-center gap-2 mb-3 lg:mb-4">
+                                    <span class="bg-stone-800 text-white text-xs font-black px-2 py-1 rounded shadow-sm tracking-widest uppercase shrink-0">情境探讨</span>
+                                    <h3 class="text-lg lg:text-xl font-bold text-stone-700 leading-tight">海量数据检索</h3>
                                 </div>
-                                <div class="text-base lg:text-lg font-bold text-stone-600 mb-1">最坏需要比较：</div>
-                                <div class="flex items-baseline gap-2">
-                                    <div id="val-seq" class="text-3xl lg:text-5xl font-black text-rose-500 font-mono tracking-tight drop-shadow-sm transition-all duration-100">1,000,000</div>
-                                    <span class="text-base lg:text-lg font-bold text-stone-400">次</span>
+                                <div class="text-stone-600 text-sm lg:text-base leading-relaxed space-y-3 font-medium">
+                                    <p>假设我们有一个包含 <span class="font-bold text-rose-600 font-mono text-lg">14亿</span> 条记录的全国人口身份数据库，且数据已经按身份证号<b class="text-emerald-600 mx-1">从小到大排好序</b>。</p>
+                                    <p>现在我们要在库中找出某个特定罪犯的身份信息。为了方便计算，假设计算机每秒钟只能进行 <span class="font-bold text-blue-600 font-mono">1</span> 次数据比对。</p>
+                                    <div class="flex flex-col gap-2 text-stone-800 bg-indigo-50 p-3 lg:p-3.5 rounded-xl border border-indigo-200 mt-2 lg:mt-4 shadow-inner">
+                                        <div class="flex items-center gap-1.5 text-indigo-600 font-bold mb-1">
+                                            <i data-lucide="help-circle" class="w-4 h-4 lg:w-5 lg:h-5 shrink-0"></i> 思考：
+                                        </div>
+                                        <p class="font-bold text-sm lg:text-base leading-relaxed text-indigo-900">使用笨办法（顺序查找）和聪明办法（二分查找），最坏情况下分别需要找多久？</p>
+                                    </div>
                                 </div>
+                            </div>
+
+                            <div class="flex flex-col flex-1 min-w-0 bg-slate-50 relative">
+                                <div class="flex items-center justify-between px-4 lg:px-5 py-2.5 lg:py-3 border-b border-slate-200 bg-white shrink-0 shadow-sm">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-6 h-6 lg:w-7 lg:h-7 rounded-full overflow-hidden border border-slate-200 shadow-sm shrink-0 bg-white">
+                                            <img src="./doubao-avatar.png" alt="豆包" class="w-full h-full object-cover">
+                                        </div>
+                                        <span class="font-black text-slate-700 text-sm">豆包 AI Assistant</span>
+                                    </div>
+                                    <div class="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded-md">在线 (Idle)</div>
+                                </div>
+
+                                <div id="slide4-ai-chat-history" class="flex-1 overflow-y-auto p-4 lg:p-5 space-y-4 lg:space-y-5 task-scrollbar relative">
+                                    <div class="flex gap-3 max-w-[90%]">
+                                        <div class="w-6 h-6 lg:w-7 lg:h-7 rounded-full overflow-hidden border border-slate-200 shadow-sm shrink-0 mt-0.5 bg-white">
+                                            <img src="./doubao-avatar.png" alt="豆包" class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-sm shadow-sm text-xs lg:text-sm text-slate-700 leading-relaxed">
+                                            你好！面对 14 亿这么庞大的数据量，算法的选择会产生天壤之别。你可以点击下方发送问题，让我帮你算一笔账！
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white border-t border-slate-200 shrink-0 flex flex-col relative z-10 p-3 lg:p-4">
+                                    <div class="w-full bg-white border border-indigo-300 rounded-2xl p-1.5 pl-3 flex items-center gap-2 text-slate-700 shadow-sm focus-within:ring-2 focus-within:ring-indigo-100 transition-all">
+                                        <div class="text-slate-400 hover:text-indigo-500 transition-colors shrink-0 cursor-pointer">
+                                            <i data-lucide="sparkles" class="w-4 h-4"></i>
+                                        </div>
+                                        <div id="slide4-ai-fake-input" class="flex-1 text-xs lg:text-sm font-medium outline-none truncate text-slate-700">
+                                            帮我横向对比顺序查找和二分查找的耗时差距
+                                        </div>
+                                        <button id="btn-slide4-ask-ai" onclick="startSlide4AIAnalysis(event)" class="w-7 h-7 lg:w-8 lg:h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center shrink-0 hover:bg-indigo-700 active:scale-95 transition-all shadow-sm group">
+                                            <i data-lucide="arrow-up" class="w-4 h-4 group-hover:-translate-y-0.5 transition-transform"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
                             </div>
                             
-                            <div class="bg-gradient-to-br from-indigo-50 to-blue-50 border border-indigo-200 p-5 lg:p-6 rounded-[1.5rem] lg:rounded-[2rem] shadow-lg backdrop-blur-sm relative overflow-hidden flex flex-col justify-center transition-all duration-300 transform hover:scale-[1.02]">
-                                <div class="absolute top-0 left-0 w-full h-1.5 bg-indigo-500"></div>
-                                <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-indigo-200/40 rounded-full blur-2xl pointer-events-none"></div>
-                                <div class="text-indigo-600 text-xs lg:text-sm font-black mb-2 uppercase tracking-widest flex items-center gap-1.5 relative z-10">
-                                    <i data-lucide="zap" class="w-4 h-4 lg:w-5 lg:h-5"></i> 降维打击：二分查找 O(log₂n)
-                                </div>
-                                <div class="text-base lg:text-lg font-bold text-indigo-900/70 mb-1 relative z-10">最坏仅需比较：</div>
-                                <div class="flex items-baseline gap-2 relative z-10">
-                                    <div id="val-bin" class="text-4xl lg:text-6xl font-black text-indigo-600 font-mono tracking-tight drop-shadow-md transition-all duration-300">20</div>
-                                    <span class="text-base lg:text-lg font-bold text-indigo-400">次</span>
-                                </div>
-                            </div>
                         </div>
-
-                        <div class="shrink-0 mt-5 text-center relative z-20">
-                            <p class="text-stone-600 text-sm lg:text-base italic tracking-wide font-sans font-bold bg-white/80 inline-block px-6 py-2.5 rounded-full border border-stone-200 shadow-sm backdrop-blur-sm m-0">
-                                “即使数据如星辰般浩瀚，二分法也能在屈指可数的次数内锁定目标。”
-                            </p>
-                        </div>
-
                     </div>
                 </div>
-
-            </div> 
+            </div>
             
             <div id="slide-5" class="slide inactive-right absolute inset-0">
                 <div class="absolute inset-0 z-0 opacity-30 bg-cover bg-center bg-no-repeat" style="background-image: url('./bg-sim.jpg');"></div>
@@ -633,6 +637,58 @@
             </div>
 
             <div id="slide-6" class="slide inactive-right absolute inset-0">
+                <div class="absolute inset-0 z-0 opacity-30 bg-cover bg-center bg-no-repeat" style="background-image: url('./bg-sim.jpg');"></div>
+                <div class="relative z-10 h-full w-full p-4 lg:p-8 flex flex-col items-center pointer-events-auto h-screen overflow-y-auto">
+                    <div class="w-full max-w-5xl flex flex-col max-h-full overflow-y-auto task-scrollbar pt-4 pb-12 lg:py-8 lg:justify-center my-auto">
+                        <div class="shrink-0 flex justify-between items-center mb-4">
+                            <div class="flex items-center gap-3 lg:gap-4 bg-white/80 backdrop-blur-md px-5 py-2.5 rounded-2xl border border-white/50 shadow-sm w-fit">
+                                <div class="p-2 bg-emerald-50 border border-emerald-100 rounded-2xl text-emerald-600 shadow-sm"><i data-lucide="gamepad" class="w-6 h-6 lg:w-7 lg:h-7"></i></div>
+                                <h2 class="text-xl lg:text-3xl font-black text-stone-800 m-0 flex items-center gap-2">
+                                    进阶模拟：自定义数据寻值 
+                                    <span id="title-target-badge-v2" class="hidden text-white font-mono font-black bg-rose-500 border border-rose-600 px-3 py-0.5 rounded-lg shadow-sm"></span>
+                                </h2>
+                            </div>
+                            <button onclick="initInteractiveSimV2()" class="px-3 lg:px-4 py-2 bg-white hover:bg-stone-50 border border-stone-200 rounded-xl text-stone-600 font-bold transition-all shadow-sm flex items-center gap-2 active:scale-95 shrink-0 text-sm lg:text-base">
+                                <i data-lucide="refresh-cw" class="w-4 h-4"></i> <span class="hidden sm:inline">重新设置</span>
+                            </button>
+                        </div>
+                        
+                        <div id="interactive-array-container-v2" class="shrink-0 flex flex-wrap gap-2 lg:gap-3 justify-center mb-8 lg:mb-10 bg-white/90 p-4 lg:p-6 rounded-[2rem] lg:rounded-[2.5rem] border border-white shadow-xl backdrop-blur-md min-h-[220px] items-center relative z-20"></div>                        
+                        
+                        <div class="shrink-0 bg-slate-900 p-5 lg:p-6 rounded-[2rem] border-[4px] border-slate-800 shadow-2xl flex flex-col justify-between relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400 via-teal-500 to-blue-500"></div>
+                            <div class="flex flex-col lg:flex-row gap-4 lg:gap-6 items-start lg:items-center relative z-10 w-full">
+                                <div class="flex flex-col gap-2 shrink-0 bg-slate-800/80 p-3 lg:p-4 rounded-2xl border border-slate-700 min-w-[120px] lg:min-w-[140px]">
+                                    <div class="text-[10px] text-slate-400 font-black tracking-widest uppercase mb-0.5">系统变量</div>
+                                    <div class="flex justify-between items-center text-slate-300 font-mono font-bold text-base lg:text-lg"><span class="text-blue-400">L (Left)</span> <span id="ui-val-l-v2" class="bg-slate-900 px-2 py-0.5 rounded">-</span></div>
+                                    <div class="flex justify-between items-center text-slate-300 font-mono font-bold text-base lg:text-lg"><span class="text-blue-400">R (Right)</span> <span id="ui-val-r-v2" class="bg-slate-900 px-2 py-0.5 rounded">-</span></div>
+                                    <div class="flex justify-between items-center text-slate-300 font-mono font-bold text-base lg:text-lg"><span class="text-amber-400">M (Mid)</span> <span id="ui-val-m-v2" class="bg-slate-900 px-2 py-0.5 rounded">-</span></div>
+                                </div>
+                                
+                                <div class="flex-1 w-full flex flex-col justify-center">
+                                    <div class="flex flex-col xl:flex-row xl:items-center justify-between mb-2 gap-2">
+                                        <h3 class="text-emerald-400 font-black text-xs tracking-widest uppercase flex items-center gap-1.5 m-0"><i data-lucide="terminal-square" class="w-4 h-4"></i> 系统反馈与任务</h3>
+                                        <div class="text-amber-400 text-xs font-bold flex items-center gap-1.5 bg-amber-400/10 border border-amber-400/20 px-2 py-1 rounded w-fit">
+                                            <i data-lucide="alert-triangle" class="w-3.5 h-3.5"></i>
+                                            <span>提示：变量 <b class="text-blue-400">L</b>、<b class="text-blue-400">R</b> 和 <b class="text-amber-400">Mid</b> 代表<span class="text-rose-400">索引(位置)</span>，而非方块内的数值！</span>
+                                        </div>
+                                    </div>
+                                    <div class="min-h-[70px] lg:min-h-[80px] flex flex-col justify-center">
+                                        <p id="ui-prompt-text-v2" class="text-white text-base lg:text-lg font-bold leading-relaxed m-0 transition-all"></p>
+                                    </div>
+                                    <div id="ui-action-buttons-v2" class="flex flex-wrap gap-2 lg:gap-3 hidden mt-3">
+                                        <button id="btn-less-v2" onclick="handleCompareV2('<')" class="px-3 py-2 lg:px-4 lg:py-2.5 bg-slate-800 border-2 border-slate-600 hover:border-emerald-400 text-slate-200 rounded-xl font-bold transition-all flex items-center gap-1.5"></button>
+                                        <button id="btn-equal-v2" onclick="handleCompareV2('==')" class="px-3 py-2 lg:px-4 lg:py-2.5 bg-slate-800 border-2 border-slate-600 hover:border-amber-400 text-slate-200 rounded-xl font-bold transition-all flex items-center gap-1.5"></button>
+                                        <button id="btn-greater-v2" onclick="handleCompareV2('>')" class="px-3 py-2 lg:px-4 lg:py-2.5 bg-slate-800 border-2 border-slate-600 hover:border-rose-400 text-slate-200 rounded-xl font-bold transition-all flex items-center gap-1.5"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="slide-7" class="slide inactive-right absolute inset-0">
     <div class="absolute inset-0 z-0 opacity-30 bg-cover bg-center bg-no-repeat" style="background-image: url('./daima.jpg');"></div>
     
     <div class="relative z-10 h-full w-full p-2 lg:p-4 flex flex-col items-center pointer-events-auto">
@@ -696,7 +752,7 @@
     </div>
             </div>
 
-            <div id="slide-7" class="slide inactive-right absolute inset-0">
+            <div id="slide-8" class="slide inactive-right absolute inset-0">
     <div class="absolute inset-0 z-0 opacity-40 bg-cover bg-center bg-no-repeat" style="background-image: url('./bg-ai.jpg');"></div>
     
     <div class="relative z-10 h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center pointer-events-auto">
@@ -774,7 +830,7 @@
     </div>
             </div>
 
-            <div id="slide-8" class="slide inactive-right absolute inset-0">
+            <div id="slide-9" class="slide inactive-right absolute inset-0">
                 <div class="absolute inset-0 z-0 opacity-40 bg-cover bg-center bg-no-repeat" style="background-image: url('./bg-extension.jpg'); background-color: #f8fafc;"></div>
                 <div class="relative z-10 w-full flex flex-col items-center pointer-events-auto" style="justify-content: flex-start !important; padding-top: 2.5% !important; padding-bottom: 2.5% !important; height: 100% !important;">
                     <div class="w-full max-w-6xl flex flex-col h-full flex-1 gap-3 lg:gap-4 relative z-20">
@@ -848,7 +904,7 @@
                 </div>
             </div>
 
-            <div id="slide-9" class="slide inactive-right absolute inset-0">
+            <div id="slide-10" class="slide inactive-right absolute inset-0">
     <div class="absolute inset-0 z-0 opacity-20 bg-cover bg-center bg-no-repeat" style="background-image: url('./conclusion.jpg');"></div>
     
     <div class="relative z-10 h-full w-full p-4 lg:p-6 flex flex-col items-center justify-center pointer-events-auto">
@@ -905,7 +961,7 @@
     </div>
             </div>
 
-            <div id="slide-10" class="slide inactive-right absolute inset-0">
+            <div id="slide-11" class="slide inactive-right absolute inset-0">
     <div class="absolute inset-0 z-0 opacity-20 bg-cover bg-center bg-no-repeat" style="background-image: url('./test.jpg');"></div>
     
     <div class="relative z-10 h-full w-full p-4 lg:p-8 flex flex-col items-center pointer-events-auto">
@@ -962,7 +1018,7 @@
     </div>
             </div>
 
-            <div id="slide-11" class="slide inactive-right absolute inset-0">
+            <div id="slide-12" class="slide inactive-right absolute inset-0">
     <div class="absolute inset-0 z-0 opacity-30 bg-cover bg-center bg-no-repeat" style="background-image: url('./evaluation.jpg');"></div>
 
     <div class="relative z-10 h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center pointer-events-auto">
@@ -1066,7 +1122,7 @@
     </div>
             </div>
 
-            <div id="slide-12" class="slide inactive-right absolute inset-0">
+            <div id="slide-13" class="slide inactive-right absolute inset-0">
                 <div class="h-full w-full p-8 flex flex-col items-center justify-center">
                     <div class="text-center w-full flex flex-col items-center justify-center h-full space-y-12">
                         <div class="relative">
@@ -1270,22 +1326,7 @@
             renderProgressBar();
             updateSlides('next');
             
-            const rangePanel = document.getElementById('dict-l-val');
-            if (rangePanel) {
-                const rangeBox = rangePanel.parentElement.parentElement;
-                const statusContainer = document.createElement('div');
-                statusContainer.className = "flex items-center gap-2 shrink-0 ml-2";
-                rangeBox.classList.remove('ml-2');
-                const stepBox = document.createElement('div');
-                stepBox.id = 'dict-step-counter';
-                stepBox.className = "px-3 py-1.5 bg-rose-50 rounded-xl border border-rose-200 shadow-inner flex flex-col items-center gap-0.5 transition-all duration-300";
-                stepBox.innerHTML = `<span class="text-[9px] lg:text-[10px] font-black tracking-widest text-rose-400 uppercase">已翻开次数</span><span class="text-sm lg:text-base font-black text-rose-600 font-mono" id="dict-step-val">0</span>`;
-                rangeBox.parentNode.insertBefore(statusContainer, rangeBox);
-                statusContainer.appendChild(stepBox); statusContainer.appendChild(rangeBox);
-            }
-            
             initSeqGame();
-            updateLogScale();
             initGame();
             initMathGame();
             initInteractiveSim();
@@ -1314,15 +1355,15 @@
         });
 
         // ================= [0. 核心状态与导航系统 =================
-        const totalSlides = 13; 
+        const totalSlides = 14; 
         let currentSlide = 0;
         let isDrawerOpen = false;
 
-        const taskIntercepted = { 2: false, 5: false, 6: false };
+        const taskIntercepted = { 2: false, 6: false, 7: false };
 
         function shouldInterceptForward(fromSlide, toSlide) {
             if (toSlide <= fromSlide) return false;
-            if ([2, 5, 6].includes(fromSlide) && !taskIntercepted[fromSlide]) {
+            if ([2, 6, 7].includes(fromSlide) && !taskIntercepted[fromSlide]) {
                 return true;
             }
             return false;
@@ -1336,9 +1377,9 @@
             
             let activeTaskId = null;
             if (currentSlide === 2) activeTaskId = 1;
-            if (currentSlide === 5) activeTaskId = 2; 
-            if (currentSlide === 6) activeTaskId = 3; 
-            if (currentSlide >= 7 && currentSlide <= 8) activeTaskId = 4;
+            if (currentSlide === 5 || currentSlide === 6) activeTaskId = 2; // Slide 5和6都对应任务二
+            if (currentSlide === 7) activeTaskId = 3; 
+            if (currentSlide >= 8 && currentSlide <= 9) activeTaskId = 4;
 
             if (activeTaskId && activeTaskId > maxReachedTaskId) {
                 maxReachedTaskId = activeTaskId;
@@ -1351,12 +1392,10 @@
                 tipDiv.className = 'bg-indigo-50 text-indigo-600 p-3 lg:p-4 rounded-xl border border-indigo-200 flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:bg-indigo-100 transition-all font-bold text-sm mt-4 active:scale-95 group shrink-0';
                 tipDiv.innerHTML = '<i data-lucide="check-circle" class="w-5 h-5 group-hover:scale-110 transition-transform"></i> 本项任务已完成，点击关闭任务单';
                 
-                // 修改点：加入当前页判断，避免 Slide 2 强制翻页
                 tipDiv.onclick = function() {
                     toggleTaskDrawer();
                     
-                    // 如果是 Slide 2（或 Slide 5 这种需要留在本页看提示的），则阻止自动翻页
-                    if (currentSlide === 2 || currentSlide === 5) {
+                    if (currentSlide === 2 || currentSlide === 5 || currentSlide === 6) {
                         return; 
                     }
                     
@@ -1394,7 +1433,47 @@
             }
         }
 
+        // ================= [新增：自动化互动状态控制] =================
+        let slide4Step = 0;
+        let slide9Step = 0;
+        let slide10Step = 0;
+
+        function updateSlides(direction = 'next') {
+            // 切页时重置对应页面的互动进度
+            if (currentSlide === 4) slide4Step = 0;
+            if (currentSlide === 9) slide9Step = 0;
+            if (currentSlide === 10) slide10Step = 0;
+
+            for(let i = 0; i < totalSlides; i++) {
+                const slide = document.getElementById(`slide-${i}`);
+                if(!slide) continue;
+                if (i === currentSlide) slide.className = "slide active absolute inset-0";
+                else if (i < currentSlide) slide.className = "slide inactive-left absolute inset-0";
+                else slide.className = "slide inactive-right absolute inset-0";
+            }
+            
+            const btnPrev = document.getElementById('btn-global-prev');
+            const btnNext = document.getElementById('btn-global-next');
+            if(btnPrev) {
+                if(currentSlide === 0) btnPrev.classList.add('opacity-0', 'pointer-events-none');
+                else btnPrev.classList.remove('opacity-0', 'pointer-events-none');
+            }
+            if(btnNext) {
+                if(currentSlide === totalSlides - 1) btnNext.classList.add('opacity-0', 'pointer-events-none');
+                else btnNext.classList.remove('opacity-0', 'pointer-events-none');
+            }
+            
+            renderProgressBar();
+            highlightActiveTask();
+        }
+
         function nextSlide() { 
+            // 1. 优先检测当前页面是否有需要自动步进的互动
+            if (handleSlideNextAction()) {
+                return; // 如果被拦截执行互动了，则不切页
+            }
+
+            // 2. 正常的任务单弹窗拦截
             if (shouldInterceptForward(currentSlide, currentSlide + 1)) {
                 taskIntercepted[currentSlide] = true; 
                 if (!isDrawerOpen) toggleTaskDrawer(); 
@@ -1402,6 +1481,7 @@
                 return; 
             }
             
+            // 3. 正常切页逻辑
             if (isDrawerOpen) {
                 toggleTaskDrawer();
                 setTimeout(() => {
@@ -1461,30 +1541,6 @@
             updateSlides(direction);
         }
 
-        function updateSlides(direction = 'next') {
-            for(let i = 0; i < totalSlides; i++) {
-                const slide = document.getElementById(`slide-${i}`);
-                if(!slide) continue;
-                if (i === currentSlide) slide.className = "slide active absolute inset-0";
-                else if (i < currentSlide) slide.className = "slide inactive-left absolute inset-0";
-                else slide.className = "slide inactive-right absolute inset-0";
-            }
-            
-            const btnPrev = document.getElementById('btn-global-prev');
-            const btnNext = document.getElementById('btn-global-next');
-            if(btnPrev) {
-                if(currentSlide === 0) btnPrev.classList.add('opacity-0', 'pointer-events-none');
-                else btnPrev.classList.remove('opacity-0', 'pointer-events-none');
-            }
-            if(btnNext) {
-                if(currentSlide === totalSlides - 1) btnNext.classList.add('opacity-0', 'pointer-events-none');
-                else btnNext.classList.remove('opacity-0', 'pointer-events-none');
-            }
-            
-            renderProgressBar();
-            highlightActiveTask();
-        }
-
         function renderProgressBar() {
             const progressBar = document.getElementById('progress-bar');
             if(!progressBar) return;
@@ -1495,10 +1551,10 @@
                 { title: "课程回顾", slides: [1] },
                 { title: "情境导入", slides: [2] },
                 { title: "算法原理", slides: [3, 4] },
-                { title: "算法模拟", slides: [5] },
-                { title: "代码实现", slides: [6] },
-                { title: "拓展", slides: [7, 8] }, 
-                { title: "总结", slides: [9, 10, 11] } 
+                { title: "算法模拟", slides: [5, 6] }, // 新增的页面归入此处
+                { title: "代码实现", slides: [7] },
+                { title: "拓展", slides: [8, 9] }, 
+                { title: "总结", slides: [10, 11, 12] } 
             ];
 
             progressBar.innerHTML = progressSegments.map((segment, i) => {
@@ -1526,6 +1582,179 @@
             
             if (e.key === 'ArrowLeft' || e.key === 'PageUp') prevSlide();
         });
+
+        let isSimulatingClick = false; // 防抖锁：防止在动画期间重复按下一页导致逻辑错乱
+
+        function simulateVisualClick(el, callback) {
+            if (!el) {
+                if (callback) callback();
+                return;
+            }
+            const originalTransition = el.style.transition || '';
+            const originalTransform = el.style.transform || '';
+            
+            // 1. 夸张的视觉高亮：放大1.15倍，外加 6px 的玫红色发光粗环和深色背景
+            el.style.transition = 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            el.style.transform = 'scale(1.15)';
+            el.classList.add('ring-[6px]', 'ring-rose-500', 'ring-offset-2', 'shadow-[0_0_30px_rgba(244,63,94,0.6)]', 'bg-rose-100', 'text-rose-700', 'z-50', 'relative'); 
+            
+            // 2. 停留 800 毫秒，留给学生充分的反应时间，然后再执行真正的逻辑
+            setTimeout(() => {
+                el.style.transform = originalTransform;
+                el.classList.remove('ring-[6px]', 'ring-rose-500', 'ring-offset-2', 'shadow-[0_0_30px_rgba(244,63,94,0.6)]', 'bg-rose-100', 'text-rose-700', 'z-50', 'relative');
+                el.style.transition = originalTransition;
+                
+                // 执行实际的页面点击逻辑
+                if (callback) callback();
+            }, 800); 
+        }
+
+        function handleSlideNextAction() {
+            if (isSimulatingClick) return true; // 如果正在播放动画，拦截一切翻页动作
+
+            // Slide 3 (算法推演)
+            if (currentSlide === 3) {
+                if (!mathGameWon) {
+                    const btn = document.getElementById('btn-halve-strike');
+                    isSimulatingClick = true;
+                    simulateVisualClick(btn, () => {
+                        executeHalve();
+                        isSimulatingClick = false;
+                    });
+                    return true;
+                }
+            }
+
+            // Slide 4 (AI 原理 - 豆包)
+            if (currentSlide === 4) {
+                if (slide4Step === 0) {
+                    const btn = document.getElementById('btn-slide4-ask-ai');
+                    isSimulatingClick = true;
+                    simulateVisualClick(btn, () => {
+                        startSlide4AIAnalysis(null);
+                        slide4Step = 1;
+                        isSimulatingClick = false;
+                    });
+                    return true;
+                }
+                if (slide4Step === 1) {
+                    const inputStatus = document.getElementById('slide4-ai-fake-input').innerText;
+                    if (inputStatus !== "对话已结束") return true; 
+                }
+            }
+
+            // Slide 5 (算法模拟：指针与查找)
+            if (currentSlide === 5) {
+                if (simGameState !== 'WON') {
+                    if (simGameState === 'FIND_MID') {
+                        const correctMid = Math.floor((currentL + currentR) / 2);
+                        const box = document.getElementById(`array-box-${correctMid}`);
+                        isSimulatingClick = true;
+                        simulateVisualClick(box, () => {
+                            handleArrayClick(correctMid);
+                            isSimulatingClick = false;
+                        });
+                        return true;
+                    } 
+                    else if (simGameState === 'COMPARE') {
+                        const val = gameArray[currentM];
+                        let type = val < GAME_TARGET ? '<' : (val > GAME_TARGET ? '>' : '==');
+                        
+                        const btns = document.getElementById('ui-action-buttons').querySelectorAll('button');
+                        let targetBtn = type === '<' ? btns[0] : (type === '==' ? btns[1] : btns[2]);
+                        
+                        isSimulatingClick = true;
+                        simulateVisualClick(targetBtn, () => {
+                            handleCompare(type);
+                            isSimulatingClick = false;
+                        });
+                        return true;
+                    } 
+                    else if (simGameState === 'MOVE_POINTER') {
+                        const val = gameArray[currentM];
+                        const expectedIdx = val < GAME_TARGET ? currentM + 1 : currentM - 1;
+                        const box = document.getElementById(`array-box-${expectedIdx}`);
+                        
+                        isSimulatingClick = true;
+                        simulateVisualClick(box, () => {
+                            handleArrayClick(expectedIdx);
+                            isSimulatingClick = false;
+                        });
+                        return true;
+                    }
+                }
+            }
+
+            // Slide 9 (拓展题：AI 二分答案)
+            if (currentSlide === 9) {
+                if (slide9Step === 0) {
+                    const btn = document.getElementById('btn-ask-ai');
+                    isSimulatingClick = true;
+                    simulateVisualClick(btn, () => {
+                        startAIAnalysis(null);
+                        slide9Step = 1;
+                        isSimulatingClick = false;
+                    });
+                    return true;
+                }
+                if (slide9Step === 1) {
+                    const inputStatus = document.getElementById('ai-fake-input').innerText;
+                    if (inputStatus !== "对话已结束") return true;
+                }
+            }
+
+            // Slide 10 (总结：知识图谱构建)
+            if (currentSlide === 10) {
+                if (slide10Step === 0) {
+                    const el = document.getElementById('sum-q1');
+                    isSimulatingClick = true;
+                    simulateVisualClick(el, () => {
+                        el.value = 'sorted';
+                        slide10Step++;
+                        isSimulatingClick = false;
+                    });
+                    return true;
+                } else if (slide10Step === 1) {
+                    const el = document.getElementById('sum-q2');
+                    isSimulatingClick = true;
+                    simulateVisualClick(el, () => {
+                        el.value = 'half';
+                        slide10Step++;
+                        isSimulatingClick = false;
+                    });
+                    return true;
+                } else if (slide10Step === 2) {
+                    const el = document.getElementById('sum-q4');
+                    isSimulatingClick = true;
+                    simulateVisualClick(el, () => {
+                        el.value = 'on';
+                        slide10Step++;
+                        isSimulatingClick = false;
+                    });
+                    return true;
+                } else if (slide10Step === 3) {
+                    const el = document.getElementById('sum-q5');
+                    isSimulatingClick = true;
+                    simulateVisualClick(el, () => {
+                        el.value = 'ologn';
+                        slide10Step++;
+                        isSimulatingClick = false;
+                    });
+                    return true;
+                } else if (slide10Step === 4) {
+                    const btn = document.getElementById('btn-verify-sum');
+                    isSimulatingClick = true;
+                    simulateVisualClick(btn, () => {
+                        verifySummary();
+                        slide10Step++;
+                        isSimulatingClick = false;
+                    });
+                    return true;
+                }
+            }
+
+            return false;
+        }
 
         // ================= [1. 课程回顾模块：顺序查找盲盒] =================
         const seqArrayData = [11, 12, 23, 34, 45, 56, 67, 78, 89, 90];
@@ -1655,12 +1884,6 @@
         let leftBound = 0;
         let rightBound = 100;
 
-        const originalInitGame = initGame;
-
-        initGame = function() {
-            originalInitGame(); 
-        };
-
         function initGame() {
                     secretFault = Math.floor(Math.random() * 49) + 51;
                     attempts = 0; gameWon = false; leftBound = 0; rightBound = 100;
@@ -1682,6 +1905,7 @@
                     updateCableVisual();
                     if(typeof lucide !== 'undefined') lucide.createIcons();
                 }
+
 
         function makeGuess() {
             if(gameWon) return;
@@ -1864,41 +2088,126 @@
             }
         }        
 
-        const scaleDataMap = {
-            1: { n: 50, label: "50" },
-            2: { n: 3000, label: "3,000" },
-            3: { n: 10000000, label: "10,000,000" },
-            4: { n: 1400000000, label: "1,400,000,000" },
-            5: { n: 4294967296, label: "4,294,967,296" }
-        };
+        // 算法原理
+        function startSlide4AIAnalysis(event) {
+            if (event) event.stopPropagation();
 
-        function setSliderValue(val) {
-            const slider = document.getElementById('data-scale-slider');
-            if(slider) { slider.value = val; updateLogScale(); }
-        }
+            const btn = document.getElementById('btn-slide4-ask-ai');
+            const fakeInput = document.getElementById('slide4-ai-fake-input');
+            const chatHistory = document.getElementById('slide4-ai-chat-history');
+            const userPromptText = fakeInput.innerText;
 
-        function updateLogScale() {
-            const slider = document.getElementById('data-scale-slider');
-            if(!slider) return;
-            const data = scaleDataMap[slider.value];
+            if (userPromptText === "发消息" || userPromptText === "对话已结束") return;
 
-            const seqEl = document.getElementById('val-seq');
-            const binEl = document.getElementById('val-bin');
-            document.getElementById('slider-n-display').innerText = data.label;
-
-            seqEl.innerText = data.n.toLocaleString();
-            binEl.innerText = Math.ceil(Math.log2(data.n));
-
-            seqEl.style.transform = 'scale(1.1)'; seqEl.style.color = '#ef4444'; 
-            binEl.style.transform = 'scale(1.2)';
+            // 按钮防抖及状态切换
+            btn.disabled = true;
+            btn.classList.add('opacity-50', 'cursor-not-allowed');
+            btn.innerHTML = `<i data-lucide="loader" class="w-4 h-4 animate-spin"></i>`;
             
+            fakeInput.classList.remove('text-slate-700');
+            fakeInput.classList.add('text-slate-400');
+
+            if(typeof lucide !== 'undefined') lucide.createIcons();
+
+            // 渲染用户的消息
+            const userMsg = document.createElement('div');
+            userMsg.className = "flex gap-3 max-w-[90%] ml-auto justify-end animate-[slideInRight_0.3s_ease-out] mt-3";
+            userMsg.innerHTML = `
+                <div class="bg-indigo-600 text-white p-3 rounded-2xl rounded-tr-sm shadow-sm text-xs lg:text-sm font-medium">
+                    ${userPromptText}
+                </div>
+                <div class="w-7 h-7 rounded-full bg-slate-200 border border-slate-300 flex items-center justify-center text-slate-600 shrink-0 mt-0.5">
+                    <i data-lucide="user" class="w-4 h-4"></i>
+                </div>
+            `;
+            chatHistory.appendChild(userMsg);
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+
+            // 模拟 AI 打字延迟
             setTimeout(() => {
-                seqEl.style.transform = 'scale(1)'; seqEl.style.color = '#f43f5e'; 
-                binEl.style.transform = 'scale(1)';
-            }, 200);
+                const aiTypingId = 'slide4-ai-typing-' + Date.now();
+                const aiMsgBox = document.createElement('div');
+                aiMsgBox.id = aiTypingId;
+                aiMsgBox.className = "flex gap-3 max-w-[95%] lg:max-w-[90%] animate-[slideInRight_0.3s_ease-out] mt-3";
+                aiMsgBox.innerHTML = `
+                    <div class="w-7 h-7 rounded-full overflow-hidden border border-slate-200 shadow-sm shrink-0 mt-0.5 bg-white">
+                        <img src="./doubao-avatar.png" alt="豆包" class="w-full h-full object-cover">
+                    </div>
+                    <div class="bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-sm shadow-sm text-slate-500 flex items-center gap-1">
+                        <div class="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-bounce"></div>
+                        <div class="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                        <div class="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
+                    </div>
+                `;
+                chatHistory.appendChild(aiMsgBox);
+                chatHistory.scrollTop = chatHistory.scrollHeight;
+
+                // 一次性输出横向对比结果
+                setTimeout(() => {
+                    const typingEl = document.getElementById(aiTypingId);
+                    typingEl.innerHTML = `
+                        <div class="w-7 h-7 rounded-full overflow-hidden border border-slate-200 shadow-sm shrink-0 mt-0.5 bg-white">
+                            <img src="./doubao-avatar.png" alt="豆包" class="w-full h-full object-cover">
+                        </div>
+                        <div class="bg-white border border-slate-200 p-4 rounded-2xl rounded-tl-sm shadow-sm w-full max-w-2xl">
+                            <p class="text-slate-700 text-sm font-bold mb-3 flex items-center gap-1.5">
+                                <i data-lucide="bar-chart-2" class="w-4 h-4 text-indigo-500"></i> 面对 14 亿庞大数据（假设每秒比对 1 次），它们的差距如下：
+                            </p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-4 mb-3">
+                                <div class="bg-rose-50 border border-rose-100 p-3 lg:p-4 rounded-xl flex flex-col justify-between shadow-inner">
+                                    <div>
+                                        <h4 class="font-black text-rose-600 mb-1.5 flex items-center gap-1.5 text-xs lg:text-sm uppercase tracking-wider">
+                                            <i data-lucide="footprints" class="w-4 h-4"></i> 顺序查找 O(n)
+                                        </h4>
+                                        <p class="text-rose-800/70 text-[11px] lg:text-xs leading-relaxed mb-3">
+                                            笨办法：从头到尾挨个看。最坏情况需把 14 亿条数据全部对比一遍。
+                                        </p>
+                                    </div>
+                                    <div class="bg-white border border-rose-100 p-2 lg:p-2.5 rounded-lg space-y-1 font-bold text-xs lg:text-sm shadow-sm">
+                                        <div class="flex justify-between items-center"><span class="text-rose-400">最大比对：</span> <span class="text-rose-600 font-mono">14亿次</span></div>
+                                        <div class="flex justify-between items-center"><span class="text-rose-400">最坏耗时：</span> <span class="text-rose-600 text-sm lg:text-base font-black">约 44.4 年</span></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-indigo-50 border border-indigo-200 p-3 lg:p-4 rounded-xl flex flex-col justify-between shadow-sm transform transition-all hover:scale-[1.02]">
+                                    <div>
+                                        <h4 class="font-black text-indigo-700 mb-1.5 flex items-center gap-1.5 text-xs lg:text-sm uppercase tracking-wider">
+                                            <i data-lucide="zap" class="w-4 h-4"></i> 二分查找 O(log n)
+                                        </h4>
+                                        <p class="text-indigo-800/70 text-[11px] lg:text-xs leading-relaxed mb-3">
+                                            聪明办法：利用有序性，每次比对直接淘汰一半数据，指数级降维。
+                                        </p>
+                                    </div>
+                                    <div class="bg-indigo-600 border border-indigo-500 p-2 lg:p-2.5 rounded-lg space-y-1 font-bold text-xs lg:text-sm shadow-md text-white">
+                                        <div class="flex justify-between items-center"><span class="text-indigo-200">最大比对：</span> <span class="font-mono">仅 31 次</span></div>
+                                        <div class="flex justify-between items-center"><span class="text-indigo-200">最坏耗时：</span> <span class="text-amber-300 text-sm lg:text-base font-black">仅 31 秒！</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="text-slate-600 text-xs lg:text-sm font-bold bg-slate-50 p-3 rounded-xl flex items-center gap-2 border border-slate-100">
+                                <i data-lucide="lightbulb" class="w-5 h-5 text-amber-500 shrink-0"></i> 
+                                从半辈子（44年）缩短到半分钟（31秒），这就是算法优化的绝对力量！
+                            </div>
+                        </div>
+                    `;
+                    chatHistory.scrollTop = chatHistory.scrollHeight;
+                    if(typeof lucide !== 'undefined') lucide.createIcons();
+
+                    // 结束对话状态
+                    btn.innerHTML = `<i data-lucide="check" class="w-4 h-4 text-slate-500"></i>`;
+                    btn.disabled = true;
+                    btn.classList.add('opacity-50', 'cursor-not-allowed', 'bg-slate-200');
+                    btn.classList.remove('bg-indigo-600', 'hover:bg-indigo-700');
+                    
+                    fakeInput.innerText = "对话已结束";
+                    fakeInput.classList.remove('text-slate-700');
+                    fakeInput.classList.add('text-slate-400');
+                }, 1200);
+            }, 400);
         }
-
-
+        
         // ================= [4. 算法模拟：指针与查找] =================
         const gameArray = [2, 5, 8, 12, 16, 23, 38, 45, 56, 67, 89, 100];
         const GAME_TARGET = 45;
@@ -2033,6 +2342,211 @@
             element.classList.add('shake-error');
             setTimeout(() => { element.classList.remove('shake-error'); }, 400);
         }
+
+        // ================= [进阶拓展：自定义数组模拟 (Slide 6)] =================
+let gameArrayV2 = [];
+let GAME_TARGET_V2 = null;
+let simGameStateV2 = 'SETUP'; 
+let currentLV2 = 0;
+let currentRV2 = 7;
+let currentMV2 = null;
+
+function initInteractiveSimV2() {
+    simGameStateV2 = 'SETUP';
+    gameArrayV2 = []; GAME_TARGET_V2 = null;
+    currentLV2 = 0; currentRV2 = 7; currentMV2 = null;
+    updateSimUIV2();
+}
+
+function validateAndStartV2() {
+    const arr = [];
+    const errEl = document.getElementById('setup-error-v2');
+    errEl.innerText = "";
+    for (let i = 0; i < 8; i++) {
+        const val = document.getElementById(`input-arr-v2-${i}`).value;
+        if (val === '') {
+            errEl.innerText = `请填写完整的 8 个数字！（第 ${i} 个位置为空）`;
+            triggerErrorShake(document.getElementById(`input-arr-v2-${i}`).parentElement);
+            return;
+        }
+        arr.push(Number(val));
+    }
+    for (let i = 0; i < 7; i++) {
+        if (arr[i] >= arr[i+1]) {
+            errEl.innerText = "数组数字必须严格按【从小到大】的顺序排列，不能重复或变小！";
+            triggerErrorShake(document.getElementById(`input-arr-v2-${i+1}`).parentElement);
+            return;
+        }
+    }
+    const targetVal = document.getElementById('input-target-v2').value;
+    if (targetVal === '') {
+        errEl.innerText = "请输入你想查找的【目标数字】！";
+        triggerErrorShake(document.getElementById('input-target-v2'));
+        return;
+    }
+    if (!arr.includes(Number(targetVal))) {
+        errEl.innerText = "目标数字必须是你在上方数组中输入过的数字哦！";
+        triggerErrorShake(document.getElementById('input-target-v2'));
+        return;
+    }
+
+    gameArrayV2 = arr; GAME_TARGET_V2 = Number(targetVal);
+    simGameStateV2 = 'FIND_MID';
+    currentLV2 = 0; currentRV2 = gameArrayV2.length - 1; currentMV2 = null;
+    updateSimUIV2();
+}
+
+function updateSimUIV2() {
+    document.getElementById('ui-val-l-v2').innerText = (simGameStateV2 === 'SETUP') ? '-' : currentLV2;
+    document.getElementById('ui-val-r-v2').innerText = (simGameStateV2 === 'SETUP') ? '-' : currentRV2;
+    document.getElementById('ui-val-m-v2').innerText = (currentMV2 !== null) ? currentMV2 : '-';
+
+    const promptEl = document.getElementById('ui-prompt-text-v2');
+    const btnArea = document.getElementById('ui-action-buttons-v2');
+    const titleBadge = document.getElementById('title-target-badge-v2');
+
+    if (simGameStateV2 === 'SETUP') {
+        titleBadge.classList.add('hidden');
+        promptEl.innerHTML = '请先在上方录入你设计的 <span class="text-emerald-400 font-bold">数组数据</span> 和 <span class="text-rose-400 font-bold">目标数字</span>。';
+        btnArea.classList.add('hidden');
+    } else {
+        titleBadge.innerText = `Target: ${GAME_TARGET_V2}`;
+        titleBadge.classList.remove('hidden');
+
+        if (simGameStateV2 === 'FIND_MID') {
+            promptEl.innerHTML = `步骤 1：请计算中点 <span class="text-amber-400 font-mono bg-slate-800 px-1.5 rounded">Mid = (L+R)/2</span> (向下取整)，并<span class="text-emerald-400 cursor-help" title="在上方数组中直接点击对应的数字方块">点击上方对应的方块</span>。`;
+            btnArea.classList.add('hidden');
+        } else if (simGameStateV2 === 'COMPARE') {
+            promptEl.innerHTML = `步骤 2：Mid 对应的值是 <span class="text-white font-black text-lg lg:text-xl bg-indigo-500 px-2 py-0.5 rounded shadow-md">${gameArrayV2[currentMV2]}</span>。它和目标 <span class="text-white font-black text-lg lg:text-xl bg-rose-500 px-2 py-0.5 rounded shadow-md">${GAME_TARGET_V2}</span> 相比，关系是什么？`;
+            document.getElementById('btn-less-v2').innerHTML = `<i data-lucide="chevron-left" class="w-4 h-4 text-emerald-400"></i> 小于 ${GAME_TARGET_V2} (在右侧)`;
+            document.getElementById('btn-equal-v2').innerHTML = `<i data-lucide="check" class="w-4 h-4 text-amber-400"></i> 等于 ${GAME_TARGET_V2}`;
+            document.getElementById('btn-greater-v2').innerHTML = `大于 ${GAME_TARGET_V2} (在左侧) <i data-lucide="chevron-right" class="w-4 h-4 text-rose-400"></i>`;
+            btnArea.classList.remove('hidden');
+        } else if (simGameStateV2 === 'MOVE_POINTER') {
+            btnArea.classList.add('hidden');
+            if (gameArrayV2[currentMV2] < GAME_TARGET_V2) {
+                promptEl.innerHTML = `步骤 3：<span class="text-rose-400 font-bold">${gameArrayV2[currentMV2]} &lt; ${GAME_TARGET_V2}</span>，目标在右侧。点击方块更新 <span class="text-blue-400 font-mono bg-slate-800 px-1.5 rounded">Left = Mid + 1</span>。`;
+            } else {
+                promptEl.innerHTML = `步骤 3：<span class="text-rose-400 font-bold">${gameArrayV2[currentMV2]} &gt; ${GAME_TARGET_V2}</span>，目标在左侧。点击方块更新 <span class="text-blue-400 font-mono bg-slate-800 px-1.5 rounded">Right = Mid - 1</span>。`;
+            }
+        } else if (simGameStateV2 === 'WON') {
+            btnArea.classList.add('hidden');
+            promptEl.innerHTML = `<span class="text-emerald-400 font-black text-lg lg:text-xl flex items-center gap-2"><i data-lucide="party-popper" class="w-5 h-5 lg:w-6 lg:h-6"></i> 恭喜！成功找到目标元素 ${GAME_TARGET_V2}！</span>`;
+        } else if (simGameStateV2 === 'NOT_FOUND') {
+            btnArea.classList.add('hidden');
+            promptEl.innerHTML = `<span class="text-rose-400 font-black text-lg lg:text-xl flex items-center gap-2"><i data-lucide="x-circle" class="w-5 h-5 lg:w-6 lg:h-6"></i> L > R，区间为空，未能找到目标元素 ${GAME_TARGET_V2}！</span>`;
+        }
+    }
+    renderInteractiveArrayV2();
+    if(typeof lucide !== 'undefined') lucide.createIcons();
+}
+
+function renderInteractiveArrayV2() {
+    const container = document.getElementById('interactive-array-container-v2');
+    if(!container) return;
+
+    if (simGameStateV2 === 'SETUP') {
+        container.innerHTML = `
+            <div class="flex flex-col items-center gap-5 w-full py-2">
+                <div class="bg-blue-50/80 px-4 py-2 rounded-xl border border-blue-200 text-blue-800 font-bold text-sm lg:text-base flex items-center gap-2">
+                    <i data-lucide="edit-3" class="w-5 h-5"></i> 步骤 1：录入从小到大排列的 8 个数字
+                </div>
+                <div class="flex flex-wrap gap-2 lg:gap-3 justify-center">
+                    ${Array(8).fill(0).map((_, i) => `
+                        <div class="relative">
+                            <span class="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] text-stone-400 font-mono font-bold">${i}</span>
+                            <input type="number" id="input-arr-v2-${i}" class="w-12 h-12 lg:w-16 lg:h-16 text-center rounded-2xl border-[3px] border-stone-300 font-black text-xl lg:text-2xl text-stone-700 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-200 focus:outline-none shadow-sm transition-all bg-white/90" placeholder="">
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="w-full max-w-md h-px bg-stone-200 my-1"></div>
+                <div class="flex flex-col sm:flex-row items-center gap-4">
+                    <div class="bg-rose-50/80 px-4 py-2 rounded-xl border border-rose-200 text-rose-800 font-bold text-sm lg:text-base flex items-center gap-2">
+                        <i data-lucide="target" class="w-5 h-5"></i> 步骤 2：设定要查找的目标数字
+                    </div>
+                    <input type="number" id="input-target-v2" class="w-24 h-12 text-center rounded-2xl border-[3px] border-stone-300 font-black text-xl text-rose-600 focus:border-rose-400 focus:ring-2 focus:ring-rose-200 focus:outline-none shadow-sm transition-all bg-white/90" placeholder="目标">
+                </div>
+                <button onclick="validateAndStartV2()" class="mt-2 px-8 py-3.5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white rounded-full font-black shadow-lg transition-all active:scale-95 flex items-center gap-2 text-base breathing-light border border-emerald-300/50">
+                    <i data-lucide="play" class="w-5 h-5"></i> 确认无误，开始模拟
+                </button>
+                <div id="setup-error-v2" class="text-rose-500 font-bold text-sm h-5 transition-all"></div>
+            </div>
+        `;
+        return;
+    }
+    
+    container.innerHTML = gameArrayV2.map((num, idx) => {
+        const isOutOfRange = (idx < currentLV2 || idx > currentRV2) && simGameStateV2 !== 'WON';
+        const isL = idx === currentLV2; const isR = idx === currentRV2; const isM = idx === currentMV2;
+        const isTargetFound = (simGameStateV2 === 'WON' && isM);
+        let boxClasses = "bg-white border-stone-200 text-stone-800 hover:border-emerald-300 hover:shadow-md cursor-pointer active:scale-95";
+        let wrapperClasses = "relative transition-all duration-300 transform" + (isOutOfRange ? " dimmed-box" : "");
+        let pingDiv = "";
+
+        if (isTargetFound) {
+            boxClasses = "bg-emerald-500 text-white border-emerald-400 scale-110 shadow-[0_0_20px_rgba(16,185,129,0.5)] z-30 pointer-events-none";
+            pingDiv = `<div class="absolute inset-0 rounded-2xl anim-success-ping"></div>`;
+        } else if (isM) {
+            boxClasses = "bg-amber-400 text-white border-amber-300 scale-105 shadow-lg z-20 pointer-events-none";
+        } else if (isL || isR) {
+            boxClasses = "bg-blue-50 text-blue-800 border-blue-300 shadow-sm z-10 cursor-pointer hover:bg-blue-100";
+        }
+
+        let labels = '';
+        if (isL) labels += `<span class="text-xs font-black text-blue-600 bg-blue-100 px-1.5 rounded border border-blue-200 absolute -bottom-3 left-1/2 -translate-x-1/2 shadow-sm transition-all z-40">L</span>`;
+        if (isR && !isL) labels += `<span class="text-xs font-black text-blue-600 bg-blue-100 px-1.5 rounded border border-blue-200 absolute -bottom-3 left-1/2 -translate-x-1/2 shadow-sm transition-all z-40">R</span>`;
+        if (isR && isL) labels += `<span class="text-xs font-black text-blue-600 bg-blue-100 px-1.5 rounded border border-blue-200 absolute -bottom-3 left-1/2 -translate-x-1/2 shadow-sm transition-all z-40">L,R</span>`;
+        if (isM && !isTargetFound) labels += `<span class="text-xs font-black text-white bg-amber-500 px-1.5 rounded absolute -top-3 left-1/2 -translate-x-1/2 shadow-sm animate-bounce z-40">M</span>`;
+        if (isTargetFound) labels += `<span class="text-xs font-black text-white bg-rose-500 px-1.5 rounded absolute -top-3 left-1/2 -translate-x-1/2 shadow-sm z-40 flex items-center gap-1"><i data-lucide="target" class="w-3 h-3"></i>TARGET</span>`;
+
+        return `
+            <div class="${wrapperClasses}">
+                <span class="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] text-stone-400 font-mono font-bold">${idx}</span>
+                ${pingDiv}
+                <div id="array-box-v2-${idx}" onclick="handleArrayClickV2(${idx})" class="w-12 h-12 lg:w-16 lg:h-16 flex items-center justify-center rounded-2xl border-[3px] font-black transition-all duration-300 text-xl lg:text-2xl ${boxClasses} relative z-10 select-none">${num}</div>
+                ${labels}
+            </div>
+        `;
+    }).join('');
+}
+
+function handleArrayClickV2(idx) {
+    const boxEl = document.getElementById(`array-box-v2-${idx}`);
+    if (simGameStateV2 === 'FIND_MID') {
+        const correctMid = Math.floor((currentLV2 + currentRV2) / 2);
+        if (idx === correctMid) {
+            currentMV2 = correctMid;
+            simGameStateV2 = 'COMPARE';
+            updateSimUIV2();
+        } else { triggerErrorShake(boxEl); }
+    } else if (simGameStateV2 === 'MOVE_POINTER') {
+        const val = gameArrayV2[currentMV2];
+        let expectedIdx = val < GAME_TARGET_V2 ? currentMV2 + 1 : currentMV2 - 1;
+        if (idx === expectedIdx) {
+            if (val < GAME_TARGET_V2) currentLV2 = idx;
+            else currentRV2 = idx;
+            currentMV2 = null;
+            if (currentLV2 > currentRV2) simGameStateV2 = 'NOT_FOUND';
+            else simGameStateV2 = 'FIND_MID';
+            updateSimUIV2();
+        } else { triggerErrorShake(boxEl); }
+    }
+}
+
+function handleCompareV2(type) {
+    const val = gameArrayV2[currentMV2];
+    const btnArea = document.getElementById('ui-action-buttons-v2');
+    let isCorrect = (type === '<' && val < GAME_TARGET_V2) || (type === '>' && val > GAME_TARGET_V2) || (type === '==' && val === GAME_TARGET_V2);
+    if (isCorrect) {
+        simGameStateV2 = (type === '==') ? 'WON' : 'MOVE_POINTER';
+        updateSimUIV2();
+    } else { triggerErrorShake(btnArea); }
+}
+
+// 确保在初始化时顺便激活新环境
+document.addEventListener("DOMContentLoaded", function() {
+    initInteractiveSimV2();
+});
 
         // ================= [5. 代码实操] =================
         
@@ -2257,13 +2771,12 @@
             const chatHistory = document.getElementById('ai-chat-history');            
             const userPromptText = fakeInput.innerText;
 
-            if (userPromptText === "给豆包发送消息..." || userPromptText === "对话已结束") return;
+            if (userPromptText === "给豆包发送消息" || userPromptText === "对话已结束") return;
 
             btn.disabled = true;
             btn.classList.add('opacity-50', 'cursor-not-allowed');
             btn.innerHTML = `<i data-lucide="loader" class="w-4 h-4 animate-spin"></i>`;
             
-            fakeInput.innerText = "发消息给 豆包...";
             fakeInput.classList.remove('text-slate-700');
             fakeInput.classList.add('text-slate-400');
 
@@ -2337,130 +2850,19 @@
 
                         initSheepCanvas();
 
-                        aiChatStep = 2;
-                        fakeInput.innerText = "请利用二分法帮我分析这道题的解题思路";
-                        fakeInput.classList.remove('text-slate-400');
-                        fakeInput.classList.add('text-slate-700');
-                        btn.disabled = false;
-                        btn.classList.remove('opacity-50', 'cursor-not-allowed');
-                        btn.innerHTML = `<i data-lucide="arrow-up" class="w-4 h-4 group-hover:-translate-y-0.5 transition-transform"></i>`;
-                        
-                        if(typeof lucide !== 'undefined') lucide.createIcons();
-
-                    }, 1500);
-
-                } else if (aiChatStep === 2) {
-                    setTimeout(() => {
-                        const typingEl = document.getElementById(aiTypingId);
-                        typingEl.innerHTML = `
-                            <div class="w-7 h-7 rounded-full overflow-hidden border border-slate-200 shadow-sm shrink-0 mt-0.5 bg-white">
-                                <img src="./doubao-avatar.png" alt="豆包" class="w-full h-full object-cover">
-                            </div> 
-                            <div class="bg-amber-50 border border-amber-200 p-3.5 lg:p-4 rounded-2xl rounded-tl-sm shadow-sm w-full max-w-xl">
-                                <h4 class="font-black text-amber-800 mb-2 flex items-center gap-1.5 text-sm lg:text-base">
-                                    <i data-lucide="lightbulb" class="w-4 h-4 text-amber-600"></i> 思维跃迁指南：二分答案法
-                                </h4>
-                                <ul class="space-y-3 text-amber-900 font-medium text-xs lg:text-sm leading-relaxed">
-                                    <li class="flex items-start gap-2">
-                                        <span class="bg-amber-200 text-amber-700 px-1 py-0.5 rounded text-[10px] font-black shrink-0 mt-0.5">1</span>
-                                        <span><b>确定解空间（L 与 R）：</b>最小半径 <b>L = 0</b>，最大半径（只需覆盖头尾） <b>R = (19-1)/2 = 9</b>。我们要在这个连续区间里“猜”答案。</span>
-                                    </li>
-                                    <li class="flex items-start gap-2">
-                                        <span class="bg-amber-200 text-amber-700 px-1 py-0.5 rounded text-[10px] font-black shrink-0 mt-0.5">2</span>
-                                        <span><b>猜中值与验证（Mid）：</b>取区间中点 <b>Mid</b> 作为假设的半径，然后验证：<br><span class="inline-block mt-1.5 bg-white/60 px-2 py-1 rounded shadow-inner border border-amber-100 text-amber-950 font-bold">“如果半径是 Mid，3 根柱子能否把所有羊罩住？”</span></span>
-                                    </li>
-                                    <li class="flex items-start gap-2">
-                                        <span class="bg-amber-200 text-amber-700 px-1 py-0.5 rounded text-[10px] font-black shrink-0 mt-0.5">3</span>
-                                        <span><b>折半缩小范围：</b><br>
-                                        • 若 <b class="text-emerald-700">能</b> 罩住：说明当前 Mid 够用了，但或许能更小，于是让 <b>R = Mid</b>（缩小右界继续找）。<br>
-                                        • 若 <b class="text-rose-600">不能</b> 罩住：说明当前 Mid 太短了，于是让 <b>L = Mid + 精度</b>（增大左界继续找）。</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        `;
-                        chatHistory.scrollTop = chatHistory.scrollHeight;
-                        
-                        aiChatStep = 3;
-                        btn.innerHTML = `<i data-lucide="arrow-up" class="w-4 h-4 group-hover:-translate-y-0.5 transition-transform"></i>`;
-                        btn.disabled = false;
-                        btn.classList.remove('opacity-50', 'cursor-not-allowed');
-                        
-                        fakeInput.innerText = "请给我最终的代码实现";
-                        fakeInput.classList.remove('text-slate-400');
-                        fakeInput.classList.add('text-slate-700');
-                        
-                        if (hintArrow) hintArrow.classList.remove('opacity-0');
-                        if(typeof lucide !== 'undefined') lucide.createIcons();
-                    }, 1500);
-                } else if (aiChatStep === 3) {
-                    setTimeout(() => {
-                        const typingEl = document.getElementById(aiTypingId);
-                        typingEl.innerHTML = `
-                            <div class="w-7 h-7 rounded-full overflow-hidden border border-slate-200 shadow-sm shrink-0 mt-0.5 bg-white">
-                                <img src="./doubao-avatar.png" alt="豆包" class="w-full h-full object-cover">
-                            </div> 
-                            <div class="bg-[#0f172a] border border-slate-700 p-4 rounded-2xl rounded-tl-sm shadow-xl w-full max-w-2xl overflow-hidden relative">
-                                <div class="flex items-center justify-between mb-3 border-b border-slate-700 pb-3">
-                                    <span class="text-xs font-black text-sky-400 flex items-center gap-2 uppercase tracking-widest"><i data-lucide="code-2" class="w-4 h-4"></i> C++ 核心代码实现</span>
-                                </div>
-                                <div class="text-[12px] lg:text-[14px] font-mono leading-loose overflow-x-auto task-scrollbar pr-2 whitespace-pre text-slate-300">
-<span class="text-pink-400 font-bold">#include</span> <span class="text-green-300">&lt;iostream&gt;</span>
-<span class="text-pink-400 font-bold">#include</span> <span class="text-green-300">&lt;vector&gt;</span>
-<span class="text-pink-400 font-bold">using namespace</span> <span class="text-blue-300">std</span>;
-
-<span class="text-slate-500 italic">// 核心验证模块：验证如果最大半径为 R，k 根柱子是否够用？</span>
-<span class="text-sky-400 font-bold">bool</span> <span class="text-blue-300">check</span>(<span class="text-sky-400 font-bold">double</span> R, <span class="text-pink-400 font-bold">const</span> vector&lt;<span class="text-sky-400 font-bold">double</span>&gt;& sheep, <span class="text-sky-400 font-bold">int</span> k) {
-    <span class="text-sky-400 font-bold">int</span> count = <span class="text-orange-300">1</span>; <span class="text-slate-500 italic">// 至少需要 1 根柱子</span>
-    <span class="text-sky-400 font-bold">double</span> limit = sheep[<span class="text-orange-300">0</span>] + <span class="text-orange-300">2</span> * R; <span class="text-slate-500 italic">// 当前柱子能覆盖的最远距离</span>
-
-    <span class="text-pink-400 font-bold">for</span> (<span class="text-sky-400 font-bold">int</span> i = <span class="text-orange-300">1</span>; i < sheep.size(); i++) {
-        <span class="text-pink-400 font-bold">if</span> (sheep[i] > limit) {
-            count++; <span class="text-slate-500 italic">// 超出当前柱子的覆盖范围，必须新加一根柱子</span>
-            limit = sheep[i] + <span class="text-orange-300">2</span> * R; <span class="text-slate-500 italic">// 更新新柱子的覆盖边界</span>
-        }
-    }
-    <span class="text-pink-400 font-bold">return</span> count <= k; <span class="text-slate-500 italic">// 最终使用的柱子数是否符合要求</span>
-}
-
-<span class="text-sky-400 font-bold">int</span> <span class="text-blue-300">main</span>() {
-    vector&lt;<span class="text-sky-400 font-bold">double</span>&gt; sheep = {<span class="text-orange-300">1, 3, 5, 8, 12, 15, 17, 19</span>};
-    <span class="text-sky-400 font-bold">int</span> k = <span class="text-orange-300">3</span>;
-
-    <span class="text-slate-500 italic">// 1. 确定二分答案的解空间 [L, R]</span>
-    <span class="text-sky-400 font-bold">double</span> L = <span class="text-orange-300">0</span>;
-    <span class="text-sky-400 font-bold">double</span> R = (sheep.back() - sheep.front()) / <span class="text-orange-300">2.0</span>; 
-    <span class="text-sky-400 font-bold">double</span> ans = R;
-
-    <span class="text-slate-500 italic">// 2. 浮点数二分模板：当区间长度大于精度要求时继续循环</span>
-    <span class="text-pink-400 font-bold">const double</span> EPS = <span class="text-orange-300">1e-6</span>; <span class="text-slate-500 italic">// 定义精度阈值</span>
-    <span class="text-pink-400 font-bold">while</span> (R - L > EPS) {
-        <span class="text-sky-400 font-bold">double</span> mid = L + (R - L) / <span class="text-orange-300">2.0</span>;
-        
-        <span class="text-pink-400 font-bold">if</span> (check(mid, sheep, k)) {
-            ans = mid; <span class="text-slate-500 italic">// 当前半径合法，记录下来</span>
-            R = mid;   <span class="text-slate-500 italic">// 尝试寻找更小的合法半径（缩小右界）</span>
-        } <span class="text-pink-400 font-bold">else</span> {
-            L = mid;   <span class="text-slate-500 italic">// 半径太小，不合法，必须增大半径（缩小左界）</span>
-        }
-    }
-
-    cout << <span class="text-green-300">"最小合法半径 R 为: "</span> << ans << endl;
-    <span class="text-pink-400 font-bold">return</span> <span class="text-orange-300">0</span>;
-}</div>
-                            </div>
-                        `;
-                        chatHistory.scrollTop = chatHistory.scrollHeight;
-                        
+                        // --- 请替换为以下代码 ---
                         btn.innerHTML = `<i data-lucide="check" class="w-4 h-4 text-slate-500"></i>`;
                         btn.disabled = true;
                         btn.classList.add('opacity-50', 'cursor-not-allowed', 'bg-slate-200');
                         btn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
-                        
+
                         fakeInput.innerText = "对话已结束";
                         fakeInput.classList.remove('text-slate-700');
-                        fakeInput.classList.add('text-slate-400');                        
+                        fakeInput.classList.add('text-slate-400');
                         if(typeof lucide !== 'undefined') lucide.createIcons();
+
                     }, 1500);
+
                 }
             }, 500);
         }
@@ -2700,7 +3102,7 @@
             });
             btn.className = "px-1.5 md:px-2 py-1.5 rounded-xl text-[10px] md:text-xs font-bold bg-cyan-500 border border-cyan-500 text-white shadow-md transition-all scale-105 z-10 whitespace-nowrap";
 
-            const allGroups = document.querySelectorAll('#slide-13 .eval-group');
+            const allGroups = document.querySelectorAll('#slide-12 .eval-group');
             let completedCount = 0;
             
             allGroups.forEach(g => {
