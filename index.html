@@ -1595,7 +1595,6 @@
             el.style.transform = 'scale(1.15)';
             el.classList.add('ring-[6px]', 'ring-rose-500', 'ring-offset-2', 'shadow-[0_0_30px_rgba(244,63,94,0.6)]', 'bg-rose-100', 'text-rose-700', 'z-50', 'relative'); 
             
-            // 2. 停留 800 毫秒，留给学生充分的反应时间，然后再执行真正的逻辑
             setTimeout(() => {
                 el.style.transform = originalTransform;
                 el.classList.remove('ring-[6px]', 'ring-rose-500', 'ring-offset-2', 'shadow-[0_0_30px_rgba(244,63,94,0.6)]', 'bg-rose-100', 'text-rose-700', 'z-50', 'relative');
@@ -1603,7 +1602,7 @@
                 
                 // 执行实际的页面点击逻辑
                 if (callback) callback();
-            }, 800); 
+            }, 500); 
         }
 
         function handleSlideNextAction() {
@@ -1612,12 +1611,16 @@
             // Slide 3 (算法推演)
             if (currentSlide === 3) {
                 if (!mathGameWon) {
+                    // 恢复瞬间执行的快节奏，移除 800ms 等待
                     const btn = document.getElementById('btn-halve-strike');
-                    isSimulatingClick = true;
-                    simulateVisualClick(btn, () => {
-                        executeHalve();
-                        isSimulatingClick = false;
-                    });
+                    
+                    // 给按钮一个极短的 100ms 物理按下视觉反馈
+                    btn.style.transition = 'transform 0.1s';
+                    btn.style.transform = 'scale(0.9)';
+                    setTimeout(() => { btn.style.transform = ''; }, 100);
+                    
+                    // 立即执行算法推演逻辑
+                    executeHalve();
                     return true;
                 }
             }
@@ -1626,14 +1629,20 @@
             if (currentSlide === 4) {
                 if (slide4Step === 0) {
                     const btn = document.getElementById('btn-slide4-ask-ai');
-                    isSimulatingClick = true;
-                    simulateVisualClick(btn, () => {
-                        startSlide4AIAnalysis(null);
-                        slide4Step = 1;
-                        isSimulatingClick = false;
-                    });
+                    
+                    // 给发送按钮一个极短的 100ms 物理按下视觉反馈
+                    if (btn) {
+                        btn.style.transition = 'transform 0.1s';
+                        btn.style.transform = 'scale(0.9)';
+                        setTimeout(() => { btn.style.transform = ''; }, 100);
+                    }
+                    
+                    // 立即触发 AI 对话分析，无需等待高亮动画
+                    startSlide4AIAnalysis(null);
+                    slide4Step = 1;
                     return true;
                 }
+                // AI 正在打字输出时，锁定下一页，防止跳页
                 if (slide4Step === 1) {
                     const inputStatus = document.getElementById('slide4-ai-fake-input').innerText;
                     if (inputStatus !== "对话已结束") return true; 
@@ -1686,12 +1695,17 @@
             if (currentSlide === 9) {
                 if (slide9Step === 0) {
                     const btn = document.getElementById('btn-ask-ai');
-                    isSimulatingClick = true;
-                    simulateVisualClick(btn, () => {
-                        startAIAnalysis(null);
-                        slide9Step = 1;
-                        isSimulatingClick = false;
-                    });
+                    
+                    // 给发送按钮一个极短的 100ms 物理按下视觉反馈
+                    if (btn) {
+                        btn.style.transition = 'transform 0.1s';
+                        btn.style.transform = 'scale(0.9)';
+                        setTimeout(() => { btn.style.transform = ''; }, 100);
+                    }
+                    
+                    // 立即触发 AI 对话分析，无需等待高亮动画
+                    startAIAnalysis(null);
+                    slide9Step = 1;
                     return true;
                 }
                 if (slide9Step === 1) {
