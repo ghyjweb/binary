@@ -382,10 +382,10 @@
             <div class="shrink-0 bg-white/95 p-5 lg:p-6 rounded-b-[2rem] rounded-tr-[2rem] lg:rounded-b-[2.5rem] lg:rounded-tr-[2.5rem] border border-stone-100 shadow-xl relative flex flex-col items-center z-20 overflow-hidden">
                 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-400 to-amber-500"></div>
 
-                <div class="w-fit mb-5 p-3 lg:p-4 bg-slate-50/80 border border-slate-200 rounded-2xl text-sm lg:text-base text-stone-600 font-medium flex items-start gap-3 shadow-inner shrink-0 self-start">
+                <div class="w-full mb-5 p-3 lg:p-4 bg-slate-50/80 border border-slate-200 rounded-2xl text-sm lg:text-base text-stone-600 font-medium flex items-start gap-3 shadow-inner shrink-0">
                     <div class="p-1.5 bg-blue-50 rounded-full shrink-0 border border-blue-100 mt-0.5"><i data-lucide="info" class="w-5 h-5 text-blue-500"></i></div>
                     <p class="leading-relaxed m-0">
-                        <b class="text-stone-800">任务说明：</b>东莞至广州的 100km 光缆突发断连。派遣无人机检测坐标：若<span class="text-emerald-600 font-bold">信号正常</span>，断点在前方；若<span class="text-amber-600 font-bold">无信号</span>，断点在后方。
+                        <b class="text-stone-800">任务说明：</b>东莞至广州的 100km 光缆突发断连，<b class="text-stone-800">我们需要尽快找到断点！</b>请派遣无人机前往坐标检测：若<span class="text-emerald-600 font-bold">信号正常</span>，说明断点还在前方；若<span class="text-amber-600 font-bold">无信号</span>，说明断点在后方。
                     </p>
                 </div>
 
@@ -403,7 +403,10 @@
                     
                     <div class="absolute left-4 lg:left-5 text-xs lg:text-sm font-black text-slate-500 pointer-events-none -top-6">东莞(0km)</div>
                     <div class="absolute right-4 lg:right-5 text-xs lg:text-sm font-black text-slate-500 pointer-events-none -top-6">广州(100km)</div>
-                    
+                    <div class="absolute left-1/2 -top-6 -translate-x-1/2 text-xs lg:text-sm font-bold text-blue-500 flex items-center gap-1 pointer-events-none z-20">
+                        <i data-lucide="mouse-pointer-click" class="w-4 h-4"></i> 点击下方坐标轴👇快速定位并派遣（蓝色代表剩余搜索范围）
+                    </div>
+
                     <div class="w-full h-2.5 lg:h-3 bg-slate-300 rounded-full relative" id="cable-core">
                         <div id="active-range" class="absolute h-full bg-blue-400/40 rounded-full z-0 transition-all duration-500"></div>
                     </div>
@@ -440,7 +443,7 @@
             </div>
 
             <div id="slide-3" class="slide inactive-right absolute inset-0">
-    <div class="absolute inset-0 z-0 opacity-30 bg-cover bg-center bg-no-repeat" style="background-image: url('./bg-math.jpg');"></div>
+    <div class="absolute inset-0 z-0 opacity-30 bg-cover bg-center bg-no-repeat" style="background-image: url('./daima.jpg');"></div>
 
     <div class="relative z-10 h-full w-full p-4 lg:p-8 flex flex-col items-center justify-center pointer-events-auto">
         <div class="w-full max-w-5xl h-[90%] lg:h-[85%] flex flex-col">
@@ -641,7 +644,7 @@
                             <div class="flex items-center gap-3 lg:gap-4 bg-white/80 backdrop-blur-md px-5 py-2.5 rounded-2xl border border-white/50 shadow-sm w-fit">
                                 <div class="p-2 bg-emerald-50 border border-emerald-100 rounded-2xl text-emerald-600 shadow-sm"><i data-lucide="gamepad" class="w-6 h-6 lg:w-7 lg:h-7"></i></div>
                                 <h2 class="text-xl lg:text-3xl font-black text-stone-800 m-0 flex items-center gap-2">
-                                    进阶模拟：自定义数据寻值 
+                                    算法模拟：自主推演 
                                     <span id="title-target-badge-v2" class="hidden text-white font-mono font-black bg-rose-500 border border-rose-600 px-3 py-0.5 rounded-lg shadow-sm"></span>
                                 </h2>
                             </div>
@@ -815,7 +818,7 @@
                     <span class="font-black text-fuchsia-900 text-base lg:text-lg">输入 LR 参数：</span>
                     <input type="number" id="ai-lr-input" min="1" max="100" class="w-24 lg:w-32 text-center font-black text-2xl text-fuchsia-600 border-2 border-fuchsia-300 rounded-xl focus:outline-none focus:border-fuchsia-600 focus:ring-4 focus:ring-fuchsia-100 py-2 shadow-sm transition-all bg-white" placeholder="1-100">
                     <button onclick="trainAIModel()" id="btn-ai-train" class="px-6 py-3 bg-fuchsia-600 text-white rounded-xl shadow-[0_4px_15px_rgba(217,70,239,0.4)] hover:bg-fuchsia-700 hover:shadow-[0_6px_20px_rgba(217,70,239,0.6)] transition-all font-black text-lg active:scale-95 flex items-center gap-2 breathing-light">
-                        <i data-lucide="play-circle" class="w-5 h-5"></i> 跑一个
+                        <i data-lucide="play-circle" class="w-5 h-5"></i> 检测
                     </button>
                     <button onclick="resetAIGame()" class="px-4 py-3 bg-white border border-stone-200 text-stone-500 hover:bg-stone-50 rounded-xl font-bold transition-all active:scale-95 shadow-sm">重置</button>
                 </div>
@@ -959,7 +962,7 @@
             </div>
 
             <div id="slide-11" class="slide inactive-right absolute inset-0">
-    <div class="absolute inset-0 z-0 opacity-20 bg-cover bg-center bg-no-repeat" style="background-image: url('./test.jpg');"></div>
+    <div class="absolute inset-0 z-0 opacity-20 bg-cover bg-center bg-no-repeat" style="background-image: url('./bg-ai.jpg');"></div>
     
     <div class="relative z-10 h-full w-full p-4 lg:p-8 flex flex-col items-center pointer-events-auto">
         <div class="w-full max-w-5xl flex flex-col max-h-full overflow-y-auto task-scrollbar pt-4 pb-12 lg:py-8 lg:justify-center">
@@ -2289,15 +2292,23 @@
                 }
 
                 let labels = '';
-                if (isL) labels += `<span class="text-xs font-black text-blue-600 bg-blue-100 px-1.5 rounded border border-blue-200 absolute -bottom-3 left-1/2 -translate-x-1/2 shadow-sm transition-all z-40">L</span>`;
-                if (isR && !isL) labels += `<span class="text-xs font-black text-blue-600 bg-blue-100 px-1.5 rounded border border-blue-200 absolute -bottom-3 left-1/2 -translate-x-1/2 shadow-sm transition-all z-40">R</span>`;
-                if (isR && isL) labels += `<span class="text-xs font-black text-blue-600 bg-blue-100 px-1.5 rounded border border-blue-200 absolute -bottom-3 left-1/2 -translate-x-1/2 shadow-sm transition-all z-40">L,R</span>`;
-                if (isM && !isTargetFound) labels += `<span class="text-xs font-black text-white bg-amber-500 px-1.5 rounded absolute -top-3 left-1/2 -translate-x-1/2 shadow-sm animate-bounce z-40">M</span>`;
-                if (isTargetFound) labels += `<span class="text-xs font-black text-white bg-rose-500 px-1.5 rounded absolute -top-3 left-1/2 -translate-x-1/2 shadow-sm z-40 flex items-center gap-1"><i data-lucide="target" class="w-3 h-3"></i>TARGET</span>`;
+                
+                // L 和 R 放在上方，指向索引
+                if (isL && !isR) labels += `<div class="absolute -top-[3.2rem] lg:-top-[3.6rem] left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-all"><span class="text-[10px] lg:text-xs font-black text-white bg-blue-500 px-1.5 py-0.5 rounded shadow-md leading-none">L</span><i data-lucide="arrow-down" class="w-3 h-3 lg:w-4 lg:h-4 text-blue-500 -mt-0.5 drop-shadow-sm"></i></div>`;
+                if (isR && !isL) labels += `<div class="absolute -top-[3.2rem] lg:-top-[3.6rem] left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-all"><span class="text-[10px] lg:text-xs font-black text-white bg-blue-500 px-1.5 py-0.5 rounded shadow-md leading-none">R</span><i data-lucide="arrow-down" class="w-3 h-3 lg:w-4 lg:h-4 text-blue-500 -mt-0.5 drop-shadow-sm"></i></div>`;
+                if (isR && isL)  labels += `<div class="absolute -top-[3.2rem] lg:-top-[3.6rem] left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-all"><span class="text-[10px] lg:text-xs font-black text-white bg-blue-600 px-1.5 py-0.5 rounded shadow-md leading-none">L,R</span><i data-lucide="arrow-down" class="w-3 h-3 lg:w-4 lg:h-4 text-blue-600 -mt-0.5 drop-shadow-sm"></i></div>`;
+
+                // Mid 放在下方，指向元素方块
+                if (isM && !isTargetFound) labels += `<div class="absolute -bottom-8 lg:-bottom-9 left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-all animate-bounce"><i data-lucide="arrow-up" class="w-3 h-3 lg:w-4 lg:h-4 text-amber-500 -mb-0.5 drop-shadow-sm"></i><span class="text-[10px] lg:text-xs font-black text-white bg-amber-500 px-1.5 py-0.5 rounded shadow-md leading-none">Mid</span></div>`;
+                if (isTargetFound) labels += `<div class="absolute -bottom-8 lg:-bottom-9 left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-all"><i data-lucide="arrow-up" class="w-3 h-3 lg:w-4 lg:h-4 text-rose-500 -mb-0.5 drop-shadow-sm"></i><span class="text-[10px] lg:text-xs font-black text-white bg-rose-500 px-1.5 py-0.5 rounded shadow-md flex items-center gap-1 leading-none"><i data-lucide="target" class="w-3 h-3"></i>TARGET</span></div>`;
+
+                // 动态高亮索引：如果被 L 或 R 指向，索引变蓝并加上背景
+                let indexColor = (isL || isR) ? "text-blue-600 bg-blue-100 px-1.5 py-0.5 rounded shadow-sm z-20" : "text-stone-400";
+                let indexHtml = `<span class="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] ${indexColor} font-mono font-bold transition-all">${idx}</span>`;
 
                 return `
                     <div class="${wrapperClasses}">
-                        <span class="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] text-stone-400 font-mono font-bold">${idx}</span>
+                        ${indexHtml}
                         ${pingDiv}
                         <div id="array-box-${idx}" onclick="handleArrayClick(${idx})" class="w-12 h-12 lg:w-16 lg:h-16 flex items-center justify-center rounded-2xl border-[3px] font-black transition-all duration-300 text-xl lg:text-2xl ${boxClasses} relative z-10 select-none">${num}</div>
                         ${labels}
@@ -2430,7 +2441,7 @@ function updateSimUIV2() {
         } else if (simGameStateV2 === 'COMPARE') {
             promptEl.innerHTML = `步骤 2：Mid 对应的值是 <span class="text-white font-black text-lg lg:text-xl bg-indigo-500 px-2 py-0.5 rounded shadow-md">${gameArrayV2[currentMV2]}</span>。它和目标 <span class="text-white font-black text-lg lg:text-xl bg-rose-500 px-2 py-0.5 rounded shadow-md">${GAME_TARGET_V2}</span> 相比，关系是什么？`;
             document.getElementById('btn-less-v2').innerHTML = `<i data-lucide="chevron-left" class="w-4 h-4 text-emerald-400"></i> 小于 ${GAME_TARGET_V2} (在右侧)`;
-            document.getElementById('btn-equal-v2').innerHTML = `<i data-lucide="check" class="w-4 h-4 text-amber-400"></i> 等于 ${GAME_TARGET_V2}`;
+            document.getElementById('btn-equal-v2').innerHTML = `<i data-lucide="check" class="w-4 h-4 text-amber-400"></i> 等于（找到了） ${GAME_TARGET_V2}`;
             document.getElementById('btn-greater-v2').innerHTML = `大于 ${GAME_TARGET_V2} (在左侧) <i data-lucide="chevron-right" class="w-4 h-4 text-rose-400"></i>`;
             btnArea.classList.remove('hidden');
         } else if (simGameStateV2 === 'MOVE_POINTER') {
@@ -2453,73 +2464,82 @@ function updateSimUIV2() {
 }
 
 function renderInteractiveArrayV2() {
-    const container = document.getElementById('interactive-array-container-v2');
-    if(!container) return;
+            const container = document.getElementById('interactive-array-container-v2');
+            if(!container) return;
 
-    if (simGameStateV2 === 'SETUP') {
-        container.innerHTML = `
-            <div class="flex flex-col items-center gap-5 w-full py-2">
-                <div class="bg-blue-50/80 px-4 py-2 rounded-xl border border-blue-200 text-blue-800 font-bold text-sm lg:text-base flex items-center gap-2">
-                    <i data-lucide="edit-3" class="w-5 h-5"></i> 步骤 1：录入从小到大排列的 8 个数字
-                </div>
-                <div class="flex flex-wrap gap-2 lg:gap-3 justify-center">
-                    ${Array(8).fill(0).map((_, i) => `
-                        <div class="relative">
-                            <span class="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] text-stone-400 font-mono font-bold">${i}</span>
-                            <input type="number" id="input-arr-v2-${i}" class="w-12 h-12 lg:w-16 lg:h-16 text-center rounded-2xl border-[3px] border-stone-300 font-black text-xl lg:text-2xl text-stone-700 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-200 focus:outline-none shadow-sm transition-all bg-white/90" placeholder="">
+            if (simGameStateV2 === 'SETUP') {
+                container.innerHTML = `
+                    <div class="flex flex-col items-center gap-5 w-full py-2">
+                        <div class="bg-blue-50/80 px-4 py-2 rounded-xl border border-blue-200 text-blue-800 font-bold text-sm lg:text-base flex items-center gap-2">
+                            <i data-lucide="edit-3" class="w-5 h-5"></i> 步骤 1：录入从小到大排列的 8 个数字
                         </div>
-                    `).join('')}
-                </div>
-                <div class="w-full max-w-md h-px bg-stone-200 my-1"></div>
-                <div class="flex flex-col sm:flex-row items-center gap-4">
-                    <div class="bg-rose-50/80 px-4 py-2 rounded-xl border border-rose-200 text-rose-800 font-bold text-sm lg:text-base flex items-center gap-2">
-                        <i data-lucide="target" class="w-5 h-5"></i> 步骤 2：设定要查找的目标数字
+                        <div class="flex flex-wrap gap-2 lg:gap-3 justify-center">
+                            ${Array(8).fill(0).map((_, i) => `
+                                <div class="relative">
+                                    <span class="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] text-stone-400 font-mono font-bold">${i}</span>
+                                    <input type="number" id="input-arr-v2-${i}" class="w-12 h-12 lg:w-16 lg:h-16 text-center rounded-2xl border-[3px] border-stone-300 font-black text-xl lg:text-2xl text-stone-700 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-200 focus:outline-none shadow-sm transition-all bg-white/90" placeholder="">
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="w-full max-w-md h-px bg-stone-200 my-1"></div>
+                        <div class="flex flex-col sm:flex-row items-center gap-4">
+                            <div class="bg-rose-50/80 px-4 py-2 rounded-xl border border-rose-200 text-rose-800 font-bold text-sm lg:text-base flex items-center gap-2">
+                                <i data-lucide="target" class="w-5 h-5"></i> 步骤 2：设定要查找的目标数字
+                            </div>
+                            <input type="number" id="input-target-v2" class="w-24 h-12 text-center rounded-2xl border-[3px] border-stone-300 font-black text-xl text-rose-600 focus:border-rose-400 focus:ring-2 focus:ring-rose-200 focus:outline-none shadow-sm transition-all bg-white/90" placeholder="目标">
+                        </div>
+                        <button onclick="validateAndStartV2()" class="mt-2 px-8 py-3.5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white rounded-full font-black shadow-lg transition-all active:scale-95 flex items-center gap-2 text-base breathing-light border border-emerald-300/50">
+                            <i data-lucide="play" class="w-5 h-5"></i> 确认无误，开始模拟
+                        </button>
+                        <div id="setup-error-v2" class="text-rose-500 font-bold text-sm h-5 transition-all"></div>
                     </div>
-                    <input type="number" id="input-target-v2" class="w-24 h-12 text-center rounded-2xl border-[3px] border-stone-300 font-black text-xl text-rose-600 focus:border-rose-400 focus:ring-2 focus:ring-rose-200 focus:outline-none shadow-sm transition-all bg-white/90" placeholder="目标">
-                </div>
-                <button onclick="validateAndStartV2()" class="mt-2 px-8 py-3.5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white rounded-full font-black shadow-lg transition-all active:scale-95 flex items-center gap-2 text-base breathing-light border border-emerald-300/50">
-                    <i data-lucide="play" class="w-5 h-5"></i> 确认无误，开始模拟
-                </button>
-                <div id="setup-error-v2" class="text-rose-500 font-bold text-sm h-5 transition-all"></div>
-            </div>
-        `;
-        return;
-    }
-    
-    container.innerHTML = gameArrayV2.map((num, idx) => {
-        const isOutOfRange = (idx < currentLV2 || idx > currentRV2) && simGameStateV2 !== 'WON';
-        const isL = idx === currentLV2; const isR = idx === currentRV2; const isM = idx === currentMV2;
-        const isTargetFound = (simGameStateV2 === 'WON' && isM);
-        let boxClasses = "bg-white border-stone-200 text-stone-800 hover:border-emerald-300 hover:shadow-md cursor-pointer active:scale-95";
-        let wrapperClasses = "relative transition-all duration-300 transform" + (isOutOfRange ? " dimmed-box" : "");
-        let pingDiv = "";
+                `;
+                return;
+            }
+            
+            container.innerHTML = gameArrayV2.map((num, idx) => {
+                const isOutOfRange = (idx < currentLV2 || idx > currentRV2) && simGameStateV2 !== 'WON';
+                const isL = idx === currentLV2; const isR = idx === currentRV2; const isM = idx === currentMV2;
+                const isTargetFound = (simGameStateV2 === 'WON' && isM);
+                
+                let boxClasses = "bg-white border-stone-200 text-stone-800 hover:border-emerald-300 hover:shadow-md cursor-pointer active:scale-95";
+                let wrapperClasses = "relative transition-all duration-300 transform" + (isOutOfRange ? " dimmed-box" : "");
+                let pingDiv = "";
 
-        if (isTargetFound) {
-            boxClasses = "bg-emerald-500 text-white border-emerald-400 scale-110 shadow-[0_0_20px_rgba(16,185,129,0.5)] z-30 pointer-events-none";
-            pingDiv = `<div class="absolute inset-0 rounded-2xl anim-success-ping"></div>`;
-        } else if (isM) {
-            boxClasses = "bg-amber-400 text-white border-amber-300 scale-105 shadow-lg z-20 pointer-events-none";
-        } else if (isL || isR) {
-            boxClasses = "bg-blue-50 text-blue-800 border-blue-300 shadow-sm z-10 cursor-pointer hover:bg-blue-100";
+                if (isTargetFound) {
+                    boxClasses = "bg-emerald-500 text-white border-emerald-400 scale-110 shadow-[0_0_20px_rgba(16,185,129,0.5)] z-30 pointer-events-none";
+                    pingDiv = `<div class="absolute inset-0 rounded-2xl anim-success-ping"></div>`;
+                } else if (isM) {
+                    boxClasses = "bg-amber-400 text-white border-amber-300 scale-105 shadow-lg z-20 pointer-events-none";
+                } else if (isL || isR) {
+                    boxClasses = "bg-blue-50 text-blue-800 border-blue-300 shadow-sm z-10 cursor-pointer hover:bg-blue-100";
+                }
+
+                let labels = '';
+                
+                // L 和 R 放在上方，指向索引
+                if (isL && !isR) labels += `<div class="absolute -top-[3.2rem] lg:-top-[3.6rem] left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-all"><span class="text-[10px] lg:text-xs font-black text-white bg-blue-500 px-1.5 py-0.5 rounded shadow-md leading-none">L</span><i data-lucide="arrow-down" class="w-3 h-3 lg:w-4 lg:h-4 text-blue-500 -mt-0.5 drop-shadow-sm"></i></div>`;
+                if (isR && !isL) labels += `<div class="absolute -top-[3.2rem] lg:-top-[3.6rem] left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-all"><span class="text-[10px] lg:text-xs font-black text-white bg-blue-500 px-1.5 py-0.5 rounded shadow-md leading-none">R</span><i data-lucide="arrow-down" class="w-3 h-3 lg:w-4 lg:h-4 text-blue-500 -mt-0.5 drop-shadow-sm"></i></div>`;
+                if (isR && isL)  labels += `<div class="absolute -top-[3.2rem] lg:-top-[3.6rem] left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-all"><span class="text-[10px] lg:text-xs font-black text-white bg-blue-600 px-1.5 py-0.5 rounded shadow-md leading-none">L,R</span><i data-lucide="arrow-down" class="w-3 h-3 lg:w-4 lg:h-4 text-blue-600 -mt-0.5 drop-shadow-sm"></i></div>`;
+
+                // Mid 放在下方，指向元素方块
+                if (isM && !isTargetFound) labels += `<div class="absolute -bottom-8 lg:-bottom-9 left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-all animate-bounce"><i data-lucide="arrow-up" class="w-3 h-3 lg:w-4 lg:h-4 text-amber-500 -mb-0.5 drop-shadow-sm"></i><span class="text-[10px] lg:text-xs font-black text-white bg-amber-500 px-1.5 py-0.5 rounded shadow-md leading-none">Mid</span></div>`;
+                if (isTargetFound) labels += `<div class="absolute -bottom-8 lg:-bottom-9 left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-all"><i data-lucide="arrow-up" class="w-3 h-3 lg:w-4 lg:h-4 text-rose-500 -mb-0.5 drop-shadow-sm"></i><span class="text-[10px] lg:text-xs font-black text-white bg-rose-500 px-1.5 py-0.5 rounded shadow-md flex items-center gap-1 leading-none"><i data-lucide="target" class="w-3 h-3"></i>TARGET</span></div>`;
+
+                // 动态高亮索引
+                let indexColor = (isL || isR) ? "text-blue-600 bg-blue-100 px-1.5 py-0.5 rounded shadow-sm z-20" : "text-stone-400";
+                let indexHtml = `<span class="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] ${indexColor} font-mono font-bold transition-all">${idx}</span>`;
+
+                return `
+                    <div class="${wrapperClasses}">
+                        ${indexHtml}
+                        ${pingDiv}
+                        <div id="array-box-v2-${idx}" onclick="handleArrayClickV2(${idx})" class="w-12 h-12 lg:w-16 lg:h-16 flex items-center justify-center rounded-2xl border-[3px] font-black transition-all duration-300 text-xl lg:text-2xl ${boxClasses} relative z-10 select-none">${num}</div>
+                        ${labels}
+                    </div>
+                `;
+            }).join('');
         }
-
-        let labels = '';
-        if (isL) labels += `<span class="text-xs font-black text-blue-600 bg-blue-100 px-1.5 rounded border border-blue-200 absolute -bottom-3 left-1/2 -translate-x-1/2 shadow-sm transition-all z-40">L</span>`;
-        if (isR && !isL) labels += `<span class="text-xs font-black text-blue-600 bg-blue-100 px-1.5 rounded border border-blue-200 absolute -bottom-3 left-1/2 -translate-x-1/2 shadow-sm transition-all z-40">R</span>`;
-        if (isR && isL) labels += `<span class="text-xs font-black text-blue-600 bg-blue-100 px-1.5 rounded border border-blue-200 absolute -bottom-3 left-1/2 -translate-x-1/2 shadow-sm transition-all z-40">L,R</span>`;
-        if (isM && !isTargetFound) labels += `<span class="text-xs font-black text-white bg-amber-500 px-1.5 rounded absolute -top-3 left-1/2 -translate-x-1/2 shadow-sm animate-bounce z-40">M</span>`;
-        if (isTargetFound) labels += `<span class="text-xs font-black text-white bg-rose-500 px-1.5 rounded absolute -top-3 left-1/2 -translate-x-1/2 shadow-sm z-40 flex items-center gap-1"><i data-lucide="target" class="w-3 h-3"></i>TARGET</span>`;
-
-        return `
-            <div class="${wrapperClasses}">
-                <span class="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] text-stone-400 font-mono font-bold">${idx}</span>
-                ${pingDiv}
-                <div id="array-box-v2-${idx}" onclick="handleArrayClickV2(${idx})" class="w-12 h-12 lg:w-16 lg:h-16 flex items-center justify-center rounded-2xl border-[3px] font-black transition-all duration-300 text-xl lg:text-2xl ${boxClasses} relative z-10 select-none">${num}</div>
-                ${labels}
-            </div>
-        `;
-    }).join('');
-}
 
 function handleArrayClickV2(idx) {
     const boxEl = document.getElementById(`array-box-v2-${idx}`);
@@ -2670,7 +2690,7 @@ document.addEventListener("DOMContentLoaded", function() {
             
             const btn = document.getElementById('btn-ai-train'); btn.disabled = false;
             btn.className = "px-6 py-3 bg-fuchsia-600 text-white rounded-xl shadow-[0_4px_15px_rgba(217,70,239,0.4)] hover:bg-fuchsia-700 transition-all font-black text-lg active:scale-95 flex items-center gap-2 breathing-light";
-            btn.innerHTML = `<i data-lucide="play-circle" class="w-5 h-5"></i> 跑一个 Epoch`;
+            btn.innerHTML = `<i data-lucide="play-circle" class="w-5 h-5"></i> 检测`;
 
             const ball = document.getElementById('ai-model-ball');
             ball.style.transition = 'all 0.5s ease'; ball.style.left = '5%'; ball.style.top = '15%';
