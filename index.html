@@ -369,77 +369,86 @@
             </div>
 
             <div id="slide-2" class="slide inactive-right absolute inset-0">
-    <div class="absolute inset-0 z-0 opacity-30 bg-cover bg-center bg-no-repeat" style="background-image: url('./bg-cable.jpg');"></div>
+                <div class="absolute inset-0 z-0 opacity-30 bg-cover bg-center bg-no-repeat" style="background-image: url('./bg-cable.jpg');"></div>
 
-    <div class="relative z-10 h-full w-full p-4 lg:p-8 flex flex-col items-center pointer-events-auto">
-        <div class="w-full max-w-5xl flex flex-col max-h-full overflow-y-auto task-scrollbar pb-12 lg:py-8 lg:justify-center">
-            
-            <div class="shrink-0 flex items-center gap-2 lg:gap-3 mb-0 bg-white/80 backdrop-blur-md px-4 py-2 lg:px-5 lg:py-2.5 rounded-t-2xl border border-white/50 shadow-sm w-fit mx-auto lg:mx-0 relative z-30 translate-y-[1px]">
-                <div class="p-1.5 lg:p-2 bg-red-50 border border-red-100 rounded-xl lg:rounded-2xl text-red-500 shadow-sm"><i data-lucide="gamepad-2" class="w-5 h-5 lg:w-7 lg:h-7"></i></div>
-                <h2 class="text-xl lg:text-3xl font-black text-stone-800 m-0">2. 情境探究：光缆维修模拟</h2>
-            </div>
-            
-            <div class="shrink-0 bg-white/95 p-5 lg:p-6 rounded-b-[2rem] rounded-tr-[2rem] lg:rounded-b-[2.5rem] lg:rounded-tr-[2.5rem] border border-stone-100 shadow-xl relative flex flex-col items-center z-20 overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-400 to-amber-500"></div>
+                <div class="relative z-10 h-full w-full p-4 lg:p-8 flex flex-col items-center pointer-events-auto">
+                    <div class="w-full max-w-5xl flex flex-col max-h-full overflow-y-auto task-scrollbar pb-12 lg:py-8 lg:justify-center">
+                        
+                        <div class="shrink-0 flex items-center gap-2 lg:gap-3 mb-0 bg-white/80 backdrop-blur-md px-4 py-2 lg:px-5 lg:py-2.5 rounded-t-2xl border border-white/50 shadow-sm w-fit mx-auto lg:mx-0 relative z-30 translate-y-[1px]">
+                            <div class="p-1.5 lg:p-2 bg-red-50 border border-red-100 rounded-xl lg:rounded-2xl text-red-500 shadow-sm"><i data-lucide="gamepad-2" class="w-5 h-5 lg:w-7 lg:h-7"></i></div>
+                            <h2 class="text-xl lg:text-3xl font-black text-stone-800 m-0">2. 情境探究：光缆维修模拟</h2>
+                        </div>
+                        
+                        <div class="shrink-0 bg-white/95 p-5 lg:p-6 rounded-b-[2rem] rounded-tr-[2rem] lg:rounded-b-[2.5rem] lg:rounded-tr-[2.5rem] border border-stone-100 shadow-xl relative flex flex-col items-center z-20 overflow-hidden">
+                            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-400 to-amber-500"></div>
 
-                <div class="w-full mb-5 p-3 lg:p-4 bg-slate-50/80 border border-slate-200 rounded-2xl text-sm lg:text-base text-stone-600 font-medium flex items-start gap-3 shadow-inner shrink-0">
-                    <div class="p-1.5 bg-blue-50 rounded-full shrink-0 border border-blue-100 mt-0.5"><i data-lucide="info" class="w-5 h-5 text-blue-500"></i></div>
-                    <p class="leading-relaxed m-0">
-                        <b class="text-stone-800">任务说明：</b>东莞至广州的 100km 光缆突发断连，<b class="text-stone-800">我们需要尽快找到断点！</b>请派遣无人机前往坐标检测：若<span class="text-emerald-600 font-bold">信号正常</span>，说明断点还在前方；若<span class="text-amber-600 font-bold">无信号</span>，说明断点在后方。
-                    </p>
-                </div>
+                            <div class="w-full mb-5 p-3 lg:p-4 bg-slate-50/80 border border-slate-200 rounded-2xl text-sm lg:text-base text-stone-600 font-medium flex items-start gap-3 shadow-inner shrink-0">
+                                <div class="p-1.5 bg-blue-50 rounded-full shrink-0 border border-blue-100 mt-0.5"><i data-lucide="info" class="w-5 h-5 text-blue-500"></i></div>
+                                <p class="leading-relaxed m-0">
+                                    <b class="text-stone-800">任务说明：</b>东莞至广州的 100km 光缆突发断连，<b class="text-stone-800">我们需要尽快找到断点！</b>请派遣无人机前往坐标检测：若<span class="text-emerald-600 font-bold">信号正常</span>，说明断点还在前方；若<span class="text-amber-600 font-bold">无信号</span>，说明断点在后方。
+                                </p>
+                            </div>
 
-                <div class="flex justify-between items-center w-full mb-6 px-2 lg:px-4 shrink-0">
-                    <div class="text-base lg:text-lg font-bold text-stone-600 bg-slate-50 px-3 lg:px-4 py-2 rounded-xl border border-slate-200 shadow-sm flex items-center gap-2">
-                        当前排查次数：<span id="game-attempts" class="text-blue-600 text-2xl lg:text-3xl font-black">0</span>
+                            <div class="flex justify-between items-center w-full mb-6 px-2 lg:px-4 shrink-0">
+                                <div class="flex items-center gap-3 relative">
+                                    <div class="text-base lg:text-lg font-bold text-stone-600 bg-slate-50 px-3 lg:px-4 py-2 rounded-xl border border-slate-200 shadow-sm flex items-center gap-2">
+                                        当前排查次数：<span id="game-attempts" class="text-blue-600 text-2xl lg:text-3xl font-black">0</span>
+                                    </div>
+                                    
+                                    <div id="slide-2-toast" class="absolute left-full ml-2 lg:ml-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-4 py-1.5 rounded-full shadow-sm border border-emerald-400/50 flex items-center gap-2 transform -translate-x-4 opacity-0 transition-all duration-500 z-50 pointer-events-none w-max">
+                                        <div class="relative flex shrink-0 items-center justify-center">
+                                            <div class="absolute inset-0 bg-white rounded-full animate-ping opacity-30"></div>
+                                            <i data-lucide="check-circle" class="w-4 h-4 relative z-10 text-white"></i>
+                                        </div>
+                                        <div class="flex items-center text-xs lg:text-sm font-bold tracking-wide whitespace-nowrap">
+                                            挑战完成！排查 <span id="toast-attempts" class="font-black text-sm mx-0.5 text-emerald-100 drop-shadow-sm">0</span> 次
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button onclick="initGame()" class="px-3 lg:px-4 py-2 bg-white hover:bg-slate-50 border border-slate-200 rounded-xl text-slate-600 font-bold text-sm lg:text-base transition-all shadow-sm flex items-center gap-2 active:scale-95 shrink-0">
+                                    <i data-lucide="refresh-cw" class="w-4 h-4"></i> <span class="hidden sm:inline">重新生成断点</span>
+                                </button>
+                            </div>
+
+                            <div class="relative w-full h-12 lg:h-14 bg-slate-100 hover:bg-slate-200/70 transition-colors rounded-full shadow-inner border border-slate-300 mb-8 mt-4 flex items-center px-12 lg:px-16 group cursor-crosshair shrink-0 z-10" 
+                                onclick="const core = document.getElementById('cable-core'); const rect = core.getBoundingClientRect(); let clickX = event.clientX - rect.left; let percent = Math.round((clickX / rect.width) * 100); percent = Math.max(1, Math.min(99, percent)); document.getElementById('guess-input').value = percent; if(typeof makeGuess === 'function') makeGuess();">
+                                
+                                <div class="absolute left-4 lg:left-5 text-xs lg:text-sm font-black text-slate-500 pointer-events-none -top-6">东莞(0km)</div>
+                                <div class="absolute right-4 lg:right-5 text-xs lg:text-sm font-black text-slate-500 pointer-events-none -top-6">广州(100km)</div>
+                                <div class="absolute left-1/2 -top-6 -translate-x-1/2 text-xs lg:text-sm font-bold text-blue-500 flex items-center gap-1 pointer-events-none z-20">
+                                    <i data-lucide="mouse-pointer-click" class="w-4 h-4"></i> 点击下方坐标轴👇快速定位并派遣（蓝色代表剩余搜索范围）
+                                </div>
+
+                                <div class="w-full h-2.5 lg:h-3 bg-slate-300 rounded-full relative" id="cable-core">
+                                    <div id="active-range" class="absolute h-full bg-blue-400/40 rounded-full z-0 transition-all duration-500"></div>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap items-center gap-3 lg:gap-4 bg-gradient-to-r from-slate-50 to-blue-50 p-4 rounded-2xl border border-blue-100 w-full justify-center shadow-inner shrink-0 mt-2">
+                                <input type="number" id="guess-input" min="0" max="100" class="w-24 lg:w-28 text-center font-black text-xl lg:text-2xl text-blue-600 border-2 border-blue-300 rounded-xl" placeholder="km">
+                                <button onclick="makeGuess()" id="guess-btn" class="px-5 py-2.5 lg:px-6 lg:py-3 bg-blue-600 text-white rounded-xl shadow-lg font-black flex items-center gap-2">
+                                    <i data-lucide="satellite" class="w-5 h-5"></i> 派遣检测
+                                </button>
+                            </div>
+
+                            <div id="game-feedback" class="mt-4 w-full h-12 lg:h-14 text-sm lg:text-base font-bold text-stone-400 flex items-center justify-center bg-stone-50 rounded-xl border border-dashed shrink-0">
+                                <i data-lucide="activity" class="w-4 h-4 mr-2"></i> 游戏已就绪
+                            </div>
+                        </div>
                     </div>
-                    <button onclick="initGame()" class="px-3 lg:px-4 py-2 bg-white hover:bg-slate-50 border border-slate-200 rounded-xl text-slate-600 font-bold text-sm lg:text-base transition-all shadow-sm flex items-center gap-2 active:scale-95 shrink-0">
-                        <i data-lucide="refresh-cw" class="w-4 h-4"></i> <span class="hidden sm:inline">重新生成断点</span>
-                    </button>
-                </div>
-
-                <div class="relative w-full h-12 lg:h-14 bg-slate-100 hover:bg-slate-200/70 transition-colors rounded-full shadow-inner border border-slate-300 mb-8 mt-4 flex items-center px-12 lg:px-16 group cursor-crosshair shrink-0 z-10" 
-                    onclick="const core = document.getElementById('cable-core'); const rect = core.getBoundingClientRect(); let clickX = event.clientX - rect.left; let percent = Math.round((clickX / rect.width) * 100); percent = Math.max(1, Math.min(99, percent)); document.getElementById('guess-input').value = percent; if(typeof makeGuess === 'function') makeGuess();">
                     
-                    <div class="absolute left-4 lg:left-5 text-xs lg:text-sm font-black text-slate-500 pointer-events-none -top-6">东莞(0km)</div>
-                    <div class="absolute right-4 lg:right-5 text-xs lg:text-sm font-black text-slate-500 pointer-events-none -top-6">广州(100km)</div>
-                    <div class="absolute left-1/2 -top-6 -translate-x-1/2 text-xs lg:text-sm font-bold text-blue-500 flex items-center gap-1 pointer-events-none z-20">
-                        <i data-lucide="mouse-pointer-click" class="w-4 h-4"></i> 点击下方坐标轴👇快速定位并派遣（蓝色代表剩余搜索范围）
+                    <div id="slide-2-toast" class="absolute bottom-6 right-6 lg:bottom-10 lg:right-10 bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-5 py-2.5 rounded-full shadow-[0_10px_30px_rgba(16,185,129,0.4)] border border-emerald-400/50 flex items-center gap-2.5 transform translate-y-20 opacity-0 transition-all duration-500 z-50 pointer-events-none w-max">
+                        <div class="relative flex shrink-0 items-center justify-center">
+                            <div class="absolute inset-0 bg-white rounded-full animate-ping opacity-30"></div>
+                            <i data-lucide="check-circle" class="w-5 h-5 relative z-10 text-white"></i>
+                        </div>
+                        <div class="flex items-center text-sm font-bold tracking-wide whitespace-nowrap">
+                            挑战完成！排查 <span id="toast-attempts" class="font-black text-lg mx-1 text-emerald-100 drop-shadow-sm">0</span> 次
+                        </div>
                     </div>
 
-                    <div class="w-full h-2.5 lg:h-3 bg-slate-300 rounded-full relative" id="cable-core">
-                        <div id="active-range" class="absolute h-full bg-blue-400/40 rounded-full z-0 transition-all duration-500"></div>
-                    </div>
                 </div>
-
-                <div class="flex flex-wrap items-center gap-3 lg:gap-4 bg-gradient-to-r from-slate-50 to-blue-50 p-4 rounded-2xl border border-blue-100 w-full justify-center shadow-inner shrink-0 mt-2">
-                    <input type="number" id="guess-input" min="0" max="100" class="w-24 lg:w-28 text-center font-black text-xl lg:text-2xl text-blue-600 border-2 border-blue-300 rounded-xl" placeholder="km">
-                    <button onclick="makeGuess()" id="guess-btn" class="px-5 py-2.5 lg:px-6 lg:py-3 bg-blue-600 text-white rounded-xl shadow-lg font-black flex items-center gap-2">
-                        <i data-lucide="satellite" class="w-5 h-5"></i> 派遣检测
-                    </button>
-                </div>
-
-                <div id="game-feedback" class="mt-4 w-full h-12 lg:h-14 text-sm lg:text-base font-bold text-stone-400 flex items-center justify-center bg-stone-50 rounded-xl border border-dashed shrink-0">
-                    <i data-lucide="activity" class="w-4 h-4 mr-2"></i> 游戏已就绪
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="slide-2-success-modal" class="absolute inset-0 z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-400 bg-slate-900/30 backdrop-blur-[2px]">
-        <div class="bg-white p-5 lg:p-6 rounded-[1.5rem] shadow-xl border border-emerald-100 flex flex-col items-center transform scale-90 transition-transform duration-400 max-w-[280px] w-full mx-4 relative overflow-hidden" id="slide-2-modal-content">
-            <div class="w-12 h-12 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center mb-3 shadow-inner border border-emerald-100 relative z-10">
-                <i data-lucide="check-circle" class="w-7 h-7"></i>
-            </div>
-            <h3 class="text-lg lg:text-xl font-black text-stone-800 mb-1 relative z-10">挑战完成</h3>
-            <p class="text-stone-500 font-medium mb-5 text-center text-xs lg:text-sm relative z-10 leading-relaxed">
-                排查次数：<span id="modal-attempts-count" class="text-emerald-600 font-black text-lg">0</span> 次<br>已成功锁定故障断点！
-            </p>
-            <button onclick="document.getElementById('slide-2-success-modal').classList.add('opacity-0', 'pointer-events-none'); document.getElementById('slide-2-modal-content').classList.replace('scale-100', 'scale-90'); setTimeout(() => { if (!isDrawerOpen) toggleTaskDrawer(); }, 300);" class="py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg font-bold text-sm shadow-md transition-all active:scale-95 flex items-center justify-center gap-2 w-full relative z-10">
-                <i data-lucide="clipboard-list" class="w-4 h-4"></i> 记录至任务单
-            </button>
-        </div>
-    </div>
             </div>
 
             <div id="slide-3" class="slide inactive-right absolute inset-0">
@@ -816,7 +825,7 @@
 
                 <div class="flex items-center gap-4 bg-fuchsia-50/50 p-4 lg:p-5 rounded-2xl border border-fuchsia-100 w-full justify-center shadow-inner relative z-10">
                     <span class="font-black text-fuchsia-900 text-base lg:text-lg">输入 LR 参数：</span>
-                    <input type="number" id="ai-lr-input" min="1" max="100" class="w-24 lg:w-32 text-center font-black text-2xl text-fuchsia-600 border-2 border-fuchsia-300 rounded-xl focus:outline-none focus:border-fuchsia-600 focus:ring-4 focus:ring-fuchsia-100 py-2 shadow-sm transition-all bg-white" placeholder="1-100">
+                    <input type="number" id="ai-lr-input" min="1" max="100" class="w-24 lg:w-32 text-center font-black text-2xl text-fuchsia-600 border-2 border-fuchsia-300 rounded-xl focus:outline-none focus:border-fuchsia-600 focus:ring-4 focus:ring-fuchsia-100 py-2 shadow-sm transition-all bg-white" placeholder="请输入">
                     <button onclick="trainAIModel()" id="btn-ai-train" class="px-6 py-3 bg-fuchsia-600 text-white rounded-xl shadow-[0_4px_15px_rgba(217,70,239,0.4)] hover:bg-fuchsia-700 hover:shadow-[0_6px_20px_rgba(217,70,239,0.6)] transition-all font-black text-lg active:scale-95 flex items-center gap-2 breathing-light">
                         <i data-lucide="play-circle" class="w-5 h-5"></i> 检测
                     </button>
@@ -1224,14 +1233,6 @@
                         <span class="font-bold text-stone-800">🤖 AI 模型调参：</span> 
                         <div>在连续的参数空间中，利用二分思想寻找最佳的 <select data-answer="学习率" data-explanation="在课件的拓展实验中，我们调整的参数是 LR（Learning Rate 学习率），通过折半找最佳参数以避免梯度爆炸或学习停滞。" onchange="checkTaskAnswer(this)" required class="task-input wide appearance-none cursor-pointer invalid:text-stone-300 invalid:font-normal"><option value="" disabled selected hidden>请选择</option><option value="学习率">学习率</option><option value="准确率">准确率</option><option value="损失值">损失值</option></select>。</div>
                     </li>
-                    <li class="flex flex-col gap-1 question-block">
-                        <span class="font-bold text-stone-800">📌 数学求零点：</span> 
-                        <div>利用 <select data-answer="缩小区间" data-explanation="根据零点存在性定理，我们通过判断中值函数结果的正负，来不断折半“缩小区间”，从而逼近真实零点。" onchange="checkTaskAnswer(this)" required class="task-input wide appearance-none cursor-pointer invalid:text-stone-300 invalid:font-normal"><option value="" disabled selected hidden>请选择</option><option value="中值判断">中值判断</option><option value="缩小区间">缩小区间</option><option value="有序前提">有序前提</option></select> 的方式逼近答案。</div>
-                    </li>
-                    <li class="flex flex-col gap-1 question-block">
-                        <span class="font-bold text-stone-800">📖 字典查字：</span> 
-                        <div>建立在字母排序是 <select data-answer="有序前提" data-explanation="字典里的字都是按照拼音字母顺序排列的，这就满足了二分查找必须“有序”的大前提。" onchange="checkTaskAnswer(this)" required class="task-input wide appearance-none cursor-pointer invalid:text-stone-300 invalid:font-normal"><option value="" disabled selected hidden>请选择</option><option value="中值判断">中值判断</option><option value="缩小区间">缩小区间</option><option value="有序前提">有序前提</option></select> 的基础之上。</div>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -1392,16 +1393,9 @@
                 tipDiv.className = 'bg-indigo-50 text-indigo-600 p-3 lg:p-4 rounded-xl border border-indigo-200 flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:bg-indigo-100 transition-all font-bold text-sm mt-4 active:scale-95 group shrink-0';
                 tipDiv.innerHTML = '<i data-lucide="check-circle" class="w-5 h-5 group-hover:scale-110 transition-transform"></i> 本项任务已完成，点击关闭任务单';
                 
+                // 【修改这里】：移除了定时器自动调用 nextSlide() 的翻页逻辑
                 tipDiv.onclick = function() {
                     toggleTaskDrawer();
-                    
-                    if (currentSlide === 2 || currentSlide === 5 || currentSlide === 6) {
-                        return; 
-                    }
-                    
-                    setTimeout(() => {
-                        nextSlide();
-                    }, 400);
                 };
             }
 
@@ -1481,18 +1475,13 @@
                 return; 
             }
             
-            // 3. 正常切页逻辑
+            // 3. 拦截修复：如果任务单开着，按下一页/右方向键时，仅仅关闭任务单，不再执行后续自动翻页
             if (isDrawerOpen) {
                 toggleTaskDrawer();
-                setTimeout(() => {
-                    if (currentSlide < totalSlides - 1) { 
-                        currentSlide++; 
-                        updateSlides('next'); 
-                    } 
-                }, 400);
-                return;
+                return; 
             }
 
+            // 4. 正常切页逻辑
             if (currentSlide < totalSlides - 1) { 
                 currentSlide++; 
                 updateSlides('next'); 
@@ -1500,17 +1489,13 @@
         }
 
         function prevSlide() { 
+            // 拦截修复：如果任务单开着，按上一页/左方向键时，仅仅关闭任务单，不强制翻页
             if (isDrawerOpen) {
                 toggleTaskDrawer();
-                setTimeout(() => {
-                    if (currentSlide > 0) { 
-                        currentSlide--; 
-                        updateSlides('prev'); 
-                    } 
-                }, 400);
                 return;
             }
 
+            // 正常切页逻辑
             if (currentSlide > 0) { 
                 currentSlide--; 
                 updateSlides('prev'); 
@@ -1526,6 +1511,7 @@
                 return; 
             }
             
+            // 针对用户在顶部进度条进行的主动跨页跳转：关闭任务单后允许其完成指定的跳页诉求
             if (isDrawerOpen) {
                 toggleTaskDrawer();
                 setTimeout(() => {
@@ -1691,6 +1677,31 @@
                         });
                         return true;
                     }
+                }
+            }
+
+            // Slide 8 (拓展：AI 调参师 - 自动二分推演)
+            if (currentSlide === 8) {
+                if (!aiGameWon) {
+                    // 严格按照二分查找逻辑，计算中点（向下取整）
+                    const mid = Math.floor((aiLeftBound + aiRightBound) / 2);
+                    const input = document.getElementById('ai-lr-input');
+                    const btn = document.getElementById('btn-ai-train');
+                    
+                    isSimulatingClick = true;
+                    
+                    // 给输入框增加微小的跳动动画，提示学生数字是自动填入的
+                    input.style.transition = 'transform 0.2s';
+                    input.style.transform = 'scale(1.1)';
+                    setTimeout(() => { input.style.transform = ''; }, 200);
+                    input.value = mid;
+
+                    // 模拟点击“检测”按钮
+                    simulateVisualClick(btn, () => {
+                        trainAIModel();
+                        isSimulatingClick = false;
+                    });
+                    return true; // 拦截翻页
                 }
             }
 
@@ -1913,8 +1924,12 @@
                     feedback.className = "mt-4 w-full h-12 lg:h-14 text-sm lg:text-base font-bold text-stone-400 flex items-center justify-center transition-all duration-300 bg-stone-50 rounded-xl border border-stone-100 border-dashed shrink-0";
                     feedback.innerHTML = '<i data-lucide="activity" class="w-4 h-4 lg:w-5 lg:h-5 mr-2"></i> 游戏已刷新，请输入或点击坐标开始排查';
                     
-                    const toast = document.getElementById('success-toast');
-                    if(toast) toast.remove();
+                    // 【修改内容】重置并隐藏小框提示
+                    const toast = document.getElementById('slide-2-toast');
+                    if(toast) {
+                        toast.classList.add('-translate-x-4', 'opacity-0', 'pointer-events-none');
+                        toast.classList.remove('translate-x-0', 'opacity-100', 'pointer-events-auto');
+                    }
 
                     updateCableVisual();
                     if(typeof lucide !== 'undefined') lucide.createIcons();
@@ -1962,14 +1977,14 @@
                 
                 document.querySelectorAll('.right-pointing-arrow, .left-pointing-arrow').forEach(el => el.remove());
 
-                // 【修复内容】弃用原来错位拉伸的右侧动态 Toast，直接唤起预埋的精美全屏 Modal
                 setTimeout(() => {
-                    const modal = document.getElementById('slide-2-success-modal');
-                    if (modal) {
-                        document.getElementById('modal-attempts-count').innerText = attempts;
-                        // 取消隐藏，并加上平滑放大的动画
-                        modal.classList.remove('opacity-0', 'pointer-events-none');
-                        document.getElementById('slide-2-modal-content').classList.replace('scale-90', 'scale-100');
+                    const toast = document.getElementById('slide-2-toast');
+                    if (toast) {
+                        // ✅ 重新把当前的尝试次数赋值给小圆圈里的 span
+                        document.getElementById('toast-attempts').innerText = attempts; 
+                        
+                        toast.classList.remove('-translate-x-4', 'opacity-0', 'pointer-events-none');
+                        toast.classList.add('translate-x-0', 'opacity-100', 'pointer-events-auto');
                     }
                 }, 600);
             }          
@@ -2682,8 +2697,10 @@ document.addEventListener("DOMContentLoaded", function() {
         // AI 模块
         const AI_TARGET_LR = 45; 
         let aiEpochs = 0; let aiGameWon = false; let aiLeftBound = 1; let aiRightBound = 100;
+        let aiClearTimeoutId = null; // 新增：用于管理清空输入框的定时器
 
         function resetAIGame() {
+            if (aiClearTimeoutId) clearTimeout(aiClearTimeoutId); // 新增：重置时清除定时器
             aiEpochs = 0; aiGameWon = false; aiLeftBound = 1; aiRightBound = 100;
             document.getElementById('ai-epoch-count').innerText = "0";
             const input = document.getElementById('ai-lr-input'); input.value = ''; input.disabled = false;
@@ -2707,6 +2724,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         function trainAIModel() {
             if (aiGameWon) return;
+            if (aiClearTimeoutId) clearTimeout(aiClearTimeoutId); // 新增：执行新操作时清除旧的清空任务
+
             const input = document.getElementById('ai-lr-input');
             const lr = parseInt(input.value);
             const feedback = document.getElementById('ai-feedback');
@@ -2715,7 +2734,9 @@ document.addEventListener("DOMContentLoaded", function() {
             if(isNaN(lr) || lr < aiLeftBound || lr > aiRightBound) {
                 feedback.innerHTML = `<span class="text-rose-500"><i data-lucide="alert-circle" class="w-5 h-5 inline mr-1 -mt-1"></i> 请输入 ${aiLeftBound} 到 ${aiRightBound} 之间的有效参数。</span>`;
                 if(typeof lucide !== 'undefined') lucide.createIcons();
-                input.value = ''; input.focus(); return;
+                input.value = ''; 
+                if (!isSimulatingClick) input.focus(); // 修复：仅在手动误操作时抢占焦点，防阻断快捷键
+                return;
             }
 
             aiEpochs++; document.getElementById('ai-epoch-count').innerText = aiEpochs;
@@ -2723,6 +2744,7 @@ document.addEventListener("DOMContentLoaded", function() {
             void ball.offsetWidth; ball.style.transition = 'all 1s cubic-bezier(0.25, 1, 0.5, 1)';
 
             if (lr === AI_TARGET_LR) {
+                // ... (中间原有动画代码保持不变) ...
                 aiGameWon = true; aiLeftBound = lr; aiRightBound = lr;
                 ball.style.left = '48.5%'; ball.style.top = '82%';
                 ball.className = "absolute w-6 h-6 bg-emerald-400 rounded-full border-4 border-white shadow-[0_0_30px_#10b981] z-30 transition-all duration-1000 scale-125 animate-bounce";
@@ -2734,21 +2756,29 @@ document.addEventListener("DOMContentLoaded", function() {
                 document.getElementById('btn-ai-train').className = "px-6 py-3 bg-stone-300 text-stone-500 rounded-xl font-black shadow-inner transition-all flex items-center gap-2 cursor-not-allowed";
 
             } else if (lr < AI_TARGET_LR) {
-                aiLeftBound = Math.max(aiLeftBound, lr);
+                // 严格二分：目标在右侧，左界变为 mid + 1
+                aiLeftBound = Math.max(aiLeftBound, lr + 1);
                 const progress = lr / AI_TARGET_LR; 
                 ball.style.left = `${5 + (40 * progress)}%`; ball.style.top = `${15 + (60 * progress)}%`;
                 feedback.className = "mt-4 w-full p-3 bg-amber-50 border border-amber-200 rounded-xl text-lg font-bold text-amber-700 flex items-center justify-center transition-all shadow-sm";
                 feedback.innerHTML = `参数 ${lr} 太小：陷入<b class="ml-1 text-amber-600">欠拟合</b>。范围缩小至 ${aiLeftBound}~${aiRightBound}。`;
             } else {
-                aiRightBound = Math.min(aiRightBound, lr);
+                // 严格二分：目标在左侧，右界变为 mid - 1
+                aiRightBound = Math.min(aiRightBound, lr - 1);
                 ball.style.left = '120%'; ball.style.top = '-20%';
                 setTimeout(() => { document.getElementById('ai-explosion').style.opacity = '1'; }, 400);
                 setTimeout(() => { document.getElementById('ai-explosion').style.opacity = '0'; }, 1000);
                 feedback.className = "mt-4 w-full p-3 bg-rose-50 border border-rose-200 rounded-xl text-lg font-bold text-rose-600 flex items-center justify-center transition-all shadow-sm";
                 feedback.innerHTML = `参数 ${lr} 太大：引发<b class="ml-1 text-rose-600">梯度爆炸</b>！范围缩小至 ${aiLeftBound}~${aiRightBound}。`;
             }
+            
             updateAIRangeVisual();
-            setTimeout(() => { if(!aiGameWon) { input.value = ''; input.focus(); } }, 1000);
+            aiClearTimeoutId = setTimeout(() => { // 修复：赋值给全局变量管理
+                if(!aiGameWon) { 
+                    input.value = ''; 
+                    input.blur(); 
+                } 
+            }, 50);
             if(typeof lucide !== 'undefined') lucide.createIcons();
         }
 
