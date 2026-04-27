@@ -368,86 +368,99 @@
 
             </div>
 
-            <div id="slide-2" class="slide inactive-right absolute inset-0">
-                <div class="absolute inset-0 z-0 opacity-30 bg-cover bg-center bg-no-repeat" style="background-image: url('./bg-cable.jpg');"></div>
-
-                <div class="relative z-10 h-full w-full p-4 lg:p-8 flex flex-col items-center pointer-events-auto">
-                    <div class="w-full max-w-5xl flex flex-col max-h-full overflow-y-auto task-scrollbar pb-12 lg:py-8 lg:justify-center">
+            <div id="slide-2" class="slide inactive-right absolute inset-0 overflow-hidden">
+                <div class="absolute inset-0 z-0 opacity-40 bg-cover bg-center bg-no-repeat" style="background-image: url('./bg-cable.jpg');"></div>
+                <div class="absolute inset-0 z-0 bg-slate-900/60 pointer-events-none"></div>
+                <div class="absolute inset-0 z-0 opacity-10 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+            
+                <div class="relative z-10 h-full w-full p-2 lg:px-4 flex flex-col items-center justify-center pointer-events-auto">
+                    <div class="w-full max-w-[96%] xl:max-w-7xl flex flex-col items-center">
                         
-                        <div class="shrink-0 flex items-center gap-2 lg:gap-3 mb-0 bg-white/80 backdrop-blur-md px-4 py-2 lg:px-5 lg:py-2.5 rounded-t-2xl border border-white/50 shadow-sm w-fit mx-auto lg:mx-0 relative z-30 translate-y-[1px]">
-                            <div class="p-1.5 lg:p-2 bg-red-50 border border-red-100 rounded-xl lg:rounded-2xl text-red-500 shadow-sm"><i data-lucide="gamepad-2" class="w-5 h-5 lg:w-7 lg:h-7"></i></div>
-                            <h2 class="text-xl lg:text-3xl font-black text-stone-800 m-0">2. 情境探究：光缆维修模拟</h2>
+                        <div class="shrink-0 flex flex-col items-center gap-1.5 mb-2 w-full">
+                            <h1 class="text-xl lg:text-3xl font-black text-white m-0 tracking-widest drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">2. 情境导入：校门口的“神秘快递”</h1>
                         </div>
-                        
-                        <div class="shrink-0 bg-white/95 p-5 lg:p-6 rounded-b-[2rem] rounded-tr-[2rem] lg:rounded-b-[2.5rem] lg:rounded-tr-[2.5rem] border border-stone-100 shadow-xl relative flex flex-col items-center z-20 overflow-hidden">
-                            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-400 to-amber-500"></div>
 
-                            <div class="w-full mb-5 p-3 lg:p-4 bg-slate-50/80 border border-slate-200 rounded-2xl text-sm lg:text-base text-stone-600 font-medium flex items-start gap-3 shadow-inner shrink-0">
-                                <div class="p-1.5 bg-blue-50 rounded-full shrink-0 border border-blue-100 mt-0.5"><i data-lucide="info" class="w-5 h-5 text-blue-500"></i></div>
-                                <p class="leading-relaxed m-0">
-                                    <b class="text-stone-800">任务说明：</b>东莞至广州的 100km 光缆突发断连，<b class="text-stone-800">我们需要尽快找到断点！</b>请派遣无人机前往坐标检测：若<span class="text-emerald-600 font-bold">信号正常</span>，说明断点还在前方；若<span class="text-amber-600 font-bold">无信号</span>，说明断点在后方。
-                                </p>
+                        <div class="w-full bg-white/95 p-3 lg:p-5 rounded-[1.5rem] lg:rounded-[2rem] border border-stone-200 shadow-2xl relative flex flex-col items-center z-20 overflow-hidden">
+                            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-indigo-500"></div>
+                
+                            <div class="flex justify-between items-center w-full mb-2.5 px-1 lg:px-2 shrink-0 gap-2 lg:gap-3">
+                                <div class="text-sm lg:text-base font-bold text-stone-600 bg-white px-3 lg:px-4 py-1.5 rounded-xl border border-stone-200 shadow-sm flex items-center gap-2 shrink-0">
+                                    调取次数：<span id="game-attempts" class="text-blue-600 text-xl lg:text-2xl font-black transition-all">0</span>
+                                </div>
+                                
+                                <div class="flex-1 bg-blue-50/60 border border-blue-100 rounded-xl px-3 py-1.5 text-xs lg:text-base font-medium text-stone-600 flex items-center justify-center text-center shadow-inner overflow-hidden">
+                                    <i data-lucide="info" class="w-4 h-4 text-blue-500 mr-1.5 shrink-0"></i>
+                                    <span class="truncate" title="情境背景：快递在 0~240 分钟内离奇失踪，每次调取监控都很耗时，请尝试用最少的次数锁定失窃的准确时间！">
+                                        <b>情境背景：快递在 0~240 分钟内离奇失踪，请尝试用最少次数锁定失窃时间！</b>
+                                    </span>
+                                </div>
+                            
+                                <button onclick="initGame()" class="px-3 py-1.5 bg-stone-100 hover:bg-stone-200 border border-stone-300 rounded-xl text-stone-700 font-bold text-xs lg:text-sm transition-all shadow-sm flex items-center gap-1.5 active:scale-95 shrink-0">
+                                    <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> <span class="hidden sm:inline">重新生成</span>
+                                </button>
                             </div>
-
-                            <div class="flex justify-between items-center w-full mb-6 px-2 lg:px-4 shrink-0">
-                                <div class="flex items-center gap-3 relative">
-                                    <div class="text-base lg:text-lg font-bold text-stone-600 bg-slate-50 px-3 lg:px-4 py-2 rounded-xl border border-slate-200 shadow-sm flex items-center gap-2">
-                                        当前排查次数：<span id="game-attempts" class="text-blue-600 text-2xl lg:text-3xl font-black">0</span>
+                
+                            <div class="relative w-full bg-slate-900 rounded-xl border-[4px] lg:border-[6px] border-slate-800 shadow-[inset_0_0_50px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col mb-3 group shrink-0">
+                                
+                                <div id="monitor-screen-container" class="h-32 lg:h-40 flex items-center justify-center relative overflow-hidden bg-slate-950">
+                                    <div class="absolute inset-0 opacity-10 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:100%_4px] pointer-events-none z-40"></div>
+                                    <div class="absolute top-2 right-3 text-rose-500 font-mono text-xs font-black flex items-center gap-1.5 animate-pulse z-40">
+                                        <div class="w-2.5 h-2.5 bg-rose-500 rounded-full shadow-[0_0_10px_#f43f5e]"></div> REC
+                                    </div>
+                                    <div class="absolute top-2 left-3 text-slate-400 font-mono text-[10px] lg:text-xs z-40 font-bold bg-black/50 px-1.5 py-0.5 rounded">CAM 01 - 收发室桌台</div>
+                
+                                    <div id="monitor-screen-content" class="absolute inset-0 w-full h-full z-0 flex items-center justify-center">
+                                        <div class="text-slate-500 flex flex-col items-center z-30">
+                                            <i data-lucide="video" class="w-8 h-8 mb-1.5 animate-pulse"></i>
+                                            <span class="font-bold tracking-widest text-xs lg:text-sm">等待输入时间码调取画面...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                
+                                <div class="w-full bg-slate-800 px-4 lg:px-8 py-4 border-t border-slate-700 cursor-crosshair relative" 
+                                    onclick="const core = document.getElementById('timeline-core'); const rect = core.getBoundingClientRect(); let clickX = event.clientX - rect.left; let percent = Math.max(0, Math.min(1, clickX / rect.width)); document.getElementById('guess-input').value = Math.round(percent * 240); if(typeof makeGuess === 'function') makeGuess(); document.getElementById('guess-arrow-hint').style.opacity='0';">
+                                    
+                                    <div class="w-full h-2 bg-slate-900 rounded-full relative shadow-[inset_0_2px_5px_rgba(0,0,0,0.5)] border border-slate-700" id="timeline-core">
+                                        <div id="active-range" class="absolute h-full bg-blue-500/30 rounded-full z-0 transition-all duration-500 shadow-[0_0_10px_rgba(59,130,246,0.3)]"></div>
+                                        
+                                        <div class="absolute inset-0 w-full h-full pointer-events-none">
+                                            <div class="absolute left-0 top-full mt-2.5 text-xs lg:text-sm font-mono font-black text-slate-400 -translate-x-1/2">0m</div>
+                                            <div class="absolute left-1/4 top-full mt-2.5 text-xs lg:text-sm font-mono font-black text-slate-400 -translate-x-1/2 text-center">60m</div>
+                                            <div class="absolute left-2/4 top-full mt-2.5 text-xs lg:text-sm font-mono font-black text-slate-400 -translate-x-1/2 text-center">120m</div>
+                                            <div class="absolute left-3/4 top-full mt-2.5 text-xs lg:text-sm font-mono font-black text-slate-400 -translate-x-1/2 text-center">180m</div>
+                                            <div class="absolute right-0 top-full mt-2.5 text-xs lg:text-sm font-mono font-black text-slate-400 translate-x-1/2 text-right">240m</div>
+                                        </div>
                                     </div>
                                     
-                                    <div id="slide-2-toast" class="absolute left-full ml-2 lg:ml-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-4 py-1.5 rounded-full shadow-sm border border-emerald-400/50 flex items-center gap-2 transform -translate-x-4 opacity-0 transition-all duration-500 z-50 pointer-events-none w-max">
-                                        <div class="relative flex shrink-0 items-center justify-center">
-                                            <div class="absolute inset-0 bg-white rounded-full animate-ping opacity-30"></div>
-                                            <i data-lucide="check-circle" class="w-4 h-4 relative z-10 text-white"></i>
-                                        </div>
-                                        <div class="flex items-center text-xs lg:text-sm font-bold tracking-wide whitespace-nowrap">
-                                            挑战完成！排查 <span id="toast-attempts" class="font-black text-sm mx-0.5 text-emerald-100 drop-shadow-sm">0</span> 次
-                                        </div>
+                                    <div class="mt-8 lg:mt-10 text-center pointer-events-none flex justify-center items-center">
+                                        <span class="text-xs lg:text-sm text-slate-400 font-bold flex items-center gap-1 bg-slate-900/50 px-2 py-0.5 rounded shadow-inner">
+                                            <i data-lucide="mouse-pointer-click" class="w-3.5 h-3.5"></i> 点击上方👆时间轴可快速填入并查找
+                                        </span>
                                     </div>
                                 </div>
-
-                                <button onclick="initGame()" class="px-3 lg:px-4 py-2 bg-white hover:bg-slate-50 border border-slate-200 rounded-xl text-slate-600 font-bold text-sm lg:text-base transition-all shadow-sm flex items-center gap-2 active:scale-95 shrink-0">
-                                    <i data-lucide="refresh-cw" class="w-4 h-4"></i> <span class="hidden sm:inline">重新生成断点</span>
-                                </button>
                             </div>
-
-                            <div class="relative w-full h-12 lg:h-14 bg-slate-100 hover:bg-slate-200/70 transition-colors rounded-full shadow-inner border border-slate-300 mb-8 mt-4 flex items-center px-12 lg:px-16 group cursor-crosshair shrink-0 z-10" 
-                                onclick="const core = document.getElementById('cable-core'); const rect = core.getBoundingClientRect(); let clickX = event.clientX - rect.left; let percent = Math.round((clickX / rect.width) * 100); percent = Math.max(1, Math.min(99, percent)); document.getElementById('guess-input').value = percent; if(typeof makeGuess === 'function') makeGuess();">
+                
+                            <div class="flex flex-wrap items-center gap-2 lg:gap-3 bg-gradient-to-r from-slate-50 to-blue-50 p-2 lg:p-3 rounded-xl border border-blue-200 w-full justify-center shadow-inner shrink-0 relative z-10">
+                                <span class="font-bold text-stone-600 text-xs lg:text-sm">跳转到:</span>
+                                <input type="number" id="guess-input" min="0" max="240" class="w-16 lg:w-20 text-center font-black text-base lg:text-lg text-blue-600 border-2 border-blue-300 rounded-lg outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 py-0.5" placeholder="请输入">
+                                <span class="font-bold text-stone-600 text-xs lg:text-sm mr-1">分钟</span>
                                 
-                                <div class="absolute left-4 lg:left-5 text-xs lg:text-sm font-black text-slate-500 pointer-events-none -top-6">东莞(0km)</div>
-                                <div class="absolute right-4 lg:right-5 text-xs lg:text-sm font-black text-slate-500 pointer-events-none -top-6">广州(100km)</div>
-                                <div class="absolute left-1/2 -top-6 -translate-x-1/2 text-xs lg:text-sm font-bold text-blue-500 flex items-center gap-1 pointer-events-none z-20">
-                                    <i data-lucide="mouse-pointer-click" class="w-4 h-4"></i> 点击下方坐标轴👇快速定位并派遣（蓝色代表剩余搜索范围）
-                                </div>
-
-                                <div class="w-full h-2.5 lg:h-3 bg-slate-300 rounded-full relative" id="cable-core">
-                                    <div id="active-range" class="absolute h-full bg-blue-400/40 rounded-full z-0 transition-all duration-500"></div>
+                                <div class="relative flex items-center">
+                                    <div id="guess-arrow-hint" class="absolute left-full ml-3 top-1/2 -translate-y-1/2 flex flex-row items-center animate-bounce z-30 pointer-events-none transition-opacity duration-300">
+                                         <i data-lucide="arrow-left" class="w-5 h-5 lg:w-6 lg:h-6 text-blue-500 drop-shadow-md mr-1"></i>
+                                         <span class="text-xs font-black text-blue-600 tracking-widest whitespace-nowrap bg-blue-100 px-2 py-0.5 rounded border border-blue-300 shadow-sm">点此调取</span>
+                                    </div>
+                                    <button onclick="makeGuess(); document.getElementById('guess-arrow-hint').style.opacity='0';" id="guess-btn" class="px-4 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-md font-black flex items-center gap-1.5 transition-colors active:scale-95 text-xs lg:text-sm">
+                                        <i data-lucide="search" class="w-3.5 h-3.5"></i> 调取
+                                    </button>
                                 </div>
                             </div>
-
-                            <div class="flex flex-wrap items-center gap-3 lg:gap-4 bg-gradient-to-r from-slate-50 to-blue-50 p-4 rounded-2xl border border-blue-100 w-full justify-center shadow-inner shrink-0 mt-2">
-                                <input type="number" id="guess-input" min="0" max="100" class="w-24 lg:w-28 text-center font-black text-xl lg:text-2xl text-blue-600 border-2 border-blue-300 rounded-xl" placeholder="km">
-                                <button onclick="makeGuess()" id="guess-btn" class="px-5 py-2.5 lg:px-6 lg:py-3 bg-blue-600 text-white rounded-xl shadow-lg font-black flex items-center gap-2">
-                                    <i data-lucide="satellite" class="w-5 h-5"></i> 派遣检测
-                                </button>
-                            </div>
-
-                            <div id="game-feedback" class="mt-4 w-full h-12 lg:h-14 text-sm lg:text-base font-bold text-stone-400 flex items-center justify-center bg-stone-50 rounded-xl border border-dashed shrink-0">
-                                <i data-lucide="activity" class="w-4 h-4 mr-2"></i> 游戏已就绪
+                
+                            <div id="game-feedback" class="mt-2.5 w-full h-8 lg:h-10 text-xs lg:text-sm font-bold text-stone-400 flex items-center justify-center bg-stone-50 rounded-lg border border-stone-200 border-dashed shrink-0">
+                                <i data-lucide="activity" class="w-3 h-3 lg:w-4 lg:h-4 mr-1.5"></i> 录像读取已就绪。
                             </div>
                         </div>
                     </div>
-                    
-                    <div id="slide-2-toast" class="absolute bottom-6 right-6 lg:bottom-10 lg:right-10 bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-5 py-2.5 rounded-full shadow-[0_10px_30px_rgba(16,185,129,0.4)] border border-emerald-400/50 flex items-center gap-2.5 transform translate-y-20 opacity-0 transition-all duration-500 z-50 pointer-events-none w-max">
-                        <div class="relative flex shrink-0 items-center justify-center">
-                            <div class="absolute inset-0 bg-white rounded-full animate-ping opacity-30"></div>
-                            <i data-lucide="check-circle" class="w-5 h-5 relative z-10 text-white"></i>
-                        </div>
-                        <div class="flex items-center text-sm font-bold tracking-wide whitespace-nowrap">
-                            挑战完成！排查 <span id="toast-attempts" class="font-black text-lg mx-1 text-emerald-100 drop-shadow-sm">0</span> 次
-                        </div>
-                    </div>
-
                 </div>
             </div>
 
@@ -774,8 +787,11 @@
                 <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-fuchsia-100/40 rounded-full blur-[60px] pointer-events-none"></div>
                 <div class="w-full flex justify-between items-end mb-4 relative z-10">
                     <div class="text-left">
-                        <h3 class="text-xl lg:text-2xl font-black text-stone-800 flex items-center gap-2 mb-2"><i data-lucide="target" class="text-fuchsia-500 w-6 h-6"></i> 寻找深度学习的最佳学习率</h3>
-                        <p class="text-stone-500 font-bold text-sm">任务：输入 1-100 之间的参数。若达到最佳参数，模型精度、稳定性都变高。但参数太大导致梯度爆炸（数值大到报错，完全失控），太小导致学习停滞（练了半天模型还是个笨蛋，完全没进步）。<b style="color:red;">因为学习率处于连续且有序的数值范围，所以可以用折半法找出完美参数！</b></p>
+                        <h3 class="text-xl lg:text-2xl font-black text-stone-800 flex items-center gap-2 mb-2"><i data-lucide="target" class="text-fuchsia-500 w-6 h-6"></i> 寻找 “最佳学习率”</h3>
+                        <p class="text-stone-500 font-bold text-sm">“最佳学习率” 是深度学习领域中一个让模型精度、稳定性变高的参数。
+                            <br><b style="color:rgb(22, 93, 107);">设最佳学习率处于 1-100 中。参数太大导致梯度爆炸（模型完全失控），太小导致学习停滞（模型没进步）。</b>
+                            <br><b style="color:rgb(154, 96, 55);">目标参数处于连续且有序的范围中，用顺序查找很慢，</b><b style="color:rgb(249, 40, 3);">能不能用二分查找快速得到最佳学习率？</b><br>
+                        </p>
                     </div>
                     <div class="px-4 py-2 bg-slate-100 rounded-xl border border-slate-200 shadow-inner flex items-center gap-2 text-slate-500 font-bold text-sm shrink-0">
                         <i data-lucide="activity" class="w-4 h-4"></i> 训练次数：<span id="ai-epoch-count" class="text-fuchsia-600 font-black text-lg">0</span>
@@ -804,7 +820,7 @@
                     <div class="absolute right-4 lg:right-5 text-xs lg:text-sm font-black text-slate-500 pointer-events-none -top-6">LR=100</div>
                     
                     <div class="absolute left-1/2 -top-6 -translate-x-1/2 text-xs lg:text-sm font-bold text-fuchsia-500 flex items-center gap-1 pointer-events-none z-20">
-                        <i data-lucide="mouse-pointer-click" class="w-4 h-4"></i> 点击坐标快速输入并训练
+                        <i data-lucide="mouse-pointer-click" class="w-4 h-4"></i> 点击👇坐标快速输入并训练
                     </div>
 
                     <div class="w-full h-3 bg-slate-300 rounded-full relative" id="ai-lr-core">
@@ -856,16 +872,16 @@
                             <div class="w-full lg:w-[28%] p-4 lg:p-6 border-b lg:border-b-0 lg:border-r border-stone-200 bg-stone-50/50 shrink-0 flex flex-col overflow-y-auto task-scrollbar">
                                 <div class="flex items-center gap-2 mb-3 lg:mb-4">
                                     <span class="bg-stone-800 text-white text-xs font-black px-2 py-1 rounded shadow-sm tracking-widest uppercase shrink-0">题目背景</span>
-                                    <h3 class="text-lg lg:text-xl font-bold text-stone-700 leading-tight">放羊与柱子</h3>
+                                    <h3 class="text-lg lg:text-xl font-bold text-stone-700 leading-tight">学生与空调</h3>
                                 </div>
                                 <div class="text-stone-600 text-sm lg:text-base leading-relaxed space-y-3 font-medium">
-                                    <p>在一条直线上有 <span class="font-bold text-amber-600 font-mono">8</span> 只羊，它们的位置分别是 <span class="font-bold text-amber-600 font-mono">x = {1, 3, 5, 8, 12, 15, 17, 19}</span>。</p>
-                                    <p>现在你有 <span class="font-bold text-blue-600 font-mono">3</span> 根相同的柱子，每根柱子可以拴住<b class="text-rose-500 mx-1">距离它不超过 R 米</b>的所有羊（即覆盖一个长度为 2R 的区间）。柱子可以打在直线上的任意位置。</p>
+                                    <p>在一条笔直的长廊自习室里有 <span class="font-bold text-amber-600 font-mono">8</span> 位学生，他们的座位坐标分别是 <span class="font-bold text-amber-600 font-mono">x = {1, 3, 5, 8, 12, 15, 17, 19}</span>。</p>
+                                    <p>现在自习室里只有 <span class="font-bold text-blue-600 font-mono">3</span> 台相同的可移动空调，每台空调可以覆盖<b class="text-rose-500 mx-1">距离它不超过 R 米</b>的所有学生（即覆盖一个长度为 2R 的区间）。空调可以放置在长廊上的任意位置。</p>
                                     <div class="flex flex-col gap-2 text-stone-800 bg-amber-50 p-3 lg:p-3.5 rounded-xl border border-amber-200 mt-2 lg:mt-4 shadow-inner">
                                         <div class="flex items-center gap-1.5 text-amber-600 font-bold mb-1">
                                             <i data-lucide="help-circle" class="w-4 h-4 lg:w-5 lg:h-5 shrink-0"></i> 请问：
                                         </div>
-                                        <p class="font-bold text-sm lg:text-base leading-relaxed text-amber-900">要保证这 8 只羊都被至少一根柱子覆盖，最小的 R 是多少？</p>
+                                        <p class="font-bold text-sm lg:text-base leading-relaxed text-amber-900">要保证这 8 位学生都能被至少一台空调吹到，空调的最小覆盖半径 R 是多少？</p>
                                     </div>
                                 </div>
                             </div>
@@ -1680,6 +1696,51 @@
                 }
             }
 
+            // Slide 6 (算法模拟：自主推演 v2)
+            if (currentSlide === 6) {
+                // 确保用户已经录入完数据并开始（不在 SETUP 状态），且还没结束
+                if (simGameStateV2 !== 'SETUP' && simGameStateV2 !== 'WON' && simGameStateV2 !== 'NOT_FOUND') {
+                    if (simGameStateV2 === 'FIND_MID') {
+                        const correctMid = Math.floor((currentLV2 + currentRV2) / 2);
+                        const box = document.getElementById(`array-box-v2-${correctMid}`);
+                        isSimulatingClick = true;
+                        simulateVisualClick(box, () => {
+                            handleArrayClickV2(correctMid);
+                            isSimulatingClick = false;
+                        });
+                        return true; // 拦截翻页
+                    } 
+                    else if (simGameStateV2 === 'COMPARE') {
+                        const val = gameArrayV2[currentMV2];
+                        let type = val < GAME_TARGET_V2 ? '<' : (val > GAME_TARGET_V2 ? '>' : '==');
+                        
+                        let targetBtn;
+                        if (type === '<') targetBtn = document.getElementById('btn-less-v2');
+                        else if (type === '==') targetBtn = document.getElementById('btn-equal-v2');
+                        else targetBtn = document.getElementById('btn-greater-v2');
+                        
+                        isSimulatingClick = true;
+                        simulateVisualClick(targetBtn, () => {
+                            handleCompareV2(type);
+                            isSimulatingClick = false;
+                        });
+                        return true; // 拦截翻页
+                    } 
+                    else if (simGameStateV2 === 'MOVE_POINTER') {
+                        const val = gameArrayV2[currentMV2];
+                        const expectedIdx = val < GAME_TARGET_V2 ? currentMV2 + 1 : currentMV2 - 1;
+                        const box = document.getElementById(`array-box-v2-${expectedIdx}`);
+                        
+                        isSimulatingClick = true;
+                        simulateVisualClick(box, () => {
+                            handleArrayClickV2(expectedIdx);
+                            isSimulatingClick = false;
+                        });
+                        return true; // 拦截翻页
+                    }
+                }
+            }
+
             // Slide 8 (拓展：AI 调参师 - 自动二分推演)
             if (currentSlide === 8) {
                 if (!aiGameWon) {
@@ -1902,133 +1963,229 @@
             }
         }
 
-// ================= [2. 情境探究：光缆维修模拟] =================
-        let secretFault = 0;
+// ================= [2. 情境探究：监控寻物模拟] =================
+let secretFault = 0;
         let attempts = 0;
         let gameWon = false;
         let leftBound = 0;
-        let rightBound = 100;
+        let rightBound = 240; 
+        let pastGuesses = []; 
+        let slide2OutroTimeout = null;
+
+        function handleSlide2TaskAction() {
+            taskIntercepted[2] = true;
+            
+            if (!isDrawerOpen) toggleTaskDrawer();
+        }
+
+        function getMonitorScene(state, guessTime) {
+            let packageOpacity = "opacity-100";
+            let thiefHtml = "";
+            let overlayText = "等待输入时间码调取画面...";
+            let textColor = "text-slate-400";
+            let packageIcon = "package";
+            let packageColor = "text-amber-500";
+
+            if (state === 'safe') {
+                overlayText = `${guessTime}分钟：快递完好放置在桌子上`;
+                textColor = "text-emerald-400";
+            } else if (state === 'stolen') {
+                packageOpacity = "opacity-20"; 
+                packageIcon = "package-open";
+                packageColor = "text-slate-500";
+                overlayText = `${guessTime}分钟：空空如也，已被拿走`;
+                textColor = "text-rose-400";
+            } else if (state === 'caught') {
+                overlayText = `${guessTime}分钟：锁定！嫌疑人正在拿快递`;
+                textColor = "text-amber-400";
+                packageColor = "text-amber-400 animate-pulse";
+                thiefHtml = `<i data-lucide="hand" class="absolute -right-5 -top-2 w-8 h-8 lg:w-10 lg:h-10 text-slate-300 z-30 drop-shadow-[0_0_10px_rgba(255,255,255,0.6)] animate-bounce"></i>`;
+            }
+
+            return `
+                <div class="absolute inset-0 flex flex-col justify-end items-center pb-1 lg:pb-2 z-10 w-full h-full">
+                    <div class="absolute inset-0 bg-slate-800"></div>
+                    <div class="absolute bottom-0 w-full h-1/3 bg-slate-700 border-t border-slate-900 shadow-[inset_0_15px_20px_rgba(0,0,0,0.6)]"></div>
+                    
+                    <div class="relative w-32 lg:w-40 h-2 lg:h-3 bg-amber-900 rounded-sm border-b-[3px] border-amber-950 z-20 flex justify-center items-end shadow-xl">
+                        <div class="absolute top-full left-3 w-1.5 h-8 lg:h-10 bg-amber-950 shadow-md"></div>
+                        <div class="absolute top-full right-3 w-1.5 h-8 lg:h-10 bg-amber-950 shadow-md"></div>
+                        
+                        <div class="relative -mb-1 ${packageOpacity} transition-all duration-300">
+                            <i data-lucide="${packageIcon}" class="w-10 h-10 lg:w-12 lg:h-12 ${packageColor} drop-shadow-[0_6px_6px_rgba(0,0,0,0.6)] relative z-20"></i>
+                            ${thiefHtml}
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute top-[15%] lg:top-[20%] z-30 font-black tracking-wider text-xs lg:text-sm ${textColor} bg-slate-900/80 px-3 py-1.5 rounded-lg backdrop-blur-sm border border-white/10 shadow-lg text-center transform transition-all duration-300">
+                    ${overlayText}
+                </div>
+            `;
+        }
 
         function initGame() {
-                    secretFault = Math.floor(Math.random() * 49) + 51;
-                    attempts = 0; gameWon = false; leftBound = 0; rightBound = 100;
-                    
-                    document.getElementById('game-attempts').innerText = attempts;
-                    const input = document.getElementById('guess-input');
-                    input.value = ''; input.disabled = false;
-                    document.getElementById('guess-btn').disabled = false;
-                    
-                    document.getElementById('cable-core').innerHTML = '<div id="active-range" class="absolute h-full bg-blue-400/40 rounded-full z-0 transition-all duration-500 shadow-[0_0_10px_rgba(96,165,250,0.5)]"></div>';
-                    
-                    const feedback = document.getElementById('game-feedback');
-                    feedback.className = "mt-4 w-full h-12 lg:h-14 text-sm lg:text-base font-bold text-stone-400 flex items-center justify-center transition-all duration-300 bg-stone-50 rounded-xl border border-stone-100 border-dashed shrink-0";
-                    feedback.innerHTML = '<i data-lucide="activity" class="w-4 h-4 lg:w-5 lg:h-5 mr-2"></i> 游戏已刷新，请输入或点击坐标开始排查';
-                    
-                    // 【修改内容】重置并隐藏小框提示
-                    const toast = document.getElementById('slide-2-toast');
-                    if(toast) {
-                        toast.classList.add('-translate-x-4', 'opacity-0', 'pointer-events-none');
-                        toast.classList.remove('translate-x-0', 'opacity-100', 'pointer-events-auto');
-                    }
+            if (slide2OutroTimeout) {
+                clearTimeout(slide2OutroTimeout);
+                slide2OutroTimeout = null;
+            }
+            
+            secretFault = Math.floor(Math.random() * 120) + 121;
+            attempts = 0; gameWon = false; leftBound = 0; rightBound = 240;
+            pastGuesses = [];
+            
+            document.getElementById('game-attempts').innerText = attempts;
+            const input = document.getElementById('guess-input');
+            input.value = ''; input.disabled = false;
+            document.getElementById('guess-btn').disabled = false;
+            
+            const successCircle = document.getElementById('success-circle-popup');
+            if(successCircle) successCircle.remove();
+            
+            const screen = document.getElementById('monitor-screen-content');
+            screen.innerHTML = `
+                <div class="absolute inset-0 bg-slate-800"></div>
+                <div class="text-slate-500 flex flex-col items-center z-30 relative">
+                    <i data-lucide="video" class="w-8 h-8 mb-1.5 animate-pulse"></i>
+                    <span class="font-bold tracking-widest text-xs lg:text-sm">等待输入时间码调取画面...</span>
+                </div>
+            `;
+            
+            const feedback = document.getElementById('game-feedback');
+            feedback.className = "mt-2.5 w-full h-8 lg:h-10 text-xs lg:text-sm font-bold text-stone-400 flex items-center justify-center bg-stone-50 rounded-lg border border-stone-200 border-dashed shrink-0";
+            feedback.innerHTML = '<i data-lucide="activity" class="w-3 h-3 lg:w-4 lg:h-4 mr-1.5"></i> 录像读取已就绪，请输入分钟数。';
 
-                    updateCableVisual();
-                    if(typeof lucide !== 'undefined') lucide.createIcons();
-                }
-
+            renderTimelineMarkers();
+            if(typeof lucide !== 'undefined') lucide.createIcons();
+        }
 
         function makeGuess() {
             if(gameWon) return;
             const input = document.getElementById('guess-input');
             const guess = parseInt(input.value);
             
-            const minValid = leftBound + 1;
-            const maxValid = rightBound - 1;
-            
-            if(isNaN(guess) || guess < minValid || guess > maxValid) {
+            if(isNaN(guess) || guess < 0 || guess > 240) {
                 const feedback = document.getElementById('game-feedback');
-                feedback.innerHTML = `<span class="text-rose-500"><i data-lucide="alert-circle" class="w-5 h-5 inline mr-1 -mt-1"></i> 无效输入！当前断点肯定在 <b>${minValid} 到 ${maxValid}</b> 之间，请重新输入。</span>`;
+                feedback.innerHTML = `<span class="text-rose-500"><i data-lucide="alert-circle" class="w-3.5 h-3.5 inline mr-1 -mt-0.5"></i> 无效输入！请输入 0~240 的数字。</span>`;
                 if(typeof lucide !== 'undefined') lucide.createIcons();
                 input.value = ''; input.focus();
                 return;
             }
 
+            if (pastGuesses.some(g => g.time === guess)) {
+                document.getElementById('game-feedback').innerHTML = `<span class="text-amber-500"><i data-lucide="info" class="w-3.5 h-3.5 inline mr-1 -mt-0.5"></i> 提示：你已经排查过第 ${guess} 分钟啦，换个时间吧。</span>`;
+                if(typeof lucide !== 'undefined') lucide.createIcons();
+                return;
+            }
+            if (guess < leftBound) {
+                 document.getElementById('game-feedback').innerHTML = `<span class="text-amber-500"><i data-lucide="info" class="w-3.5 h-3.5 inline mr-1 -mt-0.5"></i> 提示：${leftBound}分钟时还在，没必要查更早的时间啦。</span>`;
+                 if(typeof lucide !== 'undefined') lucide.createIcons();
+                 return;
+            }
+            if (guess > rightBound) {
+                 document.getElementById('game-feedback').innerHTML = `<span class="text-amber-500"><i data-lucide="info" class="w-3.5 h-3.5 inline mr-1 -mt-0.5"></i> 提示：${rightBound}分钟时已没，没必要查更晚的时间啦。</span>`;
+                 if(typeof lucide !== 'undefined') lucide.createIcons();
+                 return;
+            }
+
             attempts++;
-            const attemptsDisplay = document.getElementById('game-attempts');
-            attemptsDisplay.innerText = attempts;
-            attemptsDisplay.classList.add('scale-150', 'text-rose-500');
-            setTimeout(() => attemptsDisplay.classList.remove('scale-150', 'text-rose-500'), 300);
+            document.getElementById('game-attempts').innerText = attempts;
             
             const feedback = document.getElementById('game-feedback');
-            const cableCore = document.getElementById('cable-core');
-            let markerColor = ""; let message = ""; 
-            let extraArrowHTML = ""; 
+            const screen = document.getElementById('monitor-screen-content');
+            let message = ""; 
+            let guessStatus = "";
 
             if (guess === secretFault) {
-                gameWon = true;
+                gameWon = true; 
+                guessStatus = "target";
                 
-                // 【修复核心】标记当前页面的任务单拦截机制已完成，防止点击下一页时重复弹出
-                taskIntercepted[2] = true; 
+                screen.innerHTML = getMonitorScene('caught', guess);
+                message = `<span class="text-amber-600 flex items-center gap-1"><i data-lucide="target" class="w-4 h-4"></i> 破案了！在第 ${guess} 分钟锁定嫌疑人！</span>`;
+                feedback.className = "mt-2.5 w-full p-1.5 lg:p-2 bg-amber-50 border-2 border-amber-300 rounded-lg font-black flex items-center justify-center shadow-md shrink-0";
                 
-                markerColor = "bg-rose-500 shadow-[0_0_15px_rgba(244,63,94,0.6)] animate-pulse";
-                message = `<span class="text-rose-600 flex items-center gap-2"><i data-lucide="target" class="w-5 h-5 lg:w-6 lg:h-6"></i> 故障点 ${guess}km 锁定！</span>`;
-                feedback.className = "mt-4 w-full p-3 lg:p-4 bg-rose-50 border-2 border-rose-300 rounded-xl text-base lg:text-xl font-black flex items-center justify-center transition-all duration-300 shadow-md animate-bounce shrink-0";
                 input.disabled = true; 
                 document.getElementById('guess-btn').disabled = true;
-                
-                document.querySelectorAll('.right-pointing-arrow, .left-pointing-arrow').forEach(el => el.remove());
 
-                setTimeout(() => {
-                    const toast = document.getElementById('slide-2-toast');
-                    if (toast) {
-                        // ✅ 重新把当前的尝试次数赋值给小圆圈里的 span
-                        document.getElementById('toast-attempts').innerText = attempts; 
-                        
-                        toast.classList.remove('-translate-x-4', 'opacity-0', 'pointer-events-none');
-                        toast.classList.add('translate-x-0', 'opacity-100', 'pointer-events-auto');
-                    }
-                }, 600);
-            }          
+                const successCircle = document.createElement('div');
+                successCircle.id = 'success-circle-popup';
+                successCircle.className = "absolute top-1/2 right-2 lg:right-3 -translate-y-1/2 w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-amber-300 to-amber-500 rounded-full flex flex-col items-center justify-center z-[100] shadow-[0_0_20px_rgba(251,191,36,0.8)] border-[3px] border-white transform scale-0 transition-all duration-500 text-amber-950 font-black";
+                successCircle.innerHTML = `
+                    <span class="text-[10px] lg:text-xs mb-0 opacity-80 leading-none">锁定!</span>
+                    <div class="flex items-baseline mt-0.5"><span class="text-xl lg:text-2xl leading-none">${attempts}</span><span class="text-[10px] ml-0.5">次</span></div>
+                `;
+                document.getElementById('monitor-screen-container').appendChild(successCircle);
+                requestAnimationFrame(() => successCircle.classList.replace('scale-0', 'scale-100'));
+            }            
+            
             else if (guess < secretFault) {
-                document.querySelectorAll('.right-pointing-arrow').forEach(el => el.remove());
-
-                markerColor = "bg-emerald-500 border-white";
-                message = `<span class="text-emerald-700 flex items-center gap-2"><i data-lucide="check-circle" class="w-5 h-5"></i> ${guess}km 信号正常。断点在 <b>右侧 (${guess}~${rightBound}km)</b></span>`;
-                feedback.className = "mt-4 w-full p-2.5 lg:p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-sm lg:text-lg font-bold flex items-center justify-center transition-all duration-300 shadow-sm shrink-0";
+                guessStatus = "left";
                 leftBound = Math.max(leftBound, guess);
-                
-                extraArrowHTML = `<div class="right-pointing-arrow absolute -bottom-6 left-1/2 -translate-x-1/2 text-emerald-500 font-bold flex items-center justify-center pointer-events-none drop-shadow-sm animate-pulse"><i data-lucide="arrow-right" class="w-4 h-4 lg:w-5 lg:h-5"></i></div>`;
+                screen.innerHTML = getMonitorScene('safe', guess);
+                message = `<span class="text-emerald-700 flex items-center gap-1"><i data-lucide="check-circle" class="w-3.5 h-3.5"></i> 第 ${guess} 分钟还在。丢失在 <b class="bg-white px-1 rounded border border-emerald-200">${guess}~${rightBound}分钟</b> 间。</span>`;
+                feedback.className = "mt-2.5 w-full p-1.5 lg:p-2 bg-emerald-50 border border-emerald-200 rounded-lg font-bold flex items-center justify-center shadow-sm shrink-0";
             }
             else {
-                document.querySelectorAll('.left-pointing-arrow').forEach(el => el.remove());
-
-                markerColor = "bg-amber-500 border-white";
-                message = `<span class="text-amber-700 flex items-center gap-2"><i data-lucide="alert-triangle" class="w-5 h-5"></i> ${guess}km 无信号。断点在 <b>左侧 (${leftBound}~${guess}km)</b></span>`;
-                feedback.className = "mt-4 w-full p-2.5 lg:p-3 bg-amber-50 border border-amber-200 rounded-xl text-sm lg:text-lg font-bold flex items-center justify-center transition-all duration-300 shadow-sm shrink-0";
+                guessStatus = "right";
                 rightBound = Math.min(rightBound, guess);
-
-                extraArrowHTML = `<div class="left-pointing-arrow absolute -bottom-6 left-1/2 -translate-x-1/2 text-amber-500 font-bold flex items-center justify-center pointer-events-none drop-shadow-sm animate-pulse"><i data-lucide="arrow-left" class="w-4 h-4 lg:w-5 lg:h-5"></i></div>`;
+                screen.innerHTML = getMonitorScene('stolen', guess);
+                message = `<span class="text-rose-700 flex items-center gap-1"><i data-lucide="x-circle" class="w-3.5 h-3.5"></i> 第 ${guess} 分钟没了。丢失在 <b class="bg-white px-1 rounded border border-rose-200">${leftBound}~${guess}分钟</b> 间。</span>`;
+                feedback.className = "mt-2.5 w-full p-1.5 lg:p-2 bg-rose-50 border border-rose-200 rounded-lg font-bold flex items-center justify-center shadow-sm shrink-0";
             }
 
             feedback.innerHTML = message;
-            const marker = document.createElement('div');
-            marker.className = `absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-[3px] z-20 transition-all ${markerColor}`;
-            marker.style.left = `${guess}%`;
-            marker.innerHTML = `<span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[11px] font-black text-slate-600 bg-white/90 px-1.5 py-0.5 rounded shadow-sm border border-slate-200">${guess}</span>${extraArrowHTML}`;
-            cableCore.appendChild(marker);
-
-            updateCableVisual();
+            pastGuesses.push({ time: guess, status: guessStatus });
+            renderTimelineMarkers();
+            
             input.value = ''; input.focus();    
             if(typeof lucide !== 'undefined') lucide.createIcons();
         }
 
-        function updateCableVisual() {
+        function renderTimelineMarkers() {
+            const timelineCore = document.getElementById('timeline-core');
+            document.querySelectorAll('.timeline-marker').forEach(el => el.remove());
+
             const activeRange = document.getElementById('active-range');
             if(activeRange) {
-                activeRange.style.left = `${leftBound}%`;
-                activeRange.style.width = `${rightBound - leftBound}%`;
+                let lPct = (leftBound / 240) * 100;
+                let wPct = ((rightBound - leftBound) / 240) * 100;
+                activeRange.style.left = `${lPct}%`;
+                activeRange.style.width = `${wPct}%`;
             }
-        }
 
+            pastGuesses.forEach(g => {
+                const isCurrentLeft = (g.time === leftBound && g.time !== 0);
+                const isCurrentRight = (g.time === rightBound && g.time !== 240);
+                
+                let markerClass = "";
+                let arrowHtml = "";
+
+                if (g.status === 'target') {
+                    markerClass = "bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.8)] z-30 animate-bounce w-1 h-5 rounded-sm";
+                } else if (g.status === 'left') {
+                    markerClass = "bg-emerald-500 z-20 w-[2px] h-4";
+                    if (isCurrentLeft) {
+                        markerClass += " shadow-[0_0_8px_rgba(16,185,129,0.8)] h-5";
+                        arrowHtml = `<div class="absolute top-full mt-1 left-1/2 -translate-x-1/2 text-emerald-400 text-[10px] font-black animate-pulse">→</div>`;
+                    }
+                } else if (g.status === 'right') {
+                    markerClass = "bg-rose-500 z-20 w-[2px] h-4";
+                    if (isCurrentRight) {
+                        markerClass += " shadow-[0_0_8px_rgba(244,63,94,0.8)] h-5";
+                        arrowHtml = `<div class="absolute top-full mt-1 left-1/2 -translate-x-1/2 text-rose-400 text-[10px] font-black animate-pulse">←</div>`;
+                    }
+                }
+
+                let percent = (g.time / 240) * 100;
+                const marker = document.createElement('div');
+                marker.className = `timeline-marker absolute top-1/2 -translate-y-1/2 -translate-x-1/2 transition-all ${markerClass}`;
+                marker.style.left = `${percent}%`;
+                marker.innerHTML = `
+                    <span class="absolute -top-5 left-1/2 -translate-x-1/2 text-[8px] font-bold text-slate-600 bg-white/90 px-1 py-0.5 rounded shadow-sm leading-none">${g.time}</span>
+                    ${arrowHtml}
+                `;
+                timelineCore.appendChild(marker);
+            });
+        }
 
         // ================= [3. 算法推演：对数切割模拟与数据规模] =================
         let mathInitialN = 1000;
@@ -2293,9 +2450,19 @@
                 const isL = idx === currentL; const isR = idx === currentR; const isM = idx === currentM;
                 const isTargetFound = (simGameState === 'WON' && isM);
 
+                let isEliminated = false;
+                if (simGameState === 'MOVE_POINTER') {
+                    if (gameArray[currentM] < GAME_TARGET) {
+                        if (idx >= currentL && idx <= currentM) isEliminated = true;
+                    } else {
+                        if (idx >= currentM && idx <= currentR) isEliminated = true;
+                    }
+                }
+
                 let boxClasses = "bg-white border-stone-200 text-stone-800 hover:border-emerald-300 hover:shadow-md cursor-pointer active:scale-95";
                 let wrapperClasses = "relative transition-all duration-300 transform" + (isOutOfRange ? " dimmed-box" : "");
                 let pingDiv = "";
+                let eliminatedLine = "";
 
                 if (isTargetFound) {
                     boxClasses = "bg-emerald-500 text-white border-emerald-400 scale-110 shadow-[0_0_20px_rgba(16,185,129,0.5)] z-30 pointer-events-none";
@@ -2306,18 +2473,19 @@
                     boxClasses = "bg-blue-50 text-blue-800 border-blue-300 shadow-sm z-10 cursor-pointer hover:bg-blue-100";
                 }
 
+                if (isEliminated) {
+                    boxClasses += " opacity-40 grayscale scale-95";
+                    eliminatedLine = `<div class="absolute inset-0 flex items-center justify-center z-40 pointer-events-none transition-all duration-500 animate-[slideInRight_0.3s_ease-out]"><div class="w-[120%] h-1.5 lg:h-2 bg-rose-500/80 -rotate-45 rounded-full shadow-sm backdrop-blur-sm"></div></div>`;
+                }
+
                 let labels = '';
-                
-                // L 和 R 放在上方，指向索引
                 if (isL && !isR) labels += `<div class="absolute -top-[3.2rem] lg:-top-[3.6rem] left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-all"><span class="text-[10px] lg:text-xs font-black text-white bg-blue-500 px-1.5 py-0.5 rounded shadow-md leading-none">L</span><i data-lucide="arrow-down" class="w-3 h-3 lg:w-4 lg:h-4 text-blue-500 -mt-0.5 drop-shadow-sm"></i></div>`;
                 if (isR && !isL) labels += `<div class="absolute -top-[3.2rem] lg:-top-[3.6rem] left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-all"><span class="text-[10px] lg:text-xs font-black text-white bg-blue-500 px-1.5 py-0.5 rounded shadow-md leading-none">R</span><i data-lucide="arrow-down" class="w-3 h-3 lg:w-4 lg:h-4 text-blue-500 -mt-0.5 drop-shadow-sm"></i></div>`;
                 if (isR && isL)  labels += `<div class="absolute -top-[3.2rem] lg:-top-[3.6rem] left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-all"><span class="text-[10px] lg:text-xs font-black text-white bg-blue-600 px-1.5 py-0.5 rounded shadow-md leading-none">L,R</span><i data-lucide="arrow-down" class="w-3 h-3 lg:w-4 lg:h-4 text-blue-600 -mt-0.5 drop-shadow-sm"></i></div>`;
 
-                // Mid 放在下方，指向元素方块
                 if (isM && !isTargetFound) labels += `<div class="absolute -bottom-8 lg:-bottom-9 left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-all animate-bounce"><i data-lucide="arrow-up" class="w-3 h-3 lg:w-4 lg:h-4 text-amber-500 -mb-0.5 drop-shadow-sm"></i><span class="text-[10px] lg:text-xs font-black text-white bg-amber-500 px-1.5 py-0.5 rounded shadow-md leading-none">Mid</span></div>`;
                 if (isTargetFound) labels += `<div class="absolute -bottom-8 lg:-bottom-9 left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-all"><i data-lucide="arrow-up" class="w-3 h-3 lg:w-4 lg:h-4 text-rose-500 -mb-0.5 drop-shadow-sm"></i><span class="text-[10px] lg:text-xs font-black text-white bg-rose-500 px-1.5 py-0.5 rounded shadow-md flex items-center gap-1 leading-none"><i data-lucide="target" class="w-3 h-3"></i>TARGET</span></div>`;
 
-                // 动态高亮索引：如果被 L 或 R 指向，索引变蓝并加上背景
                 let indexColor = (isL || isR) ? "text-blue-600 bg-blue-100 px-1.5 py-0.5 rounded shadow-sm z-20" : "text-stone-400";
                 let indexHtml = `<span class="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] ${indexColor} font-mono font-bold transition-all">${idx}</span>`;
 
@@ -2327,7 +2495,7 @@
                         ${pingDiv}
                         <div id="array-box-${idx}" onclick="handleArrayClick(${idx})" class="w-12 h-12 lg:w-16 lg:h-16 flex items-center justify-center rounded-2xl border-[3px] font-black transition-all duration-300 text-xl lg:text-2xl ${boxClasses} relative z-10 select-none">${num}</div>
                         ${labels}
-                    </div>
+                        ${eliminatedLine} </div>
                 `;
             }).join('');
         }
@@ -2479,82 +2647,108 @@ function updateSimUIV2() {
 }
 
 function renderInteractiveArrayV2() {
-            const container = document.getElementById('interactive-array-container-v2');
-            if(!container) return;
+    // 1. 修复容器 ID 映射错误
+    const container = document.getElementById('interactive-array-container-v2');
+    if(!container) return;
 
-            if (simGameStateV2 === 'SETUP') {
-                container.innerHTML = `
-                    <div class="flex flex-col items-center gap-5 w-full py-2">
-                        <div class="bg-blue-50/80 px-4 py-2 rounded-xl border border-blue-200 text-blue-800 font-bold text-sm lg:text-base flex items-center gap-2">
-                            <i data-lucide="edit-3" class="w-5 h-5"></i> 步骤 1：录入从小到大排列的 8 个数字
+    // 2. 修复状态判断变量名 (原为 customSimGameState)
+    if (simGameStateV2 === 'SETUP') {
+        container.innerHTML = `
+            <div class="flex flex-col items-center gap-4 lg:gap-5 w-full px-2 lg:px-6"> 
+                <div class="bg-blue-50/80 px-4 py-2 rounded-lg border border-blue-200 text-blue-800 font-bold text-sm lg:text-base flex items-center gap-1.5 self-start shadow-sm"> 
+                    <i data-lucide="edit-3" class="w-4 h-4 lg:w-5 lg:h-5"></i> 步骤 1：录入从小到大排列的 8 个数字
+                </div>
+                
+                <div class="flex flex-wrap gap-2 lg:gap-4 justify-center w-full"> ${Array(8).fill(0).map((_, i) => `
+                        <div class="relative">
+                            <span class="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] lg:text-xs text-stone-400 font-mono font-bold">${i}</span> 
+                            <input type="number" id="input-arr-v2-${i}" 
+                                class="w-14 h-14 lg:w-20 lg:h-20 text-center rounded-2xl border-2 border-stone-300 font-black text-lg lg:text-2xl text-stone-700 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-200 focus:outline-none shadow-sm transition-all bg-white/90 placeholder:text-[11px] lg:placeholder:text-sm placeholder:font-bold placeholder:text-stone-400" 
+                                placeholder="任意"> 
                         </div>
-                        <div class="flex flex-wrap gap-2 lg:gap-3 justify-center">
-                            ${Array(8).fill(0).map((_, i) => `
-                                <div class="relative">
-                                    <span class="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] text-stone-400 font-mono font-bold">${i}</span>
-                                    <input type="number" id="input-arr-v2-${i}" class="w-12 h-12 lg:w-16 lg:h-16 text-center rounded-2xl border-[3px] border-stone-300 font-black text-xl lg:text-2xl text-stone-700 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-200 focus:outline-none shadow-sm transition-all bg-white/90" placeholder="">
-                                </div>
-                            `).join('')}
+                    `).join('')}
+                </div>
+                
+                <div class="w-full h-px bg-stone-200 my-2"></div> 
+                
+                <div class="flex flex-col sm:flex-row items-center justify-between w-full gap-4"> 
+                    <div class="flex items-center gap-3"> 
+                        <div class="bg-rose-50/80 px-4 py-2 rounded-lg border border-rose-200 text-rose-800 font-bold text-sm lg:text-base flex items-center gap-1.5 shadow-sm"> 
+                            <i data-lucide="target" class="w-4 h-4 lg:w-5 lg:h-5"></i> 步骤 2：设定要查找的目标
                         </div>
-                        <div class="w-full max-w-md h-px bg-stone-200 my-1"></div>
-                        <div class="flex flex-col sm:flex-row items-center gap-4">
-                            <div class="bg-rose-50/80 px-4 py-2 rounded-xl border border-rose-200 text-rose-800 font-bold text-sm lg:text-base flex items-center gap-2">
-                                <i data-lucide="target" class="w-5 h-5"></i> 步骤 2：设定要查找的目标数字
-                            </div>
-                            <input type="number" id="input-target-v2" class="w-24 h-12 text-center rounded-2xl border-[3px] border-stone-300 font-black text-xl text-rose-600 focus:border-rose-400 focus:ring-2 focus:ring-rose-200 focus:outline-none shadow-sm transition-all bg-white/90" placeholder="目标">
-                        </div>
-                        <button onclick="validateAndStartV2()" class="mt-2 px-8 py-3.5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white rounded-full font-black shadow-lg transition-all active:scale-95 flex items-center gap-2 text-base breathing-light border border-emerald-300/50">
+                        <input type="number" id="input-target-v2" 
+                            class="w-24 h-12 lg:w-32 lg:h-14 text-center rounded-2xl border-2 border-stone-300 font-black text-lg lg:text-2xl text-rose-600 focus:border-rose-400 focus:ring-2 focus:ring-rose-200 focus:outline-none shadow-sm transition-all bg-white/90 placeholder:text-sm lg:placeholder:text-base placeholder:font-bold placeholder:text-rose-300" 
+                            placeholder="请输入">
+                    </div>
+
+                    <div class="flex flex-col items-center sm:items-end">
+                        <button onclick="validateAndStartV2()" class="px-8 py-3.5 lg:px-10 lg:py-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white rounded-full font-black shadow-lg transition-all active:scale-95 flex items-center gap-2 text-base lg:text-lg breathing-light border border-emerald-300/50"> 
                             <i data-lucide="play" class="w-5 h-5"></i> 确认无误，开始模拟
                         </button>
-                        <div id="setup-error-v2" class="text-rose-500 font-bold text-sm h-5 transition-all"></div>
+                        <div id="setup-error-v2" class="text-rose-500 font-bold text-xs lg:text-sm h-4 transition-all mt-1.5"></div> 
                     </div>
-                `;
-                return;
+                </div>
+            </div>
+        `;
+        if(typeof lucide !== 'undefined') lucide.createIcons();
+        return;
+    }
+
+    // 6. 修复以下所有的全局变量名，统一替换为 V2 体系
+    container.innerHTML = gameArrayV2.map((num, idx) => {
+        const isOutOfRange = (idx < currentLV2 || idx > currentRV2) && simGameStateV2 !== 'WON';
+        const isL = idx === currentLV2; const isR = idx === currentRV2; const isM = idx === currentMV2;
+        const isTargetFound = (simGameStateV2 === 'WON' && isM);
+
+        let isEliminated = false;
+        if (simGameStateV2 === 'MOVE_POINTER') {
+            if (gameArrayV2[currentMV2] < GAME_TARGET_V2) {
+                if (idx >= currentLV2 && idx <= currentMV2) isEliminated = true;
+            } else {
+                if (idx >= currentMV2 && idx <= currentRV2) isEliminated = true;
             }
-            
-            container.innerHTML = gameArrayV2.map((num, idx) => {
-                const isOutOfRange = (idx < currentLV2 || idx > currentRV2) && simGameStateV2 !== 'WON';
-                const isL = idx === currentLV2; const isR = idx === currentRV2; const isM = idx === currentMV2;
-                const isTargetFound = (simGameStateV2 === 'WON' && isM);
-                
-                let boxClasses = "bg-white border-stone-200 text-stone-800 hover:border-emerald-300 hover:shadow-md cursor-pointer active:scale-95";
-                let wrapperClasses = "relative transition-all duration-300 transform" + (isOutOfRange ? " dimmed-box" : "");
-                let pingDiv = "";
-
-                if (isTargetFound) {
-                    boxClasses = "bg-emerald-500 text-white border-emerald-400 scale-110 shadow-[0_0_20px_rgba(16,185,129,0.5)] z-30 pointer-events-none";
-                    pingDiv = `<div class="absolute inset-0 rounded-2xl anim-success-ping"></div>`;
-                } else if (isM) {
-                    boxClasses = "bg-amber-400 text-white border-amber-300 scale-105 shadow-lg z-20 pointer-events-none";
-                } else if (isL || isR) {
-                    boxClasses = "bg-blue-50 text-blue-800 border-blue-300 shadow-sm z-10 cursor-pointer hover:bg-blue-100";
-                }
-
-                let labels = '';
-                
-                // L 和 R 放在上方，指向索引
-                if (isL && !isR) labels += `<div class="absolute -top-[3.2rem] lg:-top-[3.6rem] left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-all"><span class="text-[10px] lg:text-xs font-black text-white bg-blue-500 px-1.5 py-0.5 rounded shadow-md leading-none">L</span><i data-lucide="arrow-down" class="w-3 h-3 lg:w-4 lg:h-4 text-blue-500 -mt-0.5 drop-shadow-sm"></i></div>`;
-                if (isR && !isL) labels += `<div class="absolute -top-[3.2rem] lg:-top-[3.6rem] left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-all"><span class="text-[10px] lg:text-xs font-black text-white bg-blue-500 px-1.5 py-0.5 rounded shadow-md leading-none">R</span><i data-lucide="arrow-down" class="w-3 h-3 lg:w-4 lg:h-4 text-blue-500 -mt-0.5 drop-shadow-sm"></i></div>`;
-                if (isR && isL)  labels += `<div class="absolute -top-[3.2rem] lg:-top-[3.6rem] left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-all"><span class="text-[10px] lg:text-xs font-black text-white bg-blue-600 px-1.5 py-0.5 rounded shadow-md leading-none">L,R</span><i data-lucide="arrow-down" class="w-3 h-3 lg:w-4 lg:h-4 text-blue-600 -mt-0.5 drop-shadow-sm"></i></div>`;
-
-                // Mid 放在下方，指向元素方块
-                if (isM && !isTargetFound) labels += `<div class="absolute -bottom-8 lg:-bottom-9 left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-all animate-bounce"><i data-lucide="arrow-up" class="w-3 h-3 lg:w-4 lg:h-4 text-amber-500 -mb-0.5 drop-shadow-sm"></i><span class="text-[10px] lg:text-xs font-black text-white bg-amber-500 px-1.5 py-0.5 rounded shadow-md leading-none">Mid</span></div>`;
-                if (isTargetFound) labels += `<div class="absolute -bottom-8 lg:-bottom-9 left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-all"><i data-lucide="arrow-up" class="w-3 h-3 lg:w-4 lg:h-4 text-rose-500 -mb-0.5 drop-shadow-sm"></i><span class="text-[10px] lg:text-xs font-black text-white bg-rose-500 px-1.5 py-0.5 rounded shadow-md flex items-center gap-1 leading-none"><i data-lucide="target" class="w-3 h-3"></i>TARGET</span></div>`;
-
-                // 动态高亮索引
-                let indexColor = (isL || isR) ? "text-blue-600 bg-blue-100 px-1.5 py-0.5 rounded shadow-sm z-20" : "text-stone-400";
-                let indexHtml = `<span class="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] ${indexColor} font-mono font-bold transition-all">${idx}</span>`;
-
-                return `
-                    <div class="${wrapperClasses}">
-                        ${indexHtml}
-                        ${pingDiv}
-                        <div id="array-box-v2-${idx}" onclick="handleArrayClickV2(${idx})" class="w-12 h-12 lg:w-16 lg:h-16 flex items-center justify-center rounded-2xl border-[3px] font-black transition-all duration-300 text-xl lg:text-2xl ${boxClasses} relative z-10 select-none">${num}</div>
-                        ${labels}
-                    </div>
-                `;
-            }).join('');
         }
+
+        let boxClasses = "bg-white border-stone-200 text-stone-800 hover:border-emerald-300 hover:shadow-md cursor-pointer active:scale-95";
+        let wrapperClasses = "relative transition-all duration-300 transform" + (isOutOfRange ? " dimmed-box" : "");
+        let pingDiv = "";
+        let eliminatedLine = "";
+
+        if (isTargetFound) {
+            boxClasses = "bg-emerald-500 text-white border-emerald-400 scale-110 shadow-[0_0_20px_rgba(16,185,129,0.5)] z-30 pointer-events-none";
+            pingDiv = `<div class="absolute inset-0 rounded-2xl anim-success-ping"></div>`;
+        } else if (isM) {
+            boxClasses = "bg-amber-400 text-white border-amber-300 scale-105 shadow-lg z-20 pointer-events-none";
+        } else if (isL || isR) {
+            boxClasses = "bg-blue-50 text-blue-800 border-blue-300 shadow-sm z-10 cursor-pointer hover:bg-blue-100";
+        }
+
+        if (isEliminated) {
+            boxClasses += " opacity-40 grayscale scale-95";
+            eliminatedLine = `<div class="absolute inset-0 flex items-center justify-center z-40 pointer-events-none transition-all duration-500 animate-[slideInRight_0.3s_ease-out]"><div class="w-[120%] h-1.5 lg:h-2 bg-rose-500/80 -rotate-45 rounded-full shadow-sm backdrop-blur-sm"></div></div>`;
+        }
+
+        let labels = '';
+        if (isL && !isR) labels += `<div class="absolute -top-[3.2rem] lg:-top-[3.6rem] left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-all"><span class="text-[10px] lg:text-xs font-black text-white bg-blue-500 px-1.5 py-0.5 rounded shadow-md leading-none">L</span><i data-lucide="arrow-down" class="w-3 h-3 lg:w-4 lg:h-4 text-blue-500 -mt-0.5 drop-shadow-sm"></i></div>`;
+        if (isR && !isL) labels += `<div class="absolute -top-[3.2rem] lg:-top-[3.6rem] left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-all"><span class="text-[10px] lg:text-xs font-black text-white bg-blue-500 px-1.5 py-0.5 rounded shadow-md leading-none">R</span><i data-lucide="arrow-down" class="w-3 h-3 lg:w-4 lg:h-4 text-blue-500 -mt-0.5 drop-shadow-sm"></i></div>`;
+        if (isR && isL)  labels += `<div class="absolute -top-[3.2rem] lg:-top-[3.6rem] left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-all"><span class="text-[10px] lg:text-xs font-black text-white bg-blue-600 px-1.5 py-0.5 rounded shadow-md leading-none">L,R</span><i data-lucide="arrow-down" class="w-3 h-3 lg:w-4 lg:h-4 text-blue-600 -mt-0.5 drop-shadow-sm"></i></div>`;
+
+        if (isM && !isTargetFound) labels += `<div class="absolute -bottom-8 lg:-bottom-9 left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-all animate-bounce"><i data-lucide="arrow-up" class="w-3 h-3 lg:w-4 lg:h-4 text-amber-500 -mb-0.5 drop-shadow-sm"></i><span class="text-[10px] lg:text-xs font-black text-white bg-amber-500 px-1.5 py-0.5 rounded shadow-md leading-none">Mid</span></div>`;
+        if (isTargetFound) labels += `<div class="absolute -bottom-8 lg:-bottom-9 left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-all"><i data-lucide="arrow-up" class="w-3 h-3 lg:w-4 lg:h-4 text-rose-500 -mb-0.5 drop-shadow-sm"></i><span class="text-[10px] lg:text-xs font-black text-white bg-rose-500 px-1.5 py-0.5 rounded shadow-md flex items-center gap-1 leading-none"><i data-lucide="target" class="w-3 h-3"></i>TARGET</span></div>`;
+
+        let indexColor = (isL || isR) ? "text-blue-600 bg-blue-100 px-1.5 py-0.5 rounded shadow-sm z-20" : "text-stone-400";
+        let indexHtml = `<span class="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] ${indexColor} font-mono font-bold transition-all">${idx}</span>`;
+
+        return `
+            <div class="${wrapperClasses}">
+                ${indexHtml}
+                ${pingDiv}
+                <div id="array-box-v2-${idx}" onclick="handleArrayClickV2(${idx})" class="w-12 h-12 lg:w-16 lg:h-16 flex items-center justify-center rounded-2xl border-[3px] font-black transition-all duration-300 text-xl lg:text-2xl ${boxClasses} relative z-10 select-none">${num}</div>
+                ${labels}
+                ${eliminatedLine} </div>
+        `;
+    }).join('');
+}
 
 function handleArrayClickV2(idx) {
     const boxEl = document.getElementById(`array-box-v2-${idx}`);
@@ -2822,230 +3016,398 @@ document.addEventListener("DOMContentLoaded", function() {
 }
 
 // ================= [7. 拓展：模拟 AI 豆包交互分析] =================
-        let aiChatStep = 1; 
+let aiChatStep = 1; 
 
-        function startAIAnalysis(event) {
-            if (event) event.stopPropagation();
+function startAIAnalysis(event) {
+    if (event) event.stopPropagation();
 
-            const btn = document.getElementById('btn-ask-ai');
-            const fakeInput = document.getElementById('ai-fake-input');
-            const chatHistory = document.getElementById('ai-chat-history');            
-            const userPromptText = fakeInput.innerText;
+    const btn = document.getElementById('btn-ask-ai');
+    const fakeInput = document.getElementById('ai-fake-input');
+    const chatHistory = document.getElementById('ai-chat-history');
+    const hintArrow = document.getElementById('ai-chat-hint-arrow');
+    
+    const userPromptText = fakeInput.innerText;
 
-            if (userPromptText === "给豆包发送消息" || userPromptText === "对话已结束") return;
+    if (userPromptText === "给豆包发送消息" || userPromptText === "对话已结束") return;
 
-            btn.disabled = true;
-            btn.classList.add('opacity-50', 'cursor-not-allowed');
-            btn.innerHTML = `<i data-lucide="loader" class="w-4 h-4 animate-spin"></i>`;
-            
-            fakeInput.classList.remove('text-slate-700');
-            fakeInput.classList.add('text-slate-400');
+    btn.disabled = true;
+    btn.classList.add('opacity-50', 'cursor-not-allowed');
+    btn.innerHTML = `<i data-lucide="loader" class="w-4 h-4 animate-spin"></i>`;
+    
+    if (hintArrow) hintArrow.classList.add('opacity-0');
 
-            if(typeof lucide !== 'undefined') lucide.createIcons();
+    fakeInput.innerText = "发消息给豆包";
+    fakeInput.classList.remove('text-slate-700');
+    fakeInput.classList.add('text-slate-400');
 
-            const userMsg = document.createElement('div');
-            userMsg.className = "flex gap-3 max-w-[90%] ml-auto justify-end animate-[slideInRight_0.3s_ease-out] mt-3";
-            userMsg.innerHTML = `
-                <div class="bg-blue-600 text-white p-3 rounded-2xl rounded-tr-sm shadow-sm text-xs lg:text-sm font-medium">
-                    ${userPromptText}
-                </div>
-                <div class="w-7 h-7 rounded-full bg-slate-200 border border-slate-300 flex items-center justify-center text-slate-600 shrink-0 mt-0.5">
-                    <i data-lucide="user" class="w-4 h-4"></i>
-                </div>
-            `;
-            chatHistory.appendChild(userMsg);
-            chatHistory.scrollTop = chatHistory.scrollHeight;
+    if(typeof lucide !== 'undefined') lucide.createIcons();
 
+    const userMsg = document.createElement('div');
+    userMsg.className = "flex gap-3 max-w-[90%] ml-auto justify-end animate-[slideInRight_0.3s_ease-out] mt-3";
+    userMsg.innerHTML = `
+        <div class="bg-blue-600 text-white p-3 rounded-2xl rounded-tr-sm shadow-sm text-xs lg:text-sm font-medium">
+            ${userPromptText}
+        </div>
+        <div class="w-7 h-7 rounded-full bg-slate-200 border border-slate-300 flex items-center justify-center text-slate-600 shrink-0 mt-0.5">
+            <i data-lucide="user" class="w-4 h-4"></i>
+        </div>
+    `;
+    chatHistory.appendChild(userMsg);
+    chatHistory.scrollTop = chatHistory.scrollHeight;
+
+    setTimeout(() => {
+        const aiTypingId = 'ai-typing-' + Date.now();
+        const aiMsgBox = document.createElement('div');
+        aiMsgBox.id = aiTypingId;
+        aiMsgBox.className = "flex gap-3 w-full max-w-[98%] animate-[slideInRight_0.3s_ease-out] mt-3";
+        aiMsgBox.innerHTML = `
+            <div class="w-7 h-7 rounded-full overflow-hidden border border-slate-200 shadow-sm shrink-0 mt-0.5 bg-white">
+                <img src="./doubao-avatar.png" alt="豆包" class="w-full h-full object-cover">
+            </div>
+            <div class="bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-sm shadow-sm text-slate-500 flex items-center gap-1">
+                <div class="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce"></div>
+                <div class="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                <div class="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
+            </div>
+        `;
+        chatHistory.appendChild(aiMsgBox);
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+        if(typeof lucide !== 'undefined') lucide.createIcons();
+
+        if (aiChatStep === 1) {
             setTimeout(() => {
-                const aiTypingId = 'ai-typing-' + Date.now();
-                const aiMsgBox = document.createElement('div');
-                aiMsgBox.id = aiTypingId;
-                aiMsgBox.className = "flex gap-3 max-w-[90%] animate-[slideInRight_0.3s_ease-out] mt-3";
-                aiMsgBox.innerHTML = `
+                const typingEl = document.getElementById(aiTypingId);
+                typingEl.innerHTML = `
                     <div class="w-7 h-7 rounded-full overflow-hidden border border-slate-200 shadow-sm shrink-0 mt-0.5 bg-white">
                         <img src="./doubao-avatar.png" alt="豆包" class="w-full h-full object-cover">
                     </div>
-                    <div class="bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-sm shadow-sm text-slate-500 flex items-center gap-1">
-                        <div class="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce"></div>
-                        <div class="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
-                        <div class="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
+                    <div class="bg-white border border-slate-200 p-3.5 lg:p-5 rounded-2xl rounded-tl-sm shadow-sm w-full overflow-hidden">
+                        <p class="text-xs lg:text-sm font-bold text-slate-700 mb-2 flex items-center gap-2">
+                            <i data-lucide="cpu" class="w-4 h-4 text-blue-500"></i> 我为你生成了一个验算沙盒，拖动滑块验证二分策略：
+                        </p>
+                        
+                        <div class="relative w-full bg-slate-50 border border-slate-200 rounded-xl mt-2 flex flex-col overflow-hidden shadow-inner">
+                            <div class="flex justify-between items-center px-4 py-2.5 bg-slate-100 border-b border-slate-200">
+                                <label class="text-xs font-bold text-slate-600 flex items-center gap-2">
+                                    尝试半径 R: <span id="sheep-r-value" class="text-blue-600 font-mono text-sm lg:text-base">1.5</span>
+                                </label>
+                                <input type="range" id="sheep-slider-r" min="0.5" max="4.0" step="0.1" value="1.5" class="w-24 lg:w-32 h-1.5 bg-slate-300 rounded-full appearance-none cursor-pointer accent-blue-600">
+                                <span id="sheep-status-badge" class="text-[10px] font-black px-2 py-1 rounded shadow-sm text-white transition-colors">计算中...</span>
+                            </div>
+                            <div class="relative h-[180px] w-full mt-3" id="sheep-canvas-wrapper">
+                                <canvas id="sheepDemoCanvas" class="block w-full h-full"></canvas>
+                            </div>
+                        </div>
+
+                        <p class="text-xs text-slate-500 mt-3 leading-relaxed">
+                            <b class="text-slate-700">演示设定：</b>学生坐标 x={1, 3, 5, 8, 12, 15, 17, 19}，限用空调 k=3。<br>
+                            观察发现：当 R 过小时，需要的空调数量会超过 3 台（不合法）；我们的目标是用<b class="text-rose-500 mx-1">二分法</b>逼近那个恰好使得所需空调数 ≤ 3 的<b class="text-blue-600 mx-1">最小合法 R 值</b>。
+                        </p>
                     </div>
                 `;
-                chatHistory.appendChild(aiMsgBox);
                 chatHistory.scrollTop = chatHistory.scrollHeight;
                 if(typeof lucide !== 'undefined') lucide.createIcons();
 
-                if (aiChatStep === 1) {
-                    setTimeout(() => {
-                        const typingEl = document.getElementById(aiTypingId);
-                        typingEl.innerHTML = `
-                            <div class="w-7 h-7 rounded-full overflow-hidden border border-slate-200 shadow-sm shrink-0 mt-0.5 bg-white">
-                                <img src="./doubao-avatar.png" alt="豆包" class="w-full h-full object-cover">
-                            </div>
-                            <div class="bg-white border border-slate-200 p-3.5 rounded-2xl rounded-tl-sm shadow-sm w-full max-w-xl overflow-hidden">
-                                <p class="text-xs lg:text-sm font-bold text-slate-700 mb-2 flex items-center gap-2">
-                                    <i data-lucide="cpu" class="w-4 h-4 text-blue-500"></i> 我为你生成了一个验算沙盒，拖动滑块验证二分策略：
-                                </p>
-                                
-                                <div class="relative w-full bg-slate-50 border border-slate-200 rounded-xl mt-2 flex flex-col overflow-hidden shadow-inner">
-                                    <div class="flex justify-between items-center px-4 py-2.5 bg-slate-100 border-b border-slate-200">
-                                        <label class="text-xs font-bold text-slate-600 flex items-center gap-2">
-                                            尝试半径 R: <span id="sheep-r-value" class="text-blue-600 font-mono text-sm lg:text-base">1.5</span>
-                                        </label>
-                                        <input type="range" id="sheep-slider-r" min="0.5" max="4.0" step="0.1" value="1.5" class="w-24 lg:w-32 h-1.5 bg-slate-300 rounded-full appearance-none cursor-pointer accent-blue-600">
-                                        <span id="sheep-status-badge" class="text-[10px] font-black px-2 py-1 rounded shadow-sm text-white transition-colors">计算中...</span>
-                                    </div>
-                                    <div class="relative h-[180px] w-full mt-3" id="sheep-canvas-wrapper">
-                                        <canvas id="sheepDemoCanvas" class="block w-full h-full"></canvas>
-                                    </div>
-                                </div>
+                initSheepCanvas();
 
-                                <p class="text-xs text-slate-500 mt-3 leading-relaxed">
-                                    <b class="text-slate-700">演示设定：</b>羊坐标 x={1, 3, 5, 8, 12, 15, 17, 19}，限用柱子 k=3。<br>
-                                    观察发现：当 R 过小时，需要的柱子数会超过 3 根（不合法）；我们的目标是用<b class="text-rose-500 mx-1">二分法</b>逼近那个恰好使得柱子数 ≤ 3 的<b class="text-blue-600 mx-1">最小合法 R 值</b>。
-                                </p>
-                            </div>
-                        `;
-                        chatHistory.scrollTop = chatHistory.scrollHeight;
-                        if(typeof lucide !== 'undefined') lucide.createIcons();
+                aiChatStep = 2;
+                fakeInput.innerText = "请利用二分法帮我分析这道题的解题思路";
+                fakeInput.classList.remove('text-slate-400');
+                fakeInput.classList.add('text-slate-700');
+                btn.disabled = false;
+                btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                btn.innerHTML = `<i data-lucide="arrow-up" class="w-4 h-4 group-hover:-translate-y-0.5 transition-transform"></i>`;
+                
+                if (hintArrow) hintArrow.classList.remove('opacity-0');
+                if(typeof lucide !== 'undefined') lucide.createIcons();
 
-                        initSheepCanvas();
+            }, 1500);
 
-                        // --- 请替换为以下代码 ---
-                        btn.innerHTML = `<i data-lucide="check" class="w-4 h-4 text-slate-500"></i>`;
-                        btn.disabled = true;
-                        btn.classList.add('opacity-50', 'cursor-not-allowed', 'bg-slate-200');
-                        btn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+        } else if (aiChatStep === 2) {
+            setTimeout(() => {
+                const typingEl = document.getElementById(aiTypingId);
+                typingEl.innerHTML = `
+                    <div class="w-7 h-7 rounded-full overflow-hidden border border-slate-200 shadow-sm shrink-0 mt-0.5 bg-white">
+                        <img src="./doubao-avatar.png" alt="豆包" class="w-full h-full object-cover">
+                    </div> 
+                    <div class="bg-amber-50 border border-amber-200 p-3.5 lg:p-4 rounded-2xl rounded-tl-sm shadow-sm w-full max-w-xl">
+                        <h4 class="font-black text-amber-800 mb-2 flex items-center gap-1.5 text-sm lg:text-base">
+                            <i data-lucide="lightbulb" class="w-4 h-4 text-amber-600"></i> 思维跃迁指南：二分答案法
+                        </h4>
+                        <ul class="space-y-3 text-amber-900 font-medium text-xs lg:text-sm leading-relaxed">
+                            <li class="flex items-start gap-2">
+                                <span class="bg-amber-200 text-amber-700 px-1 py-0.5 rounded text-[10px] font-black shrink-0 mt-0.5">1</span>
+                                <span><b>确定解空间（L 与 R）：</b>最小半径 <b>L = 0</b>，最大半径（只需覆盖头尾） <b>R = (19-1)/2 = 9</b>。我们要在这个连续区间里“猜”答案。</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="bg-amber-200 text-amber-700 px-1 py-0.5 rounded text-[10px] font-black shrink-0 mt-0.5">2</span>
+                                <span><b>猜中值与验证（Mid）：</b>取区间中点 <b>Mid</b> 作为假设的半径，然后验证：<br><span class="inline-block mt-1.5 bg-white/60 px-2 py-1 rounded shadow-inner border border-amber-100 text-amber-950 font-bold">“如果半径是 Mid，3 台空调能否覆盖所有学生？”</span></span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="bg-amber-200 text-amber-700 px-1 py-0.5 rounded text-[10px] font-black shrink-0 mt-0.5">3</span>
+                                <span><b>二分缩小范围：</b><br>
+                                • 若 <b class="text-emerald-700">能</b> 覆盖：说明当前 Mid 够用了，但或许能更小，于是让 <b>R = Mid</b>（缩小右界继续找）。<br>
+                                • 若 <b class="text-rose-600">不能</b> 覆盖：说明当前 Mid 太短了，于是让 <b>L = Mid + 精度</b>（增大左界继续找）。</span>
+                            </li>
+                        </ul>
+                    </div>
+                `;
+                chatHistory.scrollTop = chatHistory.scrollHeight;
+                
+                aiChatStep = 3;
+                btn.innerHTML = `<i data-lucide="arrow-up" class="w-4 h-4 group-hover:-translate-y-0.5 transition-transform"></i>`;
+                btn.disabled = false;
+                btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                
+                fakeInput.innerText = "请给我最终的代码实现";
+                fakeInput.classList.remove('text-slate-400');
+                fakeInput.classList.add('text-slate-700');
+                
+                if (hintArrow) hintArrow.classList.remove('opacity-0');
+                if(typeof lucide !== 'undefined') lucide.createIcons();
+            }, 1500);
+        } else if (aiChatStep === 3) {
+            setTimeout(() => {
+                const typingEl = document.getElementById(aiTypingId);
+                typingEl.innerHTML = `
+                    <div class="w-7 h-7 rounded-full overflow-hidden border border-slate-200 shadow-sm shrink-0 mt-0.5 bg-white">
+                        <img src="./doubao-avatar.png" alt="豆包" class="w-full h-full object-cover">
+                    </div> 
+                    <div class="bg-[#0f172a] border border-slate-700 p-4 rounded-2xl rounded-tl-sm shadow-xl w-full max-w-2xl overflow-hidden relative">
+                        <div class="flex items-center justify-between mb-3 border-b border-slate-700 pb-3">
+                            <span class="text-xs font-black text-sky-400 flex items-center gap-2 uppercase tracking-widest"><i data-lucide="code-2" class="w-4 h-4"></i> C++ 核心代码实现</span>
+                        </div>
+                        <div class="text-[12px] lg:text-[14px] font-mono leading-loose overflow-x-auto task-scrollbar pr-2 whitespace-pre text-slate-300">
+<span class="text-pink-400 font-bold">#include</span> <span class="text-green-300">&lt;iostream&gt;</span>
+<span class="text-pink-400 font-bold">#include</span> <span class="text-green-300">&lt;vector&gt;</span>
+<span class="text-pink-400 font-bold">using namespace</span> <span class="text-blue-300">std</span>;
 
-                        fakeInput.innerText = "对话已结束";
-                        fakeInput.classList.remove('text-slate-700');
-                        fakeInput.classList.add('text-slate-400');
-                        if(typeof lucide !== 'undefined') lucide.createIcons();
+<span class="text-slate-500 italic">// 核心验证模块：验证如果最大覆盖半径为 R，k 台空调是否够用？</span>
+<span class="text-sky-400 font-bold">bool</span> <span class="text-blue-300">check</span>(<span class="text-sky-400 font-bold">double</span> R, <span class="text-pink-400 font-bold">const</span> vector&lt;<span class="text-sky-400 font-bold">double</span>&gt;& students, <span class="text-sky-400 font-bold">int</span> k) {
+<span class="text-sky-400 font-bold">int</span> count = <span class="text-orange-300">1</span>; <span class="text-slate-500 italic">// 至少需要 1 台空调</span>
+<span class="text-sky-400 font-bold">double</span> limit = students[<span class="text-orange-300">0</span>] + <span class="text-orange-300">2</span> * R; <span class="text-slate-500 italic">// 当前空调能覆盖的最远距离</span>
 
-                    }, 1500);
+<span class="text-pink-400 font-bold">for</span> (<span class="text-sky-400 font-bold">int</span> i = <span class="text-orange-300">1</span>; i < students.size(); i++) {
+<span class="text-pink-400 font-bold">if</span> (students[i] > limit) {
+    count++; <span class="text-slate-500 italic">// 超出当前空调的覆盖范围，必须新加一台空调</span>
+    limit = students[i] + <span class="text-orange-300">2</span> * R; <span class="text-slate-500 italic">// 更新新空调的覆盖边界</span>
+}
+}
+<span class="text-pink-400 font-bold">return</span> count <= k; <span class="text-slate-500 italic">// 最终使用的空调数是否符合要求</span>
+}
 
+<span class="text-sky-400 font-bold">int</span> <span class="text-blue-300">main</span>() {
+vector&lt;<span class="text-sky-400 font-bold">double</span>&gt; students = {<span class="text-orange-300">1, 3, 5, 8, 12, 15, 17, 19</span>};
+<span class="text-sky-400 font-bold">int</span> k = <span class="text-orange-300">3</span>;
+
+<span class="text-slate-500 italic">// 1. 确定二分答案的解空间 [L, R]</span>
+<span class="text-sky-400 font-bold">double</span> L = <span class="text-orange-300">0</span>;
+<span class="text-sky-400 font-bold">double</span> R = (students.back() - students.front()) / <span class="text-orange-300">2.0</span>;
+<span class="text-sky-400 font-bold">double</span> ans = R;
+
+<span class="text-slate-500 italic">// 2. 浮点数二分模板：当区间长度大于精度要求时继续循环</span>
+<span class="text-pink-400 font-bold">const double</span> EPS = <span class="text-orange-300">1e-6</span>; <span class="text-slate-500 italic">// 定义精度阈值</span>
+<span class="text-pink-400 font-bold">while</span> (R - L > EPS) {
+<span class="text-sky-400 font-bold">double</span> mid = L + (R - L) / <span class="text-orange-300">2.0</span>;
+
+<span class="text-pink-400 font-bold">if</span> (check(mid, students, k)) {
+    ans = mid; <span class="text-slate-500 italic">// 当前半径合法，记录下来</span>
+    R = mid;   <span class="text-slate-500 italic">// 尝试寻找更小的合法半径（缩小右界）</span>
+} <span class="text-pink-400 font-bold">else</span> {
+    L = mid;   <span class="text-slate-500 italic">// 半径太小，不合法，必须增大半径（缩小左界）</span>
+}
+}
+
+cout << <span class="text-green-300">"最小合法半径 R 为: "</span> << ans << endl;
+<span class="text-pink-400 font-bold">return</span> <span class="text-orange-300">0</span>;
+}</div>
+                    </div>
+                `;
+                chatHistory.scrollTop = chatHistory.scrollHeight;
+                
+                btn.innerHTML = `<i data-lucide="check" class="w-4 h-4 text-slate-500"></i>`;
+                btn.disabled = true;
+                btn.classList.add('opacity-50', 'cursor-not-allowed', 'bg-slate-200');
+                btn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                
+                fakeInput.innerText = "对话已结束";
+                fakeInput.classList.remove('text-slate-700');
+                fakeInput.classList.add('text-slate-400');
+                
+                if (hintArrow) {
+                    hintArrow.classList.add('opacity-0');
+                    setTimeout(() => hintArrow.classList.add('hidden'), 300);
                 }
-            }, 500);
+                
+                if(typeof lucide !== 'undefined') lucide.createIcons();
+            }, 1500);
+        }
+    }, 500);
+}
+
+function initSheepCanvas() {
+    const canvas = document.getElementById('sheepDemoCanvas');
+    const wrapper = document.getElementById('sheep-canvas-wrapper');
+    const slider = document.getElementById('sheep-slider-r');
+    const rValDisplay = document.getElementById('sheep-r-value');
+    const statusBadge = document.getElementById('sheep-status-badge');
+    
+    if (!canvas || !wrapper || !slider) return;
+    const ctx = canvas.getContext('2d');
+
+    const sheepPositions = [1, 3, 5, 8, 12, 15, 17, 19]; 
+    const maxK = 3; 
+    const minCoord = 0; 
+    const maxCoord = 22;
+
+    function resizeCanvas() {
+        if (!document.getElementById('sheepDemoCanvas')) return; 
+        const rect = wrapper.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.scale(dpr, dpr);
+        draw();
+    }
+
+    function getXPixel(val, width) {
+        const marginX = 30;
+        return marginX + ((val - minCoord) / (maxCoord - minCoord)) * (width - 2 * marginX);
+    }
+
+    function draw() {
+        const width = wrapper.clientWidth;
+        const height = wrapper.clientHeight;
+        const R = parseFloat(slider.value);
+        
+        const floorY = height - 40; 
+        const ceilingY = 20;          
+
+        ctx.clearRect(0, 0, width, height);
+
+        let posts = []; let intervals = []; let i = 0;
+        while (i < sheepPositions.length) {
+            let firstUncoveredStudent = sheepPositions[i];
+            let postPosition = firstUncoveredStudent + R;
+            let coverStart = firstUncoveredStudent;
+            let coverEnd = postPosition + R; 
+            
+            posts.push(postPosition);
+            intervals.push({ start: coverStart, end: coverEnd });
+
+            while (i < sheepPositions.length && sheepPositions[i] <= coverEnd) i++;
         }
 
-        function initSheepCanvas() {
-            const canvas = document.getElementById('sheepDemoCanvas');
-            const wrapper = document.getElementById('sheep-canvas-wrapper');
-            const slider = document.getElementById('sheep-slider-r');
-            const rValDisplay = document.getElementById('sheep-r-value');
-            const statusBadge = document.getElementById('sheep-status-badge');
+        const isSuccess = posts.length <= maxK;
+
+        const windColor = isSuccess ? 'rgba(56, 189, 248, 0.15)' : 'rgba(251, 113, 133, 0.15)'; 
+        const windStroke = isSuccess ? 'rgba(56, 189, 248, 0.5)' : 'rgba(251, 113, 133, 0.5)';
+        const textColor = isSuccess ? '#0ea5e9' : '#e11d48';
+
+        intervals.forEach((inv, index) => {
+            const xCenter = getXPixel(posts[index], width);
+            const xStart = getXPixel(inv.start, width);
+            const xEnd = getXPixel(inv.end, width);
             
-            if (!canvas || !wrapper || !slider) return;
-            const ctx = canvas.getContext('2d');
-
-            const sheepPositions = [1, 3, 5, 8, 12, 15, 17, 19]; 
-            const maxK = 3; 
-            const minCoord = 0; 
-            const maxCoord = 22;
-
-            function resizeCanvas() {
-                if (!document.getElementById('sheepDemoCanvas')) return; 
-                const rect = wrapper.getBoundingClientRect();
-                const dpr = window.devicePixelRatio || 1;
-                canvas.width = rect.width * dpr;
-                canvas.height = rect.height * dpr;
-                ctx.scale(dpr, dpr);
-                draw();
-            }
-
-            function getXPixel(val, width) {
-                const marginX = 25; 
-                return marginX + ((val - minCoord) / (maxCoord - minCoord)) * (width - 2 * marginX);
-            }
-
-            function draw() {
-                const width = wrapper.clientWidth;
-                const height = wrapper.clientHeight;
-                const R = parseFloat(slider.value);
-                const axisY = height - 35; 
-
-                ctx.clearRect(0, 0, width, height);
-
-                let posts = []; let intervals = []; let i = 0;
-                while (i < sheepPositions.length) {
-                    let firstUncoveredSheep = sheepPositions[i];
-                    let postPosition = firstUncoveredSheep + R;
-                    let coverStart = firstUncoveredSheep;
-                    let coverEnd = postPosition + R; 
-                    
-                    posts.push(postPosition);
-                    intervals.push({ start: coverStart, end: coverEnd });
-
-                    while (i < sheepPositions.length && sheepPositions[i] <= coverEnd) i++;
-                }
-
-                const isSuccess = posts.length <= maxK;
-
-                ctx.beginPath();
-                ctx.moveTo(getXPixel(minCoord, width), axisY);
-                ctx.lineTo(getXPixel(maxCoord, width), axisY);
-                ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2; ctx.stroke();
-
-                ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-                ctx.fillStyle = '#64748b'; ctx.font = '11px monospace';
-                for (let val = minCoord; val <= maxCoord; val += 2) {
-                    const x = getXPixel(val, width);
-                    ctx.beginPath(); ctx.moveTo(x, axisY); ctx.lineTo(x, axisY + 5);
-                    ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1; ctx.stroke();
-                    ctx.fillText(val, x, axisY + 8);
-                }
-
-                const intervalColor = isSuccess ? 'rgba(52, 211, 153, 0.25)' : 'rgba(251, 113, 133, 0.25)'; 
-                const intervalBorderColor = isSuccess ? 'rgba(16, 185, 129, 0.8)' : 'rgba(225, 29, 72, 0.8)';
-
-                intervals.forEach(inv => {
-                    const xStart = getXPixel(inv.start, width);
-                    const xEnd = getXPixel(inv.end, width);
-                    const rectWidth = Math.max(xEnd - xStart, 1); 
-                    
-                    const blockHeight = 55;
-                    const blockY = axisY - blockHeight - 25; 
-                    
-                    ctx.fillStyle = intervalColor;
-                    ctx.fillRect(xStart, blockY, rectWidth, blockHeight);
-                    
-                    ctx.beginPath();
-                    ctx.moveTo(xStart, blockY + 5); ctx.lineTo(xStart, blockY);
-                    ctx.lineTo(xEnd, blockY); ctx.lineTo(xEnd, blockY + 5);
-                    ctx.strokeStyle = intervalBorderColor; ctx.lineWidth = 2; ctx.stroke();
-                    
-                    ctx.fillStyle = intervalBorderColor; ctx.font = 'bold 12px sans-serif';
-                    ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
-                    ctx.fillText(`${(2*R).toFixed(1)}`, (xStart + xEnd) / 2, blockY - 5);
-                });
-
-                ctx.font = '18px sans-serif'; ctx.textBaseline = 'bottom';
-                sheepPositions.forEach(pos => { ctx.fillText('🐑', getXPixel(pos, width), axisY - 2); });
-
-                ctx.font = '18px sans-serif';
-                posts.forEach((pos) => {
-                    const x = getXPixel(pos, width);
-                    ctx.beginPath(); ctx.moveTo(x, axisY); ctx.lineTo(x, axisY - 80);
-                    ctx.setLineDash([4, 4]); ctx.strokeStyle = isSuccess ? '#059669' : '#e11d48';
-                    ctx.lineWidth = 1.5; ctx.stroke(); ctx.setLineDash([]);
-                    ctx.fillText('📍', x, axisY - 35);
-                });
-
-                rValDisplay.innerText = R.toFixed(1);
-                if (isSuccess) {
-                    statusBadge.className = "text-[10px] font-black px-2 py-1 rounded shadow-sm transition-colors bg-emerald-500 text-white";
-                    statusBadge.innerText = `✅ 合法 (需 ${posts.length} 根)`;
-                } else {
-                    statusBadge.className = "text-[10px] font-black px-2 py-1 rounded shadow-sm transition-colors bg-rose-500 text-white";
-                    statusBadge.innerText = `❌ 超出 (需 ${posts.length} 根)`;
-                }
-            }
-
-            slider.addEventListener('input', draw);
-            window.addEventListener('resize', resizeCanvas);
+            ctx.beginPath();
+            ctx.moveTo(xCenter - 15, ceilingY + 15);
+            ctx.lineTo(xCenter + 15, ceilingY + 15); 
+            ctx.lineTo(xEnd, floorY);              
+            ctx.lineTo(xStart, floorY);              
+            ctx.closePath();
             
-            setTimeout(resizeCanvas, 50);
+            ctx.fillStyle = windColor;
+            ctx.fill();
+            ctx.strokeStyle = windStroke;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            ctx.fillStyle = textColor;
+            ctx.font = 'bold 11px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'bottom';
+            ctx.fillText(`↔ ${(2*R).toFixed(1)}m ↔`, xCenter, floorY - 5);
+        });
+
+        posts.forEach((pos) => {
+            const x = getXPixel(pos, width);
+            
+            ctx.fillStyle = '#ffffff';
+            ctx.shadowColor = 'rgba(0,0,0,0.15)';
+            ctx.shadowBlur = 6;
+            ctx.shadowOffsetY = 3;
+            ctx.fillRect(x - 20, ceilingY, 40, 16);
+            ctx.shadowColor = 'transparent';
+            
+            ctx.strokeStyle = '#cbd5e1';
+            ctx.lineWidth = 1;
+            ctx.strokeRect(x - 20, ceilingY, 40, 16);
+            
+            ctx.fillStyle = '#94a3b8';
+            ctx.fillRect(x - 14, ceilingY + 11, 28, 2);
+            
+            ctx.fillStyle = isSuccess ? '#10b981' : '#ef4444';
+            ctx.beginPath();
+            ctx.arc(x + 12, ceilingY + 6, 2, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.font = '10px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'bottom';
+            ctx.fillText('❄️', x, ceilingY - 2);
+        });
+
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'bottom';
+        sheepPositions.forEach(pos => {
+            const x = getXPixel(pos, width);
+            
+            ctx.fillStyle = '#8b5a2b';
+            ctx.fillRect(x - 12, floorY - 14, 24, 6);
+            ctx.fillRect(x - 10, floorY - 8, 3, 8);
+            ctx.fillRect(x + 7, floorY - 8, 3, 8);
+            
+            ctx.font = '22px sans-serif';
+            ctx.fillText('🧑‍💻', x, floorY - 10);
+        });
+
+        ctx.beginPath();
+        ctx.moveTo(getXPixel(minCoord, width) - 15, floorY);
+        ctx.lineTo(getXPixel(maxCoord, width) + 15, floorY);
+        ctx.strokeStyle = '#64748b'; 
+        ctx.lineWidth = 3; 
+        ctx.stroke();
+
+        ctx.textAlign = 'center'; 
+        ctx.textBaseline = 'top';
+        ctx.fillStyle = '#64748b'; 
+        ctx.font = 'bold 11px monospace';
+        for (let val = minCoord; val <= maxCoord; val += 2) {
+            const x = getXPixel(val, width);
+            ctx.beginPath(); 
+            ctx.moveTo(x, floorY); 
+            ctx.lineTo(x, floorY + 6);
+            ctx.strokeStyle = '#cbd5e1'; 
+            ctx.lineWidth = 2; 
+            ctx.stroke();
+            ctx.fillText(val, x, floorY + 8);
         }
+
+        rValDisplay.innerText = R.toFixed(1);
+        if (isSuccess) {
+            statusBadge.className = "text-[10px] font-black px-2 py-1 rounded shadow-sm transition-colors bg-emerald-500 text-white";
+            statusBadge.innerText = `✅ 合法 (用 ${posts.length} 台)`;
+        } else {
+            statusBadge.className = "text-[10px] font-black px-2 py-1 rounded shadow-sm transition-colors bg-rose-500 text-white";
+            statusBadge.innerText = `❌ 超出限制 (需 ${posts.length} 台)`;
+        }
+    }
+    
+    slider.oninput = draw;
+    window.onresize = resizeCanvas;
+    
+    setTimeout(resizeCanvas, 50);
+}
 
         // ================= [8. 总结与考核模块] =================
 
