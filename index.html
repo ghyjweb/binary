@@ -788,7 +788,7 @@
                 <div class="w-full flex justify-between items-end mb-4 relative z-10">
                     <div class="text-left">
                         <h3 class="text-xl lg:text-2xl font-black text-stone-800 flex items-center gap-2 mb-2"><i data-lucide="target" class="text-fuchsia-500 w-6 h-6"></i> 寻找 “最佳学习率”</h3>
-                        <p class="text-stone-500 font-bold text-sm">“最佳学习率” 是深度学习领域中一个让模型精度、稳定性变高的参数。
+                        <p class="text-stone-500 font-bold text-base">“最佳学习率” 是深度学习领域中一个让模型精度、稳定性变高的参数。
                             <br><b style="color:rgb(22, 93, 107);">设最佳学习率处于 1-100 中。参数太大导致梯度爆炸（模型完全失控），太小导致学习停滞（模型没进步）。</b>
                             <br><b style="color:rgb(154, 96, 55);">目标参数处于连续且有序的范围中，用顺序查找很慢，</b><b style="color:rgb(249, 40, 3);">能不能用二分查找快速得到最佳学习率？</b><br>
                         </p>
@@ -839,15 +839,19 @@
                     </div>
                 </div>
 
-                <div class="flex items-center gap-4 bg-fuchsia-50/50 p-4 lg:p-5 rounded-2xl border border-fuchsia-100 w-full justify-center shadow-inner relative z-10">
-                    <span class="font-black text-fuchsia-900 text-base lg:text-lg">输入 LR 参数：</span>
-                    <input type="number" id="ai-lr-input" min="1" max="100" class="w-24 lg:w-32 text-center font-black text-2xl text-fuchsia-600 border-2 border-fuchsia-300 rounded-xl focus:outline-none focus:border-fuchsia-600 focus:ring-4 focus:ring-fuchsia-100 py-2 shadow-sm transition-all bg-white" placeholder="请输入">
-                    <button onclick="trainAIModel()" id="btn-ai-train" class="px-6 py-3 bg-fuchsia-600 text-white rounded-xl shadow-[0_4px_15px_rgba(217,70,239,0.4)] hover:bg-fuchsia-700 hover:shadow-[0_6px_20px_rgba(217,70,239,0.6)] transition-all font-black text-lg active:scale-95 flex items-center gap-2 breathing-light">
-                        <i data-lucide="play-circle" class="w-5 h-5"></i> 检测
+                <div class="flex items-center gap-2 lg:gap-3 bg-fuchsia-50/50 p-2 lg:p-3 rounded-xl border border-fuchsia-100 w-full justify-center shadow-inner relative z-10">
+    
+                    <span class="font-black text-fuchsia-900 text-sm lg:text-base">输入 LR 参数：</span>
+                    
+                    <input type="number" id="ai-lr-input" min="1" max="100" class="w-20 text-center font-black text-lg text-fuchsia-600 border-2 border-fuchsia-300 rounded-xl focus:outline-none focus:border-fuchsia-600 focus:ring-4 focus:ring-fuchsia-100 py-1 shadow-sm transition-all bg-white" placeholder="1-100">
+                    
+                    <button onclick="trainAIModel()" id="btn-ai-train" class="px-4 py-2 bg-fuchsia-600 text-white rounded-xl shadow-[0_4px_15px_rgba(217,70,239,0.4)] hover:bg-fuchsia-700 hover:shadow-[0_6px_20px_rgba(217,70,239,0.6)] transition-all font-black text-base active:scale-95 flex items-center gap-1.5 breathing-light">
+                        <i data-lucide="play-circle" class="w-4 h-4"></i> 测试
                     </button>
-                    <button onclick="resetAIGame()" class="px-4 py-3 bg-white border border-stone-200 text-stone-500 hover:bg-stone-50 rounded-xl font-bold transition-all active:scale-95 shadow-sm">重置</button>
+                    
+                    <button onclick="resetAIGame()" class="px-3 py-2 bg-white border border-stone-200 text-stone-500 hover:bg-stone-50 rounded-xl font-bold text-sm transition-all active:scale-95 shadow-sm">重置</button>
                 </div>
-                <div id="ai-feedback" class="mt-4 w-full p-3 lg:p-4 bg-stone-50 border border-stone-200 rounded-xl text-base lg:text-lg font-bold text-stone-500 flex items-center justify-center transition-all duration-300 text-center">
+                <div id="ai-feedback" class="mt-2 w-full p-2 lg:p-2.5 bg-stone-50 border border-stone-200 rounded-xl text-sm lg:text-base font-bold text-stone-500 flex items-center justify-center transition-all duration-300 text-center">
                     <i data-lucide="cpu" class="w-5 h-5 mr-2"></i> 模型尚未启动。请设定学习率或点击上方坐标轴开始训练。
                 </div>
             </div>
