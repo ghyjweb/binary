@@ -746,9 +746,7 @@
     <span class="text-sky-400 font-bold">int</span> left = <span class="text-orange-300">0</span>, right = size - <span class="text-orange-300">1</span>;
     <span class="text-pink-400 font-bold">while</span> ( <select id="code-q1" onchange="checkAllFilled(this)" class="bg-slate-800 text-sky-300 border-2 border-amber-400 rounded px-2 py-0.5 outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400 cursor-pointer font-bold transition-all animate-pulse shadow-[0_0_10px_rgba(251,191,36,0.4)]"><option value="" disabled selected>【请选择循环条件】</option><option value="<">left &lt; right</option><option value="<=">left &lt;= right</option><option value="!=">left != right</option></select> ) {
         <span class="text-sky-400 font-bold">int</span> mid = (left + right) / <span class="text-orange-300">2</span>;
-        <span class="text-pink-400 font-bold">if</span> (arr[mid] == target) {
-            <span class="text-pink-400 font-bold">return</span> mid; <span class="text-slate-500 italic"> // 命中目标</span>
-        }
+        <span class="text-pink-400 font-bold">if</span> (arr[mid] == target)    <span class="text-pink-400 font-bold">return</span> mid; <span class="text-slate-500 italic"> // 命中目标</span>
         <span class="text-pink-400 font-bold">else if</span> (arr[mid] < target) { <span class="text-slate-500 italic ml-2">// 目标在右侧，左界右移</span>
             left = <select id="code-q3" onchange="checkAllFilled(this)" class="bg-slate-800 text-sky-300 border-2 border-amber-400 rounded px-2 py-0.5 outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400 cursor-pointer font-bold transition-all animate-pulse shadow-[0_0_10px_rgba(251,191,36,0.4)]"><option value="" disabled selected>【更新左指针】</option><option value="mid">mid</option><option value="mid+1">mid + 1</option><option value="mid-1">mid - 1</option></select>;
         }
@@ -843,7 +841,7 @@
     
                     <span class="font-black text-fuchsia-900 text-sm lg:text-base">输入 LR 参数：</span>
                     
-                    <input type="number" id="ai-lr-input" min="1" max="100" class="w-20 text-center font-black text-lg text-fuchsia-600 border-2 border-fuchsia-300 rounded-xl focus:outline-none focus:border-fuchsia-600 focus:ring-4 focus:ring-fuchsia-100 py-1 shadow-sm transition-all bg-white" placeholder="1-100">
+                    <input type="number" id="ai-lr-input" min="1" max="100" class="w-20 text-center font-black text-lg text-fuchsia-600 border-2 border-fuchsia-300 rounded-xl focus:outline-none focus:border-fuchsia-600 focus:ring-4 focus:ring-fuchsia-100 py-1 shadow-sm transition-all bg-white" placeholder="请输入">
                     
                     <button onclick="trainAIModel()" id="btn-ai-train" class="px-4 py-2 bg-fuchsia-600 text-white rounded-xl shadow-[0_4px_15px_rgba(217,70,239,0.4)] hover:bg-fuchsia-700 hover:shadow-[0_6px_20px_rgba(217,70,239,0.6)] transition-all font-black text-base active:scale-95 flex items-center gap-1.5 breathing-light">
                         <i data-lucide="play-circle" class="w-4 h-4"></i> 测试
@@ -1449,12 +1447,14 @@
 
         // ================= [新增：自动化互动状态控制] =================
         let slide4Step = 0;
+        let slide7Step = 0;
         let slide9Step = 0;
         let slide10Step = 0;
 
         function updateSlides(direction = 'next') {
             // 切页时重置对应页面的互动进度
             if (currentSlide === 4) slide4Step = 0;
+            if (currentSlide === 7) slide7Step = 0;
             if (currentSlide === 9) slide9Step = 0;
             if (currentSlide === 10) slide10Step = 0;
 
@@ -1742,6 +1742,49 @@
                         });
                         return true; // 拦截翻页
                     }
+                }
+            }
+
+            if (currentSlide === 7) {
+                if (slide7Step === 0) {
+                    const el = document.getElementById('code-q1');
+                    isSimulatingClick = true;
+                    simulateVisualClick(el, () => {
+                        el.value = '<=';
+                        checkAllFilled(el);
+                        slide7Step++;
+                        isSimulatingClick = false;
+                    });
+                    return true;
+                } else if (slide7Step === 1) {
+                    const el = document.getElementById('code-q3');
+                    isSimulatingClick = true;
+                    simulateVisualClick(el, () => {
+                        el.value = 'mid+1';
+                        checkAllFilled(el);
+                        slide7Step++;
+                        isSimulatingClick = false;
+                    });
+                    return true;
+                } else if (slide7Step === 2) {
+                    const el = document.getElementById('code-q4');
+                    isSimulatingClick = true;
+                    simulateVisualClick(el, () => {
+                        el.value = 'mid-1';
+                        checkAllFilled(el);
+                        slide7Step++;
+                        isSimulatingClick = false;
+                    });
+                    return true;
+                } else if (slide7Step === 3) {
+                    const btn = document.getElementById('btn-compile');
+                    isSimulatingClick = true;
+                    simulateVisualClick(btn, () => {
+                        compileCode();
+                        slide7Step++;
+                        isSimulatingClick = false;
+                    });
+                    return true;
                 }
             }
 
